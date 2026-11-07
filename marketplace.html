@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Marketplace — Comic99</title>
+<link rel="stylesheet" href="comic99-shared.css">
+<style>
+.page-hero {
+  background: var(--ink);
+  padding: 36px max(16px, env(safe-area-inset-left, 0px)) 28px;
+  position: relative; overflow: hidden;
+  border-bottom: 4px solid var(--gold);
+}
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(245,168,0,0.18) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+.page-hero h1 { font-family:'Bangers',cursive; font-size:clamp(40px,8vw,72px); letter-spacing:4px; color:var(--white); position:relative; z-index:1; text-shadow:4px 4px 0 var(--gold-dark); }
+.page-hero h1 span { color:var(--gold); }
+.page-hero p { color:rgba(255,255,255,0.65); font-size:14px; font-weight:600; position:relative; z-index:1; margin-top:6px; }
+
+/* MARKET LAYOUT */
+.market-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 28px;
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 0 max(16px, env(safe-area-inset-left, 0px));
+}
+@media (max-width: 800px) { .market-layout { grid-template-columns: 1fr; } }
+
+/* FILTER SIDEBAR */
+.filter-sidebar {
+  flex-shrink: 0;
+}
+.filter-group {
+  background: var(--panel);
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.filter-group-header {
+  background: var(--ink);
+  padding: 10px 14px;
+  font-family: 'Bangers', cursive;
+  font-size: 16px; letter-spacing: 2px;
+  color: var(--gold);
+}
+.filter-group-body { padding: 12px; }
+.filter-check {
+  display: flex; align-items: center; gap: 8px;
+  padding: 5px 0; cursor: pointer;
+  font-size: 13px; font-weight: 700; color: var(--text2);
+}
+.filter-check input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--red); cursor: pointer; }
+.filter-check:hover { color: var(--red); }
+.price-range { width: 100%; accent-color: var(--red); margin-top: 8px; }
+.price-label { font-family: 'Bangers', cursive; font-size: 20px; letter-spacing: 1px; color: var(--red); }
+
+/* PRODUCT GRID */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+
+/* PRODUCT CARD */
+.product-card {
+  background: var(--panel);
+  border: 3px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex; flex-direction: column;
+}
+.product-card:hover { transform: translate(-3px,-3px); box-shadow: 8px 8px 0 var(--ink); }
+.product-cover {
+  aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 56px;
+  position: relative; overflow: hidden;
+}
+.product-badge {
+  position: absolute; top: 8px; right: 8px;
+  font-family: 'Bangers', cursive; font-size: 13px; letter-spacing: 1px;
+  padding: 3px 10px; border: 2px solid var(--ink);
+  border-radius: 2px; box-shadow: 2px 2px 0 var(--ink);
+}
+.product-body { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.product-name { font-family: 'Bangers', cursive; font-size: 18px; letter-spacing: 1px; line-height: 1.2; }
+.product-seller { font-size: 11px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; }
+.product-price {
+  font-family: 'Bangers', cursive; font-size: 24px; letter-spacing: 1px;
+  color: var(--red); margin-top: auto;
+}
+.product-price small { font-size: 13px; color: var(--text3); font-family: 'Nunito', sans-serif; font-weight: 700; }
+.product-actions { display: flex; gap: 8px; }
+.product-actions .btn { flex: 1; text-align: center; justify-content: center; }
+
+/* TOKEN SECTION */
+.token-banner {
+  background: var(--ink2);
+  border: 3px solid var(--gold);
+  box-shadow: 6px 6px 0 var(--gold-dark);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.token-icon { font-size: 56px; flex-shrink: 0; }
+.token-info { flex: 1; min-width: 200px; }
+.token-title { font-family: 'Bangers', cursive; font-size: 28px; letter-spacing: 2px; color: var(--gold); margin-bottom: 4px; }
+.token-desc { font-size: 13px; color: rgba(255,255,255,0.65); font-weight: 600; line-height: 1.5; }
+.token-packages { display: flex; gap: 12px; flex-wrap: wrap; }
+.token-pkg {
+  background: var(--panel);
+  border: 3px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  min-width: 110px;
+}
+.token-pkg:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--gold-dark); border-color: var(--gold); }
+.token-pkg-amount { font-family: 'Bangers', cursive; font-size: 24px; letter-spacing: 1px; color: var(--gold); }
+.token-pkg-price { font-size: 11px; font-weight: 800; color: var(--text3); margin-top: 2px; }
+
+/* SECTION */
+.section { margin-bottom: 36px; }
+.section-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.section-title { font-family:'Bangers',cursive; font-size:28px; letter-spacing:2px; color:var(--text); line-height:1; }
+.section-title-bar { flex:1; height:4px; background:linear-gradient(90deg,var(--gold),transparent); border-radius:2px; }
+
+/* SORT BAR */
+.sort-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.sort-label { font-family:'Bangers',cursive; font-size:16px; letter-spacing:1px; color:var(--text3); }
+.sort-select {
+  font-family:'Bangers',cursive; font-size:15px; letter-spacing:1px;
+  background:var(--panel); border:2px solid var(--ink);
+  border-radius:var(--radius); padding:6px 14px; color:var(--text);
+  box-shadow:3px 3px 0 var(--ink); cursor:pointer;
+}
+
+/* CART FLOAT */
+#cartBtn {
+  position: fixed; bottom: 24px; right: 24px;
+  font-family: 'Bangers', cursive; font-size: 16px; letter-spacing: 1px;
+  background: var(--red); color: var(--white);
+  border: 3px solid var(--white); border-radius: 50px;
+  padding: 12px 20px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--ink);
+  z-index: 50;
+  display: none;
+  align-items: center; gap: 8px;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+#cartBtn:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink); }
+#cartBtn.visible { display: flex; }
+</style>
+</head>
+<body>
+
+<nav class="c99-nav">
+  <a href="index.html" class="nav-logo"><span class="nav-logo-text">COMIC<span>99</span></span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">🏠 Home</a>
+    <a href="read.html" class="nav-link">📖 Read</a>
+    <a href="upload.html" class="nav-link">✏️ Create</a>
+    <a href="community.html" class="nav-link">💬 Community</a>
+    <a href="marketplace.html" class="nav-link active">🛒 Marketplace</a>
+  </div>
+  <a href="upload.html" class="nav-cta">+ PUBLISH</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <h1>🛒 <span>MARKETPLACE</span></h1>
+  <p>Digital comics, prints, merch and OV Tokens from Asia Pacific creators</p>
+</div>
+
+<div class="market-layout">
+
+  <!-- SIDEBAR FILTERS -->
+  <div class="filter-sidebar">
+    <div class="filter-group">
+      <div class="filter-group-header">📦 CATEGORY</div>
+      <div class="filter-group-body">
+        <label class="filter-check"><input type="checkbox" checked> Digital Comics</label>
+        <label class="filter-check"><input type="checkbox" checked> Print Collections</label>
+        <label class="filter-check"><input type="checkbox" checked> Art Prints</label>
+        <label class="filter-check"><input type="checkbox" checked> Merchandise</label>
+        <label class="filter-check"><input type="checkbox" checked> OV Token Packs</label>
+      </div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-group-header">🎨 GENRE</div>
+      <div class="filter-group-body">
+        <label class="filter-check"><input type="checkbox" checked> Action</label>
+        <label class="filter-check"><input type="checkbox" checked> Fantasy</label>
+        <label class="filter-check"><input type="checkbox"> Romance</label>
+        <label class="filter-check"><input type="checkbox"> Horror</label>
+        <label class="filter-check"><input type="checkbox"> Sci-Fi</label>
+        <label class="filter-check"><input type="checkbox"> Slice of Life</label>
+      </div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-group-header">💵 PRICE</div>
+      <div class="filter-group-body">
+        <div class="price-label" id="priceLabel">RM 50</div>
+        <input type="range" class="price-range" min="0" max="200" value="50" oninput="document.getElementById('priceLabel').textContent='RM '+this.value">
+        <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:var(--text3);margin-top:4px;"><span>RM 0</span><span>RM 200</span></div>
+      </div>
+    </div>
+    <button class="btn btn-red" style="width:100%;justify-content:center;" onclick="showToast('🔍 Filters applied!')">APPLY FILTERS</button>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div>
+
+    <!-- OV TOKEN BANNER -->
+    <div class="token-banner">
+      <div class="token-icon">🪙</div>
+      <div class="token-info">
+        <div class="token-title">OV TOKENS</div>
+        <div class="token-desc">Tip your favourite creators, unlock premium content and vote in community polls. 1 OV = RM 0.10</div>
+      </div>
+      <div class="token-packages">
+        <div class="token-pkg" onclick="buyTokens(100,'RM 10')">
+          <div class="token-pkg-amount">100 OV</div>
+          <div class="token-pkg-price">RM 10</div>
+        </div>
+        <div class="token-pkg" onclick="buyTokens(500,'RM 45')">
+          <div class="token-pkg-amount">500 OV</div>
+          <div class="token-pkg-price">RM 45 <span style="color:var(--red)">-10%</span></div>
+        </div>
+        <div class="token-pkg" onclick="buyTokens(1000,'RM 80')">
+          <div class="token-pkg-amount">1,000 OV</div>
+          <div class="token-pkg-price">RM 80 <span style="color:var(--red)">-20%</span></div>
+        </div>
+        <div class="token-pkg" onclick="buyTokens(5000,'RM 350')">
+          <div class="token-pkg-amount">5,000 OV</div>
+          <div class="token-pkg-price">RM 350 <span style="color:var(--red)">-30%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIGITAL COMICS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">📱 DIGITAL COLLECTIONS</span>
+        <div class="section-title-bar"></div>
+        <span class="section-badge">HOT</span>
+      </div>
+      <div class="sort-bar">
+        <span class="sort-label">24 items</span>
+        <select class="sort-select" onchange="showToast('🔀 Sorted!')">
+          <option>Best Selling</option>
+          <option>Newest</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Top Rated</option>
+        </select>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card" onclick="">
+          <div class="product-cover" style="background:linear-gradient(135deg,#1A0A2E,#3A1A5E);">
+            ⚔️
+            <span class="product-badge" style="background:var(--red);color:var(--white);">BESTSELLER</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Neon Blade Vol. 1</div>
+            <div class="product-seller">by NeonBlade_KL</div>
+            <div style="font-size:12px;color:var(--text3);">Ch. 1–7 · Full HD · DRM-free PDF</div>
+            <div class="product-price">RM 12 <small>/ vol</small></div>
+            <div class="product-actions">
+              <button class="btn btn-gold btn-sm" onclick="addCart(this,'Neon Blade Vol.1','RM 12')">🛒 ADD</button>
+              <a href="read.html" class="btn btn-outline btn-sm">👁 PREVIEW</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-cover" style="background:linear-gradient(135deg,#1A1A0A,#2E2A10);">
+            ⚡
+            <span class="product-badge" style="background:var(--gold);color:var(--ink);">VOL 1–5</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Thunder God Complete</div>
+            <div class="product-seller">by ThunderGod_TW</div>
+            <div style="font-size:12px;color:var(--text3);">55 chapters · Bundle deal</div>
+            <div class="product-price">RM 45 <small>/ bundle</small></div>
+            <div class="product-actions">
+              <button class="btn btn-gold btn-sm" onclick="addCart(this,'Thunder God Bundle','RM 45')">🛒 ADD</button>
+              <a href="read.html" class="btn btn-outline btn-sm">👁 PREVIEW</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-cover" style="background:linear-gradient(135deg,#1A0A2E,#2E1A4E);">
+            🌙
+          </div>
+          <div class="product-body">
+            <div class="product-name">Shadow Realm Vol. 2</div>
+            <div class="product-seller">by ShadowArt_MY</div>
+            <div style="font-size:12px;color:var(--text3);">Ch. 13–24 · Full HD PDF</div>
+            <div class="product-price">RM 12 <small>/ vol</small></div>
+            <div class="product-actions">
+              <button class="btn btn-gold btn-sm" onclick="addCart(this,'Shadow Realm Vol.2','RM 12')">🛒 ADD</button>
+              <a href="read.html" class="btn btn-outline btn-sm">👁 PREVIEW</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-cover" style="background:linear-gradient(135deg,#2A0A1A,#4A1A30);">
+            🌸
+            <span class="product-badge" style="background:var(--purple);color:var(--white);">NEW</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Sakura Storm Vol. 1</div>
+            <div class="product-seller">by SakuraArt_SG</div>
+            <div style="font-size:12px;color:var(--text3);">Ch. 1–10 · Full HD PDF</div>
+            <div class="product-price">RM 10 <small>/ vol</small></div>
+            <div class="product-actions">
+              <button class="btn btn-gold btn-sm" onclick="addCart(this,'Sakura Storm Vol.1','RM 10')">🛒 ADD</button>
+              <a href="read.html" class="btn btn-outline btn-sm">👁 PREVIEW</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ART PRINTS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">🖼 ART PRINTS</span>
+        <div class="section-title-bar"></div>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-cover" style="background:linear-gradient(135deg,#2A0A0A,#3E1010);">🔥</div>
+          <div class="product-body">
+            <div class="product-name">Iron Fist — Cover Art Print</div>
+            <div class="product-seller">by IronFist_ID</div>
+            <div style="font-size:12px;color:var(--text3);">A3 · 300 DPI · Digital download</div>
+            <div class="product-price">RM 18 <small>/ print</small></div>
+            <div class="product-actions">
+              <button class="btn btn-gold btn-sm" onclick="addCart(this,'Iron Fist Print','RM 18')">🛒 ADD</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-cover" style="background:linear-gradient(135deg,#0A1A2A,#102030);">🌊</div>
+          <div class="product-body">
+            <div class="product-name">Ocean Protocol — Poster</div>
+            <div class="product-seller">by OceanManga_PH</div>
+            <div style="font-size:12px;color:var(--text3);">A2 · 300 DPI · Digital download</div>
+            <div class="product-price">RM 22 <small>/ print</small></div>
+            <div class="product-actions">
+              <button class="btn btn-gold btn-sm" onclick="addCart(this,'Ocean Poster','RM 22')">🛒 ADD</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CART BUTTON -->
+<button id="cartBtn" onclick="showToast('🛒 Checkout — coming soon!')">🛒 CART <span id="cartCount">0</span></button>
+
+<footer class="c99-footer">
+  <div class="footer-logo">COMIC<span>99</span></div>
+  <div class="footer-tagline">Community · Creators · Marketplace</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a><a href="read.html">Read</a><a href="upload.html">Create</a>
+    <a href="community.html">Community</a><a href="marketplace.html">Marketplace</a>
+  </div>
+  <div class="footer-copy">© 2024 Comic99 · comic99.com</div>
+</footer>
+<div id="c99-toast"></div>
+<script>
+let cartItems = 0;
+function addCart(btn, name, price) {
+  cartItems++;
+  btn.textContent = '✅ ADDED';
+  btn.style.background = 'var(--purple)';
+  btn.style.color = 'var(--white)';
+  document.getElementById('cartCount').textContent = cartItems;
+  document.getElementById('cartBtn').classList.add('visible');
+  showToast('🛒 ' + name + ' added to cart!');
+}
+function buyTokens(amount, price) {
+  showToast('🪙 ' + amount + ' OV Tokens for ' + price + ' — checkout coming soon!');
+}
+function showToast(msg) {
+  const t = document.getElementById('c99-toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
