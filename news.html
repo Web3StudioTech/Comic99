@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>News — Comic99</title>
+<link rel="icon" type="image/png" href="comic99-logo.png">
+<link rel="stylesheet" href="comic99-shared.css">
+<style>
+.news-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px max(16px, env(safe-area-inset-left,0px));
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .news-wrap { grid-template-columns: 1fr; }
+  .news-sidebar { display: none; }
+}
+
+/* REGION TABS */
+.region-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.region-tab {
+  font-family: 'Bangers', cursive; font-size: 15px; letter-spacing: 1.5px;
+  padding: 8px 18px; border-radius: 20px;
+  border: 2px solid var(--ink); cursor: pointer;
+  background: var(--panel2); color: var(--text2);
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.region-tab.active { background: var(--ink); color: var(--gold); }
+.region-tab:hover:not(.active) { background: var(--panel3); }
+
+/* NEWS CARD */
+.news-card {
+  background: var(--panel);
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  border-radius: var(--radius-lg);
+  margin-bottom: 16px;
+  overflow: hidden;
+  display: flex;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.news-card:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+.news-thumb {
+  width: 110px; flex-shrink: 0;
+  background: var(--panel2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+  border-right: 3px solid var(--ink);
+}
+@media (max-width: 540px) { .news-thumb { width: 70px; font-size: 32px; } }
+.news-body { flex: 1; padding: 14px 16px; min-width: 0; }
+.news-meta {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 7px; flex-wrap: wrap;
+}
+.news-source {
+  font-family: 'Bangers', cursive; font-size: 13px; letter-spacing: 1px;
+  padding: 3px 10px; border-radius: 20px; border: 2px solid var(--ink);
+  color: var(--white);
+}
+.news-region {
+  font-size: 11px; font-weight: 800; letter-spacing: 1px;
+  padding: 3px 8px; border-radius: 20px; border: 2px solid var(--ink);
+  text-transform: uppercase;
+}
+.region-jp { background: rgba(232,25,44,0.12); color: var(--red); }
+.region-us { background: rgba(0,100,255,0.1); color: #2563eb; }
+.region-kr { background: rgba(0,180,120,0.1); color: #059669; }
+.region-hk { background: rgba(255,165,0,0.1); color: #d97706; }
+.region-anime { background: rgba(107,47,217,0.12); color: var(--purple); }
+.news-date { font-size: 11px; font-weight: 700; color: var(--text3); margin-left: auto; }
+.news-headline {
+  font-family: 'Bangers', cursive; font-size: clamp(16px, 2.5vw, 20px);
+  letter-spacing: 1px; line-height: 1.25; color: var(--text);
+  margin-bottom: 7px; text-wrap: balance;
+}
+.news-excerpt { font-size: 13px; font-weight: 600; color: var(--text2); line-height: 1.5; margin-bottom: 10px; }
+.news-cta {
+  font-family: 'Bangers', cursive; font-size: 13px; letter-spacing: 1.5px;
+  color: var(--red); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.news-cta:hover { color: var(--red-dark); }
+
+/* FEATURED (top) */
+.news-featured {
+  background: var(--ink);
+  border: 3px solid var(--ink); border-radius: var(--radius-lg);
+  box-shadow: 6px 6px 0 var(--ink);
+  margin-bottom: 20px; overflow: hidden;
+}
+.news-featured-banner {
+  height: 180px; background: linear-gradient(135deg,var(--red),var(--purple));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px; position: relative; overflow: hidden;
+}
+.news-featured-banner::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(13,11,8,0.7), transparent);
+}
+.news-featured-body { padding: 16px 20px; }
+.news-featured-label {
+  font-family: 'Bangers', cursive; font-size: 12px; letter-spacing: 2px;
+  color: var(--gold); margin-bottom: 6px; text-transform: uppercase;
+}
+.news-featured-title {
+  font-family: 'Bangers', cursive; font-size: clamp(22px, 4vw, 30px);
+  letter-spacing: 2px; color: var(--white); line-height: 1.2;
+  margin-bottom: 10px;
+}
+.news-featured-excerpt { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.75); line-height: 1.5; margin-bottom: 14px; }
+
+/* SIDEBAR */
+.sidebar-box {
+  background: var(--panel); border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink); border-radius: var(--radius);
+  padding: 14px 16px; margin-bottom: 16px;
+}
+.sidebar-title {
+  font-family: 'Bangers', cursive; font-size: 16px; letter-spacing: 1.5px;
+  border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 10px;
+}
+.trending-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid var(--panel2); cursor: pointer;
+}
+.trending-item:last-child { border-bottom: none; padding-bottom: 0; }
+.trending-num {
+  font-family: 'Bangers', cursive; font-size: 20px; letter-spacing: 1px;
+  color: var(--text3); flex-shrink: 0; min-width: 20px;
+}
+.trending-title { font-size: 13px; font-weight: 700; color: var(--text2); line-height: 1.4; }
+.trending-item:hover .trending-title { color: var(--red); }
+
+.source-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Bangers', cursive; font-size: 13px; letter-spacing: 1px;
+  padding: 6px 12px; border: 2px solid var(--ink); border-radius: var(--radius);
+  background: var(--panel2); margin: 4px; cursor: pointer; color: var(--text2);
+  transition: transform 0.1s, background 0.1s;
+}
+.source-pill:hover { transform: translate(-1px,-1px); background: var(--panel3); }
+</style>
+</head>
+<body>
+
+<nav class="c99-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="comic99-logo.png" alt="Comic99">
+    <span class="nav-logo-text">COMIC<span>99</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">🏠 Home</a>
+    <a href="explore.html" class="nav-link">🔍 Explore</a>
+    <a href="news.html" class="nav-link active">📰 News</a>
+    <a href="cosplay.html" class="nav-link">📸 Cosplay</a>
+    <a href="community.html" class="nav-link">💬 Community</a>
+  </div>
+  <div class="nav-auth">
+    <a href="artist.html" class="nav-login">LOG IN</a>
+    <a href="artist.html" class="nav-cta">JOIN FREE</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="border-bottom-color:#F5A800;">
+  <div class="page-hero-bg" style="background-image:radial-gradient(circle,rgba(245,168,0,0.2) 1.5px,transparent 1.5px);"></div>
+  <h1>📰 COMIC <span>NEWS</span></h1>
+  <p>Auto-feed · Japan · USA · Korea · Hong Kong · Anime · Global</p>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left,0px)) 0;">
+  <!-- REGION TABS -->
+  <div class="region-tabs" id="regionTabs">
+    <button class="region-tab active" onclick="filterRegion(this,'all')">🌏 ALL</button>
+    <button class="region-tab" onclick="filterRegion(this,'jp')">🇯🇵 MANGA</button>
+    <button class="region-tab" onclick="filterRegion(this,'kr')">🇰🇷 MANHWA</button>
+    <button class="region-tab" onclick="filterRegion(this,'hk')">🇨🇳 MANHUA</button>
+    <button class="region-tab" onclick="filterRegion(this,'us')">🇺🇸 WESTERN</button>
+    <button class="region-tab" onclick="filterRegion(this,'anime')">✨ ANIME</button>
+  </div>
+</div>
+
+<div class="news-wrap">
+  <!-- MAIN FEED -->
+  <div>
+    <!-- FEATURED -->
+    <div class="news-featured">
+      <div class="news-featured-banner">🏯</div>
+      <div class="news-featured-body">
+        <div class="news-featured-label">📌 FEATURED · WEEKLY SPOTLIGHT</div>
+        <div class="news-featured-title">ONE PIECE CHAPTER 1120: ELBAF ARC REACHES ITS CLIMAX AS THE GIANT WARRIOR PIRATES MAKE THEIR STAND</div>
+        <div class="news-featured-excerpt">Oda Eiichiro delivers yet another jaw-dropping chapter as the Straw Hat crew faces an impossible situation in Elbaf. Fans worldwide react to the dramatic developments that could reshape the entire story arc.</div>
+        <a href="https://www.animenewsnetwork.com" target="_blank" class="btn btn-gold btn-sm">READ FULL STORY →</a>
+      </div>
+    </div>
+
+    <!-- NEWS LIST -->
+    <div id="newsFeed">
+
+    <div class="news-card" data-region="jp">
+      <div class="news-thumb" style="background:linear-gradient(135deg,rgba(232,25,44,0.1),rgba(13,11,8,0.05));">🗡️</div>
+      <div class="news-body">
+        <div class="news-meta">
+          <span class="news-source" style="background:var(--red);">ANN</span>
+          <span class="news-region region-jp">🇯🇵 Manga</span>
+          <span class="news-date">Nov 13, 2026</span>
+        </div>
+        <div class="news-headline">Jujutsu Kaisen Creator Gege Akutami Reveals New One-Shot Coming This December</div>
+        <div class="news-excerpt">Following the conclusion of the main series, Akutami-sensei confirms a holiday one-shot exploring what happened to the surviving characters after the final battle.</div>
+        <a href="https://www.animenewsnetwork.com" target="_blank" class="news-cta">READ MORE →</a>
+      </div>
+    </div>
+
+    <div class="news-card" data-region="anime">
+      <div class="news-thumb" style="background:linear-gradient(135deg,rgba(107,47,217,0.1),rgba(13,11,8,0.05));">✨</div>
+      <div class="news-body">
+        <div class="news-meta">
+          <span class="news-source" style="background:var(--purple);">ANN</span>
+          <span class="news-region region-anime">✨ Anime</span>
+          <span class="news-date">Nov 13, 2026</span>
+        </div>
+        <div class="news-headline">Demon Slayer: Kimetsu no Yaiba — The Movie "Infinity Fortress" Release Date Announced for Spring 2027</div>
+        <div class="news-excerpt">Ufotable confirms global theatrical release for the most anticipated anime film of 2027. Pre-sale tickets already breaking regional records across Southeast Asia.</div>
+        <a href="https://www.animenewsnetwork.com" target="_blank" class="news-cta">READ MORE →</a>
+      </div>
+    </div>
+
+    <div class="news-card" data-region="kr">
+      <div class="news-thumb" style="background:linear-gradient(135deg,rgba(0,180,120,0.1),rgba(13,11,8,0.05));">🌊</div>
+      <div class="news-body">
+        <div class="news-meta">
+          <span class="news-source" style="background:#059669;">MU</span>
+          <span class="news-region region-kr">🇰🇷 Manhwa</span>
+          <span class="news-date">Nov 12, 2026</span>
+        </div>
+        <div class="news-headline">Solo Leveling Creator Chugong's New Manhwa "Shadow Monarch Returns" Tops Global Webtoon Charts in First Week</div>
+        <div class="news-excerpt">The highly anticipated follow-up to the Solo Leveling universe breaks Webtoon's first-week read record with over 50 million reads across all languages since its November 7 launch.</div>
+        <a href="https://www.mangaupdates.com" target="_blank" class="news-cta">READ MORE →</a>
+      </div>
+    </div>
+
+    <div class="news-card" data-region="us">
+      <div class="news-thumb" style="background:linear-gradient(135deg,rgba(0,100,255,0.1),rgba(13,11,8,0.05));">🦸</div>
+      <div class="news-body">
+        <div class="news-meta">
+          <span class="news-source" style="background:#2563eb;">CBeat</span>
+          <span class="news-region region-us">🇺🇸 Western</span>
+          <span class="news-date">Nov 12, 2026</span>
+        </div>
+        <div class="news-headline">DC Comics Announces "Crisis on Infinite Earths" 40th Anniversary Special: A 12-Issue Prestige Series Launching February 2027</div>
+        <div class="news-excerpt">DC honors the landmark storyline with contributions from over 60 artists and writers. Full variant cover gallery revealed at New York Comic Con.</div>
+        <a href="https://www.comicsbeat.com" target="_blank" class="news-cta">READ MORE →</a>
+      </div>
+    </div>
+
+    <div class="news-card" data-region="jp">
+      <div class="news-thumb" style="background:linear-gradient(135deg,rgba(232,25,44,0.1),rgba(13,11,8,0.05));">⚔️</div>
+      <div class="news-body">
+        <div class="news-meta">
+          <span class="news-source" style="background:var(--red);">Japan Times</span>
+          <span class="news-region region-jp">🇯🇵 Manga</span>
+          <span class="news-date">Nov 11, 2026</span>
+        </div>
+        <div class="news-headline">Tokyo International Manga Festival 2026 Breaks Attendance Records with 420,000 Visitors Over Three Days</div>
+        <div class="news-excerpt">Held at Tokyo Big Sight, this year's festival featured 980 exhibitors from 42 countries, cementing Japan's position as the global capital of sequential art.</div>
+        <a href="https://www.japantimes.co.jp" target="_blank" class="news-cta">READ MORE →</a>
+      </div>
+    </div>
+
+    <div class="news-card" data-region="hk">
+      <div class="news-thumb" style="background:linear-gradient(135deg,rgba(255,165,0,0.1),rgba(13,11,8,0.05));">🐉</div>
+      <div class="news-body">
+        <div class="news-meta">
+          <span class="news-source" style="background:#d97706;">SCMP</span>
+          <span class="news-region region-hk">🇨🇳 Manhua</span>
+          <span class="news-date">Nov 11, 2026</span>
+        </div>
+        <div class="news-headline">Hong Kong Manhua Legacy Project Digitizes 10,000 Classic Comics from the Golden Age for Global Access</div>
+        <div class="news-excerpt">In partnership with the Hong Kong Heritage Museum, legendary titles by renowned manhua masters are being preserved in high resolution and translated into five languages.</div>
+        <a href="https://www.scmp.com" target="_blank" class="news-cta">READ MORE →</a>
+      </div>
+    </div>
+
+    <div class="news-card" data-region="anime">
+      <div class="news-thumb" style="background:linear-gradient(135deg,rgba(107,47,217,0.1),rgba(13,11,8,0.05));">🌸</div>
+      <div class="news-body">
+        <div class="news-meta">
+          <span class="news-source" style="background:var(--purple);">ANN</span>
+          <span class="news-region region-anime">✨ Anime</span>
+          <span class="news-date">Nov 10, 2026</span>
+        </div>
+        <div class="news-headline">Attack on Titan: The Final Chapters Part 3 — Director's Cut OVA Drops December 25 on Crunchyroll</div>
+        <div class="news-excerpt">MAPPA reveals additional scenes totaling 42 minutes of new animation not included in the theatrical release, plus a reimagined ending sequence with original music by Hiroyuki Sawano.</div>
+        <a href="https://www.animenewsnetwork.com" target="_blank" class="news-cta">READ MORE →</a>
+      </div>
+    </div>
+
+    <div class="news-card" data-region="kr">
+      <div class="news-thumb" style="background:linear-gradient(135deg,rgba(0,180,120,0.1),rgba(13,11,8,0.05));">💀</div>
+      <div class="news-body">
+        <div class="news-meta">
+          <span class="news-source" style="background:#059669;">PopVerse</span>
+          <span class="news-region region-kr">🇰🇷 Manhwa</span>
+          <span class="news-date">Nov 10, 2026</span>
+        </div>
+        <div class="news-headline">Naver Webtoon and LINE Manga Announce Merger to Form World's Largest Digital Comics Platform with 180 Million Monthly Users</div>
+        <div class="news-excerpt">The landmark deal reshapes the global digital comics industry, creating a single platform that will host content from Japan, Korea, Southeast Asia, and Western markets.</div>
+        <a href="https://www.thepopverse.com" target="_blank" class="news-cta">READ MORE →</a>
+      </div>
+    </div>
+
+    <div class="news-card" data-region="us">
+      <div class="news-thumb" style="background:linear-gradient(135deg,rgba(0,100,255,0.1),rgba(13,11,8,0.05));">🕷️</div>
+      <div class="news-body">
+        <div class="news-meta">
+          <span class="news-source" style="background:#2563eb;">CBeat</span>
+          <span class="news-region region-us">🇺🇸 Western</span>
+          <span class="news-date">Nov 9, 2026</span>
+        </div>
+        <div class="news-headline">Marvel's "Ultimate Universe" Line Hits 5 Million Copies Sold in Its First Year — The Biggest Marvel Launch Since 2012</div>
+        <div class="news-excerpt">Editor-in-Chief C.B. Cebulski attributes the success to creator-driven storytelling and bold reimaginings that bring lapsed readers back to comic shops worldwide.</div>
+        <a href="https://www.comicsbeat.com" target="_blank" class="news-cta">READ MORE →</a>
+      </div>
+    </div>
+
+    <div class="news-card" data-region="hk">
+      <div class="news-thumb" style="background:linear-gradient(135deg,rgba(255,165,0,0.1),rgba(13,11,8,0.05));">🌃</div>
+      <div class="news-body">
+        <div class="news-meta">
+          <span class="news-source" style="background:#d97706;">SCMP</span>
+          <span class="news-region region-hk">🇨🇳 Manhua</span>
+          <span class="news-date">Nov 8, 2026</span>
+        </div>
+        <div class="news-headline">Taiwan's Taipei International Comic & Animation Festival Sets Record with 650 International Exhibitors for 2027 Edition</div>
+        <div class="news-excerpt">The event confirms major manhua publishers from Taiwan, Hong Kong, and mainland China will host joint pavilions celebrating the heritage and future of Chinese-language comics.</div>
+        <a href="https://www.scmp.com" target="_blank" class="news-cta">READ MORE →</a>
+      </div>
+    </div>
+
+    </div><!-- /newsFeed -->
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="news-sidebar">
+    <!-- Trending -->
+    <div class="sidebar-box">
+      <div class="sidebar-title">🔥 TRENDING NOW</div>
+      <div class="trending-item" onclick="showToast('📰 Loading story...')">
+        <div class="trending-num">01</div>
+        <div class="trending-title">One Piece Elbaf Arc — Fan Reactions</div>
+      </div>
+      <div class="trending-item" onclick="showToast('📰 Loading story...')">
+        <div class="trending-num">02</div>
+        <div class="trending-title">Demon Slayer Movie 2027 Ticket Pre-Sale</div>
+      </div>
+      <div class="trending-item" onclick="showToast('📰 Loading story...')">
+        <div class="trending-num">03</div>
+        <div class="trending-title">Solo Leveling Sequel Breaks Records</div>
+      </div>
+      <div class="trending-item" onclick="showToast('📰 Loading story...')">
+        <div class="trending-num">04</div>
+        <div class="trending-title">AoT Director's Cut OVA December Drop</div>
+      </div>
+      <div class="trending-item" onclick="showToast('📰 Loading story...')">
+        <div class="trending-num">05</div>
+        <div class="trending-title">Naver Webtoon + LINE Manga Merger</div>
+      </div>
+    </div>
+
+    <!-- News Sources -->
+    <div class="sidebar-box">
+      <div class="sidebar-title">📡 NEWS SOURCES</div>
+      <div style="display:flex;flex-wrap:wrap;">
+        <a href="https://www.animenewsnetwork.com" target="_blank" class="source-pill">🎌 Anime News Network</a>
+        <a href="https://www.japantimes.co.jp" target="_blank" class="source-pill">🗞️ Japan Times</a>
+        <a href="https://www.mangaupdates.com" target="_blank" class="source-pill">📚 MangaUpdates</a>
+        <a href="https://www.comicsbeat.com" target="_blank" class="source-pill">🦸 Comics Beat</a>
+        <a href="https://www.thepopverse.com" target="_blank" class="source-pill">🌐 The Popverse</a>
+        <a href="https://www.scmp.com" target="_blank" class="source-pill">🐉 SCMP</a>
+        <a href="https://www.crunchyroll.com/news" target="_blank" class="source-pill">▶️ Crunchyroll News</a>
+      </div>
+    </div>
+
+    <!-- Upcoming Events -->
+    <div class="sidebar-box">
+      <div class="sidebar-title">📅 UPCOMING EVENTS</div>
+      <div style="font-size:13px;font-weight:600;color:var(--text2);">
+        <div style="padding:8px 0;border-bottom:1px solid var(--panel2);">
+          <div style="font-family:'Bangers',cursive;font-size:14px;letter-spacing:1px;">C3 AFA Singapore 2026</div>
+          <div style="color:var(--text3);">Dec 5–7 · Singapore Expo</div>
+        </div>
+        <div style="padding:8px 0;border-bottom:1px solid var(--panel2);">
+          <div style="font-family:'Bangers',cursive;font-size:14px;letter-spacing:1px;">Comic Fiesta KL 2026</div>
+          <div style="color:var(--text3);">Dec 20–21 · KLCC</div>
+        </div>
+        <div style="padding:8px 0;border-bottom:1px solid var(--panel2);">
+          <div style="font-family:'Bangers',cursive;font-size:14px;letter-spacing:1px;">Comiket 107 · Winter</div>
+          <div style="color:var(--text3);">Dec 29–31 · Tokyo Big Sight</div>
+        </div>
+        <div style="padding:8px 0;">
+          <div style="font-family:'Bangers',cursive;font-size:14px;letter-spacing:1px;">STGCC 2027</div>
+          <div style="color:var(--text3);">Mar · Singapore</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="sidebar-box" style="background:var(--ink);border-color:var(--ink);">
+      <div class="sidebar-title" style="color:var(--gold);border-bottom-color:rgba(255,255,255,0.15);">📬 COMIC NEWS ALERT</div>
+      <p style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.75);margin-bottom:12px;">Get the biggest comic news delivered weekly. No spam.</p>
+      <input class="form-input" placeholder="your@email.com" style="margin-bottom:8px;">
+      <button class="btn btn-gold btn-sm" style="width:100%;" onclick="showToast('📬 You\'re subscribed!')">SUBSCRIBE FREE</button>
+    </div>
+  </div>
+</div>
+
+<footer class="c99-footer">
+  <div class="footer-logo"><img src="comic99-logo.png" alt="Comic99"><span class="footer-logo-text">COMIC<span>99</span></span></div>
+  <div class="footer-tagline">Community · Creators · Cosplay</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a><a href="explore.html">Explore</a><a href="news.html">News</a>
+    <a href="cosplay.html">Cosplay</a><a href="community.html">Community</a>
+  </div>
+  <div class="footer-copy">© 2025 Comic99 · comic99.com</div>
+</footer>
+<div id="c99-toast"></div>
+
+<script>
+function showToast(msg) {
+  const t = document.getElementById('c99-toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+function filterRegion(el, region) {
+  document.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const cards = document.querySelectorAll('#newsFeed .news-card');
+  cards.forEach(card => {
+    const show = region === 'all' || card.dataset.region === region;
+    card.style.display = show ? 'flex' : 'none';
+  });
+  const visible = [...cards].filter(c => c.style.display !== 'none').length;
+  if(visible === 0) {
+    showToast('📰 More ' + region.toUpperCase() + ' news coming soon!');
+    filterRegion(document.querySelector('.region-tab'), 'all');
+  }
+}
+</script>
+</body>
+</html>

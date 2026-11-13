@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Cosplay — Comic99</title>
+<link rel="icon" type="image/png" href="comic99-logo.png">
+<link rel="stylesheet" href="comic99-shared.css">
+<style>
+/* ---- COSPLAY FEED ---- */
+.cosplay-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px max(16px, env(safe-area-inset-left,0px));
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .cosplay-layout { grid-template-columns: 1fr; }
+  .cosplay-sidebar { display: none; }
+}
+
+/* SIDEBAR */
+.cosplay-sidebar {}
+.cosplay-profile-card {
+  background: var(--panel);
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.profile-banner {
+  height: 72px;
+  background: linear-gradient(135deg, var(--red), var(--purple));
+}
+.profile-body { padding: 0 16px 16px; }
+.profile-ava-wrap { margin-top: -28px; margin-bottom: 10px; }
+.profile-ava {
+  width: 56px; height: 56px; border-radius: 50%;
+  border: 3px solid var(--ink);
+  background: linear-gradient(135deg, var(--gold), var(--red));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+}
+.profile-name { font-family: 'Bangers', cursive; font-size: 20px; letter-spacing: 2px; }
+.profile-handle { font-size: 12px; font-weight: 700; color: var(--text3); margin-bottom: 8px; }
+.profile-stats { display: flex; gap: 16px; margin-bottom: 12px; }
+.profile-stat { text-align: center; }
+.profile-stat-num { font-family: 'Bangers', cursive; font-size: 20px; letter-spacing: 1px; }
+.profile-stat-label { font-size: 10px; font-weight: 700; color: var(--text3); text-transform: uppercase; }
+
+.sidebar-box {
+  background: var(--panel);
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+.sidebar-box-title {
+  font-family: 'Bangers', cursive; font-size: 16px; letter-spacing: 1.5px;
+  color: var(--text); margin-bottom: 10px;
+  border-bottom: 2px solid var(--ink); padding-bottom: 6px;
+}
+.suggested-cosplayer {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 0; border-bottom: 1px solid var(--panel2);
+}
+.suggested-cosplayer:last-child { border-bottom: none; }
+.sug-ava {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 2px solid var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.sug-name { font-family: 'Bangers', cursive; font-size: 14px; letter-spacing: 1px; flex: 1; }
+.sug-follow {
+  font-family: 'Bangers', cursive; font-size: 12px; letter-spacing: 1px;
+  padding: 4px 10px; border-radius: 20px; border: 2px solid var(--ink);
+  background: var(--red); color: var(--white); cursor: pointer;
+  transition: transform 0.1s;
+}
+.sug-follow:hover { transform: scale(1.05); }
+.sug-follow.following { background: var(--panel2); color: var(--text2); }
+
+/* FEED */
+.feed-toolbar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 20px; flex-wrap: wrap;
+}
+.feed-tabs { display: flex; gap: 8px; flex: 1; }
+.feed-tab {
+  font-family: 'Bangers', cursive; font-size: 15px; letter-spacing: 1.5px;
+  padding: 8px 18px; border-radius: 20px; border: 2px solid var(--ink);
+  cursor: pointer; background: var(--panel2); color: var(--text2);
+  transition: background 0.15s, color 0.15s;
+}
+.feed-tab.active { background: var(--red); color: var(--white); border-color: var(--red-dark); }
+
+/* POST CARD */
+.post-card {
+  background: var(--panel);
+  border: 3px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.post-card:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--ink); }
+.post-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--ink);
+}
+.post-ava {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 3px solid var(--ink); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.post-meta { flex: 1; }
+.post-username { font-family: 'Bangers', cursive; font-size: 16px; letter-spacing: 1.5px; }
+.post-time { font-size: 11px; font-weight: 700; color: var(--text3); }
+.post-privacy {
+  font-size: 11px; font-weight: 800; letter-spacing: 1px;
+  padding: 3px 10px; border-radius: 20px; border: 2px solid var(--ink);
+  text-transform: uppercase;
+}
+.privacy-public { background: rgba(72,187,120,0.15); color: #3a9d60; }
+.privacy-private { background: rgba(107,47,217,0.15); color: var(--purple); }
+
+.post-image-wrap { position: relative; }
+.post-image {
+  width: 100%; aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+  background: var(--panel2);
+  font-size: 60px;
+  display: flex; align-items: center; justify-content: center;
+}
+.post-image-placeholder {
+  width: 100%; aspect-ratio: 1/1;
+  background: linear-gradient(135deg, var(--panel2) 0%, rgba(107,47,217,0.1) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px;
+}
+
+.post-actions {
+  display: flex; align-items: center; gap: 4px;
+  padding: 10px 14px; border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.post-action-btn {
+  display: flex; align-items: center; gap: 5px;
+  font-family: 'Bangers', cursive; font-size: 14px; letter-spacing: 1px;
+  padding: 6px 12px; border-radius: var(--radius); border: 2px solid var(--ink);
+  background: var(--panel2); cursor: pointer;
+  transition: transform 0.1s, background 0.1s;
+  color: var(--text);
+}
+.post-action-btn:hover { transform: translate(-1px,-1px); background: var(--panel3); }
+.post-action-btn.liked { background: rgba(232,25,44,0.12); color: var(--red); border-color: var(--red); }
+.action-spacer { flex: 1; }
+
+.post-caption { padding: 12px 14px; font-size: 14px; font-weight: 600; line-height: 1.5; }
+.post-caption .post-author-name { font-family: 'Bangers', cursive; font-size: 15px; letter-spacing: 1.5px; color: var(--text); margin-right: 6px; }
+
+.post-tags { padding: 0 14px 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+.post-tag {
+  font-size: 12px; font-weight: 700; color: var(--purple);
+  background: rgba(107,47,217,0.1); padding: 3px 10px;
+  border-radius: 20px; cursor: pointer;
+}
+
+.comments-section { padding: 10px 14px 14px; }
+.comment-item { display: flex; gap: 8px; margin-bottom: 10px; }
+.comment-ava {
+  width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--ink);
+  display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;
+}
+.comment-body { flex: 1; }
+.comment-username { font-family: 'Bangers', cursive; font-size: 13px; letter-spacing: 1px; color: var(--text); margin-right: 6px; }
+.comment-text { font-size: 13px; font-weight: 600; color: var(--text2); }
+.comment-time { font-size: 10px; font-weight: 700; color: var(--text3); margin-top: 2px; }
+.comment-input-row { display: flex; gap: 8px; margin-top: 10px; }
+.comment-input {
+  flex: 1; padding: 8px 12px; border: 2px solid var(--ink);
+  border-radius: var(--radius); background: var(--panel2);
+  font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 600;
+  color: var(--text); outline: none;
+}
+.comment-input:focus { border-color: var(--purple); }
+.comment-send-btn {
+  font-family: 'Bangers', cursive; font-size: 14px; letter-spacing: 1px;
+  padding: 8px 14px; border: 2px solid var(--ink); border-radius: var(--radius);
+  background: var(--purple); color: var(--white); cursor: pointer;
+}
+
+/* UPLOAD BUTTON */
+.fab-upload {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--red); border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; cursor: pointer; z-index: 50;
+  transition: transform 0.15s, box-shadow 0.15s;
+  color: var(--white); text-decoration: none;
+}
+.fab-upload:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+
+/* UPLOAD MODAL */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(13,11,8,0.88);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+}
+.modal-box {
+  background: var(--panel);
+  border: 4px solid var(--ink); box-shadow: 8px 8px 0 var(--ink);
+  border-radius: var(--radius-lg);
+  width: 100%; max-width: 480px;
+  overflow: hidden;
+}
+.modal-header {
+  background: var(--ink); padding: 16px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.modal-title { font-family: 'Bangers', cursive; font-size: 22px; letter-spacing: 2px; color: var(--gold); }
+.modal-close { background: none; border: none; color: rgba(255,255,255,0.6); font-size: 20px; cursor: pointer; padding: 4px 8px; }
+.modal-body { padding: 20px; }
+
+/* UPLOAD DROP ZONE */
+.drop-zone {
+  border: 3px dashed var(--ink);
+  border-radius: var(--radius);
+  padding: 32px; text-align: center;
+  background: var(--panel2);
+  cursor: pointer; margin-bottom: 16px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.drop-zone:hover { background: rgba(107,47,217,0.08); border-color: var(--purple); }
+.drop-zone-icon { font-size: 48px; margin-bottom: 10px; }
+.drop-zone-text { font-family: 'Bangers', cursive; font-size: 18px; letter-spacing: 1.5px; }
+.drop-zone-hint { font-size: 12px; font-weight: 700; color: var(--text3); margin-top: 6px; }
+
+/* REGISTRATION MODAL */
+.reg-steps { display: flex; gap: 6px; padding: 12px 20px; border-bottom: 2px solid var(--ink); }
+.reg-step-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  border: 2px solid var(--ink); background: var(--panel2);
+  flex-shrink: 0; transition: background 0.2s;
+}
+.reg-step-dot.active { background: var(--red); }
+.reg-step-dot.done { background: var(--gold); }
+</style>
+</head>
+<body>
+
+<nav class="c99-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="comic99-logo.png" alt="Comic99">
+    <span class="nav-logo-text">COMIC<span>99</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">🏠 Home</a>
+    <a href="explore.html" class="nav-link">🔍 Explore</a>
+    <a href="news.html" class="nav-link">📰 News</a>
+    <a href="cosplay.html" class="nav-link active">📸 Cosplay</a>
+    <a href="community.html" class="nav-link">💬 Community</a>
+  </div>
+  <div class="nav-auth">
+    <a href="#" class="nav-login" onclick="showAuthModal();return false;">LOG IN</a>
+    <a href="#" class="nav-cta" onclick="showRegModal();return false;">JOIN FREE</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="border-bottom-color:#e91e8c;">
+  <div class="page-hero-bg" style="background-image:radial-gradient(circle,rgba(233,30,140,0.2) 1.5px,transparent 1.5px);"></div>
+  <h1>📸 <span>COSPLAY</span> FEED</h1>
+  <p>Share your cosplay life · Follow creators · Be part of the nakama</p>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="cosplay-layout">
+
+  <!-- SIDEBAR -->
+  <div class="cosplay-sidebar">
+    <!-- Profile card (shown when logged in) -->
+    <div class="cosplay-profile-card" id="sidebarProfile" style="display:none;">
+      <div class="profile-banner"></div>
+      <div class="profile-body">
+        <div class="profile-ava-wrap">
+          <div class="profile-ava" id="sideAva">📸</div>
+        </div>
+        <div class="profile-name" id="sideName">YOUR NAME</div>
+        <div class="profile-handle" id="sideHandle">@cosplayer</div>
+        <div class="profile-stats">
+          <div class="profile-stat"><div class="profile-stat-num">0</div><div class="profile-stat-label">Posts</div></div>
+          <div class="profile-stat"><div class="profile-stat-num">0</div><div class="profile-stat-label">Followers</div></div>
+          <div class="profile-stat"><div class="profile-stat-num">0</div><div class="profile-stat-label">Following</div></div>
+        </div>
+        <button class="btn btn-outline btn-sm" style="width:100%;" onclick="showToast('👤 Edit Cosplay Profile — coming soon!')">EDIT PROFILE</button>
+      </div>
+    </div>
+
+    <!-- Join CTA (shown when logged out) -->
+    <div class="sidebar-box" id="sidebarJoinCta">
+      <div class="sidebar-box-title">📸 JOIN COSPLAY</div>
+      <p style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:12px;line-height:1.5;">Share your cosplay photos, build your following, connect with the nakama community.</p>
+      <button class="btn btn-red" style="width:100%;margin-bottom:8px;" onclick="showRegModal()">CREATE COSPLAY PROFILE</button>
+      <button class="btn btn-outline btn-sm" style="width:100%;" onclick="showAuthModal()">Already a member? LOG IN</button>
+    </div>
+
+    <!-- Suggested Cosplayers -->
+    <div class="sidebar-box">
+      <div class="sidebar-box-title">✨ SUGGESTED</div>
+      <div class="suggested-cosplayer">
+        <div class="sug-ava" style="background:linear-gradient(135deg,#ff6b9d,#c850c0);">🦋</div>
+        <div class="sug-name">SakuraFuri</div>
+        <button class="sug-follow" onclick="toggleFollow(this)">FOLLOW</button>
+      </div>
+      <div class="suggested-cosplayer">
+        <div class="sug-ava" style="background:linear-gradient(135deg,#4facfe,#00f2fe);">⚡</div>
+        <div class="sug-name">NeonKnight</div>
+        <button class="sug-follow" onclick="toggleFollow(this)">FOLLOW</button>
+      </div>
+      <div class="suggested-cosplayer">
+        <div class="sug-ava" style="background:linear-gradient(135deg,#43e97b,#38f9d7);">🌸</div>
+        <div class="sug-name">MoonPetal</div>
+        <button class="sug-follow" onclick="toggleFollow(this)">FOLLOW</button>
+      </div>
+      <div class="suggested-cosplayer">
+        <div class="sug-ava" style="background:linear-gradient(135deg,#f7971e,#ffd200);">🔥</div>
+        <div class="sug-name">InfernoRyu</div>
+        <button class="sug-follow" onclick="toggleFollow(this)">FOLLOW</button>
+      </div>
+    </div>
+
+    <!-- Trending Tags -->
+    <div class="sidebar-box">
+      <div class="sidebar-box-title">🏷️ TRENDING TAGS</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span class="post-tag" onclick="filterTag(this)">#OnePiece</span>
+        <span class="post-tag" onclick="filterTag(this)">#NarutoNakama</span>
+        <span class="post-tag" onclick="filterTag(this)">#JujutsuKaisen</span>
+        <span class="post-tag" onclick="filterTag(this)">#DemonSlayer</span>
+        <span class="post-tag" onclick="filterTag(this)">#AttackOnTitan</span>
+        <span class="post-tag" onclick="filterTag(this)">#Bleach</span>
+        <span class="post-tag" onclick="filterTag(this)">#MHA</span>
+        <span class="post-tag" onclick="filterTag(this)">#GenshinImpact</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN FEED -->
+  <div class="cosplay-feed">
+    <div class="feed-toolbar">
+      <div class="feed-tabs">
+        <button class="feed-tab active" onclick="switchTab(this,'all')">ALL</button>
+        <button class="feed-tab" onclick="switchTab(this,'following')">FOLLOWING</button>
+        <button class="feed-tab" onclick="switchTab(this,'trending')">TRENDING</button>
+      </div>
+    </div>
+
+    <!-- POST 1 -->
+    <div class="post-card">
+      <div class="post-header">
+        <div class="post-ava" style="background:linear-gradient(135deg,#ff6b9d,#c850c0);">🦋</div>
+        <div class="post-meta">
+          <div class="post-username">SakuraFuri</div>
+          <div class="post-time">2 hours ago</div>
+        </div>
+        <span class="post-privacy privacy-public">🌐 Public</span>
+      </div>
+      <div class="post-image-placeholder">🌸</div>
+      <div class="post-actions">
+        <button class="post-action-btn" onclick="toggleLike(this)">❤️ <span>248</span></button>
+        <button class="post-action-btn" onclick="toggleComments(this)">💬 <span>31</span></button>
+        <div class="action-spacer"></div>
+        <button class="post-action-btn" onclick="showToast('📤 Share link copied!')">🔗</button>
+      </div>
+      <div class="post-caption">
+        <span class="post-author-name">SakuraFuri</span>
+        Finally finished my Sakura cosplay! Spent 3 weeks on the wig alone 😭✨ What do you think nakama?
+      </div>
+      <div class="post-tags">
+        <span class="post-tag">#Naruto</span>
+        <span class="post-tag">#SakuraHaruno</span>
+        <span class="post-tag">#NarutoNakama</span>
+        <span class="post-tag">#CosplayJP</span>
+      </div>
+      <div class="comments-section">
+        <div class="comment-item">
+          <div class="comment-ava" style="background:linear-gradient(135deg,#4facfe,#00f2fe);">⚡</div>
+          <div class="comment-body">
+            <span class="comment-username">NeonKnight</span>
+            <span class="comment-text">This is literally perfect!! The wig styling 🔥🔥</span>
+            <div class="comment-time">1h ago</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-ava" style="background:linear-gradient(135deg,#43e97b,#38f9d7);">🌸</div>
+          <div class="comment-body">
+            <span class="comment-username">MoonPetal</span>
+            <span class="comment-text">Incredible work! Where did you get the fabric from?</span>
+            <div class="comment-time">45m ago</div>
+          </div>
+        </div>
+        <div class="comment-input-row">
+          <input class="comment-input" placeholder="Add a comment... (Comic99 members only)" onclick="checkLoginForComment()">
+          <button class="comment-send-btn" onclick="submitComment(this)">POST</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST 2 -->
+    <div class="post-card">
+      <div class="post-header">
+        <div class="post-ava" style="background:linear-gradient(135deg,#4facfe,#00f2fe);">⚡</div>
+        <div class="post-meta">
+          <div class="post-username">NeonKnight</div>
+          <div class="post-time">5 hours ago</div>
+        </div>
+        <span class="post-privacy privacy-public">🌐 Public</span>
+      </div>
+      <div class="post-image-placeholder">⚡</div>
+      <div class="post-actions">
+        <button class="post-action-btn" onclick="toggleLike(this)">❤️ <span>412</span></button>
+        <button class="post-action-btn" onclick="toggleComments(this)">💬 <span>58</span></button>
+        <div class="action-spacer"></div>
+        <button class="post-action-btn" onclick="showToast('📤 Share link copied!')">🔗</button>
+      </div>
+      <div class="post-caption">
+        <span class="post-author-name">NeonKnight</span>
+        My Killua Zoldyck build is finally done! The eyes took forever to get right with the contacts 👁️⚡
+      </div>
+      <div class="post-tags">
+        <span class="post-tag">#HunterXHunter</span>
+        <span class="post-tag">#KilluaZoldyck</span>
+        <span class="post-tag">#HxH</span>
+        <span class="post-tag">#AnimeAsia</span>
+      </div>
+      <div class="comments-section">
+        <div class="comment-item">
+          <div class="comment-ava" style="background:linear-gradient(135deg,#f7971e,#ffd200);">🔥</div>
+          <div class="comment-body">
+            <span class="comment-username">InfernoRyu</span>
+            <span class="comment-text">Bro the contacts are INSANE. Which brand did you use?</span>
+            <div class="comment-time">3h ago</div>
+          </div>
+        </div>
+        <div class="comment-input-row">
+          <input class="comment-input" placeholder="Add a comment... (Comic99 members only)" onclick="checkLoginForComment()">
+          <button class="comment-send-btn" onclick="submitComment(this)">POST</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST 3 — PRIVATE (blurred if not logged in) -->
+    <div class="post-card">
+      <div class="post-header">
+        <div class="post-ava" style="background:linear-gradient(135deg,#43e97b,#38f9d7);">🌸</div>
+        <div class="post-meta">
+          <div class="post-username">MoonPetal</div>
+          <div class="post-time">Yesterday</div>
+        </div>
+        <span class="post-privacy privacy-private">🔒 Private</span>
+      </div>
+      <div class="post-image-placeholder" style="position:relative;">
+        <div style="position:absolute;inset:0;background:rgba(13,11,8,0.6);backdrop-filter:blur(12px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+          <div style="font-size:48px;">🔒</div>
+          <div style="font-family:'Bangers',cursive;font-size:22px;letter-spacing:2px;color:var(--white);">PRIVATE POST</div>
+          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);">Follow MoonPetal to see this</div>
+          <button class="btn btn-purple btn-sm" onclick="toggleFollow(this)">FOLLOW</button>
+        </div>
+        <span>🌸</span>
+      </div>
+      <div class="post-actions">
+        <button class="post-action-btn" disabled style="opacity:0.4;">❤️ <span>—</span></button>
+        <button class="post-action-btn" disabled style="opacity:0.4;">💬 <span>—</span></button>
+      </div>
+    </div>
+
+    <!-- POST 4 -->
+    <div class="post-card">
+      <div class="post-header">
+        <div class="post-ava" style="background:linear-gradient(135deg,#f7971e,#ffd200);">🔥</div>
+        <div class="post-meta">
+          <div class="post-username">InfernoRyu</div>
+          <div class="post-time">2 days ago</div>
+        </div>
+        <span class="post-privacy privacy-public">🌐 Public</span>
+      </div>
+      <div class="post-image-placeholder">🔥</div>
+      <div class="post-actions">
+        <button class="post-action-btn" onclick="toggleLike(this)">❤️ <span>187</span></button>
+        <button class="post-action-btn" onclick="toggleComments(this)">💬 <span>24</span></button>
+        <div class="action-spacer"></div>
+        <button class="post-action-btn" onclick="showToast('📤 Share link copied!')">🔗</button>
+      </div>
+      <div class="post-caption">
+        <span class="post-author-name">InfernoRyu</span>
+        Rengoku Kyojuro at Kuala Lumpur Comic Fiesta 2024! This was my biggest build yet — the flame gradient on the haori took 2 coats of fabric paint 🔥
+      </div>
+      <div class="post-tags">
+        <span class="post-tag">#DemonSlayer</span>
+        <span class="post-tag">#RengokuKyojuro</span>
+        <span class="post-tag">#KLComicFiesta</span>
+        <span class="post-tag">#MalaysianCosplay</span>
+      </div>
+      <div class="comments-section">
+        <div class="comment-input-row">
+          <input class="comment-input" placeholder="Add a comment... (Comic99 members only)" onclick="checkLoginForComment()">
+          <button class="comment-send-btn" onclick="submitComment(this)">POST</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UPLOAD FAB -->
+<button class="fab-upload" onclick="showUploadModal()" title="Share a Cosplay Post">📸</button>
+
+<!-- UPLOAD MODAL -->
+<div class="modal-overlay" id="uploadModal" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span class="modal-title">📸 SHARE COSPLAY POST</span>
+      <button class="modal-close" onclick="hideUploadModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="drop-zone" onclick="showToast('📁 File picker — coming soon!')">
+        <div class="drop-zone-icon">🖼️</div>
+        <div class="drop-zone-text">DRAG & DROP PHOTO</div>
+        <div class="drop-zone-hint">or click to browse · JPG, PNG, WEBP · Max 10MB</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">CAPTION</label>
+        <textarea class="form-textarea" placeholder="Tell your story... tag friends with @name"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">TAGS</label>
+        <input class="form-input" placeholder="#OnePiece #Luffy #AnimeAsia">
+      </div>
+      <div class="form-group">
+        <label class="form-label">PRIVACY</label>
+        <select class="form-select">
+          <option value="public">🌐 Public — anyone can see this post</option>
+          <option value="private">🔒 Private — approved followers only</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:8px;">
+        <button class="btn btn-red" style="flex:1;" onclick="submitPost()">📤 SHARE POST</button>
+        <button class="btn btn-outline" onclick="hideUploadModal()">CANCEL</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTRATION MODAL -->
+<div class="modal-overlay" id="regModal" style="display:none;">
+  <div class="modal-box" style="max-width:440px;">
+    <div class="modal-header">
+      <span class="modal-title">📸 COSPLAY PROFILE</span>
+      <button class="modal-close" onclick="hideRegModal()">✕</button>
+    </div>
+    <div class="reg-steps">
+      <div class="reg-step-dot active" id="regDot1"></div>
+      <div class="reg-step-dot" id="regDot2"></div>
+      <div class="reg-step-dot" id="regDot3"></div>
+    </div>
+    <!-- Step 1 -->
+    <div id="regStep1" class="modal-body">
+      <p style="font-family:'Bangers',cursive;font-size:20px;letter-spacing:2px;margin-bottom:14px;">1 · CREATE YOUR ACCOUNT</p>
+      <div class="form-group">
+        <label class="form-label">DISPLAY NAME</label>
+        <input class="form-input" id="regName" placeholder="Your cosplay name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">EMAIL</label>
+        <input class="form-input" type="email" id="regEmail" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">PASSWORD</label>
+        <input class="form-input" type="password" id="regPass" placeholder="Min 8 characters">
+      </div>
+      <button class="btn btn-red" style="width:100%;" onclick="goRegStep2()">CONTINUE →</button>
+      <div style="text-align:center;margin-top:12px;font-size:12px;font-weight:700;color:var(--text3);">
+        Already a member? <a href="artist.html" style="color:var(--red);">LOG IN</a>
+      </div>
+    </div>
+    <!-- Step 2 -->
+    <div id="regStep2" class="modal-body" style="display:none;">
+      <p style="font-family:'Bangers',cursive;font-size:20px;letter-spacing:2px;margin-bottom:6px;">2 · PHONE NUMBER</p>
+      <p style="font-size:13px;font-weight:700;color:var(--text2);margin-bottom:14px;">Phone number is <strong>required</strong> to activate your Cosplay profile.</p>
+      <div class="form-group">
+        <label class="form-label">PHONE NUMBER <span style="color:var(--red);">*</span></label>
+        <input class="form-input" type="tel" id="regPhone" placeholder="+60 12-345 6789">
+        <div style="background:linear-gradient(135deg,rgba(233,30,140,0.1),rgba(107,47,217,0.1));border:2px solid var(--ink);border-radius:var(--radius);padding:10px;margin-top:8px;">
+          <div style="font-size:11px;font-weight:800;color:var(--text);margin-bottom:4px;">🎁 UNLOCK COSPLAY FEATURES</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text2);line-height:1.5;">
+            📢 Instant SMS alerts when your post gets comments<br>
+            🎁 Exclusive SMS drops — Comic Goodies & Special Gifts<br>
+            🔔 Get notified on latest Comic99 events near you
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-outline" onclick="goRegStep1()">← BACK</button>
+        <button class="btn btn-red" style="flex:1;" onclick="goRegStep3()">VERIFY & CONTINUE →</button>
+      </div>
+    </div>
+    <!-- Step 3 -->
+    <div id="regStep3" class="modal-body" style="display:none;">
+      <p style="font-family:'Bangers',cursive;font-size:20px;letter-spacing:2px;margin-bottom:14px;">3 · COSPLAY PROFILE</p>
+      <div class="form-group">
+        <label class="form-label">COSPLAY HANDLE</label>
+        <input class="form-input" id="regHandle" placeholder="@yourhandle">
+      </div>
+      <div class="form-group">
+        <label class="form-label">BIO</label>
+        <textarea class="form-textarea" id="regBio" style="height:72px;" placeholder="Tell the nakama about your cosplay journey!"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">COSPLAY SPECIALTY</label>
+        <select class="form-select">
+          <option>Anime / Manga</option>
+          <option>Western Comics</option>
+          <option>Video Games</option>
+          <option>K-Pop / J-Pop</option>
+          <option>Original Design</option>
+          <option>All of the above!</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">DEFAULT POST PRIVACY</label>
+        <select class="form-select" id="regPrivacy">
+          <option value="public">🌐 Public — everyone sees my posts</option>
+          <option value="private">🔒 Private — approved followers only</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-outline" onclick="goRegStep2()">← BACK</button>
+        <button class="btn btn-red" style="flex:1;" onclick="completeRegistration()">🎉 CREATE MY COSPLAY!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL (login) -->
+<div class="modal-overlay" id="authModal" style="display:none;">
+  <div class="modal-box" style="max-width:400px;">
+    <div class="modal-header">
+      <span class="modal-title">🔓 LOG IN</span>
+      <button class="modal-close" onclick="document.getElementById('authModal').style.display='none'">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">EMAIL</label>
+        <input class="form-input" type="email" id="loginEmail" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">PASSWORD</label>
+        <input class="form-input" type="password" id="loginPass" placeholder="Your password">
+      </div>
+      <button class="btn btn-red" style="width:100%;" onclick="doLogin()">LOG IN</button>
+      <div style="text-align:center;margin-top:12px;font-size:12px;font-weight:700;color:var(--text3);">
+        No account? <a href="#" style="color:var(--red);" onclick="document.getElementById('authModal').style.display='none';showRegModal()">JOIN FREE</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="c99-footer">
+  <div class="footer-logo"><img src="comic99-logo.png" alt="Comic99"><span class="footer-logo-text">COMIC<span>99</span></span></div>
+  <div class="footer-tagline">Community · Creators · Cosplay</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a><a href="explore.html">Explore</a><a href="news.html">News</a>
+    <a href="cosplay.html">Cosplay</a><a href="community.html">Community</a>
+  </div>
+  <div class="footer-copy">© 2025 Comic99 · comic99.com</div>
+</footer>
+<div id="c99-toast"></div>
+
+<script>
+let currentUser = null;
+try { const s = localStorage.getItem('c99_user'); if(s) currentUser = JSON.parse(s); } catch(e) {}
+
+window.addEventListener('DOMContentLoaded', () => {
+  if(currentUser) {
+    document.getElementById('sidebarProfile').style.display = 'block';
+    document.getElementById('sidebarJoinCta').style.display = 'none';
+    document.getElementById('sideName').textContent = currentUser.name || 'COSPLAYER';
+    document.getElementById('sideHandle').textContent = '@' + (currentUser.name || 'cosplayer').toLowerCase().replace(/\s/g,'');
+    document.querySelector('.nav-auth').innerHTML = '<button class="btn btn-outline btn-sm" style="color:var(--white);border-color:rgba(255,255,255,0.4);" onclick="doLogout()">LOG OUT</button>';
+  }
+});
+
+function showToast(msg) {
+  const t = document.getElementById('c99-toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+function switchTab(el, tab) {
+  document.querySelectorAll('.feed-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  if(tab === 'following' && !currentUser) { showToast('⚠️ Log in to see posts from people you follow'); return; }
+  showToast(tab === 'all' ? '📸 Showing all posts' : tab === 'following' ? '👥 Showing posts from your follows' : '🔥 Showing trending posts');
+}
+function toggleLike(btn) {
+  btn.classList.toggle('liked');
+  const countSpan = btn.querySelector('span');
+  const count = parseInt(countSpan.textContent) || 0;
+  countSpan.textContent = btn.classList.contains('liked') ? count + 1 : count - 1;
+}
+function toggleComments(btn) {
+  const card = btn.closest('.post-card');
+  const comments = card.querySelector('.comments-section');
+  comments.style.display = comments.style.display === 'none' ? 'block' : 'none';
+}
+function toggleFollow(btn) {
+  const isFollowing = btn.classList.toggle('following');
+  btn.textContent = isFollowing ? 'FOLLOWING' : 'FOLLOW';
+  showToast(isFollowing ? '✅ Following!' : '👋 Unfollowed');
+}
+function checkLoginForComment() {
+  if(!currentUser) showToast('⚠️ Log in to leave comments on cosplay posts');
+}
+function submitComment(btn) {
+  if(!currentUser) { showToast('⚠️ Log in to leave a comment'); return; }
+  const input = btn.previousElementSibling;
+  if(!input.value.trim()) return;
+  showToast('💬 Comment posted!');
+  input.value = '';
+}
+function filterTag(el) {
+  showToast('🏷️ Filtering by ' + el.textContent);
+}
+function showUploadModal() {
+  if(!currentUser) { showToast('⚠️ Log in or create a Cosplay profile to post!'); return; }
+  document.getElementById('uploadModal').style.display = 'flex';
+}
+function hideUploadModal() { document.getElementById('uploadModal').style.display = 'none'; }
+function submitPost() {
+  hideUploadModal();
+  showToast('📸 Post shared with the nakama!');
+}
+
+// REG FLOW
+function showRegModal() {
+  document.getElementById('regModal').style.display = 'flex';
+  goRegStep1();
+}
+function hideRegModal() { document.getElementById('regModal').style.display = 'none'; }
+function showAuthModal() { document.getElementById('authModal').style.display = 'flex'; }
+
+function setRegStep(step) {
+  [1,2,3].forEach(i => {
+    document.getElementById('regStep'+i).style.display = i === step ? 'block' : 'none';
+    const dot = document.getElementById('regDot'+i);
+    dot.classList.toggle('active', i === step);
+    dot.classList.toggle('done', i < step);
+  });
+}
+function goRegStep1() { setRegStep(1); }
+function goRegStep2() {
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  if(!name || !email) { showToast('⚠️ Please fill in all fields'); return; }
+  setRegStep(2);
+}
+function goRegStep3() {
+  const phone = document.getElementById('regPhone').value.trim();
+  if(!phone) { showToast('⚠️ Phone number is required for Cosplay profiles'); return; }
+  setRegStep(3);
+}
+function completeRegistration() {
+  currentUser = {
+    name: document.getElementById('regName').value || 'Cosplayer',
+    email: document.getElementById('regEmail').value,
+    phone: document.getElementById('regPhone').value,
+    roles: ['nakama', 'cosplayer'],
+    cosplayHandle: document.getElementById('regHandle').value
+  };
+  try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e) {}
+  hideRegModal();
+  document.getElementById('sidebarProfile').style.display = 'block';
+  document.getElementById('sidebarJoinCta').style.display = 'none';
+  document.getElementById('sideName').textContent = currentUser.name;
+  showToast('🎉 Welcome to Cosplay, ' + currentUser.name + '!');
+}
+function doLogin() {
+  const email = document.getElementById('loginEmail').value.trim();
+  if(!email) { showToast('⚠️ Enter your email'); return; }
+  currentUser = { name: 'Comic99 User', email, roles: ['nakama'] };
+  try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e) {}
+  document.getElementById('authModal').style.display = 'none';
+  showToast('✅ Welcome back!');
+  location.reload();
+}
+function doLogout() {
+  currentUser = null;
+  try { localStorage.removeItem('c99_user'); } catch(e) {}
+  location.reload();
+}
+</script>
+</body>
+</html>

@@ -1,7 +1,8 @@
 /* ============================================
-   COMIC99 — Shared Design System
+   COMIC99 — Shared Design System v2
    Colors from logo: Red #E8192C, Gold #F5A800,
    Purple #6B2FD9, Ink #0D0B08, White #FFFFFF
+   Nav: Home · Explore · News · Cosplay · Community
    ============================================ */
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap');
 
@@ -107,11 +108,17 @@ body {
   gap: 8px;
   text-decoration: none;
   flex-shrink: 0;
-  margin-right: 24px;
+  margin-right: 20px;
+}
+.nav-logo img {
+  height: 44px;
+  width: 44px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 .nav-logo-text {
   font-family: 'Bangers', cursive;
-  font-size: 28px;
+  font-size: 26px;
   letter-spacing: 2px;
   color: var(--white);
   line-height: 1;
@@ -154,16 +161,21 @@ body {
   border-radius: 2px;
 }
 
-.nav-cta {
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-left: auto;
   flex-shrink: 0;
+}
+.nav-cta {
   font-family: 'Bangers', cursive;
-  font-size: 16px;
+  font-size: 15px;
   letter-spacing: 1.5px;
   background: var(--red);
   color: var(--white);
   border: 2px solid var(--white);
-  padding: 6px 18px;
+  padding: 6px 16px;
   border-radius: var(--radius);
   cursor: pointer;
   text-decoration: none;
@@ -174,6 +186,20 @@ body {
   transform: translate(-1px,-1px);
   box-shadow: 4px 4px 0 rgba(255,255,255,0.3);
 }
+.nav-login {
+  font-family: 'Bangers', cursive;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  background: transparent;
+  color: rgba(255,255,255,0.75);
+  border: 2px solid rgba(255,255,255,0.3);
+  padding: 6px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav-login:hover { color: var(--gold); border-color: var(--gold); }
 
 /* ---- SPEED LINES ---- */
 .speed-lines {
@@ -295,6 +321,21 @@ body {
   border-radius: 2px;
   margin-top: 6px;
 }
+.comic-card-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border: 1.5px solid var(--ink);
+  border-radius: 2px;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+.badge-original { background: var(--purple); color: var(--white); }
+.badge-ai { background: var(--ink2); color: rgba(255,255,255,0.8); }
+.badge-fanart { background: var(--red); color: var(--white); }
 
 /* ---- BURST / BADGE ---- */
 .burst {
@@ -340,6 +381,97 @@ body {
 .btn-outline { background: transparent; color: var(--text); }
 .btn-sm { font-size: 14px; padding: 7px 18px; box-shadow: 3px 3px 0 var(--ink); }
 
+/* ---- PAGE HERO ---- */
+.page-hero {
+  background: var(--ink);
+  padding: 36px max(16px, env(safe-area-inset-left, 0px)) 28px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid var(--gold);
+}
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(245,168,0,0.12) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+.page-hero h1 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(40px,8vw,72px);
+  letter-spacing: 4px;
+  color: var(--white);
+  position: relative; z-index: 1;
+  text-shadow: 4px 4px 0 var(--red);
+}
+.page-hero h1 span { color: var(--gold); }
+.page-hero p {
+  color: rgba(255,255,255,0.65);
+  font-size: 14px;
+  font-weight: 600;
+  position: relative; z-index: 1;
+  margin-top: 6px;
+}
+
+/* ---- FILTER BAR ---- */
+.filter-bar {
+  background: var(--panel2);
+  border-bottom: 3px solid var(--ink);
+  padding: 12px max(16px, env(safe-area-inset-left, 0px));
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.filter-bar::-webkit-scrollbar { display: none; }
+.filter-btn {
+  font-family: 'Bangers', cursive;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  padding: 6px 16px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform 0.1s, box-shadow 0.1s, background 0.1s;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--red);
+  color: var(--white);
+  transform: translate(-1px,-1px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+/* ---- TABS ---- */
+.tab-bar {
+  background: var(--panel2);
+  border-bottom: 3px solid var(--ink);
+  padding: 0 max(16px, env(safe-area-inset-left, 0px));
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  padding: 14px 20px;
+  border: none;
+  background: none;
+  color: var(--text3);
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 4px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--red); border-bottom-color: var(--red); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
 /* ---- FOOTER ---- */
 .c99-footer {
   background: var(--ink);
@@ -349,13 +481,20 @@ body {
   text-align: center;
 }
 .footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.footer-logo img { height: 36px; width: 36px; object-fit: contain; border-radius: 6px; }
+.footer-logo-text {
   font-family: 'Bangers', cursive;
   font-size: 32px;
   letter-spacing: 3px;
   color: var(--white);
-  margin-bottom: 8px;
 }
-.footer-logo span { color: var(--gold); }
+.footer-logo-text span { color: var(--gold); }
 .footer-tagline {
   font-size: 12px;
   font-weight: 700;
@@ -410,10 +549,51 @@ body {
   opacity: 1;
 }
 
+/* ---- FORM ELEMENTS ---- */
+.form-group { margin-bottom: 16px; }
+.form-label {
+  display: block;
+  font-family: 'Bangers', cursive;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--offwhite);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  outline: none;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 3px 3px 0 var(--purple);
+}
+.form-textarea { resize: vertical; min-height: 80px; }
+.form-hint { font-size: 12px; font-weight: 600; color: var(--text3); margin-top: 4px; }
+
+/* ---- SECTION ---- */
+.section {
+  padding: 36px max(16px, env(safe-area-inset-left, 0px));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 /* ---- RESPONSIVE ---- */
 @media (max-width: 600px) {
-  .nav-logo-text { font-size: 22px; }
+  .nav-logo-text { font-size: 20px; }
   .nav-link { font-size: 15px; padding: 6px 10px; }
   .btn { font-size: 15px; padding: 9px 20px; }
   .section-title { font-size: 26px; }
+  .nav-login { display: none; }
 }
+
+/* ---- SHARED TOAST JS (inline in each page) ---- */

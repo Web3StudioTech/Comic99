@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Explore Comics — Comic99</title>
+<link rel="icon" type="image/png" href="comic99-logo.png">
+<link rel="stylesheet" href="comic99-shared.css">
+<style>
+.comic-grid-lg { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 24px; }
+.rank-list { display: flex; flex-direction: column; gap: 12px; }
+.rank-item {
+  display: flex; gap: 14px; align-items: center;
+  background: var(--panel); border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink); border-radius: var(--radius);
+  padding: 10px 14px; cursor: pointer; text-decoration: none;
+  color: var(--text); transition: transform 0.1s, box-shadow 0.1s;
+}
+.rank-item:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
+.rank-num { font-family:'Bangers',cursive; font-size:28px; letter-spacing:1px; color:var(--text3); min-width:32px; text-align:center; line-height:1; }
+.rank-num.top { color:var(--gold); text-shadow:2px 2px 0 var(--ink); }
+.rank-thumb { width:48px; height:64px; border:2px solid var(--ink); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; }
+.rank-info { flex:1; min-width:0; }
+.rank-title { font-family:'Bangers',cursive; font-size:17px; letter-spacing:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.rank-meta { font-size:11px; font-weight:700; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px; margin-top:2px; }
+.rank-reads { font-family:'Bangers',cursive; font-size:16px; color:var(--red); letter-spacing:1px; white-space:nowrap; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+@media (max-width:700px) { .two-col { grid-template-columns:1fr; } }
+.reader-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:200; display:none; flex-direction:column; }
+.reader-overlay.open { display:flex; }
+.reader-topbar { background:var(--ink); border-bottom:3px solid var(--red); padding:10px 16px; display:flex; align-items:center; gap:12px; flex-shrink:0; }
+.reader-close { font-family:'Bangers',cursive; font-size:20px; letter-spacing:1px; color:var(--white); background:var(--red); border:2px solid var(--white); padding:4px 14px; border-radius:var(--radius); cursor:pointer; box-shadow:3px 3px 0 rgba(255,255,255,0.3); }
+.reader-title { font-family:'Bangers',cursive; font-size:20px; letter-spacing:2px; color:var(--gold); flex:1; }
+.reader-body { flex:1; overflow-y:auto; display:flex; justify-content:center; padding:24px 16px; }
+.reader-pages { display:flex; flex-direction:column; gap:4px; max-width:700px; width:100%; }
+.reader-page { width:100%; background:var(--ink2); border:2px solid #333; display:flex; align-items:center; justify-content:center; font-size:64px; aspect-ratio:3/4; }
+.reader-bottombar { background:var(--ink); border-top:3px solid var(--gold); padding:10px 16px; display:flex; align-items:center; justify-content:center; gap:16px; flex-shrink:0; }
+.reader-btn { font-family:'Bangers',cursive; font-size:20px; letter-spacing:1px; color:var(--white); background:var(--ink2); border:2px solid #555; padding:6px 20px; border-radius:var(--radius); cursor:pointer; }
+.reader-pg { font-family:'Bangers',cursive; font-size:18px; color:var(--gold); letter-spacing:2px; }
+</style>
+</head>
+<body>
+
+<nav class="c99-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="comic99-logo.png" alt="Comic99">
+    <span class="nav-logo-text">COMIC<span>99</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">🏠 Home</a>
+    <a href="explore.html" class="nav-link active">🔍 Explore</a>
+    <a href="news.html" class="nav-link">📰 News</a>
+    <a href="cosplay.html" class="nav-link">📸 Cosplay</a>
+    <a href="community.html" class="nav-link">💬 Community</a>
+  </div>
+  <div class="nav-auth">
+    <a href="artist.html" class="nav-login">LOG IN</a>
+    <a href="artist.html" class="nav-cta">JOIN FREE</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <h1>🔍 <span>EXPLORE</span> COMICS</h1>
+  <p>Discover thousands of free comics from Asia Pacific's best creators</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="setFilter(this,'all')">🔥 All</button>
+  <button class="filter-btn" onclick="setFilter(this,'manga')">📖 Manga</button>
+  <button class="filter-btn" onclick="setFilter(this,'webtoon')">📱 Webtoon</button>
+  <button class="filter-btn" onclick="setFilter(this,'western')">🦸 Western</button>
+  <button class="filter-btn" onclick="setFilter(this,'action')">⚔️ Action</button>
+  <button class="filter-btn" onclick="setFilter(this,'fantasy')">🧙 Fantasy</button>
+  <button class="filter-btn" onclick="setFilter(this,'romance')">💕 Romance</button>
+  <button class="filter-btn" onclick="setFilter(this,'scifi')">🚀 Sci-Fi</button>
+  <button class="filter-btn" onclick="setFilter(this,'horror')">👻 Horror</button>
+  <button class="filter-btn" onclick="setFilter(this,'slice')">🍜 Slice of Life</button>
+  <button class="filter-btn" onclick="setFilter(this,'original')">🎨 Original</button>
+  <button class="filter-btn" onclick="setFilter(this,'ai')">🤖 AI-Assisted</button>
+  <button class="filter-btn" onclick="setFilter(this,'fanart')">🎭 Fan Art</button>
+</div>
+
+<div class="section">
+  <div class="two-col">
+    <div>
+      <div class="section-header">
+        <span class="section-title">🆕 NEW RELEASES</span>
+        <div class="section-title-bar"></div>
+      </div>
+      <div class="comic-grid" id="comicGrid">
+        <div class="comic-card" onclick="openReader('Neon Blade','Chapter 7')">
+          <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#1A0A2E,#3A1A5E);">⚔️</div>
+          <div class="comic-card-body">
+            <div class="comic-card-title">Neon Blade</div>
+            <div class="comic-card-meta">Ch.7 · Updated today</div>
+            <span class="comic-card-genre">Action</span>
+            <span class="comic-card-badge badge-original">Original</span>
+          </div>
+        </div>
+        <div class="comic-card" onclick="openReader('Dragon Protocol','Chapter 3')">
+          <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#1A0A0A,#3A1010);">🐉</div>
+          <div class="comic-card-body">
+            <div class="comic-card-title">Dragon Protocol</div>
+            <div class="comic-card-meta">Ch.3 · 2 hrs ago</div>
+            <span class="comic-card-genre">Fantasy</span>
+            <span class="comic-card-badge badge-original">Original</span>
+          </div>
+        </div>
+        <div class="comic-card" onclick="openReader('City of Masks','Chapter 12')">
+          <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#0A1A2A,#102840);">🎭</div>
+          <div class="comic-card-body">
+            <div class="comic-card-title">City of Masks</div>
+            <div class="comic-card-meta">Ch.12 · Yesterday</div>
+            <span class="comic-card-genre">Mystery</span>
+            <span class="comic-card-badge badge-ai">AI-Assisted</span>
+          </div>
+        </div>
+        <div class="comic-card" onclick="openReader('Sakura Storm','Chapter 20')">
+          <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#2A0A1A,#4A1A30);">🌸</div>
+          <div class="comic-card-body">
+            <div class="comic-card-title">Sakura Storm</div>
+            <div class="comic-card-meta">Ch.20 · 2 days ago</div>
+            <span class="comic-card-genre">Romance</span>
+            <span class="comic-card-badge badge-original">Original</span>
+          </div>
+        </div>
+        <div class="comic-card" onclick="openReader('Mech Wars','Chapter 5')">
+          <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#0A0A1A,#101025);">🤖</div>
+          <div class="comic-card-body">
+            <div class="comic-card-title">Mech Wars</div>
+            <div class="comic-card-meta">Ch.5 · 3 days ago</div>
+            <span class="comic-card-genre">Sci-Fi</span>
+            <span class="comic-card-badge badge-fanart">Fan Art</span>
+          </div>
+        </div>
+        <div class="comic-card" onclick="openReader('Ghost Alley','Chapter 8')">
+          <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#0A0A0A,#1A1A1A);">👻</div>
+          <div class="comic-card-body">
+            <div class="comic-card-title">Ghost Alley</div>
+            <div class="comic-card-meta">Ch.8 · 4 days ago</div>
+            <span class="comic-card-genre">Horror</span>
+            <span class="comic-card-badge badge-original">Original</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-header">
+        <span class="section-title">🏆 TOP RANKED</span>
+        <div class="section-title-bar"></div>
+      </div>
+      <div class="rank-list">
+        <a href="#" class="rank-item" onclick="openReader('Thunder God','Chapter 55');return false;">
+          <div class="rank-num top">1</div>
+          <div class="rank-thumb" style="background:linear-gradient(135deg,#1A1A0A,#2E2A10);">⚡</div>
+          <div class="rank-info"><div class="rank-title">Thunder God</div><div class="rank-meta">Mythology · Ch. 55</div></div>
+          <div class="rank-reads">144K 👁</div>
+        </a>
+        <a href="#" class="rank-item" onclick="openReader('Iron Fist Rising','Chapter 38');return false;">
+          <div class="rank-num top">2</div>
+          <div class="rank-thumb" style="background:linear-gradient(135deg,#2A0A0A,#3E1010);">🔥</div>
+          <div class="rank-info"><div class="rank-title">Iron Fist Rising</div><div class="rank-meta">Action · Ch. 38</div></div>
+          <div class="rank-reads">92K 👁</div>
+        </a>
+        <a href="#" class="rank-item" onclick="openReader('Neon Blade','Chapter 7');return false;">
+          <div class="rank-num top">3</div>
+          <div class="rank-thumb" style="background:linear-gradient(135deg,#1A0A2E,#3A1A5E);">⚔️</div>
+          <div class="rank-info"><div class="rank-title">Neon Blade</div><div class="rank-meta">Action · Ch. 7</div></div>
+          <div class="rank-reads">78K 👁</div>
+        </a>
+        <a href="#" class="rank-item" onclick="openReader('Shadow Realm','Chapter 24');return false;">
+          <div class="rank-num">4</div>
+          <div class="rank-thumb" style="background:linear-gradient(135deg,#1A0A2E,#2E1A4E);">🌙</div>
+          <div class="rank-info"><div class="rank-title">Shadow Realm</div><div class="rank-meta">Fantasy · Ch. 24</div></div>
+          <div class="rank-reads">48K 👁</div>
+        </a>
+        <a href="#" class="rank-item" onclick="openReader('Spirit Walker','Chapter 11');return false;">
+          <div class="rank-num">5</div>
+          <div class="rank-thumb" style="background:linear-gradient(135deg,#0A1A0A,#102010);">🌿</div>
+          <div class="rank-info"><div class="rank-title">Spirit Walker</div><div class="rank-meta">Supernatural · Ch. 11</div></div>
+          <div class="rank-reads">31K 👁</div>
+        </a>
+        <a href="#" class="rank-item" onclick="openReader('Sakura Storm','Chapter 20');return false;">
+          <div class="rank-num">6</div>
+          <div class="rank-thumb" style="background:linear-gradient(135deg,#2A0A1A,#4A1A30);">🌸</div>
+          <div class="rank-info"><div class="rank-title">Sakura Storm</div><div class="rank-meta">Romance · Ch. 20</div></div>
+          <div class="rank-reads">29K 👁</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top:40px;">
+    <span class="section-title">📚 ALL COMICS</span>
+    <div class="section-title-bar"></div>
+  </div>
+  <div class="comic-grid-lg">
+    <div class="comic-card" onclick="openReader('Crystal Mage','Chapter 16')">
+      <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#2A0A1A,#3E1030);">💎</div>
+      <div class="comic-card-body"><div class="comic-card-title">Crystal Mage</div><div class="comic-card-meta">16 Chapters · 27.8K reads</div><span class="comic-card-genre">Magic</span><span class="comic-card-badge badge-original">Original</span></div>
+    </div>
+    <div class="comic-card" onclick="openReader('Ocean Protocol','Chapter 7')">
+      <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#0A1A2A,#102030);">🌊</div>
+      <div class="comic-card-body"><div class="comic-card-title">Ocean Protocol</div><div class="comic-card-meta">7 Chapters · 19.3K reads</div><span class="comic-card-genre">Sci-Fi</span><span class="comic-card-badge badge-ai">AI-Assisted</span></div>
+    </div>
+    <div class="comic-card" onclick="openReader('Ramen Hero','Chapter 4')">
+      <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#2A1A0A,#3A2010);">🍜</div>
+      <div class="comic-card-body"><div class="comic-card-title">Ramen Hero</div><div class="comic-card-meta">4 Chapters · 15.1K reads</div><span class="comic-card-genre">Slice of Life</span><span class="comic-card-badge badge-original">Original</span></div>
+    </div>
+    <div class="comic-card" onclick="openReader('Night Witch','Chapter 9')">
+      <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#1A0A1A,#2A102A);">🔮</div>
+      <div class="comic-card-body"><div class="comic-card-title">Night Witch</div><div class="comic-card-meta">9 Chapters · 22.4K reads</div><span class="comic-card-genre">Horror</span><span class="comic-card-badge badge-fanart">Fan Art</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- READER MODAL -->
+<div class="reader-overlay" id="readerOverlay">
+  <div class="reader-topbar">
+    <button class="reader-close" onclick="closeReader()">✕ CLOSE</button>
+    <div class="reader-title" id="readerTitle">NEON BLADE — CH. 7</div>
+    <div class="tag tag-gold" style="font-size:11px;">WEBTOON</div>
+  </div>
+  <div class="reader-body">
+    <div class="reader-pages">
+      <div class="reader-page">🎨 Page 1</div>
+      <div class="reader-page">🎨 Page 2</div>
+      <div class="reader-page">🎨 Page 3</div>
+      <div class="reader-page">🎨 Page 4</div>
+      <div class="reader-page">🎨 Page 5</div>
+    </div>
+  </div>
+  <div class="reader-bottombar">
+    <button class="reader-btn" onclick="closeReader()">⬅ BACK</button>
+    <span class="reader-pg">5 PAGES</span>
+    <button class="reader-btn" onclick="showToast('📖 Bookmarked!')">🔖 SAVE</button>
+  </div>
+</div>
+
+<footer class="c99-footer">
+  <div class="footer-logo"><img src="comic99-logo.png" alt="Comic99"><span class="footer-logo-text">COMIC<span>99</span></span></div>
+  <div class="footer-tagline">Community · Creators · Cosplay</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a><a href="explore.html">Explore</a><a href="news.html">News</a>
+    <a href="cosplay.html">Cosplay</a><a href="community.html">Community</a><a href="artist.html">Artist</a>
+  </div>
+  <div class="footer-copy">© 2025 Comic99 · comic99.com</div>
+</footer>
+<div id="c99-toast"></div>
+<script>
+function setFilter(el, f) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  showToast('🔍 Showing: ' + el.textContent.trim());
+}
+function openReader(title, ch) {
+  document.getElementById('readerTitle').textContent = title.toUpperCase() + ' — ' + ch.toUpperCase();
+  document.getElementById('readerOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeReader() {
+  document.getElementById('readerOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeReader(); });
+function showToast(msg) {
+  const t = document.getElementById('c99-toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>

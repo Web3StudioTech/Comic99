@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Artist Hub — Comic99</title>
+<link rel="icon" type="image/png" href="comic99-logo.png">
+<link rel="stylesheet" href="comic99-shared.css">
+<style>
+/* ---- AUTH MODAL ---- */
+.auth-overlay {
+  position: fixed; inset: 0;
+  background: rgba(13,11,8,0.92);
+  z-index: 300;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+}
+.auth-box {
+  background: var(--panel);
+  border: 4px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+  border-radius: var(--radius-lg);
+  width: 100%; max-width: 440px;
+  overflow: hidden;
+}
+.auth-header {
+  background: var(--ink);
+  padding: 20px 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.auth-logo { height: 40px; width: 40px; object-fit: contain; border-radius: 6px; }
+.auth-title { font-family:'Bangers',cursive; font-size:24px; letter-spacing:2px; color:var(--white); }
+.auth-title span { color: var(--gold); }
+.auth-body { padding: 24px; }
+.auth-tabs { display:flex; gap:0; margin-bottom:20px; border:3px solid var(--ink); border-radius:var(--radius); overflow:hidden; }
+.auth-tab {
+  flex:1; font-family:'Bangers',cursive; font-size:16px; letter-spacing:1.5px;
+  padding:10px; border:none; background:var(--panel2); color:var(--text3);
+  cursor:pointer; transition:background 0.15s, color 0.15s;
+}
+.auth-tab.active { background:var(--red); color:var(--white); }
+.auth-step { display:none; }
+.auth-step.active { display:block; }
+.auth-divider { display:flex; align-items:center; gap:12px; margin:16px 0; }
+.auth-divider span { font-size:12px; font-weight:700; color:var(--text3); letter-spacing:1px; text-transform:uppercase; }
+.auth-divider::before, .auth-divider::after { content:''; flex:1; height:2px; background:var(--panel2); }
+.google-btn {
+  width:100%; padding:12px; border:3px solid var(--ink);
+  border-radius:var(--radius); background:var(--white); color:var(--ink);
+  font-family:'Bangers',cursive; font-size:17px; letter-spacing:2px;
+  cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px;
+  box-shadow:4px 4px 0 var(--ink); transition:transform 0.1s, box-shadow 0.1s;
+  text-decoration:none;
+}
+.google-btn:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink); }
+.phone-hint {
+  background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+  border:3px solid var(--ink); border-radius:var(--radius);
+  padding:12px 14px; margin-top:12px;
+  display:flex; align-items:flex-start; gap:10px;
+}
+.phone-hint-icon { font-size:24px; flex-shrink:0; }
+.phone-hint-text { font-size:12px; font-weight:700; color:var(--ink); line-height:1.5; }
+.phone-hint-text strong { font-size:13px; display:block; margin-bottom:2px; }
+
+/* ---- ROLE SELECTOR ---- */
+.role-cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:16px; }
+@media (max-width:500px) { .role-cards { grid-template-columns:1fr; } }
+.role-card {
+  border:3px solid var(--ink); border-radius:var(--radius);
+  padding:14px 10px; text-align:center; cursor:pointer;
+  background:var(--panel2); box-shadow:3px 3px 0 var(--ink);
+  transition:transform 0.1s, box-shadow 0.1s, background 0.1s;
+}
+.role-card:hover { transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--ink); }
+.role-card.selected { background:var(--purple); color:var(--white); border-color:var(--purple-dark); }
+.role-card.selected .role-desc { color:rgba(255,255,255,0.75); }
+.role-icon { font-size:28px; margin-bottom:6px; }
+.role-name { font-family:'Bangers',cursive; font-size:16px; letter-spacing:1.5px; }
+.role-desc { font-size:10px; font-weight:700; color:var(--text3); letter-spacing:0.5px; margin-top:3px; }
+
+/* ---- DASHBOARD ---- */
+.dashboard-wrap { max-width:1100px; margin:0 auto; padding:32px max(16px,env(safe-area-inset-left,0px)); }
+.dash-welcome {
+  background:var(--ink);
+  border:3px solid var(--ink); border-radius:var(--radius-lg);
+  box-shadow:6px 6px 0 var(--ink);
+  padding:24px 28px; margin-bottom:28px;
+  display:flex; align-items:center; gap:20px;
+  overflow:hidden; position:relative;
+}
+.dash-welcome::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 60% 100% at 90% 50%,rgba(107,47,217,0.3),transparent);
+}
+.dash-ava {
+  width:72px; height:72px; border-radius:50%;
+  border:4px solid var(--gold);
+  background:linear-gradient(135deg,var(--red),var(--purple));
+  display:flex; align-items:center; justify-content:center;
+  font-size:30px; flex-shrink:0; position:relative;
+  box-shadow:4px 4px 0 rgba(0,0,0,0.4);
+}
+.dash-info { flex:1; position:relative; }
+.dash-name { font-family:'Bangers',cursive; font-size:28px; letter-spacing:2px; color:var(--white); }
+.dash-role { font-family:'Bangers',cursive; font-size:14px; letter-spacing:2px; color:var(--gold); }
+.dash-stats { display:flex; gap:24px; margin-top:8px; flex-wrap:wrap; }
+.dash-stat { text-align:center; }
+.dash-stat-num { font-family:'Bangers',cursive; font-size:22px; color:var(--white); letter-spacing:1px; }
+.dash-stat-label { font-size:10px; font-weight:700; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:1px; }
+
+.dash-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin-bottom:28px; }
+.dash-card {
+  background:var(--panel); border:3px solid var(--ink);
+  box-shadow:4px 4px 0 var(--ink); border-radius:var(--radius);
+  padding:20px; cursor:pointer;
+  transition:transform 0.1s, box-shadow 0.1s;
+}
+.dash-card:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink); }
+.dash-card-icon { font-size:36px; margin-bottom:10px; }
+.dash-card-title { font-family:'Bangers',cursive; font-size:20px; letter-spacing:1.5px; margin-bottom:4px; }
+.dash-card-desc { font-size:12px; font-weight:600; color:var(--text3); line-height:1.4; }
+
+/* UPLOAD STEPS */
+.upload-panel {
+  background:var(--panel); border:3px solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink); border-radius:var(--radius-lg);
+  overflow:hidden; display:none;
+}
+.upload-panel.open { display:block; }
+.upload-panel-header {
+  background:var(--ink); padding:16px 20px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.upload-panel-title { font-family:'Bangers',cursive; font-size:22px; letter-spacing:2px; color:var(--gold); }
+.upload-panel-close { font-family:'Bangers',cursive; font-size:16px; color:rgba(255,255,255,0.6); background:none; border:none; cursor:pointer; padding:4px 8px; }
+.upload-panel-close:hover { color:var(--white); }
+.upload-steps { display:flex; padding:16px 20px; gap:8px; overflow-x:auto; border-bottom:3px solid var(--ink); }
+.upload-step-pill {
+  font-family:'Bangers',cursive; font-size:13px; letter-spacing:1px;
+  padding:5px 14px; border-radius:20px; border:2px solid var(--ink);
+  white-space:nowrap; color:var(--text3); background:var(--panel2);
+}
+.upload-step-pill.active { background:var(--red); color:var(--white); border-color:var(--red-dark); }
+.upload-step-pill.done { background:var(--gold); color:var(--ink); }
+.upload-body { padding:20px; }
+
+/* ARTIST ACTIVATE */
+.activate-box {
+  background:var(--panel); border:3px solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink); border-radius:var(--radius-lg);
+  padding:28px; max-width:600px; margin:32px auto;
+}
+.activate-title { font-family:'Bangers',cursive; font-size:28px; letter-spacing:2px; color:var(--text); margin-bottom:16px; text-align:center; }
+.activate-title span { color:var(--red); }
+.checklist { list-style:none; margin:16px 0; display:flex; flex-direction:column; gap:8px; }
+.checklist li {
+  display:flex; align-items:flex-start; gap:10px;
+  font-size:14px; font-weight:600; color:var(--text2);
+  background:var(--panel2); border:2px solid var(--ink); border-radius:var(--radius);
+  padding:10px 14px;
+}
+.checklist li .check { font-size:16px; flex-shrink:0; }
+.guidelines-box {
+  background:rgba(107,47,217,0.08); border:2px solid var(--purple);
+  border-radius:var(--radius); padding:14px; margin:16px 0;
+  font-size:13px; font-weight:600; color:var(--text2); line-height:1.6;
+}
+.guidelines-box strong { color:var(--purple); display:block; margin-bottom:6px; font-family:'Bangers',cursive; font-size:16px; letter-spacing:1px; }
+</style>
+</head>
+<body>
+
+<nav class="c99-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="comic99-logo.png" alt="Comic99">
+    <span class="nav-logo-text">COMIC<span>99</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">🏠 Home</a>
+    <a href="explore.html" class="nav-link">🔍 Explore</a>
+    <a href="news.html" class="nav-link">📰 News</a>
+    <a href="cosplay.html" class="nav-link">📸 Cosplay</a>
+    <a href="community.html" class="nav-link">💬 Community</a>
+  </div>
+  <div class="nav-auth">
+    <a href="#" class="nav-login" onclick="showAuth('login');return false;">LOG IN</a>
+    <a href="#" class="nav-cta" onclick="showAuth('register');return false;">JOIN FREE</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="border-bottom-color:var(--purple2);">
+  <div class="page-hero-bg" style="background-image:radial-gradient(circle,rgba(107,47,217,0.2) 1.5px,transparent 1.5px);"></div>
+  <h1>🎨 <span>ARTIST</span> HUB</h1>
+  <p>Register · Build your profile · Publish your comics to the world</p>
+</div>
+
+<!-- LANDING (shown when logged out) -->
+<div id="landingView">
+  <div class="section" style="max-width:900px;">
+    <div style="text-align:center;margin-bottom:40px;">
+      <h2 style="font-family:'Bangers',cursive;font-size:clamp(32px,6vw,56px);letter-spacing:3px;color:var(--text);text-shadow:3px 3px 0 var(--red);margin-bottom:12px;">BECOME A COMIC99 <span style="color:var(--gold);">ARTIST</span></h2>
+      <p style="font-size:16px;font-weight:600;color:var(--text2);max-width:560px;margin:0 auto;">Join thousands of creators. Publish your comics for free. Protect your art with watermarks. Reach fans across Asia Pacific.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:40px;">
+      <div class="dash-card" style="cursor:default;">
+        <div class="dash-card-icon">🎨</div>
+        <div class="dash-card-title">Original Art</div>
+        <div class="dash-card-desc">Publish your original comics. All formats — webtoon, manga, western, landscape.</div>
+      </div>
+      <div class="dash-card" style="cursor:default;">
+        <div class="dash-card-icon">🛡️</div>
+        <div class="dash-card-title">Art Protection</div>
+        <div class="dash-card-desc">Watermark every page. Right-click disabled. Your work stays yours.</div>
+      </div>
+      <div class="dash-card" style="cursor:default;">
+        <div class="dash-card-icon">🌏</div>
+        <div class="dash-card-title">Global Reach</div>
+        <div class="dash-card-desc">Reach readers across Asia Pacific. Build your fanbase, grow your brand.</div>
+      </div>
+      <div class="dash-card" style="cursor:default;">
+        <div class="dash-card-icon">📊</div>
+        <div class="dash-card-title">Creator Dashboard</div>
+        <div class="dash-card-desc">Track reads, followers, comments. Manage all your series in one place.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn btn-red" onclick="showAuth('register')">🎨 REGISTER AS ARTIST</button>
+      <button class="btn btn-outline" onclick="showAuth('login')">Already a member? LOG IN</button>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD (shown when logged in) -->
+<div id="dashboardView" style="display:none;">
+  <div class="dashboard-wrap">
+    <div class="dash-welcome">
+      <div class="dash-ava" id="dashAva">🎨</div>
+      <div class="dash-info">
+        <div class="dash-name" id="dashName">ARTIST NAME</div>
+        <div class="dash-role" id="dashRoleLabel">🎌 NAKAMA · ARTIST</div>
+        <div class="dash-stats">
+          <div class="dash-stat"><div class="dash-stat-num">0</div><div class="dash-stat-label">Comics</div></div>
+          <div class="dash-stat"><div class="dash-stat-num">0</div><div class="dash-stat-label">Chapters</div></div>
+          <div class="dash-stat"><div class="dash-stat-num">0</div><div class="dash-stat-label">Reads</div></div>
+          <div class="dash-stat"><div class="dash-stat-num">0</div><div class="dash-stat-label">Followers</div></div>
+        </div>
+      </div>
+      <button class="btn btn-outline btn-sm" style="color:var(--white);border-color:rgba(255,255,255,0.3);position:relative;" onclick="doLogout()">LOG OUT</button>
+    </div>
+
+    <!-- ROLE ACTIVATION (shown if not artist yet) -->
+    <div id="artistActivateBox" style="display:none;">
+      <div class="activate-box">
+        <div class="activate-title">ACTIVATE <span>ARTIST</span> ROLE</div>
+        <p style="font-size:14px;font-weight:600;color:var(--text2);text-align:center;margin-bottom:16px;">Complete these requirements to unlock your Artist dashboard and start publishing</p>
+        <ul class="checklist" id="artistChecklist">
+          <li><span class="check" id="chk1">⬜</span> <div><strong>Verified email</strong><br><span style="color:var(--text3);font-size:12px;">Check your inbox for the verification link</span></div></li>
+          <li><span class="check" id="chk2">⬜</span> <div><strong>Phone number added</strong><br><span style="color:var(--text3);font-size:12px;">Required for Artist role activation</span></div></li>
+          <li><span class="check" id="chk3">⬜</span> <div><strong>Profile complete</strong><br><span style="color:var(--text3);font-size:12px;">Avatar, display name and bio required</span></div></li>
+          <li><span class="check" id="chk4">⬜</span> <div><strong>Agree to Artist Guidelines</strong><br><span style="color:var(--text3);font-size:12px;">Read and accept the content policy below</span></div></li>
+        </ul>
+        <div class="guidelines-box">
+          <strong>🎨 ARTIST COMMUNITY GUIDELINES</strong>
+          ✅ Original work only — comics and art you created yourself<br>
+          ✅ Fan art allowed but must be clearly tagged as "Fan Art"<br>
+          ✅ AI-assisted art allowed but must be tagged "AI-Assisted"<br>
+          ✅ No copyright infringement — do not copy others' original work<br>
+          ✅ Comic99 reserves the right to remove content that violates originality standards<br>
+          ✅ Repeat violations will result in Artist role suspension
+        </div>
+        <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;font-weight:700;color:var(--text2);cursor:pointer;margin-bottom:16px;">
+          <input type="checkbox" id="guidelinesCheck" onchange="checkArtistRequirements()" style="margin-top:3px;width:18px;height:18px;accent-color:var(--purple);">
+          I have read and agree to the Artist Community Guidelines
+        </label>
+        <button class="btn btn-purple" style="width:100%;" onclick="activateArtist()">🎨 ACTIVATE ARTIST ROLE</button>
+      </div>
+    </div>
+
+    <!-- ARTIST DASHBOARD CARDS -->
+    <div id="artistDashCards" style="display:none;">
+      <div class="dash-grid">
+        <div class="dash-card" onclick="toggleUpload()">
+          <div class="dash-card-icon">📤</div>
+          <div class="dash-card-title">UPLOAD COMIC</div>
+          <div class="dash-card-desc">Upload a new series or add chapters to existing ones.</div>
+        </div>
+        <div class="dash-card" onclick="showToast('📚 My Comics — coming soon!')">
+          <div class="dash-card-icon">📚</div>
+          <div class="dash-card-title">MY COMICS</div>
+          <div class="dash-card-desc">Manage all your published series, edit chapters, check stats.</div>
+        </div>
+        <div class="dash-card" onclick="showToast('🎨 Art Settings — coming soon!')">
+          <div class="dash-card-icon">🛡️</div>
+          <div class="dash-card-title">ART PROTECTION</div>
+          <div class="dash-card-desc">Set watermark preferences. Upload your custom watermark logo.</div>
+        </div>
+        <div class="dash-card" onclick="showToast('📊 Analytics — coming soon!')">
+          <div class="dash-card-icon">📊</div>
+          <div class="dash-card-title">ANALYTICS</div>
+          <div class="dash-card-desc">Reads, followers, comments. Track your growth over time.</div>
+        </div>
+        <div class="dash-card" onclick="showToast('👤 Edit Profile — coming soon!')">
+          <div class="dash-card-icon">👤</div>
+          <div class="dash-card-title">EDIT PROFILE</div>
+          <div class="dash-card-desc">Update your bio, avatar, links and artist display name.</div>
+        </div>
+        <div class="dash-card" onclick="showToast('⚙️ Settings — coming soon!')">
+          <div class="dash-card-icon">⚙️</div>
+          <div class="dash-card-title">SETTINGS</div>
+          <div class="dash-card-desc">Account, notifications, privacy and security settings.</div>
+        </div>
+      </div>
+
+      <!-- UPLOAD PANEL -->
+      <div class="upload-panel" id="uploadPanel">
+        <div class="upload-panel-header">
+          <span class="upload-panel-title">📤 UPLOAD NEW COMIC</span>
+          <button class="upload-panel-close" onclick="toggleUpload()">✕ CLOSE</button>
+        </div>
+        <div class="upload-steps">
+          <span class="upload-step-pill active">1 · Series Info</span>
+          <span class="upload-step-pill">2 · Format</span>
+          <span class="upload-step-pill">3 · Upload Pages</span>
+          <span class="upload-step-pill">4 · Art Protection</span>
+          <span class="upload-step-pill">5 · Publish</span>
+        </div>
+        <div class="upload-body">
+          <div class="form-group">
+            <label class="form-label">SERIES TITLE</label>
+            <input class="form-input" placeholder="e.g. Neon Blade Chronicles">
+          </div>
+          <div class="form-group">
+            <label class="form-label">DESCRIPTION</label>
+            <textarea class="form-textarea" placeholder="Tell readers what your comic is about..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">GENRE</label>
+            <select class="form-select">
+              <option>Action</option><option>Fantasy</option><option>Romance</option>
+              <option>Sci-Fi</option><option>Horror</option><option>Slice of Life</option>
+              <option>Mystery</option><option>Mythology</option><option>Comedy</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ART TYPE</label>
+            <select class="form-select">
+              <option value="original">🖌️ Original Art — my own creation</option>
+              <option value="ai">🤖 AI-Assisted — AI tools used in creation</option>
+              <option value="fanart">🎭 Fan Art — based on existing characters/IP</option>
+            </select>
+            <div class="form-hint">This will appear as a badge on your comic card. Be honest — this builds trust with readers.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">WATERMARK</label>
+            <select class="form-select" id="watermarkSelect">
+              <option value="none">No watermark</option>
+              <option value="comic99">Comic99 watermark (auto-applied)</option>
+              <option value="custom">My custom watermark (upload below)</option>
+            </select>
+          </div>
+          <div class="form-group" id="customWatermarkGroup" style="display:none;">
+            <label class="form-label">UPLOAD CUSTOM WATERMARK</label>
+            <input class="form-input" type="file" accept=".png,.svg" style="padding:8px;">
+            <div class="form-hint">PNG with transparent background recommended. Max 2MB.</div>
+          </div>
+          <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="btn btn-purple" onclick="showToast('✅ Series info saved! Next: Format')">NEXT: FORMAT →</button>
+            <button class="btn btn-outline btn-sm" onclick="toggleUpload()">CANCEL</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="auth-overlay" id="authOverlay" style="display:none;">
+  <div class="auth-box">
+    <div class="auth-header">
+      <img src="comic99-logo.png" alt="Comic99" class="auth-logo">
+      <div class="auth-title">COMIC<span>99</span></div>
+    </div>
+    <div class="auth-body">
+      <div class="auth-tabs" id="authTabs">
+        <button class="auth-tab active" onclick="switchAuthTab('register')">JOIN FREE</button>
+        <button class="auth-tab" onclick="switchAuthTab('login')">LOG IN</button>
+      </div>
+
+      <!-- REGISTER STEP 1: ROLE -->
+      <div class="auth-step active" id="authStep-role">
+        <p style="font-family:'Bangers',cursive;font-size:18px;letter-spacing:1.5px;color:var(--text);margin-bottom:12px;">CHOOSE YOUR ROLE</p>
+        <div class="role-cards">
+          <div class="role-card" onclick="selectRole(this,'nakama')" id="role-nakama">
+            <div class="role-icon">🎌</div>
+            <div class="role-name">NAKAMA</div>
+            <div class="role-desc">Member · Reader</div>
+          </div>
+          <div class="role-card" onclick="selectRole(this,'artist')" id="role-artist">
+            <div class="role-icon">🎨</div>
+            <div class="role-name">ARTIST</div>
+            <div class="role-desc">Comic Creator</div>
+          </div>
+          <div class="role-card" onclick="selectRole(this,'cosplayer')" id="role-cosplayer">
+            <div class="role-icon">📸</div>
+            <div class="role-name">COSPLAYER</div>
+            <div class="role-desc">Photo Social</div>
+          </div>
+        </div>
+        <p style="font-size:11px;font-weight:700;color:var(--text3);text-align:center;margin-bottom:12px;">You can activate more roles later from your dashboard</p>
+        <button class="btn btn-red" style="width:100%;" onclick="goRegisterStep2()">CONTINUE →</button>
+      </div>
+
+      <!-- REGISTER STEP 2: DETAILS -->
+      <div class="auth-step" id="authStep-details">
+        <div class="form-group">
+          <label class="form-label">DISPLAY NAME</label>
+          <input class="form-input" id="regName" placeholder="Your creator name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">EMAIL</label>
+          <input class="form-input" type="email" id="regEmail" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">PASSWORD</label>
+          <input class="form-input" type="password" id="regPass" placeholder="Min 8 characters">
+        </div>
+        <div class="form-group">
+          <label class="form-label">PHONE NUMBER <span style="color:var(--text3);font-size:11px;font-family:'Nunito',sans-serif;font-weight:700;">(optional)</span></label>
+          <input class="form-input" type="tel" id="regPhone" placeholder="+60 12-345 6789">
+          <div class="phone-hint">
+            <div class="phone-hint-icon">🎁</div>
+            <div class="phone-hint-text">
+              <strong>Unlock more features!</strong>
+              📢 Get notified on latest Comic99 news<br>
+              🎁 SMS alerts for Comic Goodies &amp; Special Gifts
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-red" style="width:100%;margin-bottom:12px;" onclick="doRegister()">🎌 CREATE MY ACCOUNT</button>
+        <div class="auth-divider"><span>or</span></div>
+        <a href="#" class="google-btn" onclick="doGoogleSignIn();return false;">
+          <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.8 2.4 30.2 0 24 0 14.7 0 6.7 5.5 2.6 13.5l7.8 6C12.4 13.4 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4 7.1-10 7.1-17z"/><path fill="#FBBC05" d="M10.4 28.5A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.9-4.5l-7.8-6A23.7 23.7 0 0 0 0 24c0 3.8.9 7.5 2.6 10.5l7.8-6z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2.1 1.4-4.7 2.3-7.7 2.3-6.2 0-11.6-3.9-13.6-9.5l-7.8 6C6.7 42.5 14.7 48 24 48z"/></svg>
+          CONTINUE WITH GOOGLE
+        </a>
+        <button style="margin-top:10px;background:none;border:none;font-size:12px;font-weight:700;color:var(--text3);cursor:pointer;" onclick="goRegisterStep1()">← BACK</button>
+      </div>
+
+      <!-- LOGIN -->
+      <div class="auth-step" id="authStep-login">
+        <div class="form-group">
+          <label class="form-label">EMAIL</label>
+          <input class="form-input" type="email" id="loginEmail" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">PASSWORD</label>
+          <input class="form-input" type="password" id="loginPass" placeholder="Your password">
+        </div>
+        <button class="btn btn-red" style="width:100%;margin-bottom:12px;" onclick="doLogin()">🔓 LOG IN</button>
+        <div class="auth-divider"><span>or</span></div>
+        <a href="#" class="google-btn" onclick="doGoogleSignIn();return false;">
+          <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.8 2.4 30.2 0 24 0 14.7 0 6.7 5.5 2.6 13.5l7.8 6C12.4 13.4 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4 7.1-10 7.1-17z"/><path fill="#FBBC05" d="M10.4 28.5A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.9-4.5l-7.8-6A23.7 23.7 0 0 0 0 24c0 3.8.9 7.5 2.6 10.5l7.8-6z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2.1 1.4-4.7 2.3-7.7 2.3-6.2 0-11.6-3.9-13.6-9.5l-7.8 6C6.7 42.5 14.7 48 24 48z"/></svg>
+          CONTINUE WITH GOOGLE
+        </a>
+        <div style="text-align:center;margin-top:12px;">
+          <button style="background:none;border:none;font-size:12px;font-weight:700;color:var(--red);cursor:pointer;" onclick="showToast('📧 Password reset email sent!')">Forgot password?</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="c99-footer">
+  <div class="footer-logo"><img src="comic99-logo.png" alt="Comic99"><span class="footer-logo-text">COMIC<span>99</span></span></div>
+  <div class="footer-tagline">Community · Creators · Cosplay</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a><a href="explore.html">Explore</a><a href="news.html">News</a>
+    <a href="cosplay.html">Cosplay</a><a href="community.html">Community</a>
+  </div>
+  <div class="footer-copy">© 2025 Comic99 · comic99.com</div>
+</footer>
+<div id="c99-toast"></div>
+
+<script>
+// ---- STATE ----
+let currentUser = null;
+let selectedRole = 'nakama';
+
+try {
+  const saved = localStorage.getItem('c99_user');
+  if(saved) currentUser = JSON.parse(saved);
+} catch(e){}
+
+// ---- INIT ----
+window.addEventListener('DOMContentLoaded', () => {
+  if(currentUser) showDashboard();
+  else showLanding();
+  document.getElementById('watermarkSelect').addEventListener('change', function(){
+    document.getElementById('customWatermarkGroup').style.display = this.value === 'custom' ? 'block' : 'none';
+  });
+});
+
+function showLanding() {
+  document.getElementById('landingView').style.display = 'block';
+  document.getElementById('dashboardView').style.display = 'none';
+}
+function showDashboard() {
+  document.getElementById('landingView').style.display = 'none';
+  document.getElementById('dashboardView').style.display = 'block';
+  document.getElementById('dashName').textContent = currentUser.name || 'ARTIST';
+  const roles = currentUser.roles || ['nakama'];
+  const roleLabels = roles.map(r => r === 'nakama' ? '🎌 NAKAMA' : r === 'artist' ? '🎨 ARTIST' : '📸 COSPLAYER');
+  document.getElementById('dashRoleLabel').textContent = roleLabels.join(' · ');
+  if(roles.includes('artist')) {
+    document.getElementById('artistActivateBox').style.display = 'none';
+    document.getElementById('artistDashCards').style.display = 'block';
+  } else {
+    document.getElementById('artistActivateBox').style.display = 'block';
+    document.getElementById('artistDashCards').style.display = 'none';
+    updateChecklist();
+  }
+}
+
+// ---- AUTH ----
+function showAuth(tab) {
+  document.getElementById('authOverlay').style.display = 'flex';
+  if(tab === 'login') switchAuthTab('login');
+  else switchAuthTab('register');
+}
+function switchAuthTab(tab) {
+  document.querySelectorAll('.auth-tab').forEach((t,i) => t.classList.toggle('active', (tab==='register' && i===0)||(tab==='login' && i===1)));
+  document.querySelectorAll('.auth-step').forEach(s => s.classList.remove('active'));
+  if(tab === 'login') document.getElementById('authStep-login').classList.add('active');
+  else document.getElementById('authStep-role').classList.add('active');
+}
+function selectRole(el, role) {
+  document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedRole = role;
+}
+function goRegisterStep2() {
+  document.getElementById('authStep-role').classList.remove('active');
+  document.getElementById('authStep-details').classList.add('active');
+}
+function goRegisterStep1() {
+  document.getElementById('authStep-details').classList.remove('active');
+  document.getElementById('authStep-role').classList.add('active');
+}
+function doRegister() {
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const pass = document.getElementById('regPass').value;
+  if(!name || !email || !pass) { showToast('⚠️ Please fill in all required fields'); return; }
+  if(pass.length < 8) { showToast('⚠️ Password must be at least 8 characters'); return; }
+  currentUser = { name, email, roles: [selectedRole === 'nakama' ? 'nakama' : 'nakama'], phone: document.getElementById('regPhone').value, emailVerified: false };
+  if(selectedRole !== 'nakama') currentUser.pendingRole = selectedRole;
+  try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
+  document.getElementById('authOverlay').style.display = 'none';
+  showDashboard();
+  showToast('🎌 Welcome to Comic99, ' + name + '!');
+}
+function doGoogleSignIn() {
+  currentUser = { name: 'Nakama User', email: 'user@gmail.com', roles: ['nakama'], googleSignIn: true, emailVerified: true };
+  try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
+  document.getElementById('authOverlay').style.display = 'none';
+  showDashboard();
+  showToast('✅ Signed in with Google!');
+}
+function doLogin() {
+  const email = document.getElementById('loginEmail').value.trim();
+  if(!email) { showToast('⚠️ Enter your email'); return; }
+  currentUser = { name: 'Comic99 User', email, roles: ['nakama', 'artist'] };
+  try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
+  document.getElementById('authOverlay').style.display = 'none';
+  showDashboard();
+  showToast('✅ Welcome back!');
+}
+function doLogout() {
+  currentUser = null;
+  try { localStorage.removeItem('c99_user'); } catch(e){}
+  showLanding();
+  showToast('👋 Logged out!');
+}
+
+// ---- ARTIST ACTIVATE ----
+function updateChecklist() {
+  if(!currentUser) return;
+  document.getElementById('chk1').textContent = currentUser.emailVerified ? '✅' : '⬜';
+  document.getElementById('chk2').textContent = currentUser.phone ? '✅' : '⬜';
+  document.getElementById('chk3').textContent = currentUser.name ? '✅' : '⬜';
+  document.getElementById('chk4').textContent = document.getElementById('guidelinesCheck')?.checked ? '✅' : '⬜';
+}
+function checkArtistRequirements() { updateChecklist(); }
+function activateArtist() {
+  if(!document.getElementById('guidelinesCheck').checked) { showToast('⚠️ Please agree to the Artist Guidelines first'); return; }
+  if(!currentUser.phone) { showToast('⚠️ Please add your phone number first'); return; }
+  currentUser.roles = [...(currentUser.roles||[]), 'artist'];
+  try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
+  showDashboard();
+  showToast('🎨 Artist role activated! Welcome, Creator!');
+}
+
+// ---- UPLOAD PANEL ----
+function toggleUpload() {
+  const panel = document.getElementById('uploadPanel');
+  panel.classList.toggle('open');
+  if(panel.classList.contains('open')) panel.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function showToast(msg) {
+  const t = document.getElementById('c99-toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>

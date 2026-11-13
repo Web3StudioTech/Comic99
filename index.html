@@ -4,10 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Comic99 — Asia Pacific's #1 Comic Creator Hub</title>
-<meta name="description" content="Comic99 — Community · Creators · Marketplace. Asia Pacific's #1 place to publish, read and discover comics.">
-<meta property="og:title" content="Comic99 — Asia Pacific's Comic Creator Hub">
-<meta property="og:url" content="https://comic99.com">
-<link rel="canonical" href="https://comic99.com">
+<link rel="icon" type="image/png" href="comic99-logo.png">
+<meta name="description" content="Comic99 — Community · Creators · Cosplay. Asia Pacific's #1 place to publish, read and discover comics.">
 <link rel="stylesheet" href="comic99-shared.css">
 <style>
 /* ---- HERO ---- */
@@ -21,32 +19,36 @@
   padding: 48px max(16px, env(safe-area-inset-left, 0px));
 }
 .hero-bg {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background:
     radial-gradient(ellipse 60% 80% at 70% 50%, rgba(107,47,217,0.3) 0%, transparent 70%),
     radial-gradient(ellipse 40% 60% at 20% 30%, rgba(232,25,44,0.25) 0%, transparent 60%);
 }
 .hero-halftone {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background-image: radial-gradient(circle, rgba(245,168,0,0.18) 1.5px, transparent 1.5px);
   background-size: 20px 20px;
 }
 .hero-speed {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: repeating-conic-gradient(
     from 0deg at 110% 50%,
     rgba(255,255,255,0.025) 0deg 1deg,
     transparent 1deg 5deg
   );
 }
-.hero-content {
+.hero-inner {
   position: relative;
   z-index: 2;
-  max-width: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 32px;
 }
+.hero-content { max-width: 560px; }
 .hero-eyebrow {
   font-family: 'Bangers', cursive;
   font-size: 14px;
@@ -90,10 +92,27 @@
   align-items: center;
   gap: 6px;
 }
-.hero-pillar::before {
-  content: '●';
-  color: var(--purple2);
-  font-size: 8px;
+.hero-pillar::before { content: '●'; color: var(--purple2); font-size: 8px; }
+.hero-logo-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-logo-img {
+  width: clamp(180px, 28vw, 320px);
+  height: clamp(180px, 28vw, 320px);
+  object-fit: contain;
+  filter: drop-shadow(0 0 32px rgba(232,25,44,0.5)) drop-shadow(0 0 64px rgba(107,47,217,0.3));
+  animation: heroFloat 3s ease-in-out infinite;
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+@media (max-width: 700px) {
+  .hero-logo-wrap { display: none; }
+  .hero-inner { flex-direction: column; align-items: flex-start; }
 }
 
 /* ---- MARQUEE ---- */
@@ -108,7 +127,7 @@
 .marquee-track {
   display: inline-flex;
   gap: 0;
-  animation: marquee 20s linear infinite;
+  animation: marquee 22s linear infinite;
 }
 .marquee-item {
   font-family: 'Bangers', cursive;
@@ -120,20 +139,6 @@
 }
 .marquee-item::after { content: '★'; margin-left: 24px; color: var(--gold); }
 @keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
-
-/* ---- SECTION ---- */
-.section {
-  padding: 48px max(16px, env(safe-area-inset-left, 0px));
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* ---- COMIC GRID ---- */
-.comic-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 20px;
-}
 
 /* ---- FEATURED BANNER ---- */
 .featured-banner {
@@ -161,8 +166,7 @@
 }
 .featured-cover::after {
   content: '';
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background-image: radial-gradient(circle, rgba(107,47,217,0.3) 1.5px, transparent 1.5px);
   background-size: 14px 14px;
 }
@@ -187,11 +191,7 @@
   color: var(--white);
   line-height: 1.1;
 }
-.featured-desc {
-  font-size: 13px;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.5;
-}
+.featured-desc { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.5; }
 .featured-tags { display: flex; gap: 8px; flex-wrap: wrap; }
 .tag {
   font-size: 11px;
@@ -205,6 +205,13 @@
 .tag-purple { background: var(--purple); color: var(--white); }
 .tag-gold { background: var(--gold); color: var(--ink); }
 .tag-red { background: var(--red); color: var(--white); }
+
+/* ---- COMIC GRID ---- */
+.comic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
 
 /* ---- STATS STRIP ---- */
 .stats-strip {
@@ -249,7 +256,7 @@
   border: 3px solid var(--ink);
   box-shadow: 5px 5px 0 var(--ink);
   border-radius: var(--radius);
-  padding: 24px 20px;
+  padding: 24px 20px 20px;
   text-align: center;
   position: relative;
 }
@@ -268,11 +275,18 @@
   display: flex; align-items: center; justify-content: center;
   box-shadow: 3px 3px 0 var(--ink);
 }
-.how-icon { font-size: 40px; margin: 12px 0 8px; }
+.how-badge-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin: 8px auto 12px;
+  display: block;
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.3));
+}
 .how-title {
   font-family: 'Bangers', cursive;
-  font-size: 20px;
-  letter-spacing: 1.5px;
+  font-size: 22px;
+  letter-spacing: 2px;
   margin-bottom: 8px;
 }
 .how-desc { font-size: 13px; color: var(--text2); line-height: 1.5; }
@@ -294,8 +308,7 @@
   font-size: clamp(36px, 7vw, 72px);
   letter-spacing: 4px;
   color: var(--white);
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
   margin-bottom: 8px;
   text-shadow: 4px 4px 0 var(--red);
 }
@@ -305,10 +318,10 @@
   font-size: 15px;
   font-weight: 600;
   margin-bottom: 28px;
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
 }
 .cta-band .btn { position: relative; z-index: 1; }
+.cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
 </style>
 </head>
 <body>
@@ -316,16 +329,20 @@
 <!-- NAV -->
 <nav class="c99-nav">
   <a href="index.html" class="nav-logo">
+    <img src="comic99-logo.png" alt="Comic99">
     <span class="nav-logo-text">COMIC<span>99</span></span>
   </a>
   <div class="nav-links">
     <a href="index.html" class="nav-link active">🏠 Home</a>
-    <a href="read.html" class="nav-link">📖 Read</a>
-    <a href="upload.html" class="nav-link">✏️ Create</a>
+    <a href="explore.html" class="nav-link">🔍 Explore</a>
+    <a href="news.html" class="nav-link">📰 News</a>
+    <a href="cosplay.html" class="nav-link">📸 Cosplay</a>
     <a href="community.html" class="nav-link">💬 Community</a>
-    <a href="marketplace.html" class="nav-link">🛒 Marketplace</a>
   </div>
-  <a href="upload.html" class="nav-cta">+ PUBLISH</a>
+  <div class="nav-auth">
+    <a href="artist.html" class="nav-login">LOG IN</a>
+    <a href="artist.html" class="nav-cta">JOIN FREE</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -333,18 +350,23 @@
   <div class="hero-bg"></div>
   <div class="hero-halftone"></div>
   <div class="hero-speed"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">🌏 Asia Pacific's #1 Comic Platform</div>
-    <h1 class="hero-title">YOUR<br>STORY<br><span>BEGINS</span><br>HERE</h1>
-    <p class="hero-sub">Publish your comics to the world. Connect with fans. Build your creator empire — zero friction, zero borders.</p>
-    <div class="hero-actions">
-      <a href="read.html" class="btn btn-gold">📖 START READING</a>
-      <a href="upload.html" class="btn btn-red">✏️ PUBLISH NOW</a>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🌏 Asia Pacific's #1 Comic Platform</div>
+      <h1 class="hero-title">YOUR<br>STORY<br><span>BEGINS</span><br>HERE</h1>
+      <p class="hero-sub">Publish your comics to the world. Connect with fans. Build your creator empire — zero friction, zero borders.</p>
+      <div class="hero-actions">
+        <a href="explore.html" class="btn btn-gold">🔍 EXPLORE COMICS</a>
+        <a href="artist.html" class="btn btn-red">✏️ START CREATING</a>
+      </div>
+      <div class="hero-pillars">
+        <span class="hero-pillar">Community</span>
+        <span class="hero-pillar">Creators</span>
+        <span class="hero-pillar">Cosplay</span>
+      </div>
     </div>
-    <div class="hero-pillars">
-      <span class="hero-pillar">Community</span>
-      <span class="hero-pillar">Creators</span>
-      <span class="hero-pillar">Marketplace</span>
+    <div class="hero-logo-wrap">
+      <img src="comic99-logo.png" alt="Comic99" class="hero-logo-img">
     </div>
   </div>
 </section>
@@ -356,12 +378,12 @@
     <span class="marquee-item">MANGA · WEBTOON · WESTERN · INDIE</span>
     <span class="marquee-item">FREE TO READ</span>
     <span class="marquee-item">ASIA PACIFIC CREATORS</span>
-    <span class="marquee-item">EARN OV TOKENS</span>
+    <span class="marquee-item">JOIN THE NAKAMA</span>
     <span class="marquee-item">NEW CHAPTERS DAILY</span>
     <span class="marquee-item">MANGA · WEBTOON · WESTERN · INDIE</span>
     <span class="marquee-item">FREE TO READ</span>
     <span class="marquee-item">ASIA PACIFIC CREATORS</span>
-    <span class="marquee-item">EARN OV TOKENS</span>
+    <span class="marquee-item">JOIN THE NAKAMA</span>
   </div>
 </div>
 
@@ -385,7 +407,7 @@
         <span class="tag tag-red">New</span>
       </div>
       <div style="margin-top:8px;">
-        <a href="read.html" class="btn btn-red btn-sm">▶ READ NOW</a>
+        <a href="explore.html" class="btn btn-red btn-sm">▶ READ NOW</a>
       </div>
     </div>
   </div>
@@ -394,55 +416,61 @@
   <div class="section-header" style="margin-top:8px;">
     <span class="section-title">📈 TRENDING</span>
     <div class="section-title-bar"></div>
-    <a href="read.html" style="font-family:'Bangers',cursive;font-size:14px;letter-spacing:1px;color:var(--red);text-decoration:none;">SEE ALL →</a>
+    <a href="explore.html" style="font-family:'Bangers',cursive;font-size:14px;letter-spacing:1px;color:var(--red);text-decoration:none;">SEE ALL →</a>
   </div>
   <div class="comic-grid">
-    <a href="read.html" class="comic-card">
+    <a href="explore.html" class="comic-card">
       <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#1A0A2E,#2E1A4E);">🌙</div>
       <div class="comic-card-body">
         <div class="comic-card-title">Shadow Realm</div>
         <div class="comic-card-meta">Ch. 24 · 48.2K reads</div>
         <span class="comic-card-genre">Fantasy</span>
+        <span class="comic-card-badge badge-original">Original</span>
       </div>
     </a>
-    <a href="read.html" class="comic-card">
+    <a href="explore.html" class="comic-card">
       <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#1A2A0A,#2A3A10);">🌿</div>
       <div class="comic-card-body">
         <div class="comic-card-title">Spirit Walker</div>
         <div class="comic-card-meta">Ch. 11 · 31.5K reads</div>
         <span class="comic-card-genre">Supernatural</span>
+        <span class="comic-card-badge badge-original">Original</span>
       </div>
     </a>
-    <a href="read.html" class="comic-card">
+    <a href="explore.html" class="comic-card">
       <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#2A0A0A,#3E1010);">🔥</div>
       <div class="comic-card-body">
         <div class="comic-card-title">Iron Fist Rising</div>
         <div class="comic-card-meta">Ch. 38 · 92.7K reads</div>
         <span class="comic-card-genre">Action</span>
+        <span class="comic-card-badge badge-fanart">Fan Art</span>
       </div>
     </a>
-    <a href="read.html" class="comic-card">
+    <a href="explore.html" class="comic-card">
       <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#0A1A2A,#102030);">🌊</div>
       <div class="comic-card-body">
         <div class="comic-card-title">Ocean Protocol</div>
         <div class="comic-card-meta">Ch. 7 · 19.3K reads</div>
         <span class="comic-card-genre">Sci-Fi</span>
+        <span class="comic-card-badge badge-ai">AI-Assisted</span>
       </div>
     </a>
-    <a href="read.html" class="comic-card">
+    <a href="explore.html" class="comic-card">
       <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#1A1A0A,#2E2A10);">⚡</div>
       <div class="comic-card-body">
         <div class="comic-card-title">Thunder God</div>
         <div class="comic-card-meta">Ch. 55 · 144K reads</div>
         <span class="comic-card-genre">Mythology</span>
+        <span class="comic-card-badge badge-original">Original</span>
       </div>
     </a>
-    <a href="read.html" class="comic-card">
+    <a href="explore.html" class="comic-card">
       <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#2A0A1A,#3E1030);">💎</div>
       <div class="comic-card-body">
         <div class="comic-card-title">Crystal Mage</div>
         <div class="comic-card-meta">Ch. 16 · 27.8K reads</div>
         <span class="comic-card-genre">Magic</span>
+        <span class="comic-card-badge badge-original">Original</span>
       </div>
     </a>
   </div>
@@ -457,7 +485,7 @@
     </div>
     <div class="stat-item">
       <div class="stat-num">340K+</div>
-      <div class="stat-label">Readers</div>
+      <div class="stat-label">Nakama</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">8,500+</div>
@@ -479,27 +507,27 @@
   <div class="how-grid">
     <div class="how-card">
       <div class="how-num">1</div>
-      <div class="how-icon">✏️</div>
+      <img src="badge-create.png" alt="Create" class="how-badge-img">
       <div class="how-title">CREATE</div>
       <div class="how-desc">Upload your pages in any format — JPG, PNG, WebP, ZIP or PDF. We auto-optimize for every device.</div>
     </div>
     <div class="how-card">
       <div class="how-num">2</div>
-      <div class="how-icon">🚀</div>
+      <img src="badge-publish.png" alt="Publish" class="how-badge-img">
       <div class="how-title">PUBLISH</div>
       <div class="how-desc">Go live instantly. Set your format: webtoon, manga, western or landscape. Free for all creators.</div>
     </div>
     <div class="how-card">
       <div class="how-num">3</div>
-      <div class="how-icon">🌏</div>
+      <img src="badge-grow.png" alt="Grow" class="how-badge-img">
       <div class="how-title">GROW</div>
-      <div class="how-desc">Reach readers across Asia Pacific. Build your fanbase, get tips via OV Tokens, join events.</div>
+      <div class="how-desc">Reach readers across Asia Pacific. Build your fanbase, connect with the Comic99 community.</div>
     </div>
     <div class="how-card">
       <div class="how-num">4</div>
-      <div class="how-icon">💰</div>
+      <img src="badge-earn.png" alt="Earn" class="how-badge-img">
       <div class="how-title">EARN</div>
-      <div class="how-desc">Monetize with reader tips, fan clubs, early access and marketplace sales. You keep 90%.</div>
+      <div class="how-desc">Monetize your art. Exclusive creator opportunities for top performers. Coming soon.</div>
     </div>
   </div>
 </div>
@@ -507,23 +535,30 @@
 <!-- CTA BAND -->
 <div class="cta-band">
   <div class="cta-band-bg"></div>
-  <h2>READY TO <span>PUBLISH?</span></h2>
+  <h2>READY TO <span>CREATE?</span></h2>
   <p>Join 12,000+ creators already sharing their stories on Comic99</p>
-  <a href="upload.html" class="btn btn-gold">✏️ START CREATING FREE</a>
+  <div class="cta-actions">
+    <a href="artist.html" class="btn btn-gold">🎨 BECOME AN ARTIST</a>
+    <a href="cosplay.html" class="btn btn-red">📸 JOIN AS COSPLAYER</a>
+  </div>
 </div>
 
 <!-- FOOTER -->
 <footer class="c99-footer">
-  <div class="footer-logo">COMIC<span>99</span></div>
-  <div class="footer-tagline">Community · Creators · Marketplace</div>
+  <div class="footer-logo">
+    <img src="comic99-logo.png" alt="Comic99">
+    <span class="footer-logo-text">COMIC<span>99</span></span>
+  </div>
+  <div class="footer-tagline">Community · Creators · Cosplay</div>
   <div class="footer-links">
     <a href="index.html">Home</a>
-    <a href="read.html">Read</a>
-    <a href="upload.html">Create</a>
+    <a href="explore.html">Explore</a>
+    <a href="news.html">News</a>
+    <a href="cosplay.html">Cosplay</a>
     <a href="community.html">Community</a>
-    <a href="marketplace.html">Marketplace</a>
+    <a href="artist.html">Artist</a>
   </div>
-  <div class="footer-copy">© 2024 Comic99 · Asia Pacific's Comic Creator Hub · comic99.com</div>
+  <div class="footer-copy">© 2025 Comic99 · Asia Pacific's Comic Creator Hub · comic99.com</div>
 </footer>
 
 <div id="c99-toast"></div>
