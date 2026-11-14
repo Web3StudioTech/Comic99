@@ -167,6 +167,10 @@
   font-size:13px; font-weight:600; color:var(--text2); line-height:1.6;
 }
 .guidelines-box strong { color:var(--purple); display:block; margin-bottom:6px; font-family:'Bangers',cursive; font-size:16px; letter-spacing:1px; }
+@keyframes legendaryGlow {
+  0%, 100% { opacity: 1; text-shadow: 0 0 8px rgba(245,168,0,0.6); }
+  50% { opacity: 0.75; text-shadow: 0 0 20px rgba(245,168,0,0.9), 0 0 40px rgba(245,168,0,0.4); }
+}
 </style>
 </head>
 <body>
@@ -178,21 +182,21 @@
   </a>
   <div class="nav-links">
     <a href="index.html" class="nav-link">🏠 Home</a>
-    <a href="explore.html" class="nav-link">🔍 Explore</a>
-    <a href="news.html" class="nav-link">📰 News</a>
-    <a href="cosplay.html" class="nav-link">📸 Cosplay</a>
-    <a href="community.html" class="nav-link">💬 Community</a>
+    <a href="explore.html" class="nav-link"><img src="EXPLORE.png" alt="Explore" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Explore</a>
+    <a href="news.html" class="nav-link"><img src="NEWS.png" alt="News" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> News</a>
+    <a href="cosplay.html" class="nav-link"><img src="COSPLAY.png" alt="Cosplay" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Cosplay</a>
+    <a href="community.html" class="nav-link"><img src="DISCUSS.png" alt="Community" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Community</a>
   </div>
   <div class="nav-auth">
     <a href="#" class="nav-login" onclick="showAuth('login');return false;">LOG IN</a>
-    <a href="#" class="nav-cta" onclick="showAuth('register');return false;">JOIN FREE</a>
+    <a href="#" class="nav-cta" onclick="showAuth('register');return false;">SIGN UP</a>
   </div>
 </nav>
 
 <!-- PAGE HERO -->
 <div class="page-hero" style="border-bottom-color:var(--purple2);">
   <div class="page-hero-bg" style="background-image:radial-gradient(circle,rgba(107,47,217,0.2) 1.5px,transparent 1.5px);"></div>
-  <h1>🎨 <span>ARTIST</span> HUB</h1>
+  <h1><img src="ART.png" alt="Artist" style="width:48px;height:48px;vertical-align:middle;margin-right:12px;object-fit:contain;"> <span>ARTIST</span> HUB</h1>
   <p>Register · Build your profile · Publish your comics to the world</p>
 </div>
 
@@ -238,10 +242,11 @@
 <div id="dashboardView" style="display:none;">
   <div class="dashboard-wrap">
     <div class="dash-welcome">
-      <div class="dash-ava" id="dashAva">🎨</div>
+      <div class="dash-ava" id="dashAva"><img src="ART.png" alt="Artist" style="width:100%;height:100%;object-fit:contain;border-radius:50%;"></div>
       <div class="dash-info">
         <div class="dash-name" id="dashName">ARTIST NAME</div>
         <div class="dash-role" id="dashRoleLabel">🎌 NAKAMA · ARTIST</div>
+        <div id="legendaryMsg" style="font-family:'Bangers',cursive;font-size:16px;letter-spacing:2px;color:var(--gold);margin-top:6px;animation:legendaryGlow 2s ease-in-out infinite;text-shadow:0 0 8px rgba(245,168,0,0.6);"></div>
         <div class="dash-stats">
           <div class="dash-stat"><div class="dash-stat-num">0</div><div class="dash-stat-label">Comics</div></div>
           <div class="dash-stat"><div class="dash-stat-num">0</div><div class="dash-stat-label">Chapters</div></div>
@@ -386,7 +391,7 @@
     </div>
     <div class="auth-body">
       <div class="auth-tabs" id="authTabs">
-        <button class="auth-tab active" onclick="switchAuthTab('register')">JOIN FREE</button>
+        <button class="auth-tab active" onclick="switchAuthTab('register')">SIGN UP</button>
         <button class="auth-tab" onclick="switchAuthTab('login')">LOG IN</button>
       </div>
 
@@ -400,7 +405,7 @@
             <div class="role-desc">Member · Reader</div>
           </div>
           <div class="role-card" onclick="selectRole(this,'artist')" id="role-artist">
-            <div class="role-icon">🎨</div>
+            <div class="role-icon"><img src="ART.png" alt="Artist" style="width:40px;height:40px;object-fit:contain;"></div>
             <div class="role-name">ARTIST</div>
             <div class="role-desc">Comic Creator</div>
           </div>
@@ -511,6 +516,18 @@ function showDashboard() {
   document.getElementById('landingView').style.display = 'none';
   document.getElementById('dashboardView').style.display = 'block';
   document.getElementById('dashName').textContent = currentUser.name || 'ARTIST';
+  // Typewriter effect for legendary message
+  const legendaryEl = document.getElementById('legendaryMsg');
+  if (legendaryEl) {
+    const msg = 'Be Legendary from day one. Start now.';
+    legendaryEl.textContent = '';
+    let i = 0;
+    const tw = setInterval(() => {
+      legendaryEl.textContent += msg[i];
+      i++;
+      if (i >= msg.length) clearInterval(tw);
+    }, 55);
+  }
   const roles = currentUser.roles || ['nakama'];
   const roleLabels = roles.map(r => r === 'nakama' ? '🎌 NAKAMA' : r === 'artist' ? '🎨 ARTIST' : '📸 COSPLAYER');
   document.getElementById('dashRoleLabel').textContent = roleLabels.join(' · ');

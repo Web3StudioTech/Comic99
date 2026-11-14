@@ -37,6 +37,10 @@
 .reader-bottombar { background:var(--ink); border-top:3px solid var(--gold); padding:10px 16px; display:flex; align-items:center; justify-content:center; gap:16px; flex-shrink:0; }
 .reader-btn { font-family:'Bangers',cursive; font-size:20px; letter-spacing:1px; color:var(--white); background:var(--ink2); border:2px solid #555; padding:6px 20px; border-radius:var(--radius); cursor:pointer; }
 .reader-pg { font-family:'Bangers',cursive; font-size:18px; color:var(--gold); letter-spacing:2px; }
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
 </style>
 </head>
 <body>
@@ -48,37 +52,42 @@
   </a>
   <div class="nav-links">
     <a href="index.html" class="nav-link">🏠 Home</a>
-    <a href="explore.html" class="nav-link active">🔍 Explore</a>
-    <a href="news.html" class="nav-link">📰 News</a>
-    <a href="cosplay.html" class="nav-link">📸 Cosplay</a>
-    <a href="community.html" class="nav-link">💬 Community</a>
+    <a href="explore.html" class="nav-link active"><img src="EXPLORE.png" alt="Explore" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Explore</a>
+    <a href="news.html" class="nav-link"><img src="NEWS.png" alt="News" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> News</a>
+    <a href="cosplay.html" class="nav-link"><img src="COSPLAY.png" alt="Cosplay" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Cosplay</a>
+    <a href="community.html" class="nav-link"><img src="DISCUSS.png" alt="Community" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Community</a>
   </div>
   <div class="nav-auth">
     <a href="artist.html" class="nav-login">LOG IN</a>
-    <a href="artist.html" class="nav-cta">JOIN FREE</a>
+    <a href="artist.html" class="nav-cta">SIGN UP</a>
   </div>
 </nav>
 
 <div class="page-hero">
   <div class="page-hero-bg"></div>
-  <h1>🔍 <span>EXPLORE</span> COMICS</h1>
-  <p>Discover thousands of free comics from Asia Pacific's best creators</p>
+  <div style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;">
+    <img src="EXPLORE.png" alt="Explore" style="width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 0 24px rgba(107,47,217,0.6));animation:heroFloat 3s ease-in-out infinite;">
+    <div>
+      <h1><span>EXPLORE</span> COMICS</h1>
+      <p>Discover thousands of free comics from creators around the globe</p>
+    </div>
+  </div>
 </div>
 
 <div class="filter-bar">
-  <button class="filter-btn active" onclick="setFilter(this,'all')">🔥 All</button>
-  <button class="filter-btn" onclick="setFilter(this,'manga')">📖 Manga</button>
-  <button class="filter-btn" onclick="setFilter(this,'webtoon')">📱 Webtoon</button>
-  <button class="filter-btn" onclick="setFilter(this,'western')">🦸 Western</button>
-  <button class="filter-btn" onclick="setFilter(this,'action')">⚔️ Action</button>
-  <button class="filter-btn" onclick="setFilter(this,'fantasy')">🧙 Fantasy</button>
-  <button class="filter-btn" onclick="setFilter(this,'romance')">💕 Romance</button>
-  <button class="filter-btn" onclick="setFilter(this,'scifi')">🚀 Sci-Fi</button>
-  <button class="filter-btn" onclick="setFilter(this,'horror')">👻 Horror</button>
-  <button class="filter-btn" onclick="setFilter(this,'slice')">🍜 Slice of Life</button>
-  <button class="filter-btn" onclick="setFilter(this,'original')">🎨 Original</button>
-  <button class="filter-btn" onclick="setFilter(this,'ai')">🤖 AI-Assisted</button>
-  <button class="filter-btn" onclick="setFilter(this,'fanart')">🎭 Fan Art</button>
+  <button class="filter-btn active" onclick="setFilter(this,'all')"><img src="ALL.png" alt="All" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> All</button>
+  <button class="filter-btn" onclick="setFilter(this,'manga')"><img src="MANGA.png" alt="Manga" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Manga</button>
+  <button class="filter-btn" onclick="setFilter(this,'webtoon')"><img src="WEBTOON.png" alt="Webtoon" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Webtoon</button>
+  <button class="filter-btn" onclick="setFilter(this,'western')"><img src="WESTERN.png" alt="Western" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Western</button>
+  <button class="filter-btn" onclick="setFilter(this,'action')"><img src="ACTION.png" alt="Action" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Action</button>
+  <button class="filter-btn" onclick="setFilter(this,'fantasy')"><img src="FANTASY.png" alt="Fantasy" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Fantasy</button>
+  <button class="filter-btn" onclick="setFilter(this,'romance')"><img src="ROMANCE.png" alt="Romance" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Romance</button>
+  <button class="filter-btn" onclick="setFilter(this,'scifi')"><img src="SCI-FI.png" alt="Sci-Fi" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Sci-Fi</button>
+  <button class="filter-btn" onclick="setFilter(this,'horror')"><img src="HORROR.png" alt="Horror" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Horror</button>
+  <button class="filter-btn" onclick="setFilter(this,'slice')"><img src="SLICES_OF_LIFE.png" alt="Slice of Life" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Slice of Life</button>
+  <button class="filter-btn" onclick="setFilter(this,'original')"><img src="ORIGINAL.png" alt="Original" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Original</button>
+  <button class="filter-btn" onclick="setFilter(this,'ai')"><img src="AI_ASSISTED.png" alt="AI-Assisted" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> AI-Assisted</button>
+  <button class="filter-btn" onclick="setFilter(this,'fanart')"><img src="FAN_ART.png" alt="Fan Art" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Fan Art</button>
 </div>
 
 <div class="section">
@@ -148,7 +157,7 @@
 
     <div>
       <div class="section-header">
-        <span class="section-title">🏆 TOP RANKED</span>
+        <span class="section-title"><img src="TROPHY.png" alt="Trophy" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> TOP RANKED</span>
         <div class="section-title-bar"></div>
       </div>
       <div class="rank-list">

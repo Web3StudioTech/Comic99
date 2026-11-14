@@ -258,6 +258,10 @@
 }
 .reg-step-dot.active { background: var(--red); }
 .reg-step-dot.done { background: var(--gold); }
+@keyframes cosplayFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
 </style>
 </head>
 <body>
@@ -269,21 +273,26 @@
   </a>
   <div class="nav-links">
     <a href="index.html" class="nav-link">🏠 Home</a>
-    <a href="explore.html" class="nav-link">🔍 Explore</a>
-    <a href="news.html" class="nav-link">📰 News</a>
-    <a href="cosplay.html" class="nav-link active">📸 Cosplay</a>
-    <a href="community.html" class="nav-link">💬 Community</a>
+    <a href="explore.html" class="nav-link"><img src="EXPLORE.png" alt="Explore" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Explore</a>
+    <a href="news.html" class="nav-link"><img src="NEWS.png" alt="News" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> News</a>
+    <a href="cosplay.html" class="nav-link active"><img src="COSPLAY.png" alt="Cosplay" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Cosplay</a>
+    <a href="community.html" class="nav-link"><img src="DISCUSS.png" alt="Community" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Community</a>
   </div>
   <div class="nav-auth">
     <a href="#" class="nav-login" onclick="showAuthModal();return false;">LOG IN</a>
-    <a href="#" class="nav-cta" onclick="showRegModal();return false;">JOIN FREE</a>
+    <a href="#" class="nav-cta" onclick="showRegModal();return false;">SIGN UP</a>
   </div>
 </nav>
 
 <div class="page-hero" style="border-bottom-color:#e91e8c;">
   <div class="page-hero-bg" style="background-image:radial-gradient(circle,rgba(233,30,140,0.2) 1.5px,transparent 1.5px);"></div>
-  <h1>📸 <span>COSPLAY</span> FEED</h1>
-  <p>Share your cosplay life · Follow creators · Be part of the nakama</p>
+  <div style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;">
+    <img src="COSPLAY.png" alt="Cosplay" style="width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 0 24px rgba(233,30,140,0.6));animation:cosplayFloat 3s ease-in-out infinite;">
+    <div>
+      <h1><span>COSPLAY</span> FEED</h1>
+      <p>Share your cosplay life · Follow creators · Be part of the nakama</p>
+    </div>
+  </div>
 </div>
 
 <!-- MAIN LAYOUT -->
@@ -671,7 +680,7 @@
       </div>
       <button class="btn btn-red" style="width:100%;" onclick="doLogin()">LOG IN</button>
       <div style="text-align:center;margin-top:12px;font-size:12px;font-weight:700;color:var(--text3);">
-        No account? <a href="#" style="color:var(--red);" onclick="document.getElementById('authModal').style.display='none';showRegModal()">JOIN FREE</a>
+        No account? <a href="#" style="color:var(--red);" onclick="document.getElementById('authModal').style.display='none';showRegModal()">SIGN UP</a>
       </div>
     </div>
   </div>
