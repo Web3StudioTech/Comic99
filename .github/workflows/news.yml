@@ -1,0 +1,62 @@
+name: Comic99 Auto News
+
+on:
+  schedule:
+    # 09:00 KL time (UTC+8) = 01:00 UTC
+    - cron: '0 1 * * *'
+    # 21:00 KL time (UTC+8) = 13:00 UTC
+    - cron: '0 13 * * *'
+  workflow_dispatch:
+    inputs:
+      max_new:
+        description: 'Max new stories to process (default 20)'
+        required: false
+        default: '20'
+
+concurrency:
+  group: news-update
+  cancel-in-progress: false
+
+jobs:
+  fetch-news:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install fast-xml-parser@4
+
+      - name: Fetch news and generate briefs
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NEWS_MAX_NEW: ${{ github.event.inputs.max_new || '20' }}
+          NEWS_PER_FEED: '8'
+          NEWS_KEEP: '80'
+          NEWS_MAX_AGE_HOURS: '72'
+          NEWS_MAX_IMAGE_LOOKUPS: '15'
+          NEWS_MODEL: 'claude-haiku-4-5'
+        run: node scripts/fetch-news.mjs
+
+      - name: Build RSS feed
+        run: node scripts/make-feed.mjs
+
+      - name: Commit and push
+        run: |
+          git config user.name  "Comic99 NewsBot"
+          git config user.email "newsbot@comic99.com"
+          git add news.json feed.xml
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Auto-update news [$(date -u +'%Y-%m-%d %H:%M UTC')]"
+          git pull --rebase origin main
+          git push origin main
