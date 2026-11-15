@@ -1,0 +1,60 @@
+name: Comic99 Social Auto-Post
+
+on:
+  schedule:
+    # 10:00 KL time (UTC+8) = 02:00 UTC  — runs AFTER the 09:00 news fetch
+    - cron: '0 2 * * *'
+    # 22:00 KL time (UTC+8) = 14:00 UTC  — runs AFTER the 21:00 news fetch
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (true = log only, no actual posts)'
+        required: false
+        default: 'true'
+
+concurrency:
+  group: social-post
+  cancel-in-progress: false
+
+jobs:
+  post-social:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Post to Facebook and Twitter/X
+        env:
+          # Facebook — add these in repo Settings > Secrets > Actions
+          FB_PAGE_ID:     ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN:  ${{ secrets.FB_PAGE_TOKEN }}
+          # Twitter/X — add these in repo Settings > Secrets > Actions
+          X_API_KEY:      ${{ secrets.X_API_KEY }}
+          X_API_SECRET:   ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET:${{ secrets.X_ACCESS_SECRET }}
+          # Controls
+          DRY_RUN:        ${{ github.event.inputs.dry_run || 'false' }}
+          MAX_PER_DAY:    '2'
+        run: node scripts/post-social.mjs
+
+      - name: Commit posted log
+        run: |
+          git config user.name  "Comic99 SocialBot"
+          git config user.email "socialbot@comic99.com"
+          git add posted.json
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "Update social post log [$(date -u +'%Y-%m-%d')]"
+          git pull --rebase origin main
+          git push origin main
