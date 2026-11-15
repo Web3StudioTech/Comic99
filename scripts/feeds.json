@@ -1,0 +1,17 @@
+[
+  { "name": "Crunchyroll News",         "url": "https://www.crunchyroll.com/news/rss" },
+  { "name": "Anime News Network",       "url": "https://www.animenewsnetwork.com/all/rss.xml?ann-edition=us" },
+  { "name": "MyAnimeList News",         "url": "https://myanimelist.net/rss/news.xml" },
+  { "name": "Comic Book Resources",     "url": "https://www.cbr.com/feed/" },
+  { "name": "Manga Plus News",          "url": "https://news.google.com/rss/search?q=manga+new+chapter+site:mangaplus.shueisha.co.jp&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "One Piece News",           "url": "https://news.google.com/rss/search?q=one+piece+manga+chapter&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Naruto Boruto News",       "url": "https://news.google.com/rss/search?q=boruto+naruto+manga+2026&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Jujutsu Kaisen News",      "url": "https://news.google.com/rss/search?q=jujutsu+kaisen+manga&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Demon Slayer News",        "url": "https://news.google.com/rss/search?q=demon+slayer+kimetsu+manga+anime&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Webtoon Creator News",     "url": "https://news.google.com/rss/search?q=webtoon+creator+comic&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Manhwa News",              "url": "https://news.google.com/rss/search?q=manhwa+korean+comic+new&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Asia Comic Events",        "url": "https://news.google.com/rss/search?q=anime+comic+convention+asia+2026&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Marvel DC News",           "url": "https://news.google.com/rss/search?q=marvel+dc+comics+new+series&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Cosplay News",             "url": "https://news.google.com/rss/search?q=cosplay+competition+world+2026&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Anime Adaptation News",    "url": "https://news.google.com/rss/search?q=manga+anime+adaptation+announced&hl=en-US&gl=US&ceid=US:en" }
+]
