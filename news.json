@@ -1,4 +1,167 @@
 {
-  "updated": "2025-01-01T00:00:00.000Z",
-  "items": []
+  "updated": "2026-11-17T21:26:59.074Z",
+  "skipped": [
+    "d7043c5274c64d8e",
+    "c18514a575c66d56",
+    "a975fbb7aa10d2b4",
+    "021b93afea719eff",
+    "7f4135fc0f632042",
+    "12ac08358b3ca231"
+  ],
+  "items": [
+    {
+      "id": "e37ede12c6bad11d",
+      "headline": "5 Strongest Bleach Characters Without a Bankai, Ranked",
+      "summary": "A Comic Book Resources ranking examines five of the most formidable fighters in Bleach who have demonstrated considerable power without ever obtaining Bankai abilities.",
+      "category": "Manga",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/strongest-bleach-characters-without-a-bankai-list/",
+      "published": "2026-11-17T21:15:12.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/bleach-manga.jpg",
+      "sourceTitle": "5 Strongest Bleach Characters Without a Bankai, Ranked"
+    },
+    {
+      "id": "eae6769fb1efc658",
+      "headline": "Star Wars Star Giancarlo Esposito's New Comic Is The Venetian",
+      "summary": "Actor Giancarlo Esposito, known for his Star Wars role, has released a new graphic novel titled The Venetian. The project marks his entry into the comics medium.",
+      "category": "Creator",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/star-wars-giancarlo-esposito-the-venetian/",
+      "published": "2026-11-17T21:00:12.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/07/qui-gon-jinn-1.avif",
+      "sourceTitle": "Star Wars Star Giancarlo Esposito's New Comic Is The Venetian"
+    },
+    {
+      "id": "209873f42bbeb87e",
+      "headline": "Yametai! ~Anata no Reset, Daikō Shimasu~ Manga Ends",
+      "summary": "The manga series Yametai! ~Anata no Reset, Daikō Shimasu~ by Jun Esaka and Kine Usuto has concluded. The work ran since its January debut.",
+      "category": "Manga",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-16/yametai-~anata-no-reset-daiko-shimasu~-manga-ends/.243881",
+      "published": "2026-11-17T21:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gO8/cms/news.10/243881/61z-pvg0dzl.sl1000.jpg",
+      "sourceTitle": "Yametai! ~Anata no Reset, Daikō Shimasu~ Manga Ends"
+    },
+    {
+      "id": "91824b0f6c769bcc",
+      "headline": "Black Clover Season 2 ‒ Episode 177",
+      "summary": "In the latest installment of Black Clover's second season, character developments continue as Noelle receives positive focus. The episode airs as part of the ongoing anime adaptation.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/review/black-clover-season-2/episode-177/.243822",
+      "published": "2026-11-17T20:30:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gGC/cms/episode-review.5/243822/black-clover-s2-e7.png.jpg",
+      "sourceTitle": "Black Clover Season 2 ‒ Episode 177"
+    },
+    {
+      "id": "19d453a88d70e0ba",
+      "headline": "Attack on Titan 3 Brings the Video Game Series to Its Brutal, Bloody Conclusion",
+      "summary": "The third installment in the Attack on Titan video game series concludes the franchise's interactive experience. Developers have delivered the final chapter following an eight-year development period.",
+      "category": "Adaptation",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/feature/2026-11-17/attack-on-titan-3-brings-the-video-game-series-to-its-brutal-bloody-conclusion/.243886",
+      "published": "2026-11-17T20:30:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHK/cms/feature/243886/attack-on-titan-3-pv1.png.jpg",
+      "sourceTitle": "Attack on Titan 3 Brings the Video Game Series to Its Brutal, Bloody Conclusion"
+    },
+    {
+      "id": "bb5eab6f25e6d02b",
+      "headline": "Initial D Brings Back Its Original '90s Racing Era in Major New Update",
+      "summary": "A PlayStation 5 DLC inspired by the racing series returns players to its 1990s setting. The update draws content from the beloved anime and manga franchise.",
+      "category": "Anime",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/initial-d-test-drive-unlimited-solar-crown-dlc/",
+      "published": "2026-11-17T20:21:43.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2025/12/initial-d-first-stage.jpg",
+      "sourceTitle": "Initial D Brings Back Its Original '90s Racing Era in Major New Update"
+    },
+    {
+      "id": "ccbef395515236bd",
+      "headline": "Battle Spirits [Re] Zekkai no Kū Anime Gets Light Novel",
+      "summary": "The Battle Spirits [Re] Zekkai no Kū anime is receiving a light novel adaptation written by Sei Shimotsuki, releasing December 17.",
+      "category": "Adaptation",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-17/battle-spirits-re-zekkai-no-ku-anime-gets-light-novel/.243914",
+      "published": "2026-11-17T20:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gFB/cms/news.9/240969/battle-spirits.jpg",
+      "sourceTitle": "Battle Spirits [Re] Zekkai no Kū Anime Gets Light Novel"
+    },
+    {
+      "id": "191dbcea9d3d0b1e",
+      "headline": "Overgeared ‒ Episode 8",
+      "summary": "In the eighth episode of Overgeared, the protagonist must navigate teamwork despite his preference for solitary gameplay.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/review/overgeared/episode-8/.243842",
+      "published": "2026-11-17T19:30:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gIG/cms/episode-review.5/243842/overgeared.png.jpg",
+      "sourceTitle": "Overgeared ‒ Episode 8"
+    },
+    {
+      "id": "0ad187066a199df5",
+      "headline": "HIDIVE Streams Giant Ojosama TV Anime This Winter; Screens N. American Premiere at Anime Frontier on December 4",
+      "summary": "Streaming service HIDIVE will air Giant Ojosama, an upcoming anime debuting January 2027. The series will have its North American premiere screening at Anime Frontier on December 4.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-17/hidive-streams-giant-ojosama-tv-anime-this-winter-screens-n-american-premiere-at-anime-frontier-on-/.243917",
+      "published": "2026-11-17T19:17:32.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gIJ/youtube/BwvGi1tz-rE.jpg",
+      "sourceTitle": "HIDIVE Streams Giant Ojosama TV Anime This Winter; Screens N. American Premiere at Anime Frontier on December 4"
+    },
+    {
+      "id": "9e641d58414a4cd7",
+      "headline": "Legendary Spider-Man Stories Have Been Chosen to Launch a Brand New Marvel Book Series - Comic Book Resources",
+      "summary": "Marvel is launching a new book series based on iconic Spider-Man storylines from its archive.",
+      "category": "Western",
+      "source": "Marvel DC News",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE90NVpYekw4VGl1c1hGQmFjTHU1RVM5ekFwTDByX3dYSHVGcW5OSTFEOWQ4emVyTFBuQkh0bGtwbW9zTmY1SmRINVYtOXNlWUtWNmYxY0RkQU4tNGltSjJpS3dUanY1S05vblZ2M1BMcHhYMmtS?oc=5",
+      "published": "2026-11-17T19:12:50.000Z",
+      "image": "",
+      "sourceTitle": "Legendary Spider-Man Stories Have Been Chosen to Launch a Brand New Marvel Book Series - Comic Book Resources"
+    },
+    {
+      "id": "e3d7b5bdbb857395",
+      "headline": "Marvel Comics has launched a new app to replace Marvel Unlimited - Good e-Reader",
+      "summary": "Marvel Comics has introduced a new application designed to succeed its existing subscription service. The platform shift represents a significant change in how the company delivers digital comics to readers.",
+      "category": "Industry",
+      "source": "Webtoon Creator News",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQWTU0anJtRmFaYUFGMHBFQ240YXpQT0pzLXVic3pmMjFkU3h5dDlDdVJiWVBlWmdWcFdGdTVtR0tzNmpSNE5LbWFicnBhMmlMUHB1ZDA3dUVla1k5OUM2cHQtV2F6TGk1S1RWdjJ2a0V1WGtXaHlxSDZBNjZtaVdZZ1BPM3YtVnNwNjZLcQ?oc=5",
+      "published": "2026-11-17T18:43:08.000Z",
+      "image": "",
+      "sourceTitle": "Marvel Comics has launched a new app to replace Marvel Unlimited - Good e-Reader"
+    },
+    {
+      "id": "8061a69834f60c0d",
+      "headline": "Magical Girl Raising Project restart ‒ Episode 7",
+      "summary": "Episode 7 of the Magical Girl Raising Project reboot provides clarity on the series' central mystery through a key conversation between Keek and Snow White.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/review/magical-girl-raising-project-restart/episode-7/.243887",
+      "published": "2026-11-17T18:30:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gGL/cms/episode-review.5/243887/mgrpr-07.jpg",
+      "sourceTitle": "Magical Girl Raising Project restart ‒ Episode 7"
+    },
+    {
+      "id": "ae714b95fedb29a0",
+      "headline": "First Look Images From Brand New Fan-Favorite Characters Leading DC Next Level in 2027 - Comic Book Resources",
+      "summary": "DC has revealed preview images of new beloved characters that will play a central role in the publisher's direction heading into 2027.",
+      "category": "Western",
+      "source": "Marvel DC News",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9vQTNxTHJqalBoVDAtcXVGUHRVb1BQc2kwSURqWGhLS2FZSVVFQW55cjJuMzdLUXZPT3Z4eHFjMzcwaGVYZVhPMTNIVWk2dEdheHMyeG93VVUyMEpTVkk4bUNnZndVMUllNmhLN3cySk53X2RQMzJxdnlhNA?oc=5",
+      "published": "2026-11-17T17:08:28.000Z",
+      "image": "",
+      "sourceTitle": "First Look Images From Brand New Fan-Favorite Characters Leading DC Next Level in 2027 - Comic Book Resources"
+    },
+    {
+      "id": "0d00321cbdc463f7",
+      "headline": "One Piece Chapter 1199 To Introduce Luffy's Full Monkey God Form - GameRant",
+      "summary": "Upcoming One Piece chapter 1199 is reported to showcase Luffy's complete transformation into his Monkey God form.",
+      "category": "Manga",
+      "source": "One Piece News",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1tR2swVEM2ajZlXy0xaDhjbnhIS1RHQ3VoZ2h6TW9lRlZZLVVtcUlybEN1Q0d6Q1JSbklaM2hud1FBWFZIbUxqdTBxUmY0T2FNbDdiOWI2XzhzMGh4Nm95R3VxUXhWU2RJVWRLUElnUTVEcm4wOG04WTV1WQ?oc=5",
+      "published": "2026-11-17T16:35:16.000Z",
+      "image": "",
+      "sourceTitle": "One Piece Chapter 1199 To Introduce Luffy's Full Monkey God Form - GameRant"
+    }
+  ]
 }
