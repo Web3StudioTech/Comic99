@@ -272,8 +272,8 @@
     <span class="nav-logo-text">COMIC<span>99</span></span>
   </a>
   <div class="nav-links">
-    <a href="index.html" class="nav-link">🏠 Home</a>
-    <a href="explore.html" class="nav-link"><img src="EXPLORE.png" alt="Explore" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Explore</a>
+    <a href="index.html" class="nav-link"><img src="HOME.png" alt="Home" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Home</a>
+    <a href="explore.html" class="nav-link"><img src="EXPLORE.png" alt="Comics" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Comics</a>
     <a href="news.html" class="nav-link"><img src="NEWS.png" alt="News" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> News</a>
     <a href="cosplay.html" class="nav-link active"><img src="COSPLAY.png" alt="Cosplay" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Cosplay</a>
     <a href="community.html" class="nav-link"><img src="DISCUSS.png" alt="Community" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Community</a>
@@ -287,7 +287,7 @@
 <div class="page-hero" style="border-bottom-color:#e91e8c;">
   <div class="page-hero-bg" style="background-image:radial-gradient(circle,rgba(233,30,140,0.2) 1.5px,transparent 1.5px);"></div>
   <div style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;">
-    <img src="COSPLAY.png" alt="Cosplay" style="width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 0 24px rgba(233,30,140,0.6));animation:cosplayFloat 3s ease-in-out infinite;">
+    <img src="ROLE.png" alt="Cosplay Role" style="width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 0 24px rgba(233,30,140,0.6));animation:cosplayFloat 3s ease-in-out infinite;" onerror="this.src='COSPLAY.png'">
     <div>
       <h1><span>COSPLAY</span> FEED</h1>
       <p>Share your cosplay life · Follow creators · Be part of the nakama</p>
@@ -583,6 +583,7 @@
       <div class="reg-step-dot active" id="regDot1"></div>
       <div class="reg-step-dot" id="regDot2"></div>
       <div class="reg-step-dot" id="regDot3"></div>
+      <div class="reg-step-dot" id="regDot4"></div>
     </div>
     <!-- Step 1 -->
     <div id="regStep1" class="modal-body">
@@ -625,9 +626,37 @@
         <button class="btn btn-red" style="flex:1;" onclick="goRegStep3()">VERIFY & CONTINUE →</button>
       </div>
     </div>
-    <!-- Step 3 -->
+    <!-- Step 3: Community Guidelines -->
     <div id="regStep3" class="modal-body" style="display:none;">
-      <p style="font-family:'Bangers',cursive;font-size:20px;letter-spacing:2px;margin-bottom:14px;">3 · COSPLAY PROFILE</p>
+      <p style="font-family:'Bangers',cursive;font-size:20px;letter-spacing:2px;margin-bottom:10px;">3 · COMMUNITY GUIDELINES</p>
+      <div style="max-height:240px;overflow-y:auto;border:2px solid var(--ink);border-radius:var(--radius);padding:14px;background:var(--panel2);margin-bottom:12px;font-size:12px;font-weight:700;color:var(--text2);line-height:1.8;">
+        <div style="font-family:'Bangers',cursive;font-size:14px;letter-spacing:1.5px;color:var(--red);margin-bottom:8px;">COSPLAY CONTENT RULES</div>
+        ✅ <strong>Real photos only</strong> — photos must be actual cosplay photos taken by or of you<br>
+        ✅ <strong>Age-appropriate</strong> — no NSFW, no nudity, no suggestive content<br>
+        ✅ <strong>Copyright respect</strong> — you may cosplay any character, but do not sell unlicensed costume replicas<br>
+        ✅ <strong>Proper credit</strong> — if reposting someone else's work, always credit the original creator<br>
+        <div style="font-family:'Bangers',cursive;font-size:14px;letter-spacing:1.5px;color:var(--red);margin:10px 0 8px;">CONDUCT RULES</div>
+        ✅ No harassment, bullying, or hate speech toward any person or group<br>
+        ✅ No body-shaming or negative comments about cosplay quality<br>
+        ✅ Constructive feedback only — this is a supportive community<br>
+        ✅ Do not share or repost others' private or unlisted photos without permission<br>
+        <div style="font-family:'Bangers',cursive;font-size:14px;letter-spacing:1.5px;color:var(--red);margin:10px 0 8px;">ENFORCEMENT</div>
+        ✅ Violations will result in content removal and possible account suspension<br>
+        ✅ Serious violations (harassment, NSFW) result in permanent removal<br>
+        ✅ Use the Report button to flag content that breaks these rules
+      </div>
+      <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;font-weight:700;color:var(--text2);cursor:pointer;margin-bottom:14px;">
+        <input type="checkbox" id="cosplayGuidelinesCheck" style="margin-top:2px;width:16px;height:16px;accent-color:var(--red);">
+        I have read and agree to the Cosplay Community Guidelines
+      </label>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-outline" onclick="goRegStep2()">← BACK</button>
+        <button class="btn btn-red" style="flex:1;" onclick="acceptCosplayGuidelines()">CONTINUE →</button>
+      </div>
+    </div>
+    <!-- Step 4: Profile -->
+    <div id="regStep4" class="modal-body" style="display:none;">
+      <p style="font-family:'Bangers',cursive;font-size:20px;letter-spacing:2px;margin-bottom:14px;">4 · COSPLAY PROFILE</p>
       <div class="form-group">
         <label class="form-label">COSPLAY HANDLE</label>
         <input class="form-input" id="regHandle" placeholder="@yourhandle">
@@ -655,7 +684,7 @@
         </select>
       </div>
       <div style="display:flex;gap:10px;">
-        <button class="btn btn-outline" onclick="goRegStep2()">← BACK</button>
+        <button class="btn btn-outline" onclick="goRegStep3()">← BACK</button>
         <button class="btn btn-red" style="flex:1;" onclick="completeRegistration()">🎉 CREATE MY COSPLAY!</button>
       </div>
     </div>
@@ -770,11 +799,11 @@ function hideRegModal() { document.getElementById('regModal').style.display = 'n
 function showAuthModal() { document.getElementById('authModal').style.display = 'flex'; }
 
 function setRegStep(step) {
-  [1,2,3].forEach(i => {
-    document.getElementById('regStep'+i).style.display = i === step ? 'block' : 'none';
+  [1,2,3,4].forEach(i => {
+    const el = document.getElementById('regStep'+i);
+    if(el) el.style.display = i === step ? 'block' : 'none';
     const dot = document.getElementById('regDot'+i);
-    dot.classList.toggle('active', i === step);
-    dot.classList.toggle('done', i < step);
+    if(dot) { dot.classList.toggle('active', i === step); dot.classList.toggle('done', i < step); }
   });
 }
 function goRegStep1() { setRegStep(1); }
@@ -788,6 +817,13 @@ function goRegStep3() {
   const phone = document.getElementById('regPhone').value.trim();
   if(!phone) { showToast('⚠️ Phone number is required for Cosplay profiles'); return; }
   setRegStep(3);
+}
+function acceptCosplayGuidelines() {
+  if(!document.getElementById('cosplayGuidelinesCheck').checked) {
+    showToast('⚠️ Please read and agree to the Community Guidelines to continue');
+    return;
+  }
+  setRegStep(4);
 }
 function completeRegistration() {
   currentUser = {

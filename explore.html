@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Explore Comics — Comic99</title>
+<title>Comics — Comic99</title>
 <link rel="icon" type="image/png" href="comic99-logo.png">
 <link rel="stylesheet" href="comic99-shared.css">
 <style>
@@ -51,8 +51,8 @@
     <span class="nav-logo-text">COMIC<span>99</span></span>
   </a>
   <div class="nav-links">
-    <a href="index.html" class="nav-link">🏠 Home</a>
-    <a href="explore.html" class="nav-link active"><img src="EXPLORE.png" alt="Explore" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Explore</a>
+    <a href="index.html" class="nav-link"><img src="HOME.png" alt="Home" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Home</a>
+    <a href="explore.html" class="nav-link active"><img src="EXPLORE.png" alt="Comics" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Comics</a>
     <a href="news.html" class="nav-link"><img src="NEWS.png" alt="News" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> News</a>
     <a href="cosplay.html" class="nav-link"><img src="COSPLAY.png" alt="Cosplay" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Cosplay</a>
     <a href="community.html" class="nav-link"><img src="DISCUSS.png" alt="Community" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Community</a>
@@ -68,26 +68,26 @@
   <div style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;">
     <img src="EXPLORE.png" alt="Explore" style="width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 0 24px rgba(107,47,217,0.6));animation:heroFloat 3s ease-in-out infinite;">
     <div>
-      <h1><span>EXPLORE</span> COMICS</h1>
+      <h1><span>COMICS</span></h1>
       <p>Discover thousands of free comics from creators around the globe</p>
     </div>
   </div>
 </div>
 
 <div class="filter-bar">
-  <button class="filter-btn active" onclick="setFilter(this,'all')"><img src="ALL.png" alt="All" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> All</button>
-  <button class="filter-btn" onclick="setFilter(this,'manga')"><img src="MANGA.png" alt="Manga" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Manga</button>
-  <button class="filter-btn" onclick="setFilter(this,'webtoon')"><img src="WEBTOON.png" alt="Webtoon" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Webtoon</button>
-  <button class="filter-btn" onclick="setFilter(this,'western')"><img src="WESTERN.png" alt="Western" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Western</button>
-  <button class="filter-btn" onclick="setFilter(this,'action')"><img src="ACTION.png" alt="Action" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Action</button>
-  <button class="filter-btn" onclick="setFilter(this,'fantasy')"><img src="FANTASY.png" alt="Fantasy" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Fantasy</button>
-  <button class="filter-btn" onclick="setFilter(this,'romance')"><img src="ROMANCE.png" alt="Romance" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Romance</button>
-  <button class="filter-btn" onclick="setFilter(this,'scifi')"><img src="SCI-FI.png" alt="Sci-Fi" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Sci-Fi</button>
-  <button class="filter-btn" onclick="setFilter(this,'horror')"><img src="HORROR.png" alt="Horror" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Horror</button>
-  <button class="filter-btn" onclick="setFilter(this,'slice')"><img src="SLICES_OF_LIFE.png" alt="Slice of Life" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Slice of Life</button>
-  <button class="filter-btn" onclick="setFilter(this,'original')"><img src="ORIGINAL.png" alt="Original" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Original</button>
-  <button class="filter-btn" onclick="setFilter(this,'ai')"><img src="AI_ASSISTED.png" alt="AI-Assisted" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> AI-Assisted</button>
-  <button class="filter-btn" onclick="setFilter(this,'fanart')"><img src="FAN_ART.png" alt="Fan Art" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Fan Art</button>
+  <button class="filter-btn active" onclick="setFilter(this,'all')"><img src="ALL.png" alt="All" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> All</button>
+  <button class="filter-btn" onclick="setFilter(this,'manga')"><img src="MANGA.png" alt="Manga" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Manga</button>
+  <button class="filter-btn" onclick="setFilter(this,'webtoon')"><img src="WEBTOON.png" alt="Webtoon" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Webtoon</button>
+  <button class="filter-btn" onclick="setFilter(this,'western')"><img src="WESTERN.png" alt="Western" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Western</button>
+  <button class="filter-btn" onclick="setFilter(this,'action')"><img src="ACTION.png" alt="Action" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Action</button>
+  <button class="filter-btn" onclick="setFilter(this,'fantasy')"><img src="FANTASY.png" alt="Fantasy" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Fantasy</button>
+  <button class="filter-btn" onclick="setFilter(this,'romance')"><img src="ROMANCE.png" alt="Romance" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Romance</button>
+  <button class="filter-btn" onclick="setFilter(this,'scifi')"><img src="SCI-FI.png" alt="Sci-Fi" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Sci-Fi</button>
+  <button class="filter-btn" onclick="setFilter(this,'horror')"><img src="HORROR.png" alt="Horror" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Horror</button>
+  <button class="filter-btn" onclick="setFilter(this,'slice')"><img src="SLICES_OF_LIFE.png" alt="Slice of Life" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Slice of Life</button>
+  <button class="filter-btn" onclick="setFilter(this,'original')"><img src="ORIGINAL.png" alt="Original" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Original</button>
+  <button class="filter-btn" onclick="setFilter(this,'ai')"><img src="AI_ASSISTED.png" alt="AI-Assisted" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> AI-Assisted</button>
+  <button class="filter-btn" onclick="setFilter(this,'fanart')"><img src="FAN_ART.png" alt="Fan Art" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Fan Art</button>
 </div>
 
 <div class="section">
@@ -157,7 +157,7 @@
 
     <div>
       <div class="section-header">
-        <span class="section-title"><img src="TROPHY.png" alt="Trophy" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;"> TOP RANKED</span>
+        <span class="section-title"><img src="TROPHY.png" alt="Trophy" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> TOP RANKED</span>
         <div class="section-title-bar"></div>
       </div>
       <div class="rank-list">
@@ -248,11 +248,31 @@
   </div>
 </div>
 
+<!-- CREATOR CTA BANNER -->
+<div style="background:var(--ink);border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);padding:40px max(16px,env(safe-area-inset-left,0px));text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(245,168,0,0.08) 1.5px,transparent 1.5px);background-size:20px 20px;"></div>
+  <div style="position:relative;z-index:1;max-width:700px;margin:0 auto;">
+    <div style="font-family:'Bangers',cursive;font-size:13px;letter-spacing:3px;color:var(--gold);margin-bottom:10px;">✦ YOUR COMICS COULD LIVE HERE ✦</div>
+    <h2 style="font-family:'Bangers',cursive;font-size:clamp(28px,5vw,52px);letter-spacing:3px;color:var(--white);margin-bottom:12px;text-shadow:4px 4px 0 var(--red);">BECOME A <span style="color:var(--gold);">COMIC ARTIST</span></h2>
+    <p style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:8px;">
+      Join thousands of creators publishing original manga, webtoons and comics to readers worldwide.<br>
+      Your story deserves an audience — start publishing today.
+    </p>
+    <p style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.45);margin-bottom:24px;">
+      📋 Before creating, please read our <a href="artist.html#guidelines" style="color:var(--gold);text-decoration:underline;">Community Guidelines</a> to ensure your content meets our standards.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="artist.html" class="btn btn-gold" style="font-size:16px;padding:12px 28px;">✏️ SIGN UP AS COMIC ARTIST</a>
+      <a href="artist.html" class="btn btn-outline" style="color:var(--white);border-color:rgba(255,255,255,0.3);font-size:16px;padding:12px 28px;">LOG IN</a>
+    </div>
+  </div>
+</div>
+
 <footer class="c99-footer">
   <div class="footer-logo"><img src="comic99-logo.png" alt="Comic99"><span class="footer-logo-text">COMIC<span>99</span></span></div>
   <div class="footer-tagline">Community · Creators · Cosplay</div>
   <div class="footer-links">
-    <a href="index.html">Home</a><a href="explore.html">Explore</a><a href="news.html">News</a>
+    <a href="index.html">Home</a><a href="explore.html">Comics</a><a href="news.html">News</a>
     <a href="cosplay.html">Cosplay</a><a href="community.html">Community</a><a href="artist.html">Artist</a>
   </div>
   <div class="footer-copy">© 2025 Comic99 · comic99.com</div>

@@ -181,8 +181,8 @@
     <span class="nav-logo-text">COMIC<span>99</span></span>
   </a>
   <div class="nav-links">
-    <a href="index.html" class="nav-link">🏠 Home</a>
-    <a href="explore.html" class="nav-link"><img src="EXPLORE.png" alt="Explore" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Explore</a>
+    <a href="index.html" class="nav-link"><img src="HOME.png" alt="Home" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Home</a>
+    <a href="explore.html" class="nav-link"><img src="EXPLORE.png" alt="Comics" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Comics</a>
     <a href="news.html" class="nav-link"><img src="NEWS.png" alt="News" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> News</a>
     <a href="cosplay.html" class="nav-link"><img src="COSPLAY.png" alt="Cosplay" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Cosplay</a>
     <a href="community.html" class="nav-link"><img src="DISCUSS.png" alt="Community" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Community</a>
@@ -204,6 +204,7 @@
 <div id="landingView">
   <div class="section" style="max-width:900px;">
     <div style="text-align:center;margin-bottom:40px;">
+      <img src="SIGNUP.png" alt="Sign Up" style="width:120px;height:120px;object-fit:contain;margin-bottom:16px;filter:drop-shadow(0 0 20px rgba(232,25,44,0.5));">
       <h2 style="font-family:'Bangers',cursive;font-size:clamp(32px,6vw,56px);letter-spacing:3px;color:var(--text);text-shadow:3px 3px 0 var(--red);margin-bottom:12px;">BECOME A COMIC99 <span style="color:var(--gold);">ARTIST</span></h2>
       <p style="font-size:16px;font-weight:600;color:var(--text2);max-width:560px;margin:0 auto;">Join thousands of creators. Publish your comics for free. Protect your art with watermarks. Reach fans across Asia Pacific.</p>
     </div>
@@ -283,6 +284,11 @@
         </label>
         <button class="btn btn-purple" style="width:100%;" onclick="activateArtist()">🎨 ACTIVATE ARTIST ROLE</button>
       </div>
+    </div>
+
+    <!-- ROLE ILLUSTRATION -->
+    <div style="text-align:center;margin-bottom:24px;">
+      <img src="ROLE.png" alt="Your Role" style="max-width:280px;width:100%;object-fit:contain;filter:drop-shadow(0 0 16px rgba(107,47,217,0.4));">
     </div>
 
     <!-- ARTIST DASHBOARD CARDS -->
@@ -386,7 +392,7 @@
 <div class="auth-overlay" id="authOverlay" style="display:none;">
   <div class="auth-box">
     <div class="auth-header">
-      <img src="comic99-logo.png" alt="Comic99" class="auth-logo">
+      <img src="SIGNUP.png" alt="Sign Up" class="auth-logo" onerror="this.src='comic99-logo.png'">
       <div class="auth-title">COMIC<span>99</span></div>
     </div>
     <div class="auth-body">
@@ -417,6 +423,37 @@
         </div>
         <p style="font-size:11px;font-weight:700;color:var(--text3);text-align:center;margin-bottom:12px;">You can activate more roles later from your dashboard</p>
         <button class="btn btn-red" style="width:100%;" onclick="goRegisterStep2()">CONTINUE →</button>
+      </div>
+
+      <!-- REGISTER STEP 1.5: COMMUNITY GUIDELINES (Nakama) -->
+      <div class="auth-step" id="authStep-guidelines">
+        <p style="font-family:'Bangers',cursive;font-size:18px;letter-spacing:1.5px;color:var(--text);margin-bottom:10px;">📜 COMMUNITY GUIDELINES</p>
+        <div style="max-height:260px;overflow-y:auto;border:2px solid var(--ink);border-radius:var(--radius);padding:14px;background:var(--panel2);margin-bottom:14px;font-size:12px;font-weight:700;color:var(--text2);line-height:1.8;">
+          <div style="font-family:'Bangers',cursive;font-size:15px;letter-spacing:1.5px;color:var(--red);margin-bottom:8px;">GENERAL CONDUCT</div>
+          ✅ Treat all community members with respect — zero tolerance for harassment or bullying<br>
+          ✅ No hate speech, discrimination, or personal attacks<br>
+          ✅ Spam, scams, or unsolicited promotions will result in account removal<br>
+          <div style="font-family:'Bangers',cursive;font-size:15px;letter-spacing:1.5px;color:var(--red);margin:10px 0 8px;">CONTENT RULES</div>
+          ✅ No NSFW or adult content of any kind<br>
+          ✅ No copyright infringement — do not post content you don't own rights to<br>
+          ✅ Clearly label fan-made content as "Fan Art" or "Fan Fiction"<br>
+          ✅ No misinformation, fake news, or misleading content<br>
+          <div style="font-family:'Bangers',cursive;font-size:15px;letter-spacing:1.5px;color:var(--red);margin:10px 0 8px;">SAFETY &amp; PRIVACY</div>
+          ✅ Do not share personal information of others without consent<br>
+          ✅ All users must be 13 years or older to join Comic99<br>
+          ✅ Report content that violates these guidelines using the Report button<br>
+          <div style="font-family:'Bangers',cursive;font-size:15px;letter-spacing:1.5px;color:var(--red);margin:10px 0 8px;">ENFORCEMENT</div>
+          ✅ First violation: warning issued<br>
+          ✅ Second violation: temporary suspension<br>
+          ✅ Serious violations: permanent account removal<br>
+          ✅ Comic99 reserves the right to remove any content at our discretion
+        </div>
+        <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;font-weight:700;color:var(--text2);cursor:pointer;margin-bottom:14px;">
+          <input type="checkbox" id="nakamaGuidelinesCheck" style="margin-top:3px;width:18px;height:18px;accent-color:var(--purple);">
+          I have read and agree to the Comic99 Community Guidelines
+        </label>
+        <button class="btn btn-red" style="width:100%;margin-bottom:8px;" onclick="acceptNakamaGuidelines()">CONTINUE →</button>
+        <button style="background:none;border:none;font-size:12px;font-weight:700;color:var(--text3);cursor:pointer;" onclick="goRegisterStep1()">← BACK</button>
       </div>
 
       <!-- REGISTER STEP 2: DETAILS -->
@@ -559,11 +596,21 @@ function selectRole(el, role) {
   selectedRole = role;
 }
 function goRegisterStep2() {
+  // Show community guidelines before details
   document.getElementById('authStep-role').classList.remove('active');
+  document.getElementById('authStep-guidelines').classList.add('active');
+}
+function acceptNakamaGuidelines() {
+  if(!document.getElementById('nakamaGuidelinesCheck').checked) {
+    showToast('⚠️ Please read and agree to the Community Guidelines to continue');
+    return;
+  }
+  document.getElementById('authStep-guidelines').classList.remove('active');
   document.getElementById('authStep-details').classList.add('active');
 }
 function goRegisterStep1() {
   document.getElementById('authStep-details').classList.remove('active');
+  document.getElementById('authStep-guidelines').classList.remove('active');
   document.getElementById('authStep-role').classList.add('active');
 }
 function doRegister() {

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Community — Comic99</title>
+<title>Nakama Forum — Comic99</title>
 <link rel="icon" type="image/png" href="comic99-logo.png">
 <link rel="stylesheet" href="comic99-shared.css">
 <style>
@@ -172,6 +172,56 @@
   box-shadow:2px 2px 0 var(--ink);
 }
 
+/* FORUM STYLES */
+.forum-category {
+  background: var(--panel); border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink); border-radius: var(--radius);
+  margin-bottom: 20px; overflow: hidden;
+}
+.forum-cat-header {
+  background: var(--ink); padding: 12px 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.forum-cat-title { font-family:'Bangers',cursive; font-size:20px; letter-spacing:2px; color:var(--gold); flex:1; }
+.forum-cat-count { font-size:11px; font-weight:700; color:rgba(255,255,255,0.5); letter-spacing:1px; }
+.forum-thread {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; border-bottom: 2px solid var(--panel2);
+  cursor: pointer; text-decoration: none; color: inherit;
+  transition: background 0.1s;
+}
+.forum-thread:last-child { border-bottom: none; }
+.forum-thread:hover { background: rgba(245,168,0,0.06); }
+.forum-thread-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 2px solid var(--ink); display: flex;
+  align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0; box-shadow: 2px 2px 0 var(--ink);
+}
+.forum-thread-info { flex: 1; min-width: 0; }
+.forum-thread-title {
+  font-family:'Bangers',cursive; font-size:16px; letter-spacing:1px;
+  color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  margin-bottom:3px;
+}
+.forum-thread:hover .forum-thread-title { color:var(--red); }
+.forum-thread-meta { font-size:11px; font-weight:700; color:var(--text3); }
+.forum-thread-stats {
+  display: flex; flex-direction: column; align-items: flex-end;
+  gap: 3px; flex-shrink: 0;
+}
+.forum-thread-replies { font-family:'Bangers',cursive; font-size:16px; color:var(--purple2); letter-spacing:1px; }
+.forum-thread-views { font-size:10px; font-weight:700; color:var(--text3); }
+.forum-hot { background:var(--red); color:var(--white); font-size:9px; font-weight:800; letter-spacing:1px; padding:1px 6px; border-radius:2px; border:2px solid var(--ink); vertical-align:middle; margin-left:6px; }
+.forum-pinned { background:var(--gold); color:var(--ink); font-size:9px; font-weight:800; letter-spacing:1px; padding:1px 6px; border-radius:2px; border:2px solid var(--ink); vertical-align:middle; margin-left:6px; }
+.forum-new-btn {
+  font-family:'Bangers',cursive; font-size:14px; letter-spacing:1.5px;
+  background:var(--red); color:var(--white); border:2px solid var(--ink);
+  border-radius:var(--radius); padding:6px 16px; cursor:pointer;
+  box-shadow:3px 3px 0 var(--ink); transition:transform 0.1s,box-shadow 0.1s;
+}
+.forum-new-btn:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--ink); }
+
 /* EVENT CARD */
 .event-card {
   background:var(--ink2);
@@ -207,8 +257,8 @@
     <span class="nav-logo-text">COMIC<span>99</span></span>
   </a>
   <div class="nav-links">
-    <a href="index.html" class="nav-link">🏠 Home</a>
-    <a href="explore.html" class="nav-link"><img src="EXPLORE.png" alt="Explore" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Explore</a>
+    <a href="index.html" class="nav-link"><img src="HOME.png" alt="Home" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Home</a>
+    <a href="explore.html" class="nav-link"><img src="EXPLORE.png" alt="Comics" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Comics</a>
     <a href="news.html" class="nav-link"><img src="NEWS.png" alt="News" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> News</a>
     <a href="cosplay.html" class="nav-link"><img src="COSPLAY.png" alt="Cosplay" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Cosplay</a>
     <a href="community.html" class="nav-link active"><img src="DISCUSS.png" alt="Community" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Community</a>
@@ -221,14 +271,14 @@
 
 <div class="page-hero">
   <div class="page-hero-bg"></div>
-  <h1><img src="DISCUSS.png" alt="Community" style="width:48px;height:48px;vertical-align:middle;margin-right:12px;object-fit:contain;"> <span>COMMUNITY</span> HUB</h1>
-  <p>Connect with creators and fans from across the globe</p>
+  <h1><img src="DISCUSS.png" alt="Forum" style="width:48px;height:48px;vertical-align:middle;margin-right:12px;object-fit:contain;"> <span>NAKAMA</span> FORUM</h1>
+  <p>Discuss comics, anime, cosplay and manga with fans from across the globe</p>
 </div>
 
 <!-- TABS -->
 <div class="tab-bar">
   <button class="tab-btn active" onclick="switchTab(this,'feed')"><img src="FEED.png" alt="Feed" style="width:22px;height:22px;vertical-align:middle;margin-right:5px;object-fit:contain;"> Feed</button>
-  <button class="tab-btn" onclick="switchTab(this,'fanart')"><img src="FAN_ART.png" alt="Fan Art" style="width:22px;height:22px;vertical-align:middle;margin-right:5px;object-fit:contain;"> Fan Art</button>
+  <button class="tab-btn" onclick="switchTab(this,'fanart')"><img src="FAN_ART.png" alt="Fan Art" style="width:22px;height:22px;vertical-align:middle;margin-right:5px;object-fit:contain;" onerror="this.style.display='none'"> Fan Art</button>
   <button class="tab-btn" onclick="switchTab(this,'discuss')"><img src="DISCUSS.png" alt="Discuss" style="width:22px;height:22px;vertical-align:middle;margin-right:5px;object-fit:contain;"> Discuss</button>
   <button class="tab-btn" onclick="switchTab(this,'events')"><img src="EVENT.png" alt="Events" style="width:22px;height:22px;vertical-align:middle;margin-right:5px;object-fit:contain;"> Events</button>
   <button class="tab-btn" onclick="switchTab(this,'cosplay')"><img src="COSPLAY.png" alt="Cosplay" style="width:22px;height:22px;vertical-align:middle;margin-right:5px;object-fit:contain;"> Cosplay</button>
@@ -336,11 +386,148 @@
       </div>
     </div>
 
-    <!-- DISCUSS TAB -->
+    <!-- DISCUSS TAB — FORUM -->
     <div class="tab-content" id="tab-discuss">
-      <div class="section-header"><span class="section-title">💬 DISCUSSIONS</span><div class="section-title-bar"></div></div>
-      <div class="post-card"><div class="post-header"><div class="post-avatar" style="background:var(--red);">🔥</div><div><div class="post-author">MangaTheory_PH</div><div class="post-time">3 hours ago</div></div></div><div class="post-body">Which art style do you prefer — Korean webtoon vertical scroll vs Japanese manga page-flip? I grew up on manga but honestly webtoons are just so much easier to read on mobile 📱</div><div class="post-actions"><button class="post-action-btn" onclick="likePost(this)">❤️ <span>341</span></button><button class="post-action-btn">💬 <span>87</span></button></div></div>
-      <div class="post-card"><div class="post-header"><div class="post-avatar" style="background:var(--purple);">🎭</div><div><div class="post-author">ComicCritic_SG</div><div class="post-time">6 hours ago</div></div></div><div class="post-body">Hot take: Southeast Asian comics don't get enough international attention. We have incredible stories, art, and mythology. Comic99 might actually change that — especially for MY, ID, PH and TH creators. What do you think? 🌏</div><div class="post-actions"><button class="post-action-btn" onclick="likePost(this)">❤️ <span>629</span></button><button class="post-action-btn">💬 <span>142</span></button></div></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+        <div style="font-family:'Bangers',cursive;font-size:22px;letter-spacing:2px;">💬 COMIC FORUM</div>
+        <button class="forum-new-btn" onclick="showToast('✍️ New thread — sign in first!')">+ NEW THREAD</button>
+      </div>
+
+      <!-- MANGA & ANIME -->
+      <div class="forum-category">
+        <div class="forum-cat-header">
+          <span style="font-size:22px;">📖</span>
+          <div class="forum-cat-title">MANGA &amp; ANIME</div>
+          <div class="forum-cat-count">128 THREADS · 4.2K REPLIES</div>
+        </div>
+        <a class="forum-thread" href="#" onclick="showToast('📖 Thread — coming soon!');return false;">
+          <div class="forum-thread-icon" style="background:linear-gradient(135deg,#E8192C,#8B0000);">🔥</div>
+          <div class="forum-thread-info">
+            <div class="forum-thread-title">One Piece Chapter 1120 — The Void Century FINALLY explained? <span class="forum-hot">HOT</span></div>
+            <div class="forum-thread-meta">by MangaKing_JP · 2 hours ago</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">847 💬</div><div class="forum-thread-views">12.4K views</div></div>
+        </a>
+        <a class="forum-thread" href="#" onclick="showToast('📖 Thread — coming soon!');return false;">
+          <div class="forum-thread-icon" style="background:linear-gradient(135deg,#F5A800,#8B6000);">⚡</div>
+          <div class="forum-thread-info">
+            <div class="forum-thread-title">Jujutsu Kaisen ending — was it satisfying? Spoilers inside <span class="forum-hot">HOT</span></div>
+            <div class="forum-thread-meta">by JJK_Fan_SG · 5 hours ago</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">521 💬</div><div class="forum-thread-views">8.7K views</div></div>
+        </a>
+        <a class="forum-thread" href="#" onclick="showToast('📖 Thread — coming soon!');return false;">
+          <div class="forum-thread-icon" style="background:linear-gradient(135deg,#6B2FD9,#3A1A80);">🌙</div>
+          <div class="forum-thread-info">
+            <div class="forum-thread-title">Top 10 manga of 2026 — your picks? <span class="forum-pinned">📌 PINNED</span></div>
+            <div class="forum-thread-meta">by Admin_Comic99 · Jan 1</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">312 💬</div><div class="forum-thread-views">5.1K views</div></div>
+        </a>
+        <a class="forum-thread" href="#" onclick="showToast('📖 Thread — coming soon!');return false;">
+          <div class="forum-thread-icon" style="background:linear-gradient(135deg,#0D0B08,#333);">⚔️</div>
+          <div class="forum-thread-info">
+            <div class="forum-thread-title">Demon Slayer vs Attack on Titan — which had the better finale?</div>
+            <div class="forum-thread-meta">by AnimeFan_ID · 1 day ago</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">193 💬</div><div class="forum-thread-views">3.2K views</div></div>
+        </a>
+      </div>
+
+      <!-- WEBTOON & MANHWA -->
+      <div class="forum-category">
+        <div class="forum-cat-header">
+          <span style="font-size:22px;">📱</span>
+          <div class="forum-cat-title">WEBTOON &amp; MANHWA</div>
+          <div class="forum-cat-count">94 THREADS · 2.8K REPLIES</div>
+        </div>
+        <a class="forum-thread" href="#" onclick="showToast('📱 Thread — coming soon!');return false;">
+          <div class="forum-thread-icon" style="background:linear-gradient(135deg,#E8192C,#B00E1A);">👑</div>
+          <div class="forum-thread-info">
+            <div class="forum-thread-title">Solo Leveling Season 2 — when is it coming? <span class="forum-hot">HOT</span></div>
+            <div class="forum-thread-meta">by WebtoonKing_KR · 3 hours ago</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">402 💬</div><div class="forum-thread-views">7.1K views</div></div>
+        </a>
+        <a class="forum-thread" href="#" onclick="showToast('📱 Thread — coming soon!');return false;">
+          <div class="forum-thread-icon" style="background:linear-gradient(135deg,#2A6B2F,#1A4A1F);">🌿</div>
+          <div class="forum-thread-info">
+            <div class="forum-thread-title">Best manhwa for beginners — recommend your top 5</div>
+            <div class="forum-thread-meta">by NewReader_MY · 8 hours ago</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">267 💬</div><div class="forum-thread-views">4.4K views</div></div>
+        </a>
+        <a class="forum-thread" href="#" onclick="showToast('📱 Thread — coming soon!');return false;">
+          <div class="forum-thread-icon" style="background:linear-gradient(135deg,#F5A800,#8B6000);">🗡️</div>
+          <div class="forum-thread-info">
+            <div class="forum-thread-title">Vertical scroll vs horizontal pages — which do you prefer?</div>
+            <div class="forum-thread-meta">by ComicDebate_PH · 1 day ago</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">341 💬</div><div class="forum-thread-views">5.6K views</div></div>
+        </a>
+      </div>
+
+      <!-- COSPLAY -->
+      <div class="forum-category">
+        <div class="forum-cat-header">
+          <span style="font-size:22px;">📸</span>
+          <div class="forum-cat-title">COSPLAY</div>
+          <div class="forum-cat-count">67 THREADS · 1.9K REPLIES</div>
+        </div>
+        <a class="forum-thread" href="#" onclick="showToast('📸 Thread — coming soon!');return false;">
+          <div class="forum-thread-icon" style="background:linear-gradient(135deg,#E91E8C,#8B0A50);">💃</div>
+          <div class="forum-thread-info">
+            <div class="forum-thread-title">Best cosplay materials for armor — EVA foam vs Worbla? <span class="forum-hot">HOT</span></div>
+            <div class="forum-thread-meta">by ArmorCrafter_TH · 4 hours ago</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">189 💬</div><div class="forum-thread-views">3.1K views</div></div>
+        </a>
+        <a class="forum-thread" href="#" onclick="showToast('📸 Thread — coming soon!');return false;">
+          <div class="forum-thread-icon" style="background:linear-gradient(135deg,#6B2FD9,#3A1A80);">🌸</div>
+          <div class="forum-thread-info">
+            <div class="forum-thread-title">Comic Fiesta 2026 KL — anyone attending? Meetup thread</div>
+            <div class="forum-thread-meta">by CosplayKL · 2 days ago</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">124 💬</div><div class="forum-thread-views">2.2K views</div></div>
+        </a>
+      </div>
+
+      <!-- CREATOR CORNER -->
+      <div class="forum-category">
+        <div class="forum-cat-header">
+          <span style="font-size:22px;">✏️</span>
+          <div class="forum-cat-title">CREATOR CORNER</div>
+          <div class="forum-cat-count">53 THREADS · 1.4K REPLIES</div>
+        </div>
+        <a class="forum-thread" href="#" onclick="showToast('✏️ Thread — coming soon!');return false;">
+          <div class="forum-thread-icon" style="background:linear-gradient(135deg,#F5A800,#8B6000);">🎨</div>
+          <div class="forum-thread-info">
+            <div class="forum-thread-title">What drawing tablet do you use? Recommendations for beginners <span class="forum-pinned">📌 PINNED</span></div>
+            <div class="forum-thread-meta">by Admin_Comic99 · Jan 5</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">298 💬</div><div class="forum-thread-views">6.8K views</div></div>
+        </a>
+        <a class="forum-thread" href="#" onclick="showToast('✏️ Thread — coming soon!');return false;">
+          <div class="forum-thread-icon" style="background:linear-gradient(135deg,#E8192C,#8B0000);">💡</div>
+          <div class="forum-thread-info">
+            <div class="forum-thread-title">How to grow your reader base from 0 — tips that actually work</div>
+            <div class="forum-thread-meta">by ProCreator_MY · 3 days ago</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">156 💬</div><div class="forum-thread-views">4.9K views</div></div>
+        </a>
+        <a class="forum-thread" href="#" onclick="showToast('✏️ Thread — coming soon!');return false;">
+          <div class="forum-thread-icon" style="background:linear-gradient(135deg,#0A1A2A,#102030);">🤖</div>
+          <div class="forum-thread-info">
+            <div class="forum-thread-title">AI-assisted art in comics — creative tool or cheating? Honest debate</div>
+            <div class="forum-thread-meta">by AIDebate_SG · 1 day ago</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">441 💬</div><div class="forum-thread-views">9.2K views</div></div>
+        </a>
+      </div>
+
+      <div style="text-align:center;padding:16px;font-size:13px;font-weight:700;color:var(--text3);">
+        Sign in to post a thread, reply, or vote · <a href="artist.html" style="color:var(--red);">SIGN UP FREE →</a>
+      </div>
     </div>
 
     <!-- EVENTS TAB -->
