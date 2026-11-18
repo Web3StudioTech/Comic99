@@ -3,9 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Comics — Comic99</title>
+<title>Read Comics & Manga — Comic99 | Discover Original & Fan Art Webtoons</title>
 <link rel="icon" type="image/png" href="comic99-logo.png">
+<!-- SEO_START -->
+<meta name="description" content="Discover thousands of original comics, manga, fan art, and AI-assisted webtoons on Comic99. Browse by genre: Action, Fantasy, Romance, Sci-Fi, Horror, Slice of Life. New chapters daily.">
+<meta name="keywords" content="read comics online, manga online, webtoon, original comics, fan art comics, anime comics, action manga, fantasy comic, romance webtoon, comic reader, digital manga, free comics">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Comic99">
+<meta name="theme-color" content="#E8192C">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Comic99">
+<meta property="og:title" content="Read Comics & Manga on Comic99">
+<meta property="og:description" content="Thousands of original comics, manga and webtoons. Browse Action, Fantasy, Romance, Sci-Fi, Horror and more. New chapters daily.">
+<meta property="og:image" content="https://web3studiotech.github.io/Comic99/comic99-og.png">
+<meta property="og:url" content="https://web3studiotech.github.io/Comic99/explore.html">
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Comic99Official">
+<meta name="twitter:creator" content="@Comic99Official">
+<meta name="twitter:title" content="Read Comics & Manga on Comic99">
+<meta name="twitter:description" content="Thousands of original comics, manga and webtoons. Browse Action, Fantasy, Romance, Sci-Fi, Horror and more. New chapters daily.">
+<meta name="twitter:image" content="https://web3studiotech.github.io/Comic99/comic99-og.png">
+<!-- Canonical -->
+<link rel="canonical" href="https://web3studiotech.github.io/Comic99/explore.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Explore Comics","url":"https://web3studiotech.github.io/Comic99/explore.html","description":"Discover original comics, manga, webtoons and fan art on Comic99","isPartOf":{"@type":"WebSite","name":"Comic99","url":"https://web3studiotech.github.io/Comic99/"}}</script>
+<!-- SEO_END -->
 <link rel="stylesheet" href="comic99-shared.css">
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="db-service.js"></script>
 <style>
 .comic-grid-lg { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 24px; }
 .rank-list { display: flex; flex-direction: column; gap: 12px; }
@@ -96,6 +123,13 @@
 <div class="section">
   <div class="two-col">
     <div>
+      <div id="realComicsSection" style="margin-bottom:20px;display:none;">
+        <div class="section-header">
+          <span class="section-title">🔥 COMMUNITY COMICS</span>
+          <div class="section-title-bar"></div>
+        </div>
+        <div class="comic-grid" id="realComicsGrid"></div>
+      </div>
       <div class="section-header">
         <span class="section-title">🆕 NEW RELEASES</span>
         <div class="section-title-bar"></div>
@@ -313,6 +347,44 @@ function showToast(msg) {
   t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3000);
 }
+
+// ---- REAL COMICS FROM FIRESTORE ----
+const GENRE_EMOJIS = { Action:'⚔️', Fantasy:'🐉', Romance:'🌸', Comedy:'😂', Horror:'💀', Sci_Fi:'🚀', Mystery:'🎭', Slice_of_Life:'☕', 'Sci-Fi':'🚀' };
+const ART_BADGE = { original:'badge-original', fanart:'badge-fanart', ai:'badge-ai' };
+const ART_LABEL = { original:'Original', fanart:'Fan Art', ai:'AI-Assisted' };
+const GRAD_PALETTES = [
+  'linear-gradient(135deg,#1A0A2E,#3A1A5E)',
+  'linear-gradient(135deg,#1A0A0A,#3A1010)',
+  'linear-gradient(135deg,#0A1A2A,#102840)',
+  'linear-gradient(135deg,#2A0A1A,#4A1A30)',
+  'linear-gradient(135deg,#0A2A0A,#1A4A1A)',
+  'linear-gradient(135deg,#1A1A0A,#3A3A10)',
+];
+
+async function loadRealComics() {
+  try {
+    // Query latest comics across all artists — using a collection group query
+    const db = firebase.firestore();
+    const snap = await db.collectionGroup('comics').orderBy('createdAt','desc').limit(8).get();
+    if (snap.empty) return;
+    const section = document.getElementById('realComicsSection');
+    const grid = document.getElementById('realComicsGrid');
+    const comics = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    grid.innerHTML = comics.map((c, i) => `
+      <div class="comic-card" onclick="showToast('📖 ${c.title||'Comic'} — reader coming soon!')">
+        <div class="comic-card-cover-placeholder" style="background:${GRAD_PALETTES[i%GRAD_PALETTES.length]};">${GENRE_EMOJIS[c.genre]||'📚'}</div>
+        <div class="comic-card-body">
+          <div class="comic-card-title">${c.title||'Untitled'}</div>
+          <div class="comic-card-meta">${c.chapters||0} chapters · ${c.reads||0} reads</div>
+          <span class="comic-card-genre">${c.genre||'General'}</span>
+          <span class="comic-card-badge ${ART_BADGE[c.artType]||'badge-original'}">${ART_LABEL[c.artType]||'Original'}</span>
+        </div>
+      </div>`).join('');
+    section.style.display = '';
+  } catch(e) { /* silent — static content still shows */ }
+}
+
+document.addEventListener('DOMContentLoaded', loadRealComics);
 </script>
 </body>
 </html>

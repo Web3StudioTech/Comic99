@@ -3,8 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Cosplay — Comic99</title>
+<title>Cosplay Community — Comic99 | Share Your Anime & Manga Cosplay Photos</title>
 <link rel="icon" type="image/png" href="comic99-logo.png">
+<!-- SEO_START -->
+<meta name="description" content="Join the Comic99 Cosplay community. Share your anime, manga, game and original cosplay photos. Connect with cosplayers worldwide, get likes, build your portfolio. Southeast Asia & global.">
+<meta name="keywords" content="cosplay, anime cosplay, manga cosplay, cosplay community, cosplay photos, cosplay platform, cosplay portfolio, anime costume, cosplay artist, cosplay contest, Asia cosplay, SEA cosplay">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Comic99">
+<meta name="theme-color" content="#E8192C">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Comic99">
+<meta property="og:title" content="Cosplay Community — Comic99">
+<meta property="og:description" content="Share anime, manga and original cosplay photos. Connect with cosplayers worldwide. Build your portfolio on Comic99.">
+<meta property="og:image" content="https://web3studiotech.github.io/Comic99/comic99-og.png">
+<meta property="og:url" content="https://web3studiotech.github.io/Comic99/cosplay.html">
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Comic99Official">
+<meta name="twitter:creator" content="@Comic99Official">
+<meta name="twitter:title" content="Cosplay Community — Comic99">
+<meta name="twitter:description" content="Share anime, manga and original cosplay photos. Connect with cosplayers worldwide. Build your portfolio on Comic99.">
+<meta name="twitter:image" content="https://web3studiotech.github.io/Comic99/comic99-og.png">
+<!-- Canonical -->
+<link rel="canonical" href="https://web3studiotech.github.io/Comic99/cosplay.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Cosplay Community","url":"https://web3studiotech.github.io/Comic99/cosplay.html","description":"Share anime, manga, game and original cosplay photos. Connect with cosplayers worldwide.","isPartOf":{"@type":"WebSite","name":"Comic99","url":"https://web3studiotech.github.io/Comic99/"}}</script>
+<!-- SEO_END -->
 <link rel="stylesheet" href="comic99-shared.css">
 <!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -539,6 +563,8 @@
         </div>
       </div>
     </div>
+    <!-- Real posts from Firestore load here -->
+    <div id="realPostsFeed"></div>
   </div>
 </div>
 
@@ -553,22 +579,32 @@
       <button class="modal-close" onclick="hideUploadModal()">✕</button>
     </div>
     <div class="modal-body">
-      <div class="drop-zone" onclick="showToast('📁 File picker — coming soon!')">
-        <div class="drop-zone-icon">🖼️</div>
-        <div class="drop-zone-text">DRAG & DROP PHOTO</div>
-        <div class="drop-zone-hint">or click to browse · JPG, PNG, WEBP · Max 10MB</div>
+      <!-- Photo preview + file input -->
+      <input type="file" id="cosplayFileInput" accept="image/*" style="display:none;" onchange="onCosplayFileSelected(this)">
+      <div class="drop-zone" id="dropZone" onclick="document.getElementById('cosplayFileInput').click()"
+        ondragover="event.preventDefault();this.style.borderColor='var(--purple)'"
+        ondragleave="this.style.borderColor=''"
+        ondrop="event.preventDefault();onCosplayFileDrop(event)">
+        <div id="dropPreview" style="display:none;width:100%;max-height:260px;overflow:hidden;border-radius:8px;">
+          <img id="dropPreviewImg" style="width:100%;object-fit:cover;border-radius:8px;">
+        </div>
+        <div id="dropPlaceholder">
+          <div class="drop-zone-icon">🖼️</div>
+          <div class="drop-zone-text">DRAG & DROP PHOTO</div>
+          <div class="drop-zone-hint">or click to browse · JPG, PNG, WEBP · Max 10MB</div>
+        </div>
       </div>
       <div class="form-group">
         <label class="form-label">CAPTION</label>
-        <textarea class="form-textarea" placeholder="Tell your story... tag friends with @name"></textarea>
+        <textarea class="form-textarea" id="postCaption" placeholder="Tell your story... tag characters, series, event..."></textarea>
       </div>
       <div class="form-group">
         <label class="form-label">TAGS</label>
-        <input class="form-input" placeholder="#OnePiece #Luffy #AnimeAsia">
+        <input class="form-input" id="postTags" placeholder="#OnePiece #Luffy #AnimeAsia #Cosplay">
       </div>
       <div class="form-group">
         <label class="form-label">PRIVACY</label>
-        <select class="form-select">
+        <select class="form-select" id="postPrivacy">
           <option value="public">🌐 Public — anyone can see this post</option>
           <option value="private">🔒 Private — approved followers only</option>
         </select>
@@ -836,9 +872,15 @@ window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('sidebarProfile').style.display = 'block';
     document.getElementById('sidebarJoinCta').style.display = 'none';
     document.getElementById('sideName').textContent = currentUser.name || 'COSPLAYER';
-    document.getElementById('sideHandle').textContent = '@' + (currentUser.name || 'cosplayer').toLowerCase().replace(/\s/g,'');
+    document.getElementById('sideHandle').textContent = currentUser.handle || ('@' + (currentUser.name || 'cosplayer').toLowerCase().replace(/\s/g,''));
+    if (currentUser.avatarUrl) {
+      const ava = document.getElementById('sideAva');
+      ava.innerHTML = '<img src="' + currentUser.avatarUrl + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.parentElement.textContent=\'📸\'">';
+      ava.style.padding = '0';
+    }
     document.querySelector('.nav-auth').innerHTML = '<button class="btn btn-outline btn-sm" style="color:var(--white);border-color:rgba(255,255,255,0.4);" onclick="doLogout()">LOG OUT</button>';
   }
+  loadCosplayFeed();
 });
 
 function showToast(msg) {
@@ -852,11 +894,21 @@ function switchTab(el, tab) {
   if(tab === 'following' && !currentUser) { showToast('⚠️ Log in to see posts from people you follow'); return; }
   showToast(tab === 'all' ? '📸 Showing all posts' : tab === 'following' ? '👥 Showing posts from your follows' : '🔥 Showing trending posts');
 }
-function toggleLike(btn) {
-  btn.classList.toggle('liked');
+async function toggleLike(btn) {
+  if (!currentUser || !currentUser.uid) { showToast('⚠️ Log in to like posts'); return; }
+  const postId = btn.closest('.post-card').dataset.postId;
   const countSpan = btn.querySelector('span');
+  // Optimistic UI update
+  btn.classList.toggle('liked');
   const count = parseInt(countSpan.textContent) || 0;
   countSpan.textContent = btn.classList.contains('liked') ? count + 1 : count - 1;
+  if (postId) {
+    try { await toggleLikePost(postId, currentUser.uid); } catch(e) {
+      // Revert on error
+      btn.classList.toggle('liked');
+      countSpan.textContent = count;
+    }
+  }
 }
 function toggleComments(btn) {
   const card = btn.closest('.post-card');
@@ -886,9 +938,89 @@ function showUploadModal() {
   document.getElementById('uploadModal').style.display = 'flex';
 }
 function hideUploadModal() { document.getElementById('uploadModal').style.display = 'none'; }
-function submitPost() {
-  hideUploadModal();
-  showToast('📸 Post shared with the nakama!');
+let _cosplayUploadFile = null;
+function onCosplayFileSelected(input) {
+  const file = input.files[0]; if (!file) return;
+  if (file.size > 10 * 1024 * 1024) { showToast('⚠️ Max 10MB'); return; }
+  _cosplayUploadFile = file;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('dropPreviewImg').src = e.target.result;
+    document.getElementById('dropPreview').style.display = 'block';
+    document.getElementById('dropPlaceholder').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+function onCosplayFileDrop(e) {
+  const file = e.dataTransfer.files[0]; if (!file) return;
+  document.getElementById('cosplayFileInput').files = e.dataTransfer.files;
+  onCosplayFileSelected(document.getElementById('cosplayFileInput'));
+}
+async function submitPost() {
+  if (!currentUser || !currentUser.uid) { showToast('⚠️ Please log in first'); return; }
+  if (!_cosplayUploadFile) { showToast('⚠️ Please select a photo'); return; }
+  const caption = document.getElementById('postCaption').value.trim();
+  const tags = document.getElementById('postTags').value.trim();
+  const privacy = document.getElementById('postPrivacy').value;
+  try {
+    showToast('⏳ Uploading photo...');
+    const postId = 'post_' + Date.now();
+    const imageUrl = await uploadCosplayPhoto(currentUser.uid, _cosplayUploadFile, postId);
+    showToast('⏳ Saving post...');
+    await createCosplayPost(currentUser.uid, { imageUrl, caption, tags, privacy });
+    _cosplayUploadFile = null;
+    document.getElementById('dropPreview').style.display = 'none';
+    document.getElementById('dropPlaceholder').style.display = 'block';
+    document.getElementById('postCaption').value = '';
+    document.getElementById('postTags').value = '';
+    hideUploadModal();
+    showToast('📸 Post shared with the nakama!');
+    loadCosplayFeed();
+  } catch(err) {
+    console.error('Post error:', err);
+    showToast('❌ Upload failed: ' + (err.message || 'Try again'));
+  }
+}
+async function loadCosplayFeed() {
+  try {
+    const posts = await getCosplayPosts(20);
+    if (!posts.length) return; // keep sample posts if empty
+    const feedContainer = document.getElementById('realPostsFeed');
+    if (!feedContainer) return;
+    feedContainer.innerHTML = posts.map(post => {
+      const timeStr = post.createdAt ? timeAgoFromTimestamp(post.createdAt) : 'recently';
+      return `<div class="post-card" data-post-id="${post.id}">
+        <div class="post-header">
+          <div class="post-ava" style="background:linear-gradient(135deg,var(--purple),var(--red));">${(post.authorName||'?')[0].toUpperCase()}</div>
+          <div class="post-meta">
+            <div class="post-username">${post.authorName || 'Cosplayer'}</div>
+            <div class="post-time">${timeStr}</div>
+          </div>
+        </div>
+        ${post.imageUrl ? `<div class="post-image-wrap"><img src="${post.imageUrl}" alt="${post.caption||'Cosplay'}" style="width:100%;border-radius:8px;display:block;" loading="lazy"></div>` : ''}
+        ${post.caption ? `<div class="post-caption">${post.caption}</div>` : ''}
+        <div class="post-actions">
+          <button class="post-action-btn" onclick="toggleLike(this)">❤️ <span>${post.likes||0}</span></button>
+          <button class="post-action-btn" onclick="toggleComments(this)">💬 <span>${post.comments||0}</span></button>
+          <button class="post-action-btn" onclick="sharePost('${post.id}')">🔗</button>
+        </div>
+        <div class="comments-section" style="display:none;padding:12px 0 0;"></div>
+      </div>`;
+    }).join('');
+  } catch(e) { console.warn('Feed load error:', e); }
+}
+function timeAgoFromTimestamp(ts) {
+  const ms = ts && ts.toDate ? ts.toDate().getTime() : new Date(ts).getTime();
+  const diff = Date.now() - ms;
+  if (diff < 60000) return 'just now';
+  if (diff < 3600000) return Math.floor(diff/60000) + 'm ago';
+  if (diff < 86400000) return Math.floor(diff/3600000) + 'h ago';
+  return Math.floor(diff/86400000) + 'd ago';
+}
+function sharePost(postId) {
+  const url = location.href.split('#')[0] + '#post-' + postId;
+  try { navigator.clipboard.writeText(url); } catch(e) {}
+  showToast('🔗 Link copied!');
 }
 
 // REG FLOW

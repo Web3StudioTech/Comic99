@@ -3,8 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Artist Hub — Comic99</title>
+<title>Comic Artist Dashboard — Comic99 | Publish Your Manga & Webtoon</title>
 <link rel="icon" type="image/png" href="comic99-logo.png">
+<!-- SEO_START -->
+<meta name="description" content="Become a comic artist on Comic99. Publish original manga, webtoons and fan art. Build your Nakama fanbase, track analytics, and monetize your art. Free creator account for all artists.">
+<meta name="keywords" content="comic creator, manga artist, publish manga, webtoon creator, comic artist platform, digital artist, publish comics online, art portfolio, manga creator, anime artist, original manga, webcomic publisher">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Comic99">
+<meta name="theme-color" content="#E8192C">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Comic99">
+<meta property="og:title" content="Comic Artist Dashboard — Comic99">
+<meta property="og:description" content="Publish original manga, webtoons and fan art. Build your fanbase and track analytics. Free for all comic artists.">
+<meta property="og:image" content="https://web3studiotech.github.io/Comic99/comic99-og.png">
+<meta property="og:url" content="https://web3studiotech.github.io/Comic99/artist.html">
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Comic99Official">
+<meta name="twitter:creator" content="@Comic99Official">
+<meta name="twitter:title" content="Comic Artist Dashboard — Comic99">
+<meta name="twitter:description" content="Publish original manga, webtoons and fan art. Build your fanbase and track analytics. Free for all comic artists.">
+<meta name="twitter:image" content="https://web3studiotech.github.io/Comic99/comic99-og.png">
+<!-- Canonical -->
+<link rel="canonical" href="https://web3studiotech.github.io/Comic99/artist.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Comic Artist Dashboard","url":"https://web3studiotech.github.io/Comic99/artist.html","description":"Publish manga and comics, build fanbase, track analytics on Comic99","isPartOf":{"@type":"WebSite","name":"Comic99","url":"https://web3studiotech.github.io/Comic99/"}}</script>
+<!-- SEO_END -->
 <link rel="stylesheet" href="comic99-shared.css">
 <!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -308,17 +332,17 @@
           <div class="dash-card-title">UPLOAD COMIC</div>
           <div class="dash-card-desc">Upload a new series or add chapters to existing ones.</div>
         </div>
-        <div class="dash-card" onclick="showToast('📚 My Comics — coming soon!')">
+        <div class="dash-card" onclick="openMyComics()">
           <div class="dash-card-icon">📚</div>
           <div class="dash-card-title">MY COMICS</div>
           <div class="dash-card-desc">Manage all your published series, edit chapters, check stats.</div>
         </div>
-        <div class="dash-card" onclick="showToast('🎨 Art Settings — coming soon!')">
+        <div class="dash-card" onclick="showToast('🛡️ Art Protection settings coming soon!')">
           <div class="dash-card-icon">🛡️</div>
           <div class="dash-card-title">ART PROTECTION</div>
           <div class="dash-card-desc">Set watermark preferences. Upload your custom watermark logo.</div>
         </div>
-        <div class="dash-card" onclick="showToast('📊 Analytics — coming soon!')">
+        <div class="dash-card" onclick="openAnalytics()">
           <div class="dash-card-icon">📊</div>
           <div class="dash-card-title">ANALYTICS</div>
           <div class="dash-card-desc">Reads, followers, comments. Track your growth over time.</div>
@@ -350,16 +374,16 @@
         </div>
         <div class="upload-body">
           <div class="form-group">
-            <label class="form-label">SERIES TITLE</label>
-            <input class="form-input" placeholder="e.g. Neon Blade Chronicles">
+            <label class="form-label">SERIES TITLE <span style="color:var(--red);">*</span></label>
+            <input class="form-input" id="uploadTitle" placeholder="e.g. Neon Blade Chronicles">
           </div>
           <div class="form-group">
             <label class="form-label">DESCRIPTION</label>
-            <textarea class="form-textarea" placeholder="Tell readers what your comic is about..."></textarea>
+            <textarea class="form-textarea" id="uploadDesc" placeholder="Tell readers what your comic is about..."></textarea>
           </div>
           <div class="form-group">
             <label class="form-label">GENRE</label>
-            <select class="form-select">
+            <select class="form-select" id="uploadGenre">
               <option>Action</option><option>Fantasy</option><option>Romance</option>
               <option>Sci-Fi</option><option>Horror</option><option>Slice of Life</option>
               <option>Mystery</option><option>Mythology</option><option>Comedy</option>
@@ -397,7 +421,7 @@
             <div class="form-hint">PNG with transparent background recommended. Max 2MB.</div>
           </div>
           <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
-            <button class="btn btn-purple" onclick="showToast('✅ Series info saved! Next: Format')">NEXT: FORMAT →</button>
+            <button class="btn btn-purple" onclick="saveComicSeries()">💾 SAVE SERIES →</button>
             <button class="btn btn-outline btn-sm" onclick="toggleUpload()">CANCEL</button>
           </div>
         </div>
@@ -663,6 +687,28 @@
   </div>
   <div class="footer-copy">© 2025 Comic99 · comic99.com</div>
 </footer>
+<!-- MY COMICS MODAL -->
+<div id="myComicsModal" style="display:none;position:fixed;inset:0;background:rgba(13,11,8,0.92);z-index:400;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto;">
+  <div style="background:var(--panel);border:3px solid var(--ink);border-radius:16px;width:100%;max-width:520px;padding:24px;margin:auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div style="font-family:'Bangers',cursive;font-size:22px;letter-spacing:2px;">📚 MY COMICS</div>
+      <button onclick="document.getElementById('myComicsModal').style.display='none'" style="background:none;border:2px solid var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer;font-weight:700;">✕</button>
+    </div>
+    <div id="myComicsList"></div>
+  </div>
+</div>
+
+<!-- ANALYTICS MODAL -->
+<div id="analyticsModal" style="display:none;position:fixed;inset:0;background:rgba(13,11,8,0.92);z-index:400;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto;">
+  <div style="background:var(--panel);border:3px solid var(--ink);border-radius:16px;width:100%;max-width:520px;padding:24px;margin:auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div style="font-family:'Bangers',cursive;font-size:22px;letter-spacing:2px;">📊 ANALYTICS</div>
+      <button onclick="document.getElementById('analyticsModal').style.display='none'" style="background:none;border:2px solid var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer;font-weight:700;">✕</button>
+    </div>
+    <div id="analyticsBody"></div>
+  </div>
+</div>
+
 <div id="c99-toast"></div>
 
 <script>
@@ -752,18 +798,45 @@ function goRegisterStep1() {
   document.getElementById('authStep-guidelines').classList.remove('active');
   document.getElementById('authStep-role').classList.add('active');
 }
-function doRegister() {
+async function doRegister() {
   const name = document.getElementById('regName').value.trim();
   const email = document.getElementById('regEmail').value.trim();
   const pass = document.getElementById('regPass').value;
+  const phone = document.getElementById('regPhone').value.trim();
   if(!name || !email || !pass) { showToast('⚠️ Please fill in all required fields'); return; }
   if(pass.length < 8) { showToast('⚠️ Password must be at least 8 characters'); return; }
-  currentUser = { name, email, roles: [selectedRole === 'nakama' ? 'nakama' : 'nakama'], phone: document.getElementById('regPhone').value, emailVerified: false };
-  if(selectedRole !== 'nakama') currentUser.pendingRole = selectedRole;
-  try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
-  document.getElementById('authOverlay').style.display = 'none';
-  showDashboard();
-  showToast('🎌 Welcome to Comic99, ' + name + '!');
+  try {
+    showToast('⏳ Creating your account...');
+    const result = await firebase.auth().createUserWithEmailAndPassword(email, pass);
+    const user = result.user;
+    // Send email verification
+    await user.sendEmailVerification();
+    // Save profile to Firestore
+    const profileData = {
+      name, email, phone,
+      roles: ['nakama'],
+      pendingRole: selectedRole !== 'nakama' ? selectedRole : null,
+      emailVerified: false,
+      createdAt: new Date().toISOString()
+    };
+    await saveProfile(user.uid, profileData);
+    currentUser = { uid: user.uid, ...profileData };
+    try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
+    document.getElementById('authOverlay').style.display = 'none';
+    showDashboard();
+    showToast('🎌 Welcome, ' + name + '! Check your email to verify your account.');
+  } catch(err) {
+    console.error('Register error:', err);
+    if (err.code === 'auth/email-already-in-use') {
+      showToast('⚠️ That email is already registered. Try logging in.');
+    } else if (err.code === 'auth/invalid-email') {
+      showToast('⚠️ Invalid email address');
+    } else if (err.code === 'auth/weak-password') {
+      showToast('⚠️ Password too weak — use at least 8 characters');
+    } else {
+      showToast('❌ Registration failed: ' + (err.message || 'Try again'));
+    }
+  }
 }
 async function doGoogleSignIn() {
   try {
@@ -999,6 +1072,114 @@ function toggleUpload() {
   const panel = document.getElementById('uploadPanel');
   panel.classList.toggle('open');
   if(panel.classList.contains('open')) panel.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ---- COMIC SERIES ----
+async function saveComicSeries() {
+  if (!currentUser || !currentUser.uid) { showToast('⚠️ Please sign in first'); return; }
+  const title = document.getElementById('uploadTitle').value.trim();
+  if (!title) { showToast('⚠️ Please enter a series title'); return; }
+  const artType = document.querySelector('input[name="artType"]:checked')?.value || 'original';
+  try {
+    showToast('⏳ Saving series...');
+    const seriesId = await createComicSeries(currentUser.uid, {
+      title,
+      description: document.getElementById('uploadDesc').value.trim(),
+      genre: document.getElementById('uploadGenre').value,
+      artType,
+      watermark: document.getElementById('watermarkSelect').value
+    });
+    showToast('✅ Series "' + title + '" created! Now add your pages.');
+    document.getElementById('uploadTitle').value = '';
+    document.getElementById('uploadDesc').value = '';
+    // Update dash stats
+    loadArtistStats();
+  } catch(err) {
+    showToast('❌ Save failed: ' + (err.message || 'Try again'));
+  }
+}
+async function loadArtistStats() {
+  if (!currentUser || !currentUser.uid) return;
+  try {
+    const comics = await getArtistComics(currentUser.uid);
+    const totalReads = comics.reduce((s, c) => s + (c.reads || 0), 0);
+    const totalFollowers = comics.reduce((s, c) => s + (c.followers || 0), 0);
+    const stats = document.querySelectorAll('.dash-stat-num');
+    if (stats[0]) stats[0].textContent = comics.length;
+    if (stats[2]) stats[2].textContent = totalReads;
+    if (stats[3]) stats[3].textContent = totalFollowers;
+  } catch(e) {}
+}
+
+// ---- MY COMICS MODAL ----
+async function openMyComics() {
+  if (!currentUser || !currentUser.uid) { showToast('⚠️ Please sign in first'); return; }
+  const modal = document.getElementById('myComicsModal');
+  const list = document.getElementById('myComicsList');
+  list.innerHTML = '<div style="text-align:center;padding:24px;color:var(--text3);">⏳ Loading your comics...</div>';
+  modal.style.display = 'flex';
+  try {
+    const comics = await getArtistComics(currentUser.uid);
+    if (!comics.length) {
+      list.innerHTML = '<div style="text-align:center;padding:24px;color:var(--text3);">📚 No comics yet. Click UPLOAD COMIC to start!</div>';
+      return;
+    }
+    list.innerHTML = comics.map(c => `
+      <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--panel2);border-radius:10px;border:2px solid var(--ink);margin-bottom:10px;">
+        <div style="font-size:32px;">${c.artType==='ai'?'🤖':c.artType==='fanart'?'🎭':'🖌️'}</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-family:'Bangers',cursive;font-size:16px;letter-spacing:1px;">${c.title}</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:2px;">${c.genre||'—'} · ${c.chapters||0} chapters · ${c.reads||0} reads</div>
+          <div style="font-size:11px;margin-top:4px;">
+            <span style="background:${c.artType==='ai'?'rgba(107,47,217,0.15)':c.artType==='fanart'?'rgba(245,168,0,0.15)':'rgba(52,168,83,0.15)'};padding:2px 8px;border-radius:20px;font-weight:700;">${c.artType==='ai'?'AI-Assisted':c.artType==='fanart'?'Fan Art':'Original'}</span>
+          </div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:var(--text3);">${c.status||'active'}</div>
+      </div>`).join('');
+  } catch(e) {
+    list.innerHTML = '<div style="color:var(--red);padding:16px;">❌ Failed to load comics.</div>';
+  }
+}
+
+// ---- ANALYTICS ----
+async function openAnalytics() {
+  if (!currentUser || !currentUser.uid) { showToast('⚠️ Please sign in first'); return; }
+  const modal = document.getElementById('analyticsModal');
+  const body = document.getElementById('analyticsBody');
+  body.innerHTML = '<div style="text-align:center;padding:24px;color:var(--text3);">⏳ Loading analytics...</div>';
+  modal.style.display = 'flex';
+  try {
+    const comics = await getArtistComics(currentUser.uid);
+    const totalReads = comics.reduce((s,c) => s+(c.reads||0), 0);
+    const totalFollowers = comics.reduce((s,c) => s+(c.followers||0), 0);
+    const totalChapters = comics.reduce((s,c) => s+(c.chapters||0), 0);
+    body.innerHTML = `
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px;">
+        <div style="background:linear-gradient(135deg,var(--purple),rgba(107,47,217,0.6));padding:16px;border-radius:12px;border:2px solid var(--ink);text-align:center;">
+          <div style="font-family:'Bangers',cursive;font-size:32px;">${comics.length}</div>
+          <div style="font-size:11px;font-weight:700;opacity:0.8;">SERIES</div>
+        </div>
+        <div style="background:linear-gradient(135deg,var(--red),rgba(232,25,44,0.6));padding:16px;border-radius:12px;border:2px solid var(--ink);text-align:center;">
+          <div style="font-family:'Bangers',cursive;font-size:32px;">${totalChapters}</div>
+          <div style="font-size:11px;font-weight:700;opacity:0.8;">CHAPTERS</div>
+        </div>
+        <div style="background:linear-gradient(135deg,var(--gold),rgba(245,168,0,0.6));padding:16px;border-radius:12px;border:2px solid var(--ink);text-align:center;color:var(--ink);">
+          <div style="font-family:'Bangers',cursive;font-size:32px;">${totalReads}</div>
+          <div style="font-size:11px;font-weight:700;opacity:0.8;">TOTAL READS</div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(52,168,83,0.8),rgba(52,168,83,0.4));padding:16px;border-radius:12px;border:2px solid var(--ink);text-align:center;">
+          <div style="font-family:'Bangers',cursive;font-size:32px;">${totalFollowers}</div>
+          <div style="font-size:11px;font-weight:700;opacity:0.8;">FOLLOWERS</div>
+        </div>
+      </div>
+      ${comics.length ? '<div style="font-family:\'Bangers\',cursive;font-size:14px;letter-spacing:1px;margin-bottom:10px;">TOP SERIES</div>' + comics.sort((a,b)=>(b.reads||0)-(a.reads||0)).slice(0,5).map(c=>`
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--panel2);">
+          <div style="font-weight:700;font-size:13px;">${c.title}</div>
+          <div style="font-size:12px;color:var(--text3);">${c.reads||0} reads · ${c.followers||0} followers</div>
+        </div>`).join('') : ''}`;
+  } catch(e) {
+    body.innerHTML = '<div style="color:var(--red);padding:16px;">❌ Failed to load analytics.</div>';
+  }
 }
 
 function showToast(msg) {

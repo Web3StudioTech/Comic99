@@ -3,9 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Nakama Forum — Comic99</title>
+<title>Nakama Forum — Comic99 | Anime, Manga & Cosplay Community Discussion</title>
 <link rel="icon" type="image/png" href="comic99-logo.png">
+<!-- SEO_START -->
+<meta name="description" content="Join the Nakama Forum on Comic99. Discuss manga, anime, cosplay, fan art and original comics with fans worldwide. Post threads, share fan art, discover rising creators. Active daily.">
+<meta name="keywords" content="anime forum, manga forum, comic community, cosplay forum, nakama, anime discussion, manga discussion, fan art community, anime fans, manga readers, webtoon community, comic fans">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Comic99">
+<meta name="theme-color" content="#E8192C">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Comic99">
+<meta property="og:title" content="Nakama Forum — Comic99 Community">
+<meta property="og:description" content="Discuss anime, manga, cosplay and comics with fans worldwide. Share fan art, post threads, discover creators.">
+<meta property="og:image" content="https://web3studiotech.github.io/Comic99/comic99-og.png">
+<meta property="og:url" content="https://web3studiotech.github.io/Comic99/community.html">
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Comic99Official">
+<meta name="twitter:creator" content="@Comic99Official">
+<meta name="twitter:title" content="Nakama Forum — Comic99 Community">
+<meta name="twitter:description" content="Discuss anime, manga, cosplay and comics with fans worldwide. Share fan art, post threads, discover creators.">
+<meta name="twitter:image" content="https://web3studiotech.github.io/Comic99/comic99-og.png">
+<!-- Canonical -->
+<link rel="canonical" href="https://web3studiotech.github.io/Comic99/community.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"DiscussionForumPosting","headline":"Nakama Forum — Comic99","url":"https://web3studiotech.github.io/Comic99/community.html","description":"Anime, manga, cosplay and comics discussion forum for fans worldwide"}</script>
+<!-- SEO_END -->
 <link rel="stylesheet" href="comic99-shared.css">
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="db-service.js"></script>
 <style>
 .page-hero {
   background: var(--ink);
@@ -393,8 +421,11 @@
     <div class="tab-content" id="tab-discuss">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
         <div style="font-family:'Bangers',cursive;font-size:22px;letter-spacing:2px;">💬 COMIC FORUM</div>
-        <button class="forum-new-btn" onclick="showToast('✍️ New thread — sign in first!')">+ NEW THREAD</button>
+        <button class="forum-new-btn" onclick="openNewThread()">+ NEW THREAD</button>
       </div>
+
+      <!-- REAL FIRESTORE THREADS -->
+      <div id="realThreadsFeed" style="margin-bottom:16px;"></div>
 
       <!-- MANGA & ANIME -->
       <div class="forum-category">
@@ -643,6 +674,35 @@
   </div>
   <div class="footer-copy">© 2025 Comic99 · comic99.com</div>
 </footer>
+
+<!-- NEW THREAD MODAL -->
+<div id="newThreadModal" style="display:none;position:fixed;inset:0;background:rgba(13,11,8,0.92);z-index:400;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto;">
+  <div style="background:var(--panel);border:3px solid var(--ink);border-radius:16px;width:100%;max-width:520px;padding:24px;margin:auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div style="font-family:'Bangers',cursive;font-size:22px;letter-spacing:2px;">✍️ NEW THREAD</div>
+      <button onclick="document.getElementById('newThreadModal').style.display='none'" style="background:none;border:2px solid var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer;font-weight:700;">✕</button>
+    </div>
+    <div style="margin-bottom:14px;">
+      <div style="font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:6px;">CATEGORY</div>
+      <select id="threadCategory" style="width:100%;padding:10px 12px;border:2px solid var(--ink);border-radius:8px;background:var(--panel2);color:var(--text1);font-size:14px;">
+        <option value="manga">📖 Manga & Anime</option>
+        <option value="cosplay">📸 Cosplay</option>
+        <option value="fanart">🎨 Fan Art & Original</option>
+        <option value="general">💬 General</option>
+      </select>
+    </div>
+    <div style="margin-bottom:14px;">
+      <div style="font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:6px;">TITLE</div>
+      <input id="threadTitle" type="text" placeholder="What's on your mind?" maxlength="120" style="width:100%;padding:10px 12px;border:2px solid var(--ink);border-radius:8px;background:var(--panel2);color:var(--text1);font-size:14px;box-sizing:border-box;">
+    </div>
+    <div style="margin-bottom:20px;">
+      <div style="font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:6px;">CONTENT</div>
+      <textarea id="threadContent" placeholder="Share your thoughts, theories, reviews..." rows="5" maxlength="2000" style="width:100%;padding:10px 12px;border:2px solid var(--ink);border-radius:8px;background:var(--panel2);color:var(--text1);font-size:14px;resize:vertical;box-sizing:border-box;"></textarea>
+    </div>
+    <button onclick="submitNewThread()" style="width:100%;padding:14px;background:var(--red);color:#fff;border:3px solid var(--ink);border-radius:10px;font-family:'Bangers',cursive;font-size:18px;letter-spacing:2px;cursor:pointer;">🔥 POST THREAD</button>
+  </div>
+</div>
+
 <div id="c99-toast"></div>
 <script>
 function switchTab(el, id) {
@@ -671,6 +731,69 @@ function showToast(msg) {
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3000);
 }
+
+// ---- FORUM FIRESTORE ----
+let currentForumUser = null;
+firebase.auth().onAuthStateChanged(u => { currentForumUser = u; });
+
+function openNewThread() {
+  if (!currentForumUser) { showToast('⚠️ Please sign in to post a thread'); return; }
+  document.getElementById('newThreadModal').style.display = 'flex';
+}
+
+async function submitNewThread() {
+  if (!currentForumUser) { showToast('⚠️ Please sign in first'); return; }
+  const title = document.getElementById('threadTitle').value.trim();
+  const content = document.getElementById('threadContent').value.trim();
+  const category = document.getElementById('threadCategory').value;
+  if (!title) { showToast('⚠️ Please enter a title'); return; }
+  if (!content) { showToast('⚠️ Please add some content'); return; }
+  try {
+    showToast('⏳ Posting...');
+    await createForumThread(currentForumUser.uid, { title, content, category });
+    document.getElementById('threadTitle').value = '';
+    document.getElementById('threadContent').value = '';
+    document.getElementById('newThreadModal').style.display = 'none';
+    showToast('✅ Thread posted!');
+    loadForumThreads();
+  } catch(e) {
+    showToast('❌ Failed: ' + (e.message || 'Try again'));
+  }
+}
+
+const CAT_ICONS = { manga: '📖', cosplay: '📸', fanart: '🎨', general: '💬' };
+const CAT_COLORS = { manga: 'linear-gradient(135deg,#E8192C,#8B0000)', cosplay: 'linear-gradient(135deg,#F5A800,#8B6000)', fanart: 'linear-gradient(135deg,#6B2FD9,#3A1A80)', general: 'linear-gradient(135deg,#34A853,#1A5C2A)' };
+
+function timeAgo(ts) {
+  if (!ts) return '';
+  const d = ts.toDate ? ts.toDate() : new Date(ts);
+  const diff = Math.floor((Date.now() - d) / 1000);
+  if (diff < 60) return 'just now';
+  if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+  if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+  return Math.floor(diff/86400) + 'd ago';
+}
+
+async function loadForumThreads() {
+  const feed = document.getElementById('realThreadsFeed');
+  if (!feed) return;
+  try {
+    const threads = await getForumThreads(10);
+    if (!threads.length) { feed.innerHTML = ''; return; }
+    feed.innerHTML = '<div style="font-family:\'Bangers\',cursive;font-size:14px;letter-spacing:2px;margin-bottom:10px;color:var(--gold);">🔥 LATEST FROM COMMUNITY</div>' +
+      threads.map(t => `
+        <a class="forum-thread" href="#" onclick="showToast('📖 Thread viewer — coming soon!');return false;" style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--panel2);border-radius:10px;border:2px solid var(--ink);margin-bottom:8px;text-decoration:none;color:inherit;">
+          <div style="width:40px;height:40px;border-radius:8px;background:${CAT_COLORS[t.category]||CAT_COLORS.general};display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">${CAT_ICONS[t.category]||'💬'}</div>
+          <div style="flex:1;min-width:0;">
+            <div class="forum-thread-title">${t.title}</div>
+            <div class="forum-thread-meta">by ${t.authorHandle||'Nakama'} · ${timeAgo(t.createdAt)}</div>
+          </div>
+          <div class="forum-thread-stats"><div class="forum-thread-replies">${t.replies||0} 💬</div><div class="forum-thread-views">${t.views||0} views</div></div>
+        </a>`).join('');
+  } catch(e) { /* silent — static threads still show */ }
+}
+
+document.addEventListener('DOMContentLoaded', loadForumThreads);
 </script>
 </body>
 </html>
