@@ -1,6 +1,12 @@
 {
-  "updated": "2026-11-18T08:25:49.686Z",
+  "updated": "2026-11-18T20:59:43.119Z",
   "skipped": [
+    "eb18be0cd76bd189",
+    "8ef9cdb14cd47475",
+    "4a6741ed5cd1b608",
+    "fbeb1239e037aa89",
+    "c9211ff030bbc4f1",
+    "2f26d7cf6945e9a9",
     "9511c9aed9f89d91",
     "f56e3f6ce2b85202",
     "d16c7f66690d9a45",
@@ -13,6 +19,160 @@
     "12ac08358b3ca231"
   ],
   "items": [
+    {
+      "id": "4108b448c5316180",
+      "headline": "It's Officially a New Era for Solo Leveling Without Sung Jinwoo",
+      "summary": "South Korea's S-Rank Hunters achieve redemption following their defeat on Jeju Island in the latest Ragnarok episode, marking a turning point without the original protagonist.",
+      "category": "Webtoon",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/solo-leveling-ragnarok-episode-73-recap/",
+      "published": "2026-11-18T20:30:12.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/9b2bd126-bc9f-44c1-8e8d-4b0385f3eabf.jpg",
+      "sourceTitle": "It's Officially a New Era for Solo Leveling Without Sung Jinwoo"
+    },
+    {
+      "id": "53769756604f4cf7",
+      "headline": "Evangelion Returns to Its Original 1995 Mecha Designs With New Official Collection",
+      "summary": "Blokees has released new model kits featuring the iconic mecha units from Neon Genesis Evangelion, designed to match the original 1995 anime's aesthetic with screen-accurate details.",
+      "category": "Anime",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/evangelion-legend-edition-model-kits-blokees-release/",
+      "published": "2026-11-18T20:22:09.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/evangelion-returns-to-its-original-1995-mecha-designs-with-new-official-collection.jpg",
+      "sourceTitle": "Evangelion Returns to Its Original 1995 Mecha Designs With New Official Collection"
+    },
+    {
+      "id": "58b990801498d55a",
+      "headline": "Marvel Comics app yesterday with thousands of comics, personalized recommendations, and new subscription options - AIPT",
+      "summary": "Marvel has launched an updated application featuring an extensive digital library, tailored content suggestions, and fresh subscription tiers for users.",
+      "category": "Western",
+      "source": "Webtoon Creator News",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBMLU5TLTl4RGNVLUNKRHFISGJaUDQ4MXhyVnowMUItWlcwc2pPd2xkcDJqMnBrcFZWRmdSN1VldGxhc1Jsc1NNV3pPa3VVYjZJOHNNNzFuRDFid1pka2JiS3N1N3RVbFMwOTUwNQ?oc=5",
+      "published": "2026-11-18T20:21:33.000Z",
+      "image": "",
+      "sourceTitle": "Marvel Comics app yesterday with thousands of comics, personalized recommendations, and new subscription options - AIPT"
+    },
+    {
+      "id": "f000dd2f3e89a2a0",
+      "headline": "Online Retailer CDJapan Confirms Potential Customer Information Leaks Caused by Unauthorized Access",
+      "summary": "Japanese retailer CDJapan experienced unauthorized access to its website on November 5, potentially compromising customer information through a security vulnerability.",
+      "category": "Industry",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-18/online-retailer-cdjapan-confirms-potential-customer-information-leaks-caused-by-unauthorized-access/.243951",
+      "published": "2026-11-18T20:01:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gFF/cms/news.10/243951/cdjapan.jpg",
+      "sourceTitle": "Online Retailer CDJapan Confirms Potential Customer Information Leaks Caused by Unauthorized Access"
+    },
+    {
+      "id": "843ae7a14ca6727b",
+      "headline": "Warner Bros.' New DCU Needs a Superman/Batman: Public Enemies Movie",
+      "summary": "Comic Book Resources reports that Jeremy Latcham's incoming DC Universe could draw from a decades-old Superman and Batman storyline to establish its foundation.",
+      "category": "Adaptation",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/warner-bros-new-dcu-superman-batman-public-enemies-adaptation/",
+      "published": "2026-11-18T20:00:12.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2025/12/superman-batman-public-enemies.jpg",
+      "sourceTitle": "Warner Bros.' New DCU Needs a Superman/Batman: Public Enemies Movie"
+    },
+    {
+      "id": "246d26d492f6b5ff",
+      "headline": "Marvel Comics' New WEBTOON App Checks Every Box for Readers - Comic Book Resources",
+      "summary": "Marvel has launched a new application on the Webtoon platform that meets reader expectations. The app reportedly delivers features that appeal to the platform's audience.",
+      "category": "Industry",
+      "source": "Webtoon Creator News",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNTzZTdmgtSTFfckZlWUZNVVRYQVZFNnRGNF94LW1xNjN0QllaX19rT1VIaEdzclZGNG1LLUwwUWdhSUhzQXltbENVY185bGUtV1JvdDRVMFYwWk5mYnFxb0JBeWtVak9NVWZobXF6c0Z4UW5hQWlhMXdESGxDQk84T3k2eFBQZlZfbGppdA?oc=5",
+      "published": "2026-11-18T19:56:52.000Z",
+      "image": "",
+      "sourceTitle": "Marvel Comics' New WEBTOON App Checks Every Box for Readers - Comic Book Resources"
+    },
+    {
+      "id": "246d26d492f6b5ff",
+      "headline": "Marvel Comics' New WEBTOON App Checks Every Box for Readers - Comic Book Resources",
+      "summary": "Marvel has launched a new application on the WEBTOON platform that appears to meet reader expectations. The app aims to serve comic fans through the popular webtoon distribution channel.",
+      "category": "Industry",
+      "source": "Marvel DC News",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNTzZTdmgtSTFfckZlWUZNVVRYQVZFNnRGNF94LW1xNjN0QllaX19rT1VIaEdzclZGNG1LLUwwUWdhSUhzQXltbENVY185bGUtV1JvdDRVMFYwWk5mYnFxb0JBeWtVak9NVWZobXF6c0Z4UW5hQWlhMXdESGxDQk84T3k2eFBQZlZfbGppdA?oc=5",
+      "published": "2026-11-18T19:56:52.000Z",
+      "image": "",
+      "sourceTitle": "Marvel Comics' New WEBTOON App Checks Every Box for Readers - Comic Book Resources"
+    },
+    {
+      "id": "9eba0e2e872b452c",
+      "headline": "Sumikko Gurashi Franchise's New Switch 2 Game Launches on November 19",
+      "summary": "The beloved Sumikko Gurashi franchise is expanding to Nintendo Switch 2 with a new game releasing November 19, where players manage a hot spring establishment.",
+      "category": "Other",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-18/sumikko-gurashi-franchise-new-switch-2-game-launches-on-november-19/.243949",
+      "published": "2026-11-18T18:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gJK/cms/news.10/243949/sumikkogurashi-welcome-to-poka-poka-onsen.jpg",
+      "sourceTitle": "Sumikko Gurashi Franchise's New Switch 2 Game Launches on November 19"
+    },
+    {
+      "id": "4d3edde4872c18d8",
+      "headline": "Witch and Mercenary Volumes 1-2 Light Novel Review",
+      "summary": "A witch and mercenary flee their violent pasts by traveling to a new continent, only to find themselves drawn into further conflict in this light novel series.",
+      "category": "Other",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/review/witch-and-mercenary-volumes-1-2/light-novel-series/.243465",
+      "published": "2026-11-18T17:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gY1/cms/review.2/243465/witchandmercenaryvol1.jpg",
+      "sourceTitle": "Witch and Mercenary Volumes 1-2 Light Novel Review"
+    },
+    {
+      "id": "13f4ee0899b9b024",
+      "headline": "Inklore to Release Tomoko Yamashita's Ikoku Nikki Manga on June 8",
+      "summary": "Inklore will release Tomoko Yamashita's series about a strange land on June 8. Cover artwork for the title has been unveiled.",
+      "category": "Manga",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-18/inklore-to-release-tomoko-yamashita-ikoku-nikki-manga-on-june-8/.243902",
+      "published": "2026-11-18T17:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHF/cms/news.10/243902/inklore-ikokunikkiv1-3dmockup.jpg",
+      "sourceTitle": "Inklore to Release Tomoko Yamashita's Ikoku Nikki Manga on June 8"
+    },
+    {
+      "id": "d7584aa9cb62db9f",
+      "headline": "The Classroom of a Black Cat and a Witch Anime Gets English Dub",
+      "summary": "An English dub for the anime series featuring a black cat and witch has been added to Crunchyroll's streaming catalog following the show's April debut.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-18/the-classroom-of-a-black-cat-and-a-witch-anime-gets-english-dub/.243948",
+      "published": "2026-11-18T16:14:03.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gG8/cms/news.9/231727/blackcatwitch_kv2.jpg",
+      "sourceTitle": "The Classroom of a Black Cat and a Witch Anime Gets English Dub"
+    },
+    {
+      "id": "e1f76662bdc18302",
+      "headline": "Pero Pero★Sparkles Anime's Promo Video Reveals January 10 Premiere",
+      "summary": "The anime adaptation of Yurie Sekiya's character designs will debut January 10, featuring voice actors Yuki Sakakihara, Mai Kanno, Ai Fairouz, and Yōhei Azakami.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-18/pero-pero-sparkles-anime-promo-video-reveals-january-10-premiere/.243947",
+      "published": "2026-11-18T15:47:20.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gFO/youtube/c_BSOlzYNyE.jpg",
+      "sourceTitle": "Pero Pero★Sparkles Anime's Promo Video Reveals January 10 Premiere"
+    },
+    {
+      "id": "ee2f054b0233c069",
+      "headline": "How Ed Goldfarb Brings Regional Authenticity to Pokémon Music",
+      "summary": "Composer Ed Goldfarb created individual musical motifs for each Pokémon character as part of his audition preparation, scoring all accompanying action sequences.",
+      "category": "Adaptation",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/interview/2026-11-18/how-ed-goldfarb-brings-regional-authenticity-to-pokemon-music/.243504",
+      "published": "2026-11-18T14:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHD/cms/interview/243504/edgoldfarb.jpg",
+      "sourceTitle": "How Ed Goldfarb Brings Regional Authenticity to Pokémon Music"
+    },
+    {
+      "id": "74c31ca25f261597",
+      "headline": "One Piece Beats Naruto, Dragon Ball, JJK and Bleach In Official Japan Survey - FandomWire",
+      "summary": "An official Japanese survey ranked One Piece ahead of Naruto, Dragon Ball, Jujutsu Kaisen, and Bleach.",
+      "category": "Manga",
+      "source": "Jujutsu Kaisen News",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNOTZkRXBnbmd1ZzVtTnNoTEVpQUFPTVUtOXhub0JVVndVSU9QV1FWRjlnNjVMeG9QMllXcmxhNEUxMjNrb1BCc0FYNHRiendRVFBXd1pmakttRUt0UG1TVm9IRzlqQjBvNEVSbTBCQWRKNkdEZ1p3d0M2Y1RFUGJUS0hnQk5CYVlKWVJxLW1n?oc=5",
+      "published": "2026-11-18T11:54:09.000Z",
+      "image": "",
+      "sourceTitle": "One Piece Beats Naruto, Dragon Ball, JJK and Bleach In Official Japan Survey - FandomWire"
+    },
     {
       "id": "52e4a5f73c27fb79",
       "headline": "Identity V Game's Oha Suta Daigo Gakuen Short Anime Unveils More Cast, Staff, November 24 Debut",
