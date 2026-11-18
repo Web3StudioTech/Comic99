@@ -6,6 +6,12 @@
 <title>Cosplay — Comic99</title>
 <link rel="icon" type="image/png" href="comic99-logo.png">
 <link rel="stylesheet" href="comic99-shared.css">
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
+<script src="db-service.js"></script>
 <style>
 /* ---- COSPLAY FEED ---- */
 .cosplay-layout {
@@ -262,6 +268,9 @@
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
 }
+.footer-social { display:flex; gap:12px; justify-content:center; margin-bottom:12px; }
+.footer-social-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.1); color:var(--white,#fff); border:2px solid rgba(255,255,255,0.2); transition:background 0.2s,transform 0.2s; text-decoration:none; }
+.footer-social-btn:hover { background:var(--red,#E8192C); border-color:var(--red,#E8192C); transform:translateY(-2px); }
 </style>
 </head>
 <body>
@@ -314,7 +323,7 @@
           <div class="profile-stat"><div class="profile-stat-num">0</div><div class="profile-stat-label">Followers</div></div>
           <div class="profile-stat"><div class="profile-stat-num">0</div><div class="profile-stat-label">Following</div></div>
         </div>
-        <button class="btn btn-outline btn-sm" style="width:100%;" onclick="showToast('👤 Edit Cosplay Profile — coming soon!')">EDIT PROFILE</button>
+        <button class="btn btn-outline btn-sm" style="width:100%;" onclick="openEditCosplayProfile()">✏️ EDIT PROFILE</button>
       </div>
     </div>
 
@@ -722,8 +731,100 @@
     <a href="index.html">Home</a><a href="explore.html">Explore</a><a href="news.html">News</a>
     <a href="cosplay.html">Cosplay</a><a href="community.html">Community</a>
   </div>
+  <div class="footer-social">
+    <a href="https://x.com/Comic99Official" target="_blank" rel="noopener" aria-label="X / Twitter" class="footer-social-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/Comic99Official/" target="_blank" rel="noopener" aria-label="Facebook" class="footer-social-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/comic99official/" target="_blank" rel="noopener" aria-label="Instagram" class="footer-social-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+    </a>
+  </div>
   <div class="footer-copy">© 2025 Comic99 · comic99.com</div>
 </footer>
+<!-- EDIT COSPLAY PROFILE MODAL -->
+<div id="editCosplayModal" style="display:none;position:fixed;inset:0;background:rgba(13,11,8,0.92);z-index:400;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto;">
+  <div style="background:var(--panel);border:4px solid var(--ink);border-radius:16px;width:100%;max-width:480px;padding:28px;box-shadow:8px 8px 0 var(--ink);position:relative;margin:auto;">
+    <button onclick="closeEditCosplayProfile()" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:20px;cursor:pointer;line-height:1;">✕</button>
+    <div style="font-family:'Bangers',cursive;font-size:24px;letter-spacing:2px;margin-bottom:4px;">📸 EDIT COSPLAY PROFILE</div>
+
+    <!-- Avatar upload -->
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;padding:16px;background:rgba(0,0,0,0.05);border-radius:12px;">
+      <div id="editAvaPreview" style="width:72px;height:72px;border-radius:50%;border:3px solid var(--ink);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:32px;background:linear-gradient(135deg,#ff6b9d,#c850c0);">📸</div>
+      <div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:6px;">PROFILE PHOTO</div>
+        <label style="cursor:pointer;">
+          <input type="file" id="cosplayAvaInput" accept="image/*" style="display:none;" onchange="previewCosplayAvatar(this)">
+          <span style="background:var(--red);color:#fff;padding:6px 14px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;">📁 CHOOSE PHOTO</span>
+        </label>
+        <div style="font-size:10px;color:var(--text3);margin-top:4px;">JPG, PNG · Max 5MB</div>
+      </div>
+    </div>
+
+    <!-- Fields -->
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:20px;">
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:4px;">DISPLAY NAME *</label>
+        <input id="ep_name" class="form-input" type="text" placeholder="Your cosplay name">
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:4px;">HANDLE *</label>
+        <div style="display:flex;align-items:center;gap:0;">
+          <span style="background:var(--ink);color:#fff;padding:10px 12px;border-radius:8px 0 0 8px;font-size:13px;font-weight:700;">@</span>
+          <input id="ep_handle" class="form-input" type="text" placeholder="cosplayhandle" style="border-radius:0 8px 8px 0;border-left:none;">
+        </div>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:4px;">BIO</label>
+        <textarea id="ep_bio" class="form-input" rows="3" placeholder="Tell the community about yourself..." style="resize:vertical;"></textarea>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:4px;">LOCATION</label>
+        <input id="ep_location" class="form-input" type="text" placeholder="e.g. Kuala Lumpur, Malaysia">
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:4px;">INSTAGRAM / SOCIAL LINK</label>
+        <input id="ep_social" class="form-input" type="url" placeholder="https://instagram.com/yourhandle">
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:4px;">COSPLAY SPECIALTY</label>
+        <select id="ep_specialty" class="form-input">
+          <option value="">Select specialty</option>
+          <option>Anime / Manga</option>
+          <option>Game Characters</option>
+          <option>Western Comics</option>
+          <option>Original Design (OC)</option>
+          <option>Historical / Cultural</option>
+          <option>Mecha / Armour</option>
+          <option>Group / Ensemble</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Community Guidelines -->
+    <div style="background:linear-gradient(135deg,rgba(107,47,217,0.08),rgba(232,25,44,0.05));border:2px solid var(--purple);border-radius:12px;padding:14px;margin-bottom:16px;">
+      <div style="font-family:'Bangers',cursive;font-size:14px;letter-spacing:1px;color:var(--purple);margin-bottom:8px;">📋 COSPLAY COMMUNITY GUIDELINES</div>
+      <div style="font-size:11px;font-weight:600;color:var(--text2);line-height:1.8;">
+        ✅ Post only your own cosplay photos — no stealing others' work<br>
+        ✅ Real photos only — no AI-generated cosplay images<br>
+        ✅ Age-appropriate content — keep it family-friendly<br>
+        ✅ No body-shaming or harassment in comments<br>
+        ✅ Tag character &amp; series correctly for discoverability<br>
+        ✅ Credit original character creators where possible<br>
+        ✅ Violations may result in post removal or account suspension
+      </div>
+    </div>
+    <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;font-weight:700;color:var(--text2);cursor:pointer;margin-bottom:16px;">
+      <input type="checkbox" id="ep_guidelines" style="margin-top:2px;width:16px;height:16px;accent-color:var(--purple);flex-shrink:0;">
+      I agree to the Comic99 Cosplay Community Guidelines
+    </label>
+
+    <button class="btn btn-red" style="width:100%;" onclick="saveCosplayProfile()">💾 SAVE PROFILE</button>
+  </div>
+</div>
+
 <div id="c99-toast"></div>
 
 <script>
@@ -840,19 +941,113 @@ function completeRegistration() {
   document.getElementById('sideName').textContent = currentUser.name;
   showToast('🎉 Welcome to Cosplay, ' + currentUser.name + '!');
 }
-function doLogin() {
+async function doLogin() {
   const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass') ? document.getElementById('loginPass').value : '';
   if(!email) { showToast('⚠️ Enter your email'); return; }
-  currentUser = { name: 'Comic99 User', email, roles: ['nakama'] };
-  try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e) {}
-  document.getElementById('authModal').style.display = 'none';
-  showToast('✅ Welcome back!');
-  location.reload();
+  try {
+    showToast('⏳ Signing in...');
+    const result = await firebase.auth().signInWithEmailAndPassword(email, pass);
+    const profile = await getProfile(result.user.uid);
+    currentUser = profile ? { uid: result.user.uid, ...profile } : { uid: result.user.uid, name: 'Comic99 User', email, roles: ['nakama'] };
+    try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e) {}
+    document.getElementById('authModal').style.display = 'none';
+    showToast('✅ Welcome back, ' + (currentUser.name || 'Nakama') + '!');
+    updateSidebarProfile();
+  } catch(err) {
+    showToast('❌ ' + (err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential' ? 'Incorrect email or password' : err.message));
+  }
 }
 function doLogout() {
   currentUser = null;
   try { localStorage.removeItem('c99_user'); } catch(e) {}
   location.reload();
+}
+
+// ---- EDIT COSPLAY PROFILE ----
+function openEditCosplayProfile() {
+  if (!currentUser) { showToast('⚠️ Please sign in first'); return; }
+  // Pre-fill fields
+  document.getElementById('ep_name').value = currentUser.name || '';
+  document.getElementById('ep_handle').value = (currentUser.handle || '').replace('@','');
+  document.getElementById('ep_bio').value = currentUser.bio || '';
+  document.getElementById('ep_location').value = currentUser.location || '';
+  document.getElementById('ep_social').value = currentUser.social || '';
+  document.getElementById('ep_specialty').value = currentUser.specialty || '';
+  document.getElementById('ep_guidelines').checked = currentUser.guidelinesAccepted || false;
+  // Show current avatar
+  const preview = document.getElementById('editAvaPreview');
+  if (currentUser.avatarUrl) {
+    preview.innerHTML = '<img src="' + currentUser.avatarUrl + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+  } else {
+    preview.textContent = '📸';
+  }
+  document.getElementById('editCosplayModal').style.display = 'flex';
+}
+function closeEditCosplayProfile() {
+  document.getElementById('editCosplayModal').style.display = 'none';
+}
+function previewCosplayAvatar(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { showToast('⚠️ Image must be under 5MB'); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('editAvaPreview').innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+  };
+  reader.readAsDataURL(file);
+}
+async function saveCosplayProfile() {
+  if (!document.getElementById('ep_guidelines').checked) {
+    showToast('⚠️ Please agree to the Community Guidelines'); return;
+  }
+  const name = document.getElementById('ep_name').value.trim();
+  if (!name) { showToast('⚠️ Display name is required'); return; }
+  const handle = document.getElementById('ep_handle').value.trim();
+  if (!handle) { showToast('⚠️ Handle is required'); return; }
+
+  showToast('⏳ Saving profile...');
+  try {
+    let avatarUrl = currentUser.avatarUrl || '';
+    // Upload new avatar if selected
+    const avatarFile = document.getElementById('cosplayAvaInput').files[0];
+    if (avatarFile && currentUser.uid) {
+      avatarUrl = await uploadProfilePicture(currentUser.uid, avatarFile, pct => {
+        showToast('⏳ Uploading photo ' + pct + '%...');
+      });
+    }
+    const profileData = {
+      name, handle: '@' + handle,
+      bio: document.getElementById('ep_bio').value.trim(),
+      location: document.getElementById('ep_location').value.trim(),
+      social: document.getElementById('ep_social').value.trim(),
+      specialty: document.getElementById('ep_specialty').value,
+      guidelinesAccepted: true,
+      avatarUrl,
+      cosplayer: true
+    };
+    if (currentUser.uid) await saveProfile(currentUser.uid, profileData);
+    Object.assign(currentUser, profileData);
+    try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e) {}
+    closeEditCosplayProfile();
+    updateSidebarProfile();
+    showToast('✅ Profile saved!');
+  } catch(err) {
+    console.error('Save profile error:', err);
+    showToast('❌ Save failed: ' + (err.message || 'Try again'));
+  }
+}
+function updateSidebarProfile() {
+  if (!currentUser) return;
+  document.getElementById('sidebarProfile').style.display = 'block';
+  document.getElementById('sidebarJoinCta').style.display = 'none';
+  document.getElementById('sideName').textContent = currentUser.name || 'YOUR NAME';
+  document.getElementById('sideHandle').textContent = currentUser.handle || '@cosplayer';
+  const ava = document.getElementById('sideAva');
+  if (currentUser.avatarUrl) {
+    ava.innerHTML = '<img src="' + currentUser.avatarUrl + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.parentElement.textContent=\'📸\'">';
+    ava.style.padding = '0';
+  }
 }
 </script>
 </body>

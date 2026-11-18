@@ -6,6 +6,12 @@
 <title>Artist Hub — Comic99</title>
 <link rel="icon" type="image/png" href="comic99-logo.png">
 <link rel="stylesheet" href="comic99-shared.css">
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
+<script src="db-service.js"></script>
 <style>
 /* ---- AUTH MODAL ---- */
 .auth-overlay {
@@ -171,6 +177,9 @@
   0%, 100% { opacity: 1; text-shadow: 0 0 8px rgba(245,168,0,0.6); }
   50% { opacity: 0.75; text-shadow: 0 0 20px rgba(245,168,0,0.9), 0 0 40px rgba(245,168,0,0.4); }
 }
+.footer-social { display:flex; gap:12px; justify-content:center; margin-bottom:12px; }
+.footer-social-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.1); color:var(--white,#fff); border:2px solid rgba(255,255,255,0.2); transition:background 0.2s,transform 0.2s; text-decoration:none; }
+.footer-social-btn:hover { background:var(--red,#E8192C); border-color:var(--red,#E8192C); transform:translateY(-2px); }
 </style>
 </head>
 <body>
@@ -265,7 +274,7 @@
         <p style="font-size:14px;font-weight:600;color:var(--text2);text-align:center;margin-bottom:16px;">Complete these requirements to unlock your Artist dashboard and start publishing</p>
         <ul class="checklist" id="artistChecklist">
           <li><span class="check" id="chk1">⬜</span> <div><strong>Verified email</strong><br><span style="color:var(--text3);font-size:12px;">Check your inbox for the verification link</span></div></li>
-          <li><span class="check" id="chk2">⬜</span> <div><strong>Phone number added</strong><br><span style="color:var(--text3);font-size:12px;">Required for Artist role activation</span></div></li>
+          <li><span class="check" id="chk2">⬜</span> <div><strong>Phone number added</strong><br><span style="color:var(--text3);font-size:12px;">Required for Artist role activation</span><br><button id="addPhoneBtn" style="margin-top:6px;background:var(--purple);color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;" onclick="showPhoneModal()">+ ADD PHONE</button></div></li>
           <li><span class="check" id="chk3">⬜</span> <div><strong>Profile complete</strong><br><span style="color:var(--text3);font-size:12px;">Avatar, display name and bio required</span></div></li>
           <li><span class="check" id="chk4">⬜</span> <div><strong>Agree to Artist Guidelines</strong><br><span style="color:var(--text3);font-size:12px;">Read and accept the content policy below</span></div></li>
         </ul>
@@ -314,7 +323,7 @@
           <div class="dash-card-title">ANALYTICS</div>
           <div class="dash-card-desc">Reads, followers, comments. Track your growth over time.</div>
         </div>
-        <div class="dash-card" onclick="showToast('👤 Edit Profile — coming soon!')">
+        <div class="dash-card" onclick="openEditArtistProfile()">
           <div class="dash-card-icon">👤</div>
           <div class="dash-card-title">EDIT PROFILE</div>
           <div class="dash-card-desc">Update your bio, avatar, links and artist display name.</div>
@@ -357,13 +366,22 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">ART TYPE</label>
-            <select class="form-select">
-              <option value="original">🖌️ Original Art — my own creation</option>
-              <option value="ai">🤖 AI-Assisted — AI tools used in creation</option>
-              <option value="fanart">🎭 Fan Art — based on existing characters/IP</option>
-            </select>
-            <div class="form-hint">This will appear as a badge on your comic card. Be honest — this builds trust with readers.</div>
+            <label class="form-label">ART TYPE <span style="color:var(--red);">*</span></label>
+            <div style="display:flex;flex-direction:column;gap:10px;padding:12px;background:rgba(0,0,0,0.04);border-radius:10px;border:2px solid var(--panel2);">
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:13px;font-weight:700;">
+                <input type="radio" name="artType" value="original" checked style="width:16px;height:16px;accent-color:var(--purple);">
+                🖌️ <span>Original Art <span style="font-weight:400;color:var(--text3);">— my own creation</span></span>
+              </label>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:13px;font-weight:700;">
+                <input type="radio" name="artType" value="fanart" style="width:16px;height:16px;accent-color:var(--purple);">
+                🎭 <span>Fan Art <span style="font-weight:400;color:var(--text3);">— based on existing characters/IP</span></span>
+              </label>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:13px;font-weight:700;">
+                <input type="radio" name="artType" value="ai" style="width:16px;height:16px;accent-color:var(--purple);">
+                🤖 <span>AI-Assisted <span style="font-weight:400;color:var(--text3);">— AI tools used in creation</span></span>
+              </label>
+            </div>
+            <div class="form-hint">⚠️ This badge appears on your comic card. Honest tagging builds trust with readers and protects you from guideline violations.</div>
           </div>
           <div class="form-group">
             <label class="form-label">WATERMARK</label>
@@ -508,9 +526,119 @@
           CONTINUE WITH GOOGLE
         </a>
         <div style="text-align:center;margin-top:12px;">
-          <button style="background:none;border:none;font-size:12px;font-weight:700;color:var(--red);cursor:pointer;" onclick="showToast('📧 Password reset email sent!')">Forgot password?</button>
+          <button style="background:none;border:none;font-size:12px;font-weight:700;color:var(--red);cursor:pointer;" onclick="doForgotPassword()">Forgot password?</button>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT ARTIST PROFILE MODAL -->
+<div id="editArtistModal" style="display:none;position:fixed;inset:0;background:rgba(13,11,8,0.92);z-index:400;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto;">
+  <div style="background:var(--panel);border:4px solid var(--ink);border-radius:16px;width:100%;max-width:480px;padding:28px;box-shadow:8px 8px 0 var(--ink);position:relative;margin:auto;">
+    <button onclick="closeEditArtistProfile()" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:20px;cursor:pointer;line-height:1;">✕</button>
+    <div style="font-family:'Bangers',cursive;font-size:24px;letter-spacing:2px;margin-bottom:4px;">🎨 EDIT ARTIST PROFILE</div>
+
+    <!-- Avatar upload -->
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;padding:16px;background:rgba(0,0,0,0.05);border-radius:12px;">
+      <div id="artistAvaPreview" style="width:72px;height:72px;border-radius:50%;border:3px solid var(--ink);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:32px;background:linear-gradient(135deg,var(--purple),var(--red));">🎨</div>
+      <div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:6px;">PROFILE PHOTO</div>
+        <label style="cursor:pointer;">
+          <input type="file" id="artistAvaInput" accept="image/*" style="display:none;" onchange="previewArtistAvatar(this)">
+          <span style="background:var(--purple);color:#fff;padding:6px 14px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;">📁 CHOOSE PHOTO</span>
+        </label>
+        <div style="font-size:10px;color:var(--text3);margin-top:4px;">JPG, PNG · Max 5MB</div>
+      </div>
+    </div>
+
+    <!-- Fields -->
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:20px;">
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:4px;">DISPLAY NAME *</label>
+        <input id="ap_name" class="form-input" type="text" placeholder="Your artist name">
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:4px;">ARTIST HANDLE *</label>
+        <div style="display:flex;align-items:center;">
+          <span style="background:var(--ink);color:#fff;padding:10px 12px;border-radius:8px 0 0 8px;font-size:13px;font-weight:700;">@</span>
+          <input id="ap_handle" class="form-input" type="text" placeholder="artisthandle" style="border-radius:0 8px 8px 0;border-left:none;">
+        </div>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:4px;">BIO / ABOUT</label>
+        <textarea id="ap_bio" class="form-input" rows="3" placeholder="Tell fans about your art and style..." style="resize:vertical;"></textarea>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:4px;">ART STYLE / SPECIALTY</label>
+        <select id="ap_style" class="form-input">
+          <option value="">Select style</option>
+          <option>Manga (Japanese)</option>
+          <option>Manhwa (Korean)</option>
+          <option>Manhua (Chinese)</option>
+          <option>Webtoon / Vertical</option>
+          <option>Western Comics</option>
+          <option>Original / Fusion</option>
+          <option>Chibi / Cute</option>
+          <option>Dark / Horror</option>
+          <option>Shonen / Action</option>
+          <option>Shojo / Romance</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:4px;">WEBSITE / PORTFOLIO LINK</label>
+        <input id="ap_website" class="form-input" type="url" placeholder="https://yourportfolio.com">
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:4px;">COUNTRY</label>
+        <input id="ap_country" class="form-input" type="text" placeholder="e.g. Malaysia">
+      </div>
+    </div>
+
+    <!-- Artist Guidelines -->
+    <div style="background:linear-gradient(135deg,rgba(107,47,217,0.08),rgba(245,168,0,0.05));border:2px solid var(--purple);border-radius:12px;padding:14px;margin-bottom:16px;">
+      <div style="font-family:'Bangers',cursive;font-size:14px;letter-spacing:1px;color:var(--purple);margin-bottom:8px;">🎨 ARTIST COMMUNITY GUIDELINES</div>
+      <div style="font-size:11px;font-weight:600;color:var(--text2);line-height:1.8;">
+        ✅ Original work only — comics and art you created yourself<br>
+        ✅ Fan art allowed but must be clearly tagged as "Fan Art"<br>
+        ✅ AI-assisted art allowed but must be tagged "AI-Assisted"<br>
+        ✅ No copyright infringement — do not copy others' original work<br>
+        ✅ Watermark your work to protect your intellectual property<br>
+        ✅ Comic99 reserves the right to remove content violating originality standards<br>
+        ✅ Repeat violations will result in Artist role suspension
+      </div>
+    </div>
+    <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;font-weight:700;color:var(--text2);cursor:pointer;margin-bottom:16px;">
+      <input type="checkbox" id="ap_guidelines" style="margin-top:2px;width:16px;height:16px;accent-color:var(--purple);flex-shrink:0;">
+      I agree to the Comic99 Artist Community Guidelines
+    </label>
+
+    <button class="btn btn-purple" style="width:100%;" onclick="saveArtistProfile()">💾 SAVE PROFILE</button>
+  </div>
+</div>
+
+<!-- PHONE OTP MODAL -->
+<div id="phoneModal" style="display:none;position:fixed;inset:0;background:rgba(13,11,8,0.92);z-index:400;align-items:center;justify-content:center;padding:16px;">
+  <div style="background:var(--panel);border:4px solid var(--ink);border-radius:16px;width:100%;max-width:360px;padding:28px;box-shadow:8px 8px 0 var(--ink);position:relative;">
+    <button onclick="closePhoneModal()" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:20px;cursor:pointer;line-height:1;">✕</button>
+    <div style="font-family:'Bangers',cursive;font-size:22px;letter-spacing:2px;margin-bottom:4px;">📱 ADD PHONE NUMBER</div>
+    <p style="font-size:12px;color:var(--text3);margin-bottom:16px;">We'll send a 6-digit OTP to verify your number</p>
+
+    <!-- Step 1: Enter phone -->
+    <div id="phoneStep1">
+      <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:6px;">PHONE NUMBER</label>
+      <input id="phoneInput" class="form-input" type="tel" placeholder="+60 12-345 6789" style="margin-bottom:12px;">
+      <div id="phone-recaptcha"></div>
+      <button class="btn btn-purple" style="width:100%;" onclick="sendPhoneVerification()">SEND OTP →</button>
+    </div>
+
+    <!-- Step 2: Enter OTP -->
+    <div id="phoneStep2" style="display:none;">
+      <p style="font-size:13px;font-weight:700;margin-bottom:12px;">Enter the 6-digit code sent to <span id="phoneDisplay" style="color:var(--purple);"></span></p>
+      <label style="font-size:11px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:6px;">OTP CODE</label>
+      <input id="otpInput" class="form-input" type="number" placeholder="123456" maxlength="6" style="margin-bottom:12px;letter-spacing:4px;font-size:20px;text-align:center;">
+      <button class="btn btn-purple" style="width:100%;margin-bottom:8px;" onclick="verifyPhoneCode()">✅ VERIFY</button>
+      <button style="background:none;border:none;font-size:12px;font-weight:700;color:var(--purple);cursor:pointer;width:100%;" onclick="backToPhoneStep1()">← Change number</button>
     </div>
   </div>
 </div>
@@ -521,6 +649,17 @@
   <div class="footer-links">
     <a href="index.html">Home</a><a href="explore.html">Explore</a><a href="news.html">News</a>
     <a href="cosplay.html">Cosplay</a><a href="community.html">Community</a>
+  </div>
+  <div class="footer-social">
+    <a href="https://x.com/Comic99Official" target="_blank" rel="noopener" aria-label="X / Twitter" class="footer-social-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/Comic99Official/" target="_blank" rel="noopener" aria-label="Facebook" class="footer-social-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/comic99official/" target="_blank" rel="noopener" aria-label="Instagram" class="footer-social-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+    </a>
   </div>
   <div class="footer-copy">© 2025 Comic99 · comic99.com</div>
 </footer>
@@ -626,27 +765,215 @@ function doRegister() {
   showDashboard();
   showToast('🎌 Welcome to Comic99, ' + name + '!');
 }
-function doGoogleSignIn() {
-  currentUser = { name: 'Nakama User', email: 'user@gmail.com', roles: ['nakama'], googleSignIn: true, emailVerified: true };
-  try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
-  document.getElementById('authOverlay').style.display = 'none';
-  showDashboard();
-  showToast('✅ Signed in with Google!');
+async function doGoogleSignIn() {
+  try {
+    showToast('⏳ Opening Google sign-in...');
+    const result = await signInWithGoogle();
+    const user = result.user;
+    // Check if profile exists in Firestore
+    let profile = await getProfile(user.uid);
+    if (!profile) {
+      // New user — create default profile
+      profile = {
+        name: user.displayName || 'Comic99 User',
+        email: user.email,
+        roles: ['nakama'],
+        googleSignIn: true,
+        emailVerified: true,
+        avatarUrl: user.photoURL || '',
+        createdAt: new Date().toISOString()
+      };
+      await saveProfile(user.uid, profile);
+    }
+    currentUser = { uid: user.uid, ...profile };
+    try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
+    document.getElementById('authOverlay').style.display = 'none';
+    showDashboard();
+    showToast('✅ Welcome, ' + (currentUser.name || 'Nakama') + '!');
+  } catch(err) {
+    console.error('Google sign-in error:', err);
+    if (err.code === 'auth/popup-closed-by-user') {
+      showToast('⚠️ Sign-in cancelled');
+    } else if (err.code === 'auth/popup-blocked') {
+      showToast('⚠️ Popup blocked — please allow popups for this site');
+    } else {
+      showToast('❌ Google sign-in failed: ' + (err.message || 'Unknown error'));
+    }
+  }
 }
-function doLogin() {
+async function doLogin() {
   const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value;
   if(!email) { showToast('⚠️ Enter your email'); return; }
-  currentUser = { name: 'Comic99 User', email, roles: ['nakama', 'artist'] };
-  try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
-  document.getElementById('authOverlay').style.display = 'none';
-  showDashboard();
-  showToast('✅ Welcome back!');
+  if(!pass) { showToast('⚠️ Enter your password'); return; }
+  try {
+    showToast('⏳ Signing in...');
+    const result = await firebase.auth().signInWithEmailAndPassword(email, pass);
+    const user = result.user;
+    const profile = await getProfile(user.uid);
+    currentUser = profile ? { uid: user.uid, ...profile } : { uid: user.uid, name: 'Comic99 User', email, roles: ['nakama'] };
+    try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
+    document.getElementById('authOverlay').style.display = 'none';
+    showDashboard();
+    showToast('✅ Welcome back, ' + (currentUser.name || 'Nakama') + '!');
+  } catch(err) {
+    console.error('Login error:', err);
+    if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
+      showToast('❌ Incorrect email or password');
+    } else if (err.code === 'auth/too-many-requests') {
+      showToast('⚠️ Too many attempts. Try again later or reset your password');
+    } else {
+      showToast('❌ Login failed: ' + (err.message || 'Unknown error'));
+    }
+  }
+}
+async function doForgotPassword() {
+  const email = document.getElementById('loginEmail').value.trim();
+  if (!email) { showToast('⚠️ Enter your email above first'); return; }
+  try {
+    await firebase.auth().sendPasswordResetEmail(email);
+    showToast('📧 Reset email sent to ' + email + ' — check your inbox!');
+  } catch(err) {
+    if (err.code === 'auth/user-not-found') {
+      showToast('⚠️ No account found for that email');
+    } else {
+      showToast('❌ Could not send reset email. Try again.');
+    }
+  }
 }
 function doLogout() {
   currentUser = null;
   try { localStorage.removeItem('c99_user'); } catch(e){}
   showLanding();
   showToast('👋 Logged out!');
+}
+
+// ---- EDIT ARTIST PROFILE ----
+function openEditArtistProfile() {
+  if (!currentUser) { showToast('⚠️ Please sign in first'); return; }
+  document.getElementById('ap_name').value = currentUser.name || '';
+  document.getElementById('ap_handle').value = (currentUser.handle || '').replace('@','');
+  document.getElementById('ap_bio').value = currentUser.bio || '';
+  document.getElementById('ap_style').value = currentUser.artStyle || '';
+  document.getElementById('ap_website').value = currentUser.website || '';
+  document.getElementById('ap_country').value = currentUser.country || '';
+  document.getElementById('ap_guidelines').checked = currentUser.guidelinesAccepted || false;
+  const preview = document.getElementById('artistAvaPreview');
+  if (currentUser.avatarUrl) {
+    preview.innerHTML = '<img src="' + currentUser.avatarUrl + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+  } else { preview.textContent = '🎨'; }
+  document.getElementById('editArtistModal').style.display = 'flex';
+}
+function closeEditArtistProfile() {
+  document.getElementById('editArtistModal').style.display = 'none';
+}
+function previewArtistAvatar(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { showToast('⚠️ Image must be under 5MB'); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('artistAvaPreview').innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+  };
+  reader.readAsDataURL(file);
+}
+async function saveArtistProfile() {
+  if (!document.getElementById('ap_guidelines').checked) {
+    showToast('⚠️ Please agree to the Artist Guidelines'); return;
+  }
+  const name = document.getElementById('ap_name').value.trim();
+  if (!name) { showToast('⚠️ Display name is required'); return; }
+  const handle = document.getElementById('ap_handle').value.trim();
+  if (!handle) { showToast('⚠️ Artist handle is required'); return; }
+  showToast('⏳ Saving profile...');
+  try {
+    let avatarUrl = currentUser.avatarUrl || '';
+    const avatarFile = document.getElementById('artistAvaInput').files[0];
+    if (avatarFile && currentUser.uid) {
+      avatarUrl = await uploadProfilePicture(currentUser.uid, avatarFile, pct => {
+        showToast('⏳ Uploading photo ' + pct + '%...');
+      });
+    }
+    const profileData = {
+      name, handle: '@' + handle,
+      bio: document.getElementById('ap_bio').value.trim(),
+      artStyle: document.getElementById('ap_style').value,
+      website: document.getElementById('ap_website').value.trim(),
+      country: document.getElementById('ap_country').value.trim(),
+      guidelinesAccepted: true,
+      avatarUrl
+    };
+    if (currentUser.uid) await saveProfile(currentUser.uid, profileData);
+    Object.assign(currentUser, profileData);
+    try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e) {}
+    // Update dashboard header
+    document.getElementById('dashName').textContent = currentUser.name || 'ARTIST';
+    const ava = document.getElementById('dashAva');
+    if (avatarUrl) ava.innerHTML = '<img src="' + avatarUrl + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.parentElement.textContent=\'🎨\'">';
+    closeEditArtistProfile();
+    showToast('✅ Artist profile saved!');
+  } catch(err) {
+    console.error('Save profile error:', err);
+    showToast('❌ Save failed: ' + (err.message || 'Try again'));
+  }
+}
+
+// ---- PHONE OTP ----
+function showPhoneModal() {
+  if (!currentUser) { showToast('⚠️ Please sign in first'); return; }
+  document.getElementById('phoneModal').style.display = 'flex';
+  document.getElementById('phoneStep1').style.display = 'block';
+  document.getElementById('phoneStep2').style.display = 'none';
+  document.getElementById('phoneInput').value = '';
+  document.getElementById('otpInput').value = '';
+}
+function closePhoneModal() {
+  document.getElementById('phoneModal').style.display = 'none';
+}
+function backToPhoneStep1() {
+  document.getElementById('phoneStep1').style.display = 'block';
+  document.getElementById('phoneStep2').style.display = 'none';
+}
+async function sendPhoneVerification() {
+  const phone = document.getElementById('phoneInput').value.trim();
+  if (!phone) { showToast('⚠️ Enter your phone number'); return; }
+  if (!phone.startsWith('+')) { showToast('⚠️ Include country code e.g. +60123456789'); return; }
+  try {
+    showToast('⏳ Sending OTP...');
+    await sendPhoneOTP(phone, 'phone-recaptcha');
+    document.getElementById('phoneDisplay').textContent = phone;
+    document.getElementById('phoneStep1').style.display = 'none';
+    document.getElementById('phoneStep2').style.display = 'block';
+    showToast('📱 OTP sent to ' + phone);
+  } catch(err) {
+    console.error('Send OTP error:', err);
+    showToast('❌ Failed to send OTP: ' + (err.message || 'Try again'));
+  }
+}
+async function verifyPhoneCode() {
+  const code = document.getElementById('otpInput').value.trim();
+  if (!code || code.length < 6) { showToast('⚠️ Enter the 6-digit OTP'); return; }
+  try {
+    showToast('⏳ Verifying...');
+    await verifyPhoneOTP(code);
+    // Save phone to Firestore profile
+    const phone = document.getElementById('phoneDisplay').textContent;
+    if (currentUser && currentUser.uid) {
+      await saveProfile(currentUser.uid, { phone, phoneVerified: true });
+    }
+    currentUser.phone = phone;
+    currentUser.phoneVerified = true;
+    try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
+    closePhoneModal();
+    updateChecklist();
+    showToast('✅ Phone number verified!');
+    // Hide the add phone button
+    const btn = document.getElementById('addPhoneBtn');
+    if (btn) btn.style.display = 'none';
+  } catch(err) {
+    console.error('Verify OTP error:', err);
+    showToast('❌ Invalid OTP. Please try again.');
+  }
 }
 
 // ---- ARTIST ACTIVATE ----
