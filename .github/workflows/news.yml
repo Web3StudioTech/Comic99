@@ -40,11 +40,11 @@ jobs:
       - name: Fetch news and generate briefs
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          NEWS_MAX_NEW: ${{ github.event.inputs.max_new || '20' }}
-          NEWS_PER_FEED: '8'
-          NEWS_KEEP: '80'
+          NEWS_MAX_NEW: ${{ github.event.inputs.max_new || '30' }}
+          NEWS_PER_FEED: '6'
+          NEWS_KEEP: '120'
           NEWS_MAX_AGE_HOURS: '72'
-          NEWS_MAX_IMAGE_LOOKUPS: '15'
+          NEWS_MAX_IMAGE_LOOKUPS: '20'
           NEWS_MODEL: 'claude-haiku-4-5'
         run: node scripts/fetch-news.mjs
 
