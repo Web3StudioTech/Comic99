@@ -782,6 +782,24 @@ window.addEventListener('DOMContentLoaded', () => {
     showToast('❌ Google sign-in failed: ' + (err.message || 'Unknown error'));
   });
 
+  // Auto-refresh email verified status when user returns from verification link
+  // Firebase redirects back here with continueUrl — reload auth state to pick up emailVerified=true
+  firebase.auth().onAuthStateChanged(async (firebaseUser) => {
+    if (firebaseUser && currentUser) {
+      // Reload to get fresh emailVerified status from Firebase server
+      await firebaseUser.reload();
+      if (firebaseUser.emailVerified && !currentUser.emailVerified) {
+        currentUser.emailVerified = true;
+        try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
+        // Update Firestore
+        await saveProfile(firebaseUser.uid, { emailVerified: true });
+        // Refresh checklist if dashboard is showing
+        if (typeof updateChecklist === 'function') updateChecklist();
+        showToast('✅ Email verified! Your account is now confirmed.');
+      }
+    }
+  });
+
   if(currentUser) showDashboard();
   else showLanding();
   document.getElementById('watermarkSelect').addEventListener('change', function(){
@@ -868,8 +886,12 @@ async function doRegister() {
     showToast('⏳ Creating your account...');
     const result = await firebase.auth().createUserWithEmailAndPassword(email, pass);
     const user = result.user;
-    // Send email verification
-    await user.sendEmailVerification();
+    // Send email verification — continueUrl redirects back to Comic99 after verify
+    const actionCodeSettings = {
+      url: 'https://web3studiotech.github.io/Comic99/artist.html',
+      handleCodeInApp: false
+    };
+    await user.sendEmailVerification(actionCodeSettings);
     // Save profile to Firestore
     const profileData = {
       name, email, phone,
@@ -1098,7 +1120,11 @@ async function resendVerificationEmail() {
   if (!user) { showToast('⚠️ Please sign in first'); return; }
   if (user.emailVerified) { showToast('✅ Your email is already verified!'); return; }
   try {
-    await user.sendEmailVerification();
+    const actionCodeSettings = {
+      url: 'https://web3studiotech.github.io/Comic99/artist.html',
+      handleCodeInApp: false
+    };
+    await user.sendEmailVerification(actionCodeSettings);
     showToast('📧 Verification email sent! Check your inbox (and spam folder).');
     // 60-second cooldown to prevent spam
     _resendCooldown = true;
