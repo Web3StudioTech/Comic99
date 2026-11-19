@@ -219,28 +219,14 @@ async function signInWithGoogle() {
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.addScope('profile');
   provider.addScope('email');
-  // Redirect is more reliable than popup on GitHub Pages (no popup blockers,
-  // no cross-origin issues). The result is handled by onGoogleRedirectResult().
-  return await auth.signInWithRedirect(provider);
+  // Using popup — works correctly now that OAuth client is configured in
+  // Google Cloud Console with web3studiotech.github.io as authorized origin.
+  return await auth.signInWithPopup(provider);
 }
 
-/**
- * Call this ONCE on every page load, before any UI interaction.
- * It resolves the Google redirect result if the user just came back
- * from Google's login page.
- * @param {function} onSuccess  - called with Firebase user object on success
- * @param {function} onError    - called with Error on failure
- */
+// No-op kept for compatibility — popup doesn't need a redirect result handler
 async function onGoogleRedirectResult(onSuccess, onError) {
-  try {
-    const result = await auth.getRedirectResult();
-    if (result && result.user) {
-      if (onSuccess) onSuccess(result);
-    }
-  } catch (err) {
-    console.error('Google redirect result error:', err);
-    if (onError) onError(err);
-  }
+  // Not used with popup flow — safe to leave empty
 }
 
 // ============================================================

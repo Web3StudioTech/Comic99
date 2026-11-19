@@ -921,13 +921,36 @@ async function doRegister() {
 }
 async function doGoogleSignIn() {
   try {
-    showToast('⏳ Redirecting to Google sign-in...');
-    await signInWithGoogle(); // triggers redirect — page navigates away to Google
-    // Code below this line does NOT run during redirect.
-    // The result is handled by onGoogleRedirectResult() in DOMContentLoaded above.
+    showToast('⏳ Opening Google sign-in...');
+    const result = await signInWithGoogle();
+    const user = result.user;
+    let profile = await getProfile(user.uid);
+    if (!profile) {
+      profile = {
+        name: user.displayName || 'Comic99 User',
+        email: user.email,
+        roles: ['nakama'],
+        googleSignIn: true,
+        emailVerified: true,
+        avatarUrl: user.photoURL || '',
+        createdAt: new Date().toISOString()
+      };
+      await saveProfile(user.uid, profile);
+    }
+    currentUser = { uid: user.uid, ...profile };
+    try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
+    document.getElementById('authOverlay').style.display = 'none';
+    showDashboard();
+    showToast('✅ Welcome, ' + (currentUser.name || 'Nakama') + '!');
   } catch(err) {
     console.error('Google sign-in error:', err);
-    showToast('❌ Google sign-in failed: ' + (err.message || 'Unknown error'));
+    if (err.code === 'auth/popup-closed-by-user' || err.code === 'auth/cancelled-popup-request') {
+      showToast('⚠️ Sign-in cancelled');
+    } else if (err.code === 'auth/popup-blocked') {
+      showToast('⚠️ Popup blocked — please allow popups for this site and try again');
+    } else {
+      showToast('❌ Google sign-in failed: ' + (err.message || 'Unknown error'));
+    }
   }
 }
 async function doLogin() {
