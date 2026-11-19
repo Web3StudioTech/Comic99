@@ -72,12 +72,21 @@
   gap: 32px;
 }
 .hero-content { max-width: 560px; }
-.hero-eyebrow {
+.hero-eyebrow { display: none; }
+.hero-tagline-band {
+  text-align: center;
+  padding: 18px max(16px, env(safe-area-inset-left,0px));
+  background: linear-gradient(90deg, var(--ink) 0%, #1a0a0a 50%, var(--ink) 100%);
+  border-top: 3px solid var(--gold);
+  border-bottom: 3px solid var(--gold);
+}
+.hero-tagline-band h2 {
   font-family: 'Bangers', cursive;
-  font-size: 14px;
-  letter-spacing: 4px;
+  font-size: clamp(28px, 6vw, 56px);
+  letter-spacing: 6px;
   color: var(--gold);
-  margin-bottom: 12px;
+  text-shadow: 3px 3px 0 var(--ink), 4px 4px 0 rgba(232,25,44,0.6);
+  margin: 0;
   text-transform: uppercase;
 }
 .hero-title {
@@ -314,6 +323,44 @@
 }
 .how-desc { font-size: 13px; color: var(--text2); line-height: 1.5; }
 
+/* ---- LATEST NEWS BAND ---- */
+.latest-news-band {
+  background: linear-gradient(180deg, #0a0506 0%, var(--ink,#0D0B08) 100%);
+  border-top: 3px solid rgba(232,25,44,0.4);
+}
+.home-news-card {
+  background: var(--panel,#1a1a1a);
+  border: 2px solid var(--ink,#0D0B08);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+}
+.home-news-card:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--ink,#0D0B08); }
+.home-news-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  background: #111;
+}
+.home-news-thumb-badge {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg,#1a0a1a,#2a1a3a);
+}
+.home-news-body { padding: 12px 14px 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.home-news-cat { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: var(--red,#E8192C); text-transform: uppercase; }
+.home-news-title { font-family: 'Bangers', cursive; font-size: 16px; letter-spacing: 1px; line-height: 1.2; color: var(--white,#fff); flex: 1; }
+.home-news-meta { font-size: 11px; color: var(--text3,#888); font-weight: 700; }
+
 /* ---- CTA BAND ---- */
 .cta-band {
   background: var(--ink);
@@ -396,6 +443,9 @@
     </div>
   </div>
 </section>
+<div class="hero-tagline-band">
+  <h2>✦ WHERE LEGENDS ARE DRAWN ✦</h2>
+</div>
 
 <!-- MARQUEE -->
 <div class="marquee-bar">
@@ -575,6 +625,20 @@
   </div>
 </div>
 
+<!-- LATEST NEWS BAND -->
+<section class="latest-news-band" id="latestNewsBand" style="display:none;">
+  <div style="max-width:1200px;margin:0 auto;padding:40px max(16px,env(safe-area-inset-left,0px));">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-family:'Bangers',cursive;font-size:clamp(24px,5vw,40px);letter-spacing:3px;color:var(--white,#fff);">📰 TODAY'S <span style="color:var(--gold,#F5A800);">TOP STORIES</span></div>
+        <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:2px;margin-top:4px;">MANGA · ANIME · COSPLAY · EVENTS</div>
+      </div>
+      <a href="news.html" style="font-family:'Bangers',cursive;font-size:16px;letter-spacing:2px;color:var(--gold,#F5A800);text-decoration:none;border:2px solid var(--gold,#F5A800);padding:8px 16px;border-radius:8px;white-space:nowrap;">ALL NEWS →</a>
+    </div>
+    <div id="homeNewsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;"></div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="c99-footer">
   <div class="footer-logo">
@@ -612,6 +676,66 @@ function showToast(msg) {
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3000);
 }
+
+// ---- LATEST NEWS ON HOME PAGE ----
+const HOME_CAT_BADGE = {
+  Manga:'Radiant_Comic_Book_Badge.png', Anime:'Radiant_Comic_Book_Badge.png',
+  Webtoon:'Radiant_Comic_Book_Badge.png', Western:'Radiant_Comic_Book_Badge.png',
+  Cosplay:'Chibi_Superhero_Avatar_Badge.png', Events:'Chibi_Superhero_Avatar_Badge.png',
+  Industry:'Neon_Purple_Building_Badge.png', Adaptation:'Radiant_Comic_Book_Badge.png',
+  Creator:'Chibi_Superhero_Avatar_Badge.png', Other:'Radiant_Comic_Book_Badge.png'
+};
+function timeAgoHome(isoStr) {
+  const diff = Date.now() - new Date(isoStr).getTime();
+  const mins = Math.floor(diff/60000);
+  if (mins < 60) return mins + 'm ago';
+  const hrs = Math.floor(mins/60);
+  if (hrs < 24) return hrs + 'h ago';
+  return Math.floor(hrs/24) + 'd ago';
+}
+async function loadHomeNews() {
+  try {
+    const res = await fetch('news.json?v=' + Date.now());
+    if (!res.ok) return;
+    const items = await res.json();
+    if (!items || !items.length) return;
+    // Pick top 4 — prioritise featured/varied categories
+    const picks = items.slice(0, 8);
+    const seen = new Set();
+    const featured = [];
+    // First pass: one per category for variety
+    for (const item of picks) {
+      if (!seen.has(item.category) && featured.length < 4) {
+        featured.push(item); seen.add(item.category);
+      }
+    }
+    // Fill remaining slots if < 4
+    for (const item of picks) {
+      if (featured.length >= 4) break;
+      if (!featured.includes(item)) featured.push(item);
+    }
+    const grid = document.getElementById('homeNewsGrid');
+    const band = document.getElementById('latestNewsBand');
+    if (!grid || !band) return;
+    grid.innerHTML = featured.map(item => {
+      const badge = HOME_CAT_BADGE[item.category] || 'Radiant_Comic_Book_Badge.png';
+      const thumb = item.image
+        ? `<img class="home-news-thumb" src="${item.image}" alt="" loading="lazy"
+            onerror="this.outerHTML='<div class=\\'home-news-thumb-badge\\'><img src=\\'${badge}\\' style=\\'width:72px;height:72px;object-fit:contain;\\'></div>'">`
+        : `<div class="home-news-thumb-badge"><img src="${badge}" style="width:72px;height:72px;object-fit:contain;"></div>`;
+      return `<a class="home-news-card" href="${item.url}" target="_blank" rel="noopener">
+        ${thumb}
+        <div class="home-news-body">
+          <div class="home-news-cat">${item.category}</div>
+          <div class="home-news-title">${item.title}</div>
+          <div class="home-news-meta">${item.source || ''} · ${timeAgoHome(item.published)}</div>
+        </div>
+      </a>`;
+    }).join('');
+    band.style.display = '';
+  } catch(e) { /* silent — section stays hidden if no news.json */ }
+}
+document.addEventListener('DOMContentLoaded', loadHomeNews);
 </script>
 </body>
 </html>

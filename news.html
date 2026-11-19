@@ -313,8 +313,9 @@
       <p style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.65);margin-bottom:12px;line-height:1.5;">
         Get the latest comic news on our social pages.
       </p>
-      <a href="https://facebook.com/comic99" target="_blank" class="btn btn-outline btn-sm" style="display:block;text-align:center;margin-bottom:8px;color:var(--white);border-color:rgba(255,255,255,0.3);">📘 Facebook</a>
-      <a href="https://twitter.com/comic99" target="_blank" class="btn btn-outline btn-sm" style="display:block;text-align:center;color:var(--white);border-color:rgba(255,255,255,0.3);">🐦 Twitter / X</a>
+      <a href="https://www.facebook.com/Comic99Official/" target="_blank" rel="noopener" class="btn btn-outline btn-sm" style="display:block;text-align:center;margin-bottom:8px;color:var(--white);border-color:rgba(255,255,255,0.3);">📘 Facebook</a>
+      <a href="https://x.com/Comic99Official" target="_blank" rel="noopener" class="btn btn-outline btn-sm" style="display:block;text-align:center;margin-bottom:8px;color:var(--white);border-color:rgba(255,255,255,0.3);">𝕏 Twitter / X</a>
+      <a href="https://www.instagram.com/comic99official/" target="_blank" rel="noopener" class="btn btn-outline btn-sm" style="display:block;text-align:center;color:var(--white);border-color:rgba(255,255,255,0.3);">📸 Instagram</a>
     </div>
   </div>
 </div>
@@ -368,28 +369,36 @@ function fmtDate(isoStr) {
 }
 
 // ── Render ────────────────────────────────────────────────────────────────────
-// Fallback images per category when no og:image available
+// Badge fallback images per category
 const CAT_FALLBACK = {
-  'Manga': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Weekly_Shonen_Jump_logo.svg/320px-Weekly_Shonen_Jump_logo.svg.png',
-  'Anime': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Anime_stub.svg/320px-Anime_stub.svg.png',
-  'Webtoon': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Webtoon_App_Logo.png/240px-Webtoon_App_Logo.png',
-  'Cosplay': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/240px-PNG_transparency_demonstration_1.png',
-  'Marvel DC': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/320px-Marvel_Logo.svg.png',
-  'Industry': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/320px-Camponotus_flavomarginatus_ant.jpg',
+  'Manga':    'Radiant_Comic_Book_Badge.png',
+  'Anime':    'Radiant_Comic_Book_Badge.png',
+  'Webtoon':  'Radiant_Comic_Book_Badge.png',
+  'Western':  'Radiant_Comic_Book_Badge.png',
+  'Cosplay':  'Chibi_Superhero_Avatar_Badge.png',
+  'Events':   'Chibi_Superhero_Avatar_Badge.png',
+  'Industry': 'Neon_Purple_Building_Badge.png',
+  'Adaptation':'Radiant_Comic_Book_Badge.png',
+  'Creator':  'Chibi_Superhero_Avatar_Badge.png',
+  'Other':    'Radiant_Comic_Book_Badge.png',
 };
 
 function renderThumb(item) {
-  const emoji = CAT_EMOJI[item.category] || '📰';
+  const badge = CAT_FALLBACK[item.category] || 'Radiant_Comic_Book_Badge.png';
   const imgSrc = item.image || '';
   if (imgSrc) {
-    return `<div class="news-thumb">
+    return `<div class="news-thumb" style="position:relative;">
       <img src="${imgSrc}" alt="" loading="lazy"
         style="width:100%;height:100%;object-fit:cover;border-radius:8px;position:absolute;inset:0;"
-        onerror="this.onerror=null;this.style.display='none';this.parentElement.querySelector('.cat-graphic').style.display='flex';">
-      <div class="cat-graphic" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">${emoji}</div>
+        onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:var(--panel2,#1a1a1a);border-radius:8px;">
+        <img src="${badge}" alt="" style="width:72px;height:72px;object-fit:contain;">
+      </div>
     </div>`;
   }
-  return `<div class="news-thumb"><div class="cat-graphic">${emoji}</div></div>`;
+  return `<div class="news-thumb" style="display:flex;align-items:center;justify-content:center;background:var(--panel2,#1a1a1a);">
+    <img src="${badge}" alt="" style="width:72px;height:72px;object-fit:contain;">
+  </div>`;
 }
 
 function renderCard(item) {
