@@ -136,7 +136,7 @@ async function callClaude(prompt) {
 }
 
 async function writeBrief(title, excerpt, sourceName) {
-  const prompt = `You are a news editor for Comic99, a global comic and manga platform. Write a brief for this story.
+  const prompt = `You are a news editor for Comic99, a global comic, manga and cosplay platform. Write a brief for this story.
 
 Source: ${sourceName}
 Title: ${title}
@@ -147,10 +147,14 @@ Rules:
 - Facts only from what is given. No invented numbers, quotes, or background.
 - One to two sentences, maximum 45 words total.
 - Neutral tone. No hype, no predictions.
-- If the story is not about comics, manga, anime, webtoons, cosplay, or the comic/manga industry, reply with exactly: SKIP
+- If the story is not about comics, manga, anime, webtoons, cosplay, ACG events, conventions, or the comic/manga/cosplay industry, reply with exactly: SKIP
+- Cosplay stories: costume showcases, competition results, World Cosplay Summit, cosplay tutorials, notable cosplayers — these are ALWAYS relevant, never SKIP.
+- Events stories: anime conventions, comic cons, ACG festivals, upcoming cons, Comiket, Anime Expo, Comic Fiesta — these are ALWAYS relevant, never SKIP.
 - Reply with ONLY the brief text (or SKIP). No labels, no quotes, no explanation.
 
 Category options: ${CATEGORIES.join(', ')}
+- Use "Cosplay" for any cosplay showcase, competition, tutorial, or cosplayer spotlight.
+- Use "Events" for any convention, festival, con schedule, event announcement, or upcoming event.
 Also reply with the best category on a new line after the brief.
 
 Format:
