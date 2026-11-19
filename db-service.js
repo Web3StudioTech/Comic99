@@ -147,15 +147,17 @@ const db      = firebase.firestore();
 // AUTH — Phone OTP
 // ============================================================
 
-async function sendPhoneOTP(phoneNumber, recaptchaContainerId) {
-  // Clear any previously rendered reCAPTCHA to avoid "already rendered" error
+function _resetRecaptcha(containerId) {
   if (window._recaptchaVerifier) {
     try { window._recaptchaVerifier.clear(); } catch(e) {}
     window._recaptchaVerifier = null;
   }
-  // Also wipe the container's contents so reCAPTCHA can render fresh
-  const container = document.getElementById(recaptchaContainerId);
+  const container = document.getElementById(containerId);
   if (container) container.innerHTML = '';
+}
+
+async function sendPhoneOTP(phoneNumber, recaptchaContainerId) {
+  _resetRecaptcha(recaptchaContainerId);
 
   window._recaptchaVerifier = new firebase.auth.RecaptchaVerifier(recaptchaContainerId, {
     size: 'invisible',
@@ -163,21 +165,47 @@ async function sendPhoneOTP(phoneNumber, recaptchaContainerId) {
   });
 
   try {
-    const confirmationResult = await auth.signInWithPhoneNumber(phoneNumber, window._recaptchaVerifier);
-    window._confirmationResult = confirmationResult;
-    return confirmationResult;
+    const firebaseUser = auth.currentUser;
+    let confirmationResult;
+
+    if (firebaseUser) {
+      // User already signed in — link phone to existing account
+      const provider = new firebase.auth.PhoneAuthProvider();
+      const verificationId = await provider.verifyPhoneNumber(
+        phoneNumber,
+        window._recaptchaVerifier
+      );
+      window._phoneVerificationId = verificationId;
+      window._confirmationResult = null; // using verificationId flow
+    } else {
+      // No user signed in — sign in with phone directly
+      confirmationResult = await auth.signInWithPhoneNumber(phoneNumber, window._recaptchaVerifier);
+      window._confirmationResult = confirmationResult;
+      window._phoneVerificationId = null;
+    }
+
+    return true;
   } catch (err) {
-    // On failure, clear reCAPTCHA so the user can retry cleanly
-    try { window._recaptchaVerifier.clear(); } catch(e) {}
-    window._recaptchaVerifier = null;
-    if (container) container.innerHTML = '';
+    _resetRecaptcha(recaptchaContainerId);
     throw err;
   }
 }
 
 async function verifyPhoneOTP(code) {
-  if (!window._confirmationResult) throw new Error('No OTP session. Call sendPhoneOTP first.');
-  return await window._confirmationResult.confirm(code);
+  if (window._phoneVerificationId) {
+    // Link phone to existing signed-in user
+    const credential = firebase.auth.PhoneAuthProvider.credential(
+      window._phoneVerificationId,
+      code
+    );
+    const firebaseUser = auth.currentUser;
+    if (!firebaseUser) throw new Error('No user signed in');
+    return await firebaseUser.linkWithCredential(credential);
+  } else if (window._confirmationResult) {
+    return await window._confirmationResult.confirm(code);
+  } else {
+    throw new Error('No OTP session. Call sendPhoneOTP first.');
+  }
 }
 
 // ============================================================

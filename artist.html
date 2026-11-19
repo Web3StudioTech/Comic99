@@ -1058,17 +1058,16 @@ function showPhoneModal() {
 }
 function closePhoneModal() {
   document.getElementById('phoneModal').style.display = 'none';
-  // Reset reCAPTCHA so it can render fresh next time the modal opens
-  if (window._recaptchaVerifier) {
-    try { window._recaptchaVerifier.clear(); } catch(e) {}
-    window._recaptchaVerifier = null;
-  }
-  const rc = document.getElementById('phone-recaptcha');
-  if (rc) rc.innerHTML = '';
+  _resetRecaptcha('phone-recaptcha');
+  window._phoneVerificationId = null;
+  window._confirmationResult = null;
 }
 function backToPhoneStep1() {
   document.getElementById('phoneStep1').style.display = 'block';
   document.getElementById('phoneStep2').style.display = 'none';
+  _resetRecaptcha('phone-recaptcha');
+  window._phoneVerificationId = null;
+  window._confirmationResult = null;
 }
 async function sendPhoneVerification() {
   const phone = document.getElementById('phoneInput').value.trim();
