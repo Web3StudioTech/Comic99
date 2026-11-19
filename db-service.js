@@ -148,13 +148,31 @@ const db      = firebase.firestore();
 // ============================================================
 
 async function sendPhoneOTP(phoneNumber, recaptchaContainerId) {
+  // Clear any previously rendered reCAPTCHA to avoid "already rendered" error
+  if (window._recaptchaVerifier) {
+    try { window._recaptchaVerifier.clear(); } catch(e) {}
+    window._recaptchaVerifier = null;
+  }
+  // Also wipe the container's contents so reCAPTCHA can render fresh
+  const container = document.getElementById(recaptchaContainerId);
+  if (container) container.innerHTML = '';
+
   window._recaptchaVerifier = new firebase.auth.RecaptchaVerifier(recaptchaContainerId, {
     size: 'invisible',
     callback: () => {}
   });
-  const confirmationResult = await auth.signInWithPhoneNumber(phoneNumber, window._recaptchaVerifier);
-  window._confirmationResult = confirmationResult;
-  return confirmationResult;
+
+  try {
+    const confirmationResult = await auth.signInWithPhoneNumber(phoneNumber, window._recaptchaVerifier);
+    window._confirmationResult = confirmationResult;
+    return confirmationResult;
+  } catch (err) {
+    // On failure, clear reCAPTCHA so the user can retry cleanly
+    try { window._recaptchaVerifier.clear(); } catch(e) {}
+    window._recaptchaVerifier = null;
+    if (container) container.innerHTML = '';
+    throw err;
+  }
 }
 
 async function verifyPhoneOTP(code) {
@@ -164,13 +182,37 @@ async function verifyPhoneOTP(code) {
 
 // ============================================================
 // AUTH — Google Sign-In
+// Using signInWithRedirect (more reliable on GitHub Pages / static hosts).
+// Flow: signInWithGoogle() → Google login page → redirects back →
+//       onGoogleRedirectResult() fires on page load → user is signed in.
 // ============================================================
 
 async function signInWithGoogle() {
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.addScope('profile');
   provider.addScope('email');
-  return await auth.signInWithPopup(provider);
+  // Redirect is more reliable than popup on GitHub Pages (no popup blockers,
+  // no cross-origin issues). The result is handled by onGoogleRedirectResult().
+  return await auth.signInWithRedirect(provider);
+}
+
+/**
+ * Call this ONCE on every page load, before any UI interaction.
+ * It resolves the Google redirect result if the user just came back
+ * from Google's login page.
+ * @param {function} onSuccess  - called with Firebase user object on success
+ * @param {function} onError    - called with Error on failure
+ */
+async function onGoogleRedirectResult(onSuccess, onError) {
+  try {
+    const result = await auth.getRedirectResult();
+    if (result && result.user) {
+      if (onSuccess) onSuccess(result);
+    }
+  } catch (err) {
+    console.error('Google redirect result error:', err);
+    if (onError) onError(err);
+  }
 }
 
 // ============================================================

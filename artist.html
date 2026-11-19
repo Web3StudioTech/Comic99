@@ -297,7 +297,7 @@
         <div class="activate-title">ACTIVATE <span>ARTIST</span> ROLE</div>
         <p style="font-size:14px;font-weight:600;color:var(--text2);text-align:center;margin-bottom:16px;">Complete these requirements to unlock your Artist dashboard and start publishing</p>
         <ul class="checklist" id="artistChecklist">
-          <li><span class="check" id="chk1">⬜</span> <div><strong>Verified email</strong><br><span style="color:var(--text3);font-size:12px;">Check your inbox for the verification link</span></div></li>
+          <li><span class="check" id="chk1">⬜</span> <div><strong>Verified email</strong><br><span style="color:var(--text3);font-size:12px;">Check your inbox for the verification link</span><br><button id="resendEmailBtn" style="display:none;margin-top:6px;background:transparent;color:var(--red);border:1px solid var(--red);border-radius:6px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;" onclick="resendVerificationEmail()">↺ RESEND EMAIL</button></div></li>
           <li><span class="check" id="chk2">⬜</span> <div><strong>Phone number added</strong><br><span style="color:var(--text3);font-size:12px;">Required for Artist role activation</span><br><button id="addPhoneBtn" style="margin-top:6px;background:var(--purple);color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;" onclick="showPhoneModal()">+ ADD PHONE</button></div></li>
           <li><span class="check" id="chk3">⬜</span> <div><strong>Profile complete</strong><br><span style="color:var(--text3);font-size:12px;">Avatar, display name and bio required</span></div></li>
           <li><span class="check" id="chk4">⬜</span> <div><strong>Agree to Artist Guidelines</strong><br><span style="color:var(--text3);font-size:12px;">Read and accept the content policy below</span></div></li>
@@ -756,6 +756,32 @@ try {
 
 // ---- INIT ----
 window.addEventListener('DOMContentLoaded', () => {
+  // Handle Google redirect result (fires when user returns from Google login page)
+  onGoogleRedirectResult(async (result) => {
+    const user = result.user;
+    let profile = await getProfile(user.uid);
+    if (!profile) {
+      profile = {
+        name: user.displayName || 'Comic99 User',
+        email: user.email,
+        roles: ['nakama'],
+        googleSignIn: true,
+        emailVerified: true,
+        avatarUrl: user.photoURL || '',
+        createdAt: new Date().toISOString()
+      };
+      await saveProfile(user.uid, profile);
+    }
+    currentUser = { uid: user.uid, ...profile };
+    try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
+    document.getElementById('authOverlay').style.display = 'none';
+    showDashboard();
+    showToast('✅ Welcome, ' + (currentUser.name || 'Nakama') + '!');
+  }, (err) => {
+    console.error('Google redirect error:', err);
+    showToast('❌ Google sign-in failed: ' + (err.message || 'Unknown error'));
+  });
+
   if(currentUser) showDashboard();
   else showLanding();
   document.getElementById('watermarkSelect').addEventListener('change', function(){
@@ -873,38 +899,13 @@ async function doRegister() {
 }
 async function doGoogleSignIn() {
   try {
-    showToast('⏳ Opening Google sign-in...');
-    const result = await signInWithGoogle();
-    const user = result.user;
-    // Check if profile exists in Firestore
-    let profile = await getProfile(user.uid);
-    if (!profile) {
-      // New user — create default profile
-      profile = {
-        name: user.displayName || 'Comic99 User',
-        email: user.email,
-        roles: ['nakama'],
-        googleSignIn: true,
-        emailVerified: true,
-        avatarUrl: user.photoURL || '',
-        createdAt: new Date().toISOString()
-      };
-      await saveProfile(user.uid, profile);
-    }
-    currentUser = { uid: user.uid, ...profile };
-    try { localStorage.setItem('c99_user', JSON.stringify(currentUser)); } catch(e){}
-    document.getElementById('authOverlay').style.display = 'none';
-    showDashboard();
-    showToast('✅ Welcome, ' + (currentUser.name || 'Nakama') + '!');
+    showToast('⏳ Redirecting to Google sign-in...');
+    await signInWithGoogle(); // triggers redirect — page navigates away to Google
+    // Code below this line does NOT run during redirect.
+    // The result is handled by onGoogleRedirectResult() in DOMContentLoaded above.
   } catch(err) {
     console.error('Google sign-in error:', err);
-    if (err.code === 'auth/popup-closed-by-user') {
-      showToast('⚠️ Sign-in cancelled');
-    } else if (err.code === 'auth/popup-blocked') {
-      showToast('⚠️ Popup blocked — please allow popups for this site');
-    } else {
-      showToast('❌ Google sign-in failed: ' + (err.message || 'Unknown error'));
-    }
+    showToast('❌ Google sign-in failed: ' + (err.message || 'Unknown error'));
   }
 }
 async function doLogin() {
@@ -1035,6 +1036,13 @@ function showPhoneModal() {
 }
 function closePhoneModal() {
   document.getElementById('phoneModal').style.display = 'none';
+  // Reset reCAPTCHA so it can render fresh next time the modal opens
+  if (window._recaptchaVerifier) {
+    try { window._recaptchaVerifier.clear(); } catch(e) {}
+    window._recaptchaVerifier = null;
+  }
+  const rc = document.getElementById('phone-recaptcha');
+  if (rc) rc.innerHTML = '';
 }
 function backToPhoneStep1() {
   document.getElementById('phoneStep1').style.display = 'block';
@@ -1082,10 +1090,42 @@ async function verifyPhoneCode() {
   }
 }
 
+// ---- RESEND VERIFICATION EMAIL ----
+let _resendCooldown = false;
+async function resendVerificationEmail() {
+  if (_resendCooldown) { showToast('⏳ Please wait 60 seconds before resending'); return; }
+  const user = firebase.auth().currentUser;
+  if (!user) { showToast('⚠️ Please sign in first'); return; }
+  if (user.emailVerified) { showToast('✅ Your email is already verified!'); return; }
+  try {
+    await user.sendEmailVerification();
+    showToast('📧 Verification email sent! Check your inbox (and spam folder).');
+    // 60-second cooldown to prevent spam
+    _resendCooldown = true;
+    const btn = document.getElementById('resendEmailBtn');
+    if (btn) { btn.textContent = '↺ RESEND EMAIL (60s)'; btn.style.opacity = '0.5'; }
+    setTimeout(() => {
+      _resendCooldown = false;
+      if (btn) { btn.textContent = '↺ RESEND EMAIL'; btn.style.opacity = '1'; }
+    }, 60000);
+  } catch(err) {
+    console.error('Resend verification error:', err);
+    if (err.code === 'auth/too-many-requests') {
+      showToast('⚠️ Too many requests. Please wait a few minutes and try again.');
+    } else {
+      showToast('❌ Failed to resend: ' + (err.message || 'Try again'));
+    }
+  }
+}
+
 // ---- ARTIST ACTIVATE ----
 function updateChecklist() {
   if(!currentUser) return;
-  document.getElementById('chk1').textContent = currentUser.emailVerified ? '✅' : '⬜';
+  const emailOk = currentUser.emailVerified;
+  document.getElementById('chk1').textContent = emailOk ? '✅' : '⬜';
+  // Show resend button only when email not yet verified
+  const resendBtn = document.getElementById('resendEmailBtn');
+  if (resendBtn) resendBtn.style.display = emailOk ? 'none' : 'inline-block';
   document.getElementById('chk2').textContent = currentUser.phone ? '✅' : '⬜';
   document.getElementById('chk3').textContent = currentUser.name ? '✅' : '⬜';
   document.getElementById('chk4').textContent = document.getElementById('guidelinesCheck')?.checked ? '✅' : '⬜';
