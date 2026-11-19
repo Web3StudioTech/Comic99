@@ -1,28 +1,24 @@
 /**
  * Comic99 — db-service.js
- * Data layer: Firebase (default) or Supabase (swap this file to migrate)
+ * Data layer: Firebase Auth + Firestore + Cloudinary images
  *
- * To switch to Supabase:
- *   1. Replace this file with db-service-supabase.js
- *   2. Update firebaseConfig with your Supabase URL and anon key
- *   3. All function names stay the same — zero changes in HTML files
+ * IMAGE STORAGE ARCHITECTURE (swap-ready):
+ *   Phase 1 (now)   → Cloudinary (free 25GB, no credit card)
+ *   Phase 2 (scale) → Backblaze B2 + Cloudflare CDN (cheapest at scale)
+ *   Phase 3 (own)   → Self-hosted Supabase Storage
  *
- * Firebase services used:
- *   - Firebase Auth  : Phone OTP + Google Sign-In
- *   - Firestore      : User profiles, posts, comics
- *   - Firebase Storage: Profile pictures, comic pages, cosplay photos
+ *   To swap storage: change STORAGE_PROVIDER below + update the
+ *   uploadToStorage() function. Zero changes needed in HTML files.
  *
- * SETUP:
- *   1. Create a Firebase project at https://console.firebase.google.com
- *   2. Enable: Authentication > Sign-in methods > Phone + Google
- *   3. Enable: Firestore Database (start in test mode)
- *   4. Enable: Storage
- *   5. Replace the config below with your project's config
- *      (Project Settings > Your apps > Firebase SDK snippet > Config)
+ * DATABASE MIGRATION PATH:
+ *   Phase 1 → Firestore (now)
+ *   Phase 2 → Supabase Cloud  (replace this file)
+ *   Phase 3 → Self-hosted Supabase (change one URL line)
+ *   All function names stay the same — zero changes in HTML files.
  */
 
 // ============================================================
-// FIREBASE CONFIG — replace with your own config
+// FIREBASE CONFIG
 // ============================================================
 const firebaseConfig = {
   apiKey: "AIzaSyBPCjT0Ash3QF8llsGBjKJWQlVi7GlnGGE",
@@ -35,35 +31,122 @@ const firebaseConfig = {
 };
 
 // ============================================================
-// FIREBASE SDK — loaded from CDN in each HTML page
-// (add these before db-service.js in your <head>)
+// CLOUDINARY CONFIG
+// ⚠️  REPLACE YOUR_CLOUD_NAME with your actual Cloudinary cloud name
+//     (found on your Cloudinary dashboard after signing up at cloudinary.com)
+//     Example: if your cloud name is "comic99app", set it below.
 //
-//   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-//   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-//   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-//   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
-//   <script src="db-service.js"></script>
+//     UPLOAD PRESET: Create an UNSIGNED upload preset in Cloudinary:
+//     Cloudinary Dashboard → Settings → Upload → Upload presets → Add preset
+//     Set signing mode to "Unsigned" → name it "comic99_upload"
+// ============================================================
+const CLOUDINARY_CONFIG = {
+  cloudName: 'ub2tzqxm',              // Cloudinary cloud name
+  uploadPreset: 'comic99_upload',     // ← unsigned upload preset name
+  apiBase: function() {
+    return `https://api.cloudinary.com/v1_1/${this.cloudName}/image/upload`;
+  }
+};
+
+// ============================================================
+// STORAGE PROVIDER — swap here when migrating
+// Options: 'cloudinary' | 'backblaze' | 'supabase'
+// ============================================================
+const STORAGE_PROVIDER = 'cloudinary';
+
+// ============================================================
+// CLOUDINARY — image upload with auto-optimization
 // ============================================================
 
-// Init Firebase (only once)
+/**
+ * Upload an image to Cloudinary with automatic optimization.
+ * @param {File} file - image file
+ * @param {string} folder - cloudinary folder e.g. 'comic99/avatars'
+ * @param {object} options - { maxWidth, quality, publicId }
+ * @param {function} onProgress - optional callback(percent)
+ * @returns {string} - secure CDN URL
+ */
+async function uploadToCloudinary(file, folder, options = {}, onProgress = null) {
+  if (!CLOUDINARY_CONFIG.cloudName || CLOUDINARY_CONFIG.cloudName === 'YOUR_CLOUD_NAME') {
+    throw new Error('Cloudinary not configured. Please set your cloud name in db-service.js');
+  }
+
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('upload_preset', CLOUDINARY_CONFIG.uploadPreset);
+  formData.append('folder', folder);
+
+  // Auto-optimization transformations
+  const transformation = [];
+  if (options.maxWidth) transformation.push(`w_${options.maxWidth},c_limit`);
+  transformation.push('q_auto:good');   // auto compress
+  transformation.push('f_auto');         // auto format (WebP when supported)
+  if (transformation.length) {
+    formData.append('eager', transformation.join(','));
+  }
+
+  if (options.publicId) {
+    formData.append('public_id', options.publicId);
+  }
+
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', CLOUDINARY_CONFIG.apiBase(), true);
+
+    if (onProgress) {
+      xhr.upload.onprogress = e => {
+        if (e.lengthComputable) onProgress(Math.round(e.loaded / e.total * 100));
+      };
+    }
+
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        const res = JSON.parse(xhr.responseText);
+        // Use eager URL (optimized) if available, else secure_url
+        const url = (res.eager && res.eager[0]) ? res.eager[0].secure_url : res.secure_url;
+        resolve(url);
+      } else {
+        reject(new Error('Cloudinary upload failed: ' + xhr.responseText));
+      }
+    };
+    xhr.onerror = () => reject(new Error('Cloudinary upload network error'));
+    xhr.send(formData);
+  });
+}
+
+/**
+ * Unified storage upload — routes to correct provider.
+ * Swap STORAGE_PROVIDER above to change storage without touching HTML.
+ */
+async function uploadToStorage(file, folder, options = {}, onProgress = null) {
+  if (STORAGE_PROVIDER === 'cloudinary') {
+    return uploadToCloudinary(file, folder, options, onProgress);
+  }
+  // Phase 2: Backblaze B2 + Cloudflare
+  // if (STORAGE_PROVIDER === 'backblaze') {
+  //   return uploadToBackblaze(file, folder, options, onProgress);
+  // }
+  // Phase 3: Supabase Storage
+  // if (STORAGE_PROVIDER === 'supabase') {
+  //   return uploadToSupabase(file, folder, options, onProgress);
+  // }
+  throw new Error('No storage provider configured');
+}
+
+// ============================================================
+// FIREBASE SDK — Init
+// ============================================================
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
 const auth    = firebase.auth();
 const db      = firebase.firestore();
-const storage = firebase.storage();
 
 // ============================================================
 // AUTH — Phone OTP
 // ============================================================
 
-/**
- * Step 1: Send OTP to phone number.
- * @param {string} phoneNumber - e.g. "+60123456789"
- * @param {string} recaptchaContainerId - id of a div in the page for reCAPTCHA
- * @returns {firebase.auth.ConfirmationResult}
- */
 async function sendPhoneOTP(phoneNumber, recaptchaContainerId) {
   window._recaptchaVerifier = new firebase.auth.RecaptchaVerifier(recaptchaContainerId, {
     size: 'invisible',
@@ -74,35 +157,24 @@ async function sendPhoneOTP(phoneNumber, recaptchaContainerId) {
   return confirmationResult;
 }
 
-/**
- * Step 2: Verify OTP code entered by user.
- * @param {string} code - 6-digit OTP from SMS
- * @returns {firebase.auth.UserCredential}
- */
 async function verifyPhoneOTP(code) {
   if (!window._confirmationResult) throw new Error('No OTP session. Call sendPhoneOTP first.');
-  const result = await window._confirmationResult.confirm(code);
-  return result;
+  return await window._confirmationResult.confirm(code);
 }
 
 // ============================================================
 // AUTH — Google Sign-In
 // ============================================================
 
-/**
- * Sign in with Google popup.
- * @returns {firebase.auth.UserCredential}
- */
 async function signInWithGoogle() {
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.addScope('profile');
   provider.addScope('email');
-  const result = await auth.signInWithPopup(provider);
-  return result;
+  return await auth.signInWithPopup(provider);
 }
 
 // ============================================================
-// AUTH — Logout
+// AUTH — Logout / State
 // ============================================================
 
 async function signOut() {
@@ -110,21 +182,10 @@ async function signOut() {
   try { localStorage.removeItem('c99_user'); } catch(e) {}
 }
 
-// ============================================================
-// AUTH — State observer
-// ============================================================
-
-/**
- * Subscribe to auth state changes.
- * @param {function} callback - called with Firebase User or null
- */
 function onAuthStateChanged(callback) {
   return auth.onAuthStateChanged(callback);
 }
 
-/**
- * Get current signed-in user (or null).
- */
 function getCurrentUser() {
   return auth.currentUser;
 }
@@ -133,12 +194,6 @@ function getCurrentUser() {
 // USER PROFILE — Firestore
 // ============================================================
 
-/**
- * Create or update a user profile in Firestore.
- * Called after sign-up or first login.
- * @param {string} uid - Firebase UID
- * @param {object} profileData - { name, role, handle, bio, specialty, privacy, ... }
- */
 async function saveProfile(uid, profileData) {
   await db.collection('users').doc(uid).set({
     ...profileData,
@@ -146,91 +201,128 @@ async function saveProfile(uid, profileData) {
   }, { merge: true });
 }
 
-/**
- * Get a user's profile from Firestore.
- * @param {string} uid
- * @returns {object|null}
- */
 async function getProfile(uid) {
   const doc = await db.collection('users').doc(uid).get();
   return doc.exists ? { uid, ...doc.data() } : null;
 }
 
 // ============================================================
-// PROFILE PICTURE — Firebase Storage
+// PROFILE PICTURE UPLOAD — Cloudinary → Firestore
 // ============================================================
 
 /**
- * Upload a profile picture.
- * @param {string} uid - Firebase UID
- * @param {File} file - image file from <input type="file">
- * @param {function} onProgress - optional callback(percent)
- * @returns {string} - download URL
+ * Upload a profile picture via Cloudinary.
+ * Falls back to base64 localStorage if Cloudinary not configured.
+ * @param {string} uid
+ * @param {File} file
+ * @param {function} onProgress
+ * @returns {string} - CDN URL or base64 string
  */
 async function uploadProfilePicture(uid, file, onProgress) {
-  const ext = file.name.split('.').pop();
-  const ref = storage.ref(`avatars/${uid}/profile.${ext}`);
-  const task = ref.put(file);
+  let avatarUrl;
 
-  if (onProgress) {
-    task.on('state_changed', snapshot => {
-      const pct = Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100);
-      onProgress(pct);
+  try {
+    avatarUrl = await uploadToStorage(
+      file,
+      'comic99/avatars',
+      { maxWidth: 400, publicId: `avatar_${uid}` },
+      onProgress
+    );
+  } catch (err) {
+    // Fallback: base64 localStorage (works without Cloudinary configured)
+    console.warn('Cloudinary upload failed, falling back to base64:', err.message);
+    avatarUrl = await new Promise((res, rej) => {
+      const reader = new FileReader();
+      reader.onload = e => res(e.target.result);
+      reader.onerror = rej;
+      reader.readAsDataURL(file);
     });
   }
 
-  await task;
-  const url = await ref.getDownloadURL();
-
-  // Save URL to profile
+  // Save URL to Firestore profile
   await db.collection('users').doc(uid).set(
-    { avatarUrl: url, updatedAt: firebase.firestore.FieldValue.serverTimestamp() },
+    { avatarUrl, updatedAt: firebase.firestore.FieldValue.serverTimestamp() },
     { merge: true }
   );
 
-  return url;
+  return avatarUrl;
 }
 
+// ============================================================
+// COSPLAY PHOTO UPLOAD — Cloudinary
+// ============================================================
+
 /**
- * Upload a cosplay photo.
- * @param {string} uid - Firebase UID
+ * Upload a cosplay post photo via Cloudinary.
+ * @param {string} uid
  * @param {File} file
- * @param {string} postId - unique ID for this post
- * @returns {string} - download URL
+ * @param {string} postId
+ * @param {function} onProgress
+ * @returns {string} - CDN URL
  */
-async function uploadCosplayPhoto(uid, file, postId) {
-  const ext = file.name.split('.').pop();
-  const ref = storage.ref(`cosplay/${uid}/${postId}.${ext}`);
-  await ref.put(file);
-  return await ref.getDownloadURL();
+async function uploadCosplayPhoto(uid, file, postId, onProgress) {
+  return await uploadToStorage(
+    file,
+    'comic99/cosplay',
+    { maxWidth: 1200, publicId: `cosplay_${uid}_${postId}` },
+    onProgress
+  );
 }
 
+// ============================================================
+// COMIC COVER UPLOAD — Cloudinary
+// ============================================================
+
 /**
- * Upload a comic page.
+ * Upload a comic series cover image via Cloudinary.
+ * @param {string} uid - artist UID
+ * @param {string} seriesId
+ * @param {File} file
+ * @param {function} onProgress
+ * @returns {string} - CDN URL
+ */
+async function uploadComicCover(uid, seriesId, file, onProgress) {
+  return await uploadToStorage(
+    file,
+    'comic99/covers',
+    { maxWidth: 600, publicId: `cover_${uid}_${seriesId}` },
+    onProgress
+  );
+}
+
+// ============================================================
+// COMIC PAGE UPLOAD — Cloudinary
+// ⚠️  NOTICE: Uploaded images are automatically optimized for web
+//     delivery. Original files are NOT stored. Keep your originals
+//     on your own device.
+// ============================================================
+
+/**
+ * Upload a single comic page via Cloudinary.
+ * Images are auto-compressed and converted to WebP for fast loading.
+ * Original files are NOT stored — keep your originals on your device.
  * @param {string} uid - artist UID
  * @param {string} seriesId
  * @param {number} chapterNum
  * @param {number} pageNum
  * @param {File} file
- * @returns {string} - download URL
+ * @param {function} onProgress
+ * @returns {string} - CDN URL
  */
-async function uploadComicPage(uid, seriesId, chapterNum, pageNum, file) {
-  const ext = file.name.split('.').pop();
-  const path = `comics/${uid}/${seriesId}/ch${chapterNum}/p${String(pageNum).padStart(3,'0')}.${ext}`;
-  const ref = storage.ref(path);
-  await ref.put(file);
-  return await ref.getDownloadURL();
+async function uploadComicPage(uid, seriesId, chapterNum, pageNum, file, onProgress) {
+  const pageId = `p${String(pageNum).padStart(3,'0')}`;
+  return await uploadToStorage(
+    file,
+    `comic99/pages/${seriesId}/ch${chapterNum}`,
+    { maxWidth: 800, publicId: `${uid}_${seriesId}_ch${chapterNum}_${pageId}` },
+    onProgress
+  );
 }
 
 // ============================================================
 // COSPLAY POSTS — Firestore
 // ============================================================
 
-/**
- * Create a cosplay post.
- * @param {string} uid
- * @param {object} postData - { imageUrl, caption, tags, privacy }
- */
 async function createCosplayPost(uid, postData) {
   const ref = await db.collection('posts').add({
     uid,
@@ -243,11 +335,6 @@ async function createCosplayPost(uid, postData) {
   return ref.id;
 }
 
-/**
- * Get recent cosplay posts.
- * @param {number} limit
- * @returns {Array}
- */
 async function getCosplayPosts(limit = 20) {
   const snap = await db.collection('posts')
     .where('type', '==', 'cosplay')
@@ -257,11 +344,6 @@ async function getCosplayPosts(limit = 20) {
   return snap.docs.map(d => ({ id: d.id, ...d.data() }));
 }
 
-/**
- * Toggle like on a post.
- * @param {string} postId
- * @param {string} uid
- */
 async function toggleLikePost(postId, uid) {
   const likeRef = db.collection('likes').doc(`${uid}_${postId}`);
   const likeDoc = await likeRef.get();
@@ -269,11 +351,11 @@ async function toggleLikePost(postId, uid) {
   if (likeDoc.exists) {
     await likeRef.delete();
     await postRef.update({ likes: firebase.firestore.FieldValue.increment(-1) });
-    return false; // unliked
+    return false;
   } else {
     await likeRef.set({ uid, postId, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
     await postRef.update({ likes: firebase.firestore.FieldValue.increment(1) });
-    return true; // liked
+    return true;
   }
 }
 
@@ -281,11 +363,6 @@ async function toggleLikePost(postId, uid) {
 // COMICS — Firestore
 // ============================================================
 
-/**
- * Create a new comic series.
- * @param {string} uid - artist UID
- * @param {object} data - { title, description, genre, artType, watermark }
- */
 async function createComicSeries(uid, data) {
   const ref = await db.collection('comics').add({
     uid,
@@ -299,10 +376,6 @@ async function createComicSeries(uid, data) {
   return ref.id;
 }
 
-/**
- * Get comics by an artist.
- * @param {string} uid
- */
 async function getArtistComics(uid) {
   const snap = await db.collection('comics')
     .where('uid', '==', uid)
@@ -315,11 +388,6 @@ async function getArtistComics(uid) {
 // FORUM POSTS — Firestore
 // ============================================================
 
-/**
- * Create a forum thread.
- * @param {string} uid
- * @param {object} data - { category, title, body, tags }
- */
 async function createForumThread(uid, data) {
   const ref = await db.collection('forum').add({
     uid,
@@ -332,11 +400,6 @@ async function createForumThread(uid, data) {
   return ref.id;
 }
 
-/**
- * Get forum threads by category.
- * @param {string} category
- * @param {number} limit
- */
 async function getForumThreads(category, limit = 20) {
   const snap = await db.collection('forum')
     .where('category', '==', category)
@@ -345,16 +408,3 @@ async function getForumThreads(category, limit = 20) {
     .get();
   return snap.docs.map(d => ({ id: d.id, ...d.data() }));
 }
-
-// ============================================================
-// EXPORT (for modules / other pages)
-// ============================================================
-
-// If using as ES module, uncomment:
-// export { sendPhoneOTP, verifyPhoneOTP, signInWithGoogle, signOut,
-//   onAuthStateChanged, getCurrentUser,
-//   saveProfile, getProfile,
-//   uploadProfilePicture, uploadCosplayPhoto, uploadComicPage,
-//   createCosplayPost, getCosplayPosts, toggleLikePost,
-//   createComicSeries, getArtistComics,
-//   createForumThread, getForumThreads };

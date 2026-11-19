@@ -420,6 +420,39 @@
             <input class="form-input" type="file" accept=".png,.svg" style="padding:8px;">
             <div class="form-hint">PNG with transparent background recommended. Max 2MB.</div>
           </div>
+          <!-- COVER IMAGE UPLOAD -->
+          <div class="form-group">
+            <label class="form-label">SERIES COVER IMAGE <span style="color:var(--text3);font-weight:400;">(optional)</span></label>
+            <div id="coverPreviewWrap" style="display:none;margin-bottom:10px;">
+              <img id="coverPreview" src="" alt="Cover preview" style="max-width:160px;max-height:220px;border-radius:8px;border:3px solid var(--ink);object-fit:cover;">
+            </div>
+            <input class="form-input" type="file" id="coverImageInput" accept="image/*" style="padding:8px;" onchange="previewCover(this)">
+            <div class="form-hint">Recommended: portrait ratio (e.g. 600×900px). JPG or PNG.</div>
+            <div id="coverUploadProgress" style="display:none;margin-top:8px;">
+              <div style="height:6px;background:var(--panel2);border-radius:3px;overflow:hidden;">
+                <div id="coverProgressBar" style="height:100%;width:0%;background:var(--purple);transition:width 0.3s;border-radius:3px;"></div>
+              </div>
+              <div id="coverProgressText" style="font-size:11px;color:var(--text3);margin-top:4px;">Uploading...</div>
+            </div>
+          </div>
+          <!-- COMIC PAGES UPLOAD -->
+          <div class="form-group">
+            <label class="form-label">UPLOAD COMIC PAGES <span style="color:var(--text3);font-weight:400;">(optional — add after saving series)</span></label>
+            <input class="form-input" type="file" id="comicPagesInput" accept="image/*" multiple style="padding:8px;">
+            <div id="pagesUploadProgress" style="display:none;margin-top:8px;">
+              <div style="height:6px;background:var(--panel2);border-radius:3px;overflow:hidden;">
+                <div id="pagesProgressBar" style="height:100%;width:0%;background:var(--purple);transition:width 0.3s;border-radius:3px;"></div>
+              </div>
+              <div id="pagesProgressText" style="font-size:11px;color:var(--text3);margin-top:4px;">Uploading...</div>
+            </div>
+            <!-- IMPORTANT NOTICE FOR ARTISTS -->
+            <div style="margin-top:10px;padding:12px 14px;background:rgba(232,25,44,0.08);border:2px solid var(--red);border-radius:10px;display:flex;gap:10px;align-items:flex-start;">
+              <span style="font-size:20px;flex-shrink:0;">⚠️</span>
+              <div style="font-size:12px;font-weight:700;color:var(--text);line-height:1.6;">
+                Uploaded images are automatically optimized for web delivery. <span style="color:var(--red);">Original files are NOT stored.</span> Please keep your original artwork files safely on your own device before uploading.
+              </div>
+            </div>
+          </div>
           <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
             <button class="btn btn-purple" onclick="saveComicSeries()">💾 SAVE SERIES →</button>
             <button class="btn btn-outline btn-sm" onclick="toggleUpload()">CANCEL</button>
@@ -1075,6 +1108,17 @@ function toggleUpload() {
 }
 
 // ---- COMIC SERIES ----
+function previewCover(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('coverPreview').src = e.target.result;
+    document.getElementById('coverPreviewWrap').style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+}
+
 async function saveComicSeries() {
   if (!currentUser || !currentUser.uid) { showToast('⚠️ Please sign in first'); return; }
   const title = document.getElementById('uploadTitle').value.trim();
@@ -1082,17 +1126,53 @@ async function saveComicSeries() {
   const artType = document.querySelector('input[name="artType"]:checked')?.value || 'original';
   try {
     showToast('⏳ Saving series...');
+
+    // Step 1: Create series in Firestore (get seriesId first)
     const seriesId = await createComicSeries(currentUser.uid, {
       title,
       description: document.getElementById('uploadDesc').value.trim(),
       genre: document.getElementById('uploadGenre').value,
       artType,
-      watermark: document.getElementById('watermarkSelect').value
+      watermark: document.getElementById('watermarkSelect').value,
+      coverUrl: ''
     });
+
+    // Step 2: Upload cover image if provided
+    const coverFile = document.getElementById('coverImageInput').files[0];
+    if (coverFile) {
+      try {
+        showToast('⏳ Uploading cover image...');
+        const progressWrap = document.getElementById('coverUploadProgress');
+        const progressBar = document.getElementById('coverProgressBar');
+        const progressText = document.getElementById('coverProgressText');
+        progressWrap.style.display = 'block';
+
+        const coverUrl = await uploadComicCover(
+          currentUser.uid, seriesId, coverFile,
+          pct => {
+            progressBar.style.width = pct + '%';
+            progressText.textContent = `Uploading cover... ${pct}%`;
+          }
+        );
+
+        // Update Firestore with cover URL
+        await firebase.firestore().collection('comics').doc(seriesId).update({ coverUrl });
+        progressWrap.style.display = 'none';
+        showToast('✅ Cover uploaded!');
+      } catch (coverErr) {
+        console.warn('Cover upload failed:', coverErr.message);
+        showToast('⚠️ Series saved. Cover upload failed — check Cloudinary config.');
+      }
+    }
+
     showToast('✅ Series "' + title + '" created! Now add your pages.');
+
+    // Reset form
     document.getElementById('uploadTitle').value = '';
     document.getElementById('uploadDesc').value = '';
-    // Update dash stats
+    document.getElementById('coverImageInput').value = '';
+    document.getElementById('coverPreviewWrap').style.display = 'none';
+
     loadArtistStats();
   } catch(err) {
     showToast('❌ Save failed: ' + (err.message || 'Try again'));
