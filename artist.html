@@ -16,18 +16,18 @@
 <meta property="og:site_name" content="Comic99">
 <meta property="og:title" content="Comic Artist Dashboard — Comic99">
 <meta property="og:description" content="Publish original manga, webtoons and fan art. Build your fanbase and track analytics. Free for all comic artists.">
-<meta property="og:image" content="https://web3studiotech.github.io/Comic99/comic99-og.png">
-<meta property="og:url" content="https://web3studiotech.github.io/Comic99/artist.html">
+<meta property="og:image" content="https://comic99.xyz/comic99-og.png">
+<meta property="og:url" content="https://comic99.xyz/artist.html">
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@Comic99Official">
 <meta name="twitter:creator" content="@Comic99Official">
 <meta name="twitter:title" content="Comic Artist Dashboard — Comic99">
 <meta name="twitter:description" content="Publish original manga, webtoons and fan art. Build your fanbase and track analytics. Free for all comic artists.">
-<meta name="twitter:image" content="https://web3studiotech.github.io/Comic99/comic99-og.png">
+<meta name="twitter:image" content="https://comic99.xyz/comic99-og.png">
 <!-- Canonical -->
-<link rel="canonical" href="https://web3studiotech.github.io/Comic99/artist.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Comic Artist Dashboard","url":"https://web3studiotech.github.io/Comic99/artist.html","description":"Publish manga and comics, build fanbase, track analytics on Comic99","isPartOf":{"@type":"WebSite","name":"Comic99","url":"https://web3studiotech.github.io/Comic99/"}}</script>
+<link rel="canonical" href="https://comic99.xyz/artist.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Comic Artist Dashboard","url":"https://comic99.xyz/artist.html","description":"Publish manga and comics, build fanbase, track analytics on Comic99","isPartOf":{"@type":"WebSite","name":"Comic99","url":"https://comic99.xyz/"}}</script>
 <!-- SEO_END -->
 <link rel="stylesheet" href="comic99-shared.css">
 <!-- Firebase SDK -->
@@ -888,7 +888,7 @@ async function doRegister() {
     const user = result.user;
     // Send email verification — continueUrl redirects back to Comic99 after verify
     const actionCodeSettings = {
-      url: 'https://web3studiotech.github.io/Comic99/artist.html',
+      url: 'https://comic99.xyz/artist.html',
       handleCodeInApp: false
     };
     await user.sendEmailVerification(actionCodeSettings);
@@ -1143,7 +1143,7 @@ async function resendVerificationEmail() {
   if (user.emailVerified) { showToast('✅ Your email is already verified!'); return; }
   try {
     const actionCodeSettings = {
-      url: 'https://web3studiotech.github.io/Comic99/artist.html',
+      url: 'https://comic99.xyz/artist.html',
       handleCodeInApp: false
     };
     await user.sendEmailVerification(actionCodeSettings);
