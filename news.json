@@ -1,6 +1,9 @@
 {
-  "updated": "2026-11-19T21:05:16.400Z",
+  "updated": "2026-11-20T08:20:38.103Z",
   "skipped": [
+    "a66bdedab1a1dbb8",
+    "237f2cea29bbd917",
+    "b5cc2c08139bea9b",
     "4d258e3a743b701c",
     "0fcd7f329c1311a8",
     "f0a6f75f6c0cc3e8",
@@ -27,6 +30,204 @@
     "12ac08358b3ca231"
   ],
   "items": [
+    {
+      "id": "d1ead1ee9e88d99e",
+      "headline": "Pokémon Joins Duolingo for 'Duo's Pokémon Party' Event",
+      "summary": "Duolingo has partnered with Pokémon for a collaborative event called Duo's Pokémon Party, offering users the chance to engage with the franchise while using the language-learning platform.",
+      "category": "Other",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/interest/2026-11-19/pokemon-joins-duolingo-for-duo-pokemon-party-event/.243987",
+      "published": "2026-11-20T04:59:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gH6/youtube/3kmmiVQlGi0.jpg",
+      "sourceTitle": "Pokémon Joins Duolingo for 'Duo's Pokémon Party' Event"
+    },
+    {
+      "id": "524d1a554e31060b",
+      "headline": "Wolverine and Han Solo Team-Up in Marvel's Official February 2027 Solicitations",
+      "summary": "Marvel's February 2027 solicitations reveal a crossover event pairing Wolverine with Han Solo in its second installment, blending Marvel characters with the Star Wars universe.",
+      "category": "Western",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/wolverine-han-solo-team-up-marvel-official-february-2027-solicitations/",
+      "published": "2026-11-20T04:53:32.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/marvel-star-wars-header.jpg",
+      "sourceTitle": "Wolverine and Han Solo Team-Up in Marvel's Official February 2027 Solicitations"
+    },
+    {
+      "id": "23b17e8433191556",
+      "headline": "10 Perfect '90s Anime No One Talks About",
+      "summary": "A retrospective examines overlooked anime from the 1990s, including titles like Flame of Recca and Nadia: The Secret of Blue Water that have faded from popular discussion.",
+      "category": "Anime",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/flawless-1990s-anime-fans-forgot-list/",
+      "published": "2026-11-20T04:45:11.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/nadia-the-secret-of-blue-water.jpg",
+      "sourceTitle": "10 Perfect '90s Anime No One Talks About"
+    },
+    {
+      "id": "4d1448744d8fa4ab",
+      "headline": "10 Funniest Calvin and Hobbes Car Rides, Ranked",
+      "summary": "Comic Book Resources ranks the funniest Calvin and Hobbes car ride moments, highlighting how these strips capture relatable humor through everyday driving scenarios.",
+      "category": "Western",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/funniest-calvin-and-hobbes-car-rides-ranked/",
+      "published": "2026-11-20T04:30:11.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2025/03/10-funniest-calvin-and-hobbes-car-rides-ranked.jpg",
+      "sourceTitle": "10 Funniest Calvin and Hobbes Car Rides, Ranked"
+    },
+    {
+      "id": "05bf8893e5e0a422",
+      "headline": "'I am the only one who is not attacked in the world filled with zombies' Anime Reveals More Cast, January 1 TV Debut",
+      "summary": "An anime about a protagonist immune to zombie attacks will debut on January 1. The production has added six cast members to its roster.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-19/i-am-the-only-one-who-is-not-attacked-in-the-world-filled-with-zombies-anime-reveals-more-cast-/.244007",
+      "published": "2026-11-20T03:58:04.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHH/cms/news.10/242682/zombie-kv.jpg",
+      "sourceTitle": "'I am the only one who is not attacked in the world filled with zombies' Anime Reveals More Cast, January 1 TV Debut"
+    },
+    {
+      "id": "58bb7a5fc23080a7",
+      "headline": "Live-Action Fukakōryoku no I Love You Film Casts M!LK Idol Shunta Sono",
+      "summary": "M!LK idol Shunta Sono has been cast as Rentarō Akizuki, a childhood friend character, in the upcoming live-action adaptation of Fukakōryoku no I Love You, scheduled for March 2027 release.",
+      "category": "Adaptation",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-19/live-action-fukakoryoku-no-i-love-you-film-casts-m-lk-idol-shunta-sono/.244006",
+      "published": "2026-11-20T03:42:28.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHB/cms/news.10/244006/shuntasono.jpg",
+      "sourceTitle": "Live-Action Fukakōryoku no I Love You Film Casts M!LK Idol Shunta Sono"
+    },
+    {
+      "id": "c573258c4c23d580",
+      "headline": "Additional Cast for &#039;Zombie no Afureta Sekai de Ore dake ga Osowarenai&#039; Announced",
+      "summary": "Seven additional voice actors have been cast for the anime adaptation of Rokuro Uraji's supernatural horror light novel about a protagonist immune to zombie attacks.",
+      "category": "Anime",
+      "source": "MyAnimeList News",
+      "url": "https://myanimelist.net/news/74960147?_location=rss",
+      "published": "2026-11-20T03:38:17.000Z",
+      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795145844-b7169808d19a53f1d1c4a671fe1bc94a.jpeg",
+      "sourceTitle": "Additional Cast for &#039;Zombie no Afureta Sekai de Ore dake ga Osowarenai&#039; Announced"
+    },
+    {
+      "id": "5fe5b4052c4ebfb3",
+      "headline": "Star Detective Precure's Cure Answer Poses as Street Fighter 6 Characters",
+      "summary": "Cure Answer from Star Detective Precure appears as multiple Street Fighter 6 characters, including Luke, Jamie, Guile, Ken, and others in this crossover showcase.",
+      "category": "Cosplay",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/interest/2026-11-19/star-detective-precure-cure-answer-poses-as-street-fighter-6-characters/.243988",
+      "published": "2026-11-20T02:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gFB/youtube/DYAh1kLR8lg.jpg",
+      "sourceTitle": "Star Detective Precure's Cure Answer Poses as Street Fighter 6 Characters"
+    },
+    {
+      "id": "ac1f9d9cdd97b8c5",
+      "headline": "Criterion Channel Adds Speed Racer Anime",
+      "summary": "Criterion Channel will add the Speed Racer anime series to its catalog in December, available in both English and Japanese audio options.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-19/criterion-channel-adds-speed-racer-anime/.243995",
+      "published": "2026-11-19T22:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gIH/cms/news.7/210438/speed-racer.jpg",
+      "sourceTitle": "Criterion Channel Adds Speed Racer Anime"
+    },
+    {
+      "id": "3a4e5609a8a11e41",
+      "headline": "Grotesqqque Anime Film Screens in Los Angeles on December 3 for 1-Week Only",
+      "summary": "The Grotesqqque omnibus film, featuring three stories, will screen exclusively at Alamo Drafthouse Cinema in Downtown Los Angeles for one week beginning December 3.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-19/grotesqqque-anime-film-screens-in-los-angeles-on-december-3-for-1-week-only/.243997",
+      "published": "2026-11-19T21:09:35.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gIE/youtube/7ZPr9rqaRM0.jpg",
+      "sourceTitle": "Grotesqqque Anime Film Screens in Los Angeles on December 3 for 1-Week Only"
+    },
+    {
+      "id": "d1eaa44f049b7c47",
+      "headline": "‘Jeopardy!’ Is Making a Major First-Ever Announcement for Fans With New Game Format and 3-Day Con - closerweekly.com",
+      "summary": "Jeopardy! will announce a new game format and host a three-day convention, marking the trivia show's first venture into the fan convention space.",
+      "category": "Events",
+      "source": "Convention Schedule",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPUjcyTW1lVE9Qek4tYkdLTllENGs2Yzh4a3BnQ1Yxc2hpd2FPYW9BdFlFeEVSUktMUlhwdXVrNTRBa0xrRUdFYjk0bDZESUdXZk5LQ3l1cVBVNzRnVXpXcm84dFhDU3p2bWtFZWtKMVdOcFVPRDAwR1NLekJfbWMxY0dhMHZ1UFFEbktIdDJCeGJ4NlBCVXJ2TU9WZ0xBT2owbXFicm03c3YydVZkRlF1ZGFHWExLWjFNYlpIcA?oc=5",
+      "published": "2026-11-19T20:25:20.000Z",
+      "image": "",
+      "sourceTitle": "‘Jeopardy!’ Is Making a Major First-Ever Announcement for Fans With New Game Format and 3-Day Con - closerweekly.com"
+    },
+    {
+      "id": "eb333b560aeab9a1",
+      "headline": "One Piece Prepares For A Big Day On November 29 With Chapter 1200 Milestone - GameRant",
+      "summary": "One Piece is set to reach a significant publishing milestone on November 29 with the release of Chapter 1200, marking a major moment for the long-running series.",
+      "category": "Manga",
+      "source": "One Piece News",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE04bE1pdFZEbFp5ZlN3c09XRHd6TGtZQ19Va2thbl9fT1otY1k5QWYzT3BjSnlscFB3STI5eUFvamZSMWljbmNUVE16TnV1OVpPSWNtTUQ0UU9uZ2xaUW45cUM5M3hkdXNPaHgyajBxRlNIQQ?oc=5",
+      "published": "2026-11-19T16:19:35.000Z",
+      "image": "",
+      "sourceTitle": "One Piece Prepares For A Big Day On November 29 With Chapter 1200 Milestone - GameRant"
+    },
+    {
+      "id": "16ed34fbdc5ce75f",
+      "headline": "2026 Motor City Comic Con - C & G Newspapers",
+      "summary": "Motor City Comic Con is scheduled for 2026, with coverage from C & G Newspapers documenting the event.",
+      "category": "Events",
+      "source": "Comic Con Events",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBwcDZlVTJjWXlyR015Ti1QdjIxSVhoV3Rnd0xOb0tsTnFwa2FPRmljN1hvZmFJUlN3UFMtOW9Iby14U01TcFlBZnNURkR5bktGT0VYOVdaMHBDN1FoU1poQTNzSktjc3FqN21pcTZONXNTeFZ3TEdFY2Rxdw?oc=5",
+      "published": "2026-11-19T14:10:23.000Z",
+      "image": "",
+      "sourceTitle": "2026 Motor City Comic Con - C & G Newspapers"
+    },
+    {
+      "id": "6174379cd0a4307d",
+      "headline": "Comments | #039 | Boruto: Two Blue Vortex - Masashi Kishimoto / Mikio Ikemoto - MANGA Plus by SHUEISHA",
+      "summary": "The latest chapter of Boruto: Two Blue Vortex features creator comments from Masashi Kishimoto and Mikio Ikemoto, available through MANGA Plus by SHUEISHA.",
+      "category": "Manga",
+      "source": "Manga Plus News",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBHSTFlSUc4WDRKMGs1YWkydk5fUzBSTHlxeWpDTFZTWEpfVjY4czVOQk9yTUxWSFNTdVF1cWFlUTJ3T2F0MXpYbXprVUFHc1ItbFJ5RU91YzAtX2p1SVE?oc=5",
+      "published": "2026-11-18T22:03:19.000Z",
+      "image": "",
+      "sourceTitle": "Comments | #039 | Boruto: Two Blue Vortex - Masashi Kishimoto / Mikio Ikemoto - MANGA Plus by SHUEISHA"
+    },
+    {
+      "id": "4503f603a19e813a",
+      "headline": "One Piece Chapter 1199 spoilers: Luffy's new Nika form and Lili's mysterious letter tease a major lore revelation ahead ",
+      "summary": "Chapter 1199 of One Piece introduces Luffy's new Nika form alongside a mysterious letter from Lili, setting up significant lore developments heading into Chapter 1200.",
+      "category": "Manga",
+      "source": "One Piece News",
+      "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxQcEhTb3ZGdDkyNWF4clNSYXlOTVY2M2xUWHVDMzdXbTBuNWlVV085VWFjS1lsVTNFelRfeUpsamtZdmFiTzc5Ml9SQmxEbmJMZlBEOENiYVlFVFlYTE13cTBPSVRxTXZYVFJvQ05fdzktME84aVM5OW8xNnJ4b0YyQnNoRlV3ZE5HcUNqZG9CbUNzZldxNUoxM2NiYnV6MXlaNnR2ZjZtcjBrZXNwNW83dFhMakdTM3lhS0dlWDlZZFRUbEVoSG9STGhpRlVUMHdpNE5Kalh0d2FoSnFMNVgtUXN2dTNaUVNQZmtHZXlMR3dob050Z1d6V09XODk2SHhFNVh6OWt4NzdwN1dNQnpXS3FacUJzMndEdk1HOWkxLTbSAaYCQVVfeXFMTWpDalpIdm5GYUhMNlRub3h5eGlXY3d0UDBKNkFva1F0Y2ZDb2w5WmwtSHhaeGFvSWswLW9lTXU0Ul9zS3U3ZklxRGs5NXlEbGM1OWxDS2prdTRIV0R1YTBLeDJ6eGVoWUY1OEYyMGVyOWxEaFk2RWtDSVFKclhfQzNoc0xGV3RPUk9zTExSUmRPYUFrZUhBMDdneTA5TGZUV2dwYnE5R3k5aXByamNLTXllaXNvV1pjUXpXUHFrSHN5aEgtRVgtTDBmMlpWUGdGaDZPUTRYREhiUWNyd2d2eVROUlRXLUU1bHRLWFBTSjc1VTlScS0tNHBodlVXMy1fYTFkZkpRZGNUcUVSX2ZlemNqY2lmci1kelQ5bW5UUU0ybjRjb2lR?oc=5",
+      "published": "2026-11-17T11:17:57.000Z",
+      "image": "",
+      "sourceTitle": "One Piece Chapter 1199 spoilers: Luffy's new Nika form and Lili's mysterious letter tease a major lore revelation ahead of Chapter 1200 - Indiatimes"
+    },
+    {
+      "id": "86638295115112a3",
+      "headline": "4 Anime Conventions Still Happening In SG In 2026 – AFA Singapore, Singapore Comic Con & Doujin Market Mini - TheSmartLo",
+      "summary": "Singapore will host multiple anime and pop culture conventions in 2026, including AFA Singapore, Singapore Comic Con, and Doujin Market Mini.",
+      "category": "Events",
+      "source": "Asia Cosplay News",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBVd1B6b051Rk9MNXIycnVYbUxzMmYtaFQtR2hidllrYWU1RUd0MGZ0VUxocnpuRGpCQkxyNjh5QU96d1Y1bzBnSThQNk1Jcm1UQ1plZFFjSmUzWWNuN0xlSEotVXdjeFFTVjU00gFwQVVfeXFMTTNid3VfMkU0eE5neXpvX0tzanYzSmF2U2UzellJMUh4bFFPWUduZWwybExXemh3Umppc0FGSnhXZDR1ZkVUZnNHWEdmWEhTbnZmbUtBOGlPVkxrdk9qV1hUZ21pTjNUdzh3LThDcTRmMQ?oc=5",
+      "published": "2026-11-17T09:00:33.000Z",
+      "image": "",
+      "sourceTitle": "4 Anime Conventions Still Happening In SG In 2026 – AFA Singapore, Singapore Comic Con & Doujin Market Mini - TheSmartLocal"
+    },
+    {
+      "id": "86638295115112a3",
+      "headline": "4 Anime Conventions Still Happening In SG In 2026 – AFA Singapore, Singapore Comic Con & Doujin Market Mini - TheSmartLo",
+      "summary": "Singapore will host multiple anime and comic conventions in 2026, including AFA Singapore, Singapore Comic Con, and Doujin Market Mini.",
+      "category": "Events",
+      "source": "Asia Comic Events",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBVd1B6b051Rk9MNXIycnVYbUxzMmYtaFQtR2hidllrYWU1RUd0MGZ0VUxocnpuRGpCQkxyNjh5QU96d1Y1bzBnSThQNk1Jcm1UQ1plZFFjSmUzWWNuN0xlSEotVXdjeFFTVjU00gFwQVVfeXFMTTNid3VfMkU0eE5neXpvX0tzanYzSmF2U2UzellJMUh4bFFPWUduZWwybExXemh3Umppc0FGSnhXZDR1ZkVUZnNHWEdmWEhTbnZmbUtBOGlPVkxrdk9qV1hUZ21pTjNUdzh3LThDcTRmMQ?oc=5",
+      "published": "2026-11-17T09:00:33.000Z",
+      "image": "",
+      "sourceTitle": "4 Anime Conventions Still Happening In SG In 2026 – AFA Singapore, Singapore Comic Con & Doujin Market Mini - TheSmartLocal"
+    },
+    {
+      "id": "86638295115112a3",
+      "headline": "4 Anime Conventions Still Happening In SG In 2026 – AFA Singapore, Singapore Comic Con & Doujin Market Mini - TheSmartLo",
+      "summary": "Singapore's anime convention calendar includes AFA Singapore, Singapore Comic Con, and Doujin Market Mini among events scheduled for 2026.",
+      "category": "Events",
+      "source": "Convention Schedule",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBVd1B6b051Rk9MNXIycnVYbUxzMmYtaFQtR2hidllrYWU1RUd0MGZ0VUxocnpuRGpCQkxyNjh5QU96d1Y1bzBnSThQNk1Jcm1UQ1plZFFjSmUzWWNuN0xlSEotVXdjeFFTVjU00gFwQVVfeXFMTTNid3VfMkU0eE5neXpvX0tzanYzSmF2U2UzellJMUh4bFFPWUduZWwybExXemh3Umppc0FGSnhXZDR1ZkVUZnNHWEdmWEhTbnZmbUtBOGlPVkxrdk9qV1hUZ21pTjNUdzh3LThDcTRmMQ?oc=5",
+      "published": "2026-11-17T09:00:33.000Z",
+      "image": "",
+      "sourceTitle": "4 Anime Conventions Still Happening In SG In 2026 – AFA Singapore, Singapore Comic Con & Doujin Market Mini - TheSmartLocal"
+    },
     {
       "id": "916f2547bcf08126",
       "headline": "Marvel's Midnight Line Is Officially a Huge Success As Historic Numbers are Released",
