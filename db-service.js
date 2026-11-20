@@ -220,7 +220,7 @@ async function signInWithGoogle() {
   provider.addScope('profile');
   provider.addScope('email');
   // Using popup — works correctly now that OAuth client is configured in
-  // Google Cloud Console with web3studiotech.github.io as authorized origin.
+  // Google Cloud Console with comic99.xyz as authorized origin.
   return await auth.signInWithPopup(provider);
 }
 
