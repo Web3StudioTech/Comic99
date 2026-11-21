@@ -1,6 +1,10 @@
 {
-  "updated": "2026-11-20T20:51:42.948Z",
+  "updated": "2026-11-21T08:11:21.076Z",
   "skipped": [
+    "68b512c6387619a8",
+    "468e706ee9a036c1",
+    "49bdf325333237c5",
+    "89bea50de53599c4",
     "57f8eb31b95ec196",
     "9b6d4877ace15bc8",
     "61e32cd3ee450bed",
@@ -34,6 +38,215 @@
     "12ac08358b3ca231"
   ],
   "items": [
+    {
+      "id": "d122fbce0faed5db",
+      "headline": "Suu Morishita's A Sign of Affection Manga Ends in 3 Chapters",
+      "summary": "Suu Morishita's manga series will conclude within three chapters. The work received an anime adaptation that launched in January 2024.",
+      "category": "Manga",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-21/suu-morishita-a-sign-of-affection-manga-ends-in-3-chapters/.244046",
+      "published": "2026-11-21T08:00:22.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gL4/cms/news.6/196953/9yubi.jpg",
+      "sourceTitle": "Suu Morishita's A Sign of Affection Manga Ends in 3 Chapters"
+    },
+    {
+      "id": "a9047378744984b7",
+      "headline": "Manga &#039;Yubisaki to Renren&#039; Ends in Three Chapters",
+      "summary": "Suu Morishita's romance manga will conclude with its 63rd chapter, as announced by Dessert magazine's official account.",
+      "category": "Manga",
+      "source": "MyAnimeList News",
+      "url": "https://myanimelist.net/news/74963930?_location=rss",
+      "published": "2026-11-21T07:38:06.000Z",
+      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795246640-b93853a9a64e9e01ca50abcd96d6ff88.jpeg",
+      "sourceTitle": "Manga &#039;Yubisaki to Renren&#039; Ends in Three Chapters"
+    },
+    {
+      "id": "e9df28f45fcad4b6",
+      "headline": "What Sailor Moon Fans Can Buy (& Eat) at Universal Studios Japan",
+      "summary": "Universal Studios Japan is offering Sailor Moon-themed merchandise and food items for fans of the classic series.",
+      "category": "Events",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/interest/2026-11-20/what-sailor-moon-fans-can-buy-at-universal-studios-japan/.244008",
+      "published": "2026-11-21T04:59:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHB/cms/interest.3/244008/usj-sailor-moon-menu-01.jpg",
+      "sourceTitle": "What Sailor Moon Fans Can Buy (& Eat) at Universal Studios Japan"
+    },
+    {
+      "id": "59e9b98041a921ac",
+      "headline": "5 American Anime to Watch If You Love Avatar: The Last Airbender",
+      "summary": "American anime series echo the thematic elements and character development found in Avatar: The Last Airbender, offering similar storytelling approaches for fans of the original series.",
+      "category": "Anime",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/american-anime-for-avatar-the-last-airbender-fans/",
+      "published": "2026-11-21T04:45:11.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/02/aang-and-momo-with-sokka-katara-and-appa-in-the-background-in-avatar-the-last-airbender.jpg",
+      "sourceTitle": "5 American Anime to Watch If You Love Avatar: The Last Airbender"
+    },
+    {
+      "id": "3d65ac1e922268aa",
+      "headline": "10 Things Everyone Gets Wrong About Calvin and Hobbes",
+      "summary": "Bill Watterson's beloved comic strip contains multiple misconceptions among fans and readers worldwide.",
+      "category": "Western",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/things-everyone-gets-wrong-about-calvin-and-hobbes/",
+      "published": "2026-11-21T04:30:12.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2025/03/10-things-everyone-gets-wrong-about-calvin-and-hobbes.jpg",
+      "sourceTitle": "10 Things Everyone Gets Wrong About Calvin and Hobbes"
+    },
+    {
+      "id": "01be536a9e32b099",
+      "headline": "Nearly 3 Years Later, Sword Art Online Fans Finally Get the Perfect Streaming Update",
+      "summary": "Sword Art Online anime episodes have become newly accessible across multiple regions through a streaming service update after nearly three years.",
+      "category": "Anime",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/sword-art-online-anime-netflix-release-2026/",
+      "published": "2026-11-21T04:10:12.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2020/11/kirito-and-asuna.jpg",
+      "sourceTitle": "Nearly 3 Years Later, Sword Art Online Fans Finally Get the Perfect Streaming Update"
+    },
+    {
+      "id": "cdfcbb374b514e74",
+      "headline": "Uniqlo Unfurls New Studio Ghibli T-Shirts",
+      "summary": "Uniqlo has launched a new apparel line featuring designs from Studio Ghibli films, allowing fans to display their appreciation for the acclaimed animation studio through wearable merchandise.",
+      "category": "Other",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/interest/2026-11-20/uniqlo-unfurls-new-studio-ghibli-t-shirts/.244028",
+      "published": "2026-11-21T04:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gEH/herald/203242/usgoods-493591-sub6-3x4.jpg.jpg",
+      "sourceTitle": "Uniqlo Unfurls New Studio Ghibli T-Shirts"
+    },
+    {
+      "id": "caa267058d59f0bd",
+      "headline": "North American Anime, Manga Releases, November 15-21",
+      "summary": "Several anime and manga titles are releasing across North America this week, including the Jujutsu Kaisen film and new volumes of BECK, Heroes, and Love is Money.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-20/north-american-anime-manga-releases-november-15-21/.243879",
+      "published": "2026-11-20T22:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gL7/herald/203233/jjk-bd.jpg",
+      "sourceTitle": "North American Anime, Manga Releases, November 15-21"
+    },
+    {
+      "id": "f511c792c43f24d2",
+      "headline": "North American Anime, Manga Releases, November 15-21 - Anime News Network",
+      "summary": "New anime and manga titles are arriving in North America during the week of November 15-21, according to Anime News Network's release schedule.",
+      "category": "Anime",
+      "source": "Jujutsu Kaisen News",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQbU53bjBjTzdOendJaWhPVW16YU9SbmZnV1o4enJoV0ZJTVFCNGlPYmVSdGVoNmRTLXctZWRLZXZDelk2SzJBdGFkbWJDSkFmeVpjSzQyWW8yenlVUExhMExjN2NQZzIxSFdIUlAwSjNWZDlrZ2d3ZGh2R2dyZWhSRFh1a0hFcHRJcmNfOEJpa29Nd1A3dFA1RzhuV3JDWThTNWxXcFhFUnAyZUU?oc=5",
+      "published": "2026-11-20T22:00:00.000Z",
+      "image": "",
+      "sourceTitle": "North American Anime, Manga Releases, November 15-21 - Anime News Network"
+    },
+    {
+      "id": "3f9dd76970751827",
+      "headline": "One Piece Drops Official Sneak Peek at Chapter 1199 - FandomWire",
+      "summary": "One Piece has released an official preview for the upcoming Chapter 1199, offering fans an advance look at what's ahead in the long-running manga series.",
+      "category": "Manga",
+      "source": "One Piece News",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNQVpVVXFuZzVRWktFekRNU2tNZnduaEZFQ1l4cWIxMDhhYzh1LU9XY3c3X3g0Y1RQeGxiWElZelgwb0N5ZzdGeDVyLWNwRlgtNXEwd3drYWJEQ256SHIyRDdWMXVPR0VCdVJEbmFSTW9LbFZzdFRMcGdzaU1yS3dUVg?oc=5",
+      "published": "2026-11-20T20:52:52.000Z",
+      "image": "",
+      "sourceTitle": "One Piece Drops Official Sneak Peek at Chapter 1199 - FandomWire"
+    },
+    {
+      "id": "cd85f801393333ca",
+      "headline": "Eric Roberts at Bakersfield Comic Con 2026 - Hoodline",
+      "summary": "Actor Eric Roberts will appear at Bakersfield Comic Con in 2026, according to the event announcement.",
+      "category": "Events",
+      "source": "Comic Con Events",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNcFBPYlFXZTliazVfcUJ2Ri1vY3NYUTRFb1BYSDJLVkhnRWVsc0JNTUNoS2RmTVI4ZDBqa0ZIaUhnc3dHb3pucFlONXh0VEFaV1JGTy1pQTVZVHJoVEdRYWJ3SktzMXZiX0RSdGpWbHBDQnYzbHRvNW5zRHdUVVRFdFJmd2Z6Nk1HVXE2eTctX1ZQZUVLcm5SRk8yMWlCUkpsSzlvUFg5M3pWSjNCUnlRcA?oc=5",
+      "published": "2026-11-20T19:04:04.000Z",
+      "image": "",
+      "sourceTitle": "Eric Roberts at Bakersfield Comic Con 2026 - Hoodline"
+    },
+    {
+      "id": "281456d451678d30",
+      "headline": "Marvel celebrates 50 years of John Romita Jr. with year-long variant cover series - AIPT",
+      "summary": "Marvel is honoring the prolific artist with a year-long variant cover collection marking five decades of his contributions to the publisher.",
+      "category": "Creator",
+      "source": "Marvel DC News",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBfeHBBMGNFTk41bEJIWTF3ZDBNQ05RWGRDejQwNDdmcHI3bnhZTjdtLW1jS0FXY0ctdk03dHVuMVhFZlY3eURGSmZfbmZJdkFNclY4VUNQUWVNN0x5NEc5RXA0TzNxb0pTbVhTWHFqVFdxNV9kMTZwSlJB?oc=5",
+      "published": "2026-11-20T16:23:45.000Z",
+      "image": "",
+      "sourceTitle": "Marvel celebrates 50 years of John Romita Jr. with year-long variant cover series - AIPT"
+    },
+    {
+      "id": "d559fff6d482b391",
+      "headline": "X-Solicits For Febuary 2027 From Marvel Comics - Comic Watch",
+      "summary": "Marvel has released solicitations for its X-Men titles scheduled for February 2027, providing a preview of upcoming comic releases.",
+      "category": "Western",
+      "source": "Marvel DC News",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOUi0wUS1idFZBcUdLVHV6ZWxIaWNpM29ETlNHYWF2dlJQZkt0dEhvODcxQ2psQ2o0UWlPR1hkMVVPTlNFdTAzNjZiMS1PdHY0NVdMbnAtTzBVbmtadmVwbFpJN1pjQXRmSW5NR0dPMGV6SkdvS3JpLXA3OVlhTDdhWVRHUDNNSXJoWk5aR2R3dWlJbUU0WHc?oc=5",
+      "published": "2026-11-20T16:00:16.000Z",
+      "image": "",
+      "sourceTitle": "X-Solicits For Febuary 2027 From Marvel Comics - Comic Watch"
+    },
+    {
+      "id": "c09223a7f51814e1",
+      "headline": "Crunchyroll Streams My Hero Academia The Movie: World Heroes' Mission Anime",
+      "summary": "Crunchyroll has added the My Hero Academia film from August 2021 to its streaming catalog, making the movie available to its global audience.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-20/crunchyroll-streams-my-hero-academia-the-movie-world-heroes-mission-anime/.244023",
+      "published": "2026-11-20T14:50:53.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHC/cms/news.4/173640/visual.jpg",
+      "sourceTitle": "Crunchyroll Streams My Hero Academia The Movie: World Heroes' Mission Anime"
+    },
+    {
+      "id": "11ebde49eadea282",
+      "headline": "Rogue's New Medieval X-Men Costume Is A Gift To Marvel Cosplayers - ScreenRant",
+      "summary": "Marvel has introduced a medieval-themed costume for Rogue that appeals to cosplayers interested in reimagining the character.",
+      "category": "Cosplay",
+      "source": "Marvel DC News",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE80a1NfU3c4M3NublRfZVAtb0FkbmttajhtWWx3dnlpVWFta3hIVHd1T3pVdXltdVJxcUw3aU9IX1p5cHdzcFViMlFnRWpBbmp5ZEhpZ0gxUmVTYjdDcE04?oc=5",
+      "published": "2026-11-20T12:54:19.000Z",
+      "image": "",
+      "sourceTitle": "Rogue's New Medieval X-Men Costume Is A Gift To Marvel Cosplayers - ScreenRant"
+    },
+    {
+      "id": "343d6bb83be2d828",
+      "headline": "Explore More Stunning Visuals as The Art of Marvel Rivals Returns for Volume 2 - Get Your Comic On",
+      "summary": "The Art of Marvel Rivals has released a second volume, featuring additional visual artwork from the game.",
+      "category": "Western",
+      "source": "Marvel DC News",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOczZRWDdkaU1VV2lWcjBDT3BOb2hKN2Z6Q0wxSWNPWmFoQnphRnptUUpzM2ExcDl6Yl94RGhlUW96NDZKWW1iVXJPVFBhYWVOcVZjWkdNWFdvRjNxenIzeTFWUFRZQW83OXlUOVl2ekVJZlJnWkgzYTlUcVc1Z1F2dDBpWXNVZVJyWlVBMlpsNUd6Ull0dG5FYU80OGhzOW15OGJpRjdqOFJ0eXdqSVRQUi1ZMnpPVmxndC16b3NIdFRSZw?oc=5",
+      "published": "2026-11-20T12:25:00.000Z",
+      "image": "",
+      "sourceTitle": "Explore More Stunning Visuals as The Art of Marvel Rivals Returns for Volume 2 - Get Your Comic On"
+    },
+    {
+      "id": "c53b7e77afde626b",
+      "headline": "Official Marvel Comics February 2027 Full Solicits And Solicitations - Bleeding Cool News",
+      "summary": "Marvel has released its full solicitations for February 2027 comic releases, featuring upcoming titles and story details from the publisher.",
+      "category": "Western",
+      "source": "Marvel DC News",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxObko2bUtQN2NzWU9NVmtzSGd3bGZ3VFNlcjR4UVdhMlFyQkZad201OTJPcTVaMWJhWE9MU00xMmJFbTlaczBDeUxhRlRWVTBWSWwtX0VDZmFTQTd5dWROSWplV3o0blgtZktsejJXa3FrdW9qOGhBeTctU1pvVmh2RWtjaWVRYXlQNzFDY2RGeDA0RXFyWHBKT3U2S3BIN1NnMVNr?oc=5",
+      "published": "2026-11-19T22:29:11.000Z",
+      "image": "",
+      "sourceTitle": "Official Marvel Comics February 2027 Full Solicits And Solicitations - Bleeding Cool News"
+    },
+    {
+      "id": "e1868d65b48634e1",
+      "headline": "One Piece Dominates Japan’s 2026 Manga Sales Ranking, Taking the Top Three Spots With Volumes 113, 114, and 115 - OtakuK",
+      "summary": "One Piece claimed the top three positions in Japan's 2026 manga sales rankings with consecutive volumes, demonstrating the series' continued commercial dominance in the market.",
+      "category": "Manga",
+      "source": "One Piece News",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPMlp2d1pWTGZ1Y09iZ0E5M3F6NTY0UzdOVHFONjFyRXZmRDlObmU2Rkc0cVBMQ0FsZVpKM3pKUVljNklUTGN3UUZoakZMdlc0Tk9OaXFvTjZzU0FiQk1Tejh6TS05UUttNDRmaFUxb2RSWDhON2hTdl96TUdvZ0hscHhnV3RMM0prbzViV1dad2lNR3JVaGJETjZrV0hyODJFTktzckRDT3JsOUkwd0pYc3lqdjBNTzhPanFGR1BqZmROZTVPcTl2RFp3?oc=5",
+      "published": "2026-11-18T15:09:21.000Z",
+      "image": "",
+      "sourceTitle": "One Piece Dominates Japan’s 2026 Manga Sales Ranking, Taking the Top Three Spots With Volumes 113, 114, and 115 - OtakuKart"
+    },
+    {
+      "id": "60b3f6895b5e5ac3",
+      "headline": "I tested the new Marvel Comics app for a week — and it’s a big upgrade from Marvel Unlimited (but 3 things still hold it",
+      "summary": "A reviewer tested Marvel's new comics application and found it represents a notable improvement over Marvel Unlimited, though three remaining issues prevent it from being ideal.",
+      "category": "Industry",
+      "source": "Marvel DC News",
+      "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQdG90NW5ub0FJZVYyYk1GM3lDLTZKVmtKUW9SZExQdlFmZ2hmZzBfb2R2RWtWWlREWkxjbXBmSUN5VWdaMGxidDlPaTZRMEJEWTJHaWNyT1NJb1FBR3BiWUZVQ1RjLXE1dTBPeWJHN0hvU0kzaXpySzlkdXZoV0pYREVyQTZUMndSZzJraUo3RVE2NnBEMXU3S1Q1amhWWVdyOHNhUXJWMWt3dF96VXZobnM2ZWhNWGNQWW45UlZWLXp4dHFScW8wU3o1bjluczc1TDBoMTVOdHc2SkFCQ1I1R2ZrelRxZkpNOGI2dVhnUTBHWmtXZk5pMGRQT0pWQQ?oc=5",
+      "published": "2026-11-18T10:30:00.000Z",
+      "image": "",
+      "sourceTitle": "I tested the new Marvel Comics app for a week — and it’s a big upgrade from Marvel Unlimited (but 3 things still hold it back) - Tom's Guide"
+    },
     {
       "id": "1700e731c85a94e9",
       "headline": "Dragon Ball Z Officially Returns to Its Original Android Era",
@@ -1144,215 +1357,6 @@
       "published": "2026-11-18T14:00:00.000Z",
       "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHD/cms/interview/243504/edgoldfarb.jpg",
       "sourceTitle": "How Ed Goldfarb Brings Regional Authenticity to Pokémon Music"
-    },
-    {
-      "id": "74c31ca25f261597",
-      "headline": "One Piece Beats Naruto, Dragon Ball, JJK and Bleach In Official Japan Survey - FandomWire",
-      "summary": "An official Japanese survey ranked One Piece ahead of Naruto, Dragon Ball, Jujutsu Kaisen, and Bleach.",
-      "category": "Manga",
-      "source": "Jujutsu Kaisen News",
-      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNOTZkRXBnbmd1ZzVtTnNoTEVpQUFPTVUtOXhub0JVVndVSU9QV1FWRjlnNjVMeG9QMllXcmxhNEUxMjNrb1BCc0FYNHRiendRVFBXd1pmakttRUt0UG1TVm9IRzlqQjBvNEVSbTBCQWRKNkdEZ1p3d0M2Y1RFUGJUS0hnQk5CYVlKWVJxLW1n?oc=5",
-      "published": "2026-11-18T11:54:09.000Z",
-      "image": "",
-      "sourceTitle": "One Piece Beats Naruto, Dragon Ball, JJK and Bleach In Official Japan Survey - FandomWire"
-    },
-    {
-      "id": "52e4a5f73c27fb79",
-      "headline": "Identity V Game's Oha Suta Daigo Gakuen Short Anime Unveils More Cast, Staff, November 24 Debut",
-      "summary": "A short anime based on the Identity V game will premiere November 24, featuring voice actors Takehito Koyasu, Nobunaga Shimazaki, Yūichirō Umehara, and Makoto Furukawa.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-18/identity-v-game-oha-suta-daigo-gakuen-short-anime-unveils-more-cast-staff-november-24-debut/.243933",
-      "published": "2026-11-18T07:20:06.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHP/cms/news.10/243933/daigo.jpg",
-      "sourceTitle": "Identity V Game's Oha Suta Daigo Gakuen Short Anime Unveils More Cast, Staff, November 24 Debut"
-    },
-    {
-      "id": "f8e1a9d86b39fdb5",
-      "headline": "One Piece 1199 Spoilers: Luffy Goes Berserk in Elbaf, Robin Finds Lily's Letter, and Is the Nika Mystery Revealed? - Akt",
-      "summary": "Chapter 1199 of One Piece features Luffy experiencing an uncontrolled outburst in Elbaf, while Robin discovers a significant letter from Lily. The chapter may also provide answers regarding the Nika mystery.",
-      "category": "Manga",
-      "source": "One Piece News",
-      "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPMUtKQi0xUS1hMk44di1UU0UteWwxNGE4YUVTb2NJMmVPUVVsNk9JVnhNRDlRTG9nTUQwY3hxU3dqYk5jRGZlc1JXbXJMbGhlRWZqSzFEa0JPTEhQemtuSnFsYThUdVpnSXNLQ0tFV1NjWlF5OGFiNWM3TTZCNHZpc1VPR01zX0VOUVVYZ2pMUmIwd2V2d2F1NElMb0pWZkJuTkJmcUVES0syN09kR0dRcFRUVFBmYzRldFhwZnBvYmlNOEJ5SGtrbDlUWDlVZFdkbGRvZDNhUFpZR3NqR1hSdQ?oc=5",
-      "published": "2026-11-18T05:36:39.000Z",
-      "image": "",
-      "sourceTitle": "One Piece 1199 Spoilers: Luffy Goes Berserk in Elbaf, Robin Finds Lily's Letter, and Is the Nika Mystery Revealed? - Aktualita.co"
-    },
-    {
-      "id": "706fbd0630222847",
-      "headline": "One Piece Chapter 1199 Release Date, Time & Where to Read - AOL.com",
-      "summary": "Information about the upcoming installment in the long-running manga series is available, with details on its release timing and where fans can access it.",
-      "category": "Manga",
-      "source": "One Piece News",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9JZlZoanByM2FNVTRBU1I0Tmp2b29XSnJpbFEtcjdMQlNhZDlOUDEyN0RGWXlDQks0UEhXLXBBazVMeGhjNXVoZnh4MHVHV1I3ZE4zNUFQOTM2WTJYSVFmXzFJQmoyMDNLTDdWaE1UbUVSeTAyelExam5mNVhzQTg?oc=5",
-      "published": "2026-11-18T05:26:00.000Z",
-      "image": "",
-      "sourceTitle": "One Piece Chapter 1199 Release Date, Time & Where to Read - AOL.com"
-    },
-    {
-      "id": "c4499ce7e1876b66",
-      "headline": "Frieren Joins Mahjong Soul Game for Limited-Time Crossover",
-      "summary": "The anime series Frieren has partnered with Mahjong Soul for a limited-time crossover event featuring the popular tile game.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/interest/2026-11-17/frieren-joins-mahjong-soul-game-for-limited-time-crossover/.243854",
-      "published": "2026-11-18T04:59:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gJ4/youtube/N01IQYW6YGU.jpg",
-      "sourceTitle": "Frieren Joins Mahjong Soul Game for Limited-Time Crossover"
-    },
-    {
-      "id": "964d52464fa4a8cd",
-      "headline": "&#039;Isekai Munchkin&#039; Reveals New Staff, Theme Songs, Second Promo",
-      "summary": "The television adaptation of the manga series Isekai Munchkin has announced additional voice cast members, new production staff, and theme songs alongside a second promotional video.",
-      "category": "Adaptation",
-      "source": "MyAnimeList News",
-      "url": "https://myanimelist.net/news/74952442?_location=rss",
-      "published": "2026-11-18T04:58:59.000Z",
-      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1794977875-fbea98330b1d9f82b1f3a5a8e3695906.jpeg",
-      "sourceTitle": "&#039;Isekai Munchkin&#039; Reveals New Staff, Theme Songs, Second Promo"
-    },
-    {
-      "id": "c6f22001b1770fb5",
-      "headline": "Every Naruto Hokage, Ranked From Weakest to Strongest",
-      "summary": "A ranking of Naruto's village leaders examines their comparative strength levels, noting significant power gaps between the strongest and weakest leaders throughout the series.",
-      "category": "Manga",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/every-naruto-hokage-ranked-weakest-to-strongest-list/",
-      "published": "2026-11-18T04:45:12.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/10/shikamaru-kakashi-and-naruto-in-hokage-robes.jpg",
-      "sourceTitle": "Every Naruto Hokage, Ranked From Weakest to Strongest"
-    },
-    {
-      "id": "06c65b661d5dcb4a",
-      "headline": "The Best Calvin and Hobbes Comics About Watching TV",
-      "summary": "Calvin and Hobbes explores universal childhood experiences through its storytelling, including the relatable habit of television consumption during formative years.",
-      "category": "Western",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/best-calvin-and-hobbes-comics-about-watching-tv/",
-      "published": "2026-11-18T04:30:11.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2024/02/calvin-and-hobbes-needs-to-be-an-animated-show.jpg",
-      "sourceTitle": "The Best Calvin and Hobbes Comics About Watching TV"
-    },
-    {
-      "id": "c73e855e0054e989",
-      "headline": "Gundam Fans Officially Vote 1 of Its Most Popular Mecha Back Into Production",
-      "summary": "Bandai is re-releasing an action figure based on the Gundam 00 mecha series more than five years after its last production run, coinciding with the franchise's 20th anniversary milestone.",
-      "category": "Anime",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/gundam-00-exia-repair-iv-metal-build-bandai-re-release/",
-      "published": "2026-11-18T04:10:12.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/gundam-fans-officially-vote-1-of-its-most-popular-mecha-back-into-production.jpg",
-      "sourceTitle": "Gundam Fans Officially Vote 1 of Its Most Popular Mecha Back Into Production"
-    },
-    {
-      "id": "a461fe4ab4f9972c",
-      "headline": "7 Classic Toonami Anime That Went Too Far for American Television",
-      "summary": "Several anime programs that aired on Toonami, including Outlaw Star, faced significant edits due to content deemed inappropriate for American broadcast standards.",
-      "category": "Anime",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/toonami-anime-too-far-american-television-liar/",
-      "published": "2026-11-18T03:30:11.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/10/yu-yu-hakusho-cast-standing-together.jpg",
-      "sourceTitle": "7 Classic Toonami Anime That Went Too Far for American Television"
-    },
-    {
-      "id": "5c73f61a9678cc37",
-      "headline": "Yaiba: Samurai Legend Season 2 Reveals Cast Member Yūma Uchida, Opening Song Artists",
-      "summary": "The second season of Yaiba: Samurai Legend has announced voice actor Yūma Uchida in the role of Gekkō, alongside CHiCO with HoneyWorks performing the opening theme song \"CHASE!\"",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-17/yaiba-samurai-legend-season-2-reveals-cast-member-yuma-uchida-opening-song-artists/.243924",
-      "published": "2026-11-18T03:11:10.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gGE/cms/news.10/243924/gekkou.jpg",
-      "sourceTitle": "Yaiba: Samurai Legend Season 2 Reveals Cast Member Yūma Uchida, Opening Song Artists"
-    },
-    {
-      "id": "3b3a18c3232b2ea3",
-      "headline": "Otherworldly Munchkin Anime's New Video Reveals More Cast, Staff, Theme Songs, January 7 Debut",
-      "summary": "A new promotional video for the otherworldly munchkin series unveiled additional cast members and production staff following a lengthy production delay. The anime will premiere on January 7, featuring actor Yūichirō Umehara among its ensemble cast alongside newly announced opening and closing themes.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-17/otherworldly-munchkin-anime-new-video-reveals-more-cast-staff-theme-songs-january-7-debut/.243921",
-      "published": "2026-11-18T03:00:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gG5/cms/news.10/243921/oiwaiillust.jpg",
-      "sourceTitle": "Otherworldly Munchkin Anime's New Video Reveals More Cast, Staff, Theme Songs, January 7 Debut"
-    },
-    {
-      "id": "f5ac0d6d01070c68",
-      "headline": "Archive of Our Own Site Reopens Following 'Security Incident'",
-      "summary": "Archive of Our Own, a popular fanfiction repository for anime and manga content, has resumed operations after experiencing a security issue. The site temporarily disabled certain features to expedite its return to service.",
-      "category": "Industry",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/interest/2026-11-17/archive-of-our-own-site-reopens-following-security-incident/.243907",
-      "published": "2026-11-18T02:45:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gLT/cms/interest.2/157084/ao3.png.jpg",
-      "sourceTitle": "Archive of Our Own Site Reopens Following 'Security Incident'"
-    },
-    {
-      "id": "b92259a324500fee",
-      "headline": "Sakamoto Days Season 2's Trailer Unveils More Cast, Opening Song, January 18 Debut",
-      "summary": "The second season of Sakamoto Days will premiere January 18, featuring newly announced cast members Kenyū Horiuchi and Kishō Taniyama. Creepy Nuts will perform the opening theme.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-17/sakamoto-days-season-2-trailer-unveils-more-cast-opening-song-january-18-debut/.243925",
-      "published": "2026-11-18T02:00:08.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHD/cms/news.10/243925/sakamotodays-s2kv2.jpg",
-      "sourceTitle": "Sakamoto Days Season 2's Trailer Unveils More Cast, Opening Song, January 18 Debut"
-    },
-    {
-      "id": "dac5ebee2a1f305e",
-      "headline": "&#039;Sakamoto Days 2nd Season&#039; Unveils Additional Cast, Opening Theme, First Promo",
-      "summary": "The upcoming second season of the Sakamoto Days anime revealed additional cast members, an opening theme song, and a promotional video. The show is set to air on TV Tokyo.",
-      "category": "Anime",
-      "source": "MyAnimeList News",
-      "url": "https://myanimelist.net/news/74951901?_location=rss",
-      "published": "2026-11-18T02:00:06.000Z",
-      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1794967162-fc6bd2956b9bbaaec9cd5704a3ac64a1.jpeg",
-      "sourceTitle": "&#039;Sakamoto Days 2nd Season&#039; Unveils Additional Cast, Opening Theme, First Promo"
-    },
-    {
-      "id": "268c282285b28dc8",
-      "headline": "Jujutsu Kaisen Officially Rewrites the Shibuya Incident With New Alternate Story - Comic Book Resources",
-      "summary": "Jujutsu Kaisen has introduced an alternate take on the Shibuya Incident storyline. The new version offers a different narrative perspective on this major arc.",
-      "category": "Manga",
-      "source": "Jujutsu Kaisen News",
-      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOd05jbEdRS2R4TGszM1FJcHdYMnhmb2lqWm82SURhU2EzbVE0Q3o5SkRRTlVNN1lkUnZ0dWNVOV9IX25JWUhRRDVfaWpHb2hqNFFHMDR6ZHZqUXVGWGVWb3l0QXpJTVA2UGtjbldHb1VfbVRzRERPTHg0aE9EVWpEcVYtZmUwMnFqV3VN?oc=5",
-      "published": "2026-11-18T01:25:00.000Z",
-      "image": "",
-      "sourceTitle": "Jujutsu Kaisen Officially Rewrites the Shibuya Incident With New Alternate Story - Comic Book Resources"
-    },
-    {
-      "id": "e1225d74c887fb63",
-      "headline": "&#039;Soara to Mamono no Ie&#039; Announces Additional Cast Pair",
-      "summary": "The television adaptation of Hidenori Yamaji's adventure fantasy manga announced additional voice cast members and a new visual. The series is scheduled to premiere in 2027.",
-      "category": "Adaptation",
-      "source": "MyAnimeList News",
-      "url": "https://myanimelist.net/news/74951722?_location=rss",
-      "published": "2026-11-18T01:17:36.000Z",
-      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1794964605-74bd93b264f7a41a9535e112e45c873c.jpeg",
-      "sourceTitle": "&#039;Soara to Mamono no Ie&#039; Announces Additional Cast Pair"
-    },
-    {
-      "id": "e37ede12c6bad11d",
-      "headline": "5 Strongest Bleach Characters Without a Bankai, Ranked",
-      "summary": "A Comic Book Resources ranking examines five of the most formidable fighters in Bleach who have demonstrated considerable power without ever obtaining Bankai abilities.",
-      "category": "Manga",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/strongest-bleach-characters-without-a-bankai-list/",
-      "published": "2026-11-17T21:15:12.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/bleach-manga.jpg",
-      "sourceTitle": "5 Strongest Bleach Characters Without a Bankai, Ranked"
-    },
-    {
-      "id": "eae6769fb1efc658",
-      "headline": "Star Wars Star Giancarlo Esposito's New Comic Is The Venetian",
-      "summary": "Actor Giancarlo Esposito, known for his Star Wars role, has released a new graphic novel titled The Venetian. The project marks his entry into the comics medium.",
-      "category": "Creator",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/star-wars-giancarlo-esposito-the-venetian/",
-      "published": "2026-11-17T21:00:12.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/07/qui-gon-jinn-1.avif",
-      "sourceTitle": "Star Wars Star Giancarlo Esposito's New Comic Is The Venetian"
     }
   ]
 }
