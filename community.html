@@ -289,10 +289,10 @@
   </a>
   <div class="nav-links">
     <a href="index.html" class="nav-link"><img src="HOME.png" alt="Home" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Home</a>
-    <a href="explore.html" class="nav-link"><img src="EXPLORE.png" alt="Comics" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Comics</a>
-    <a href="news.html" class="nav-link"><img src="NEWS.png" alt="News" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> News</a>
-    <a href="cosplay.html" class="nav-link"><img src="COSPLAY.png" alt="Cosplay" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Cosplay</a>
-    <a href="community.html" class="nav-link active"><img src="DISCUSS.png" alt="Community" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Community</a>
+    <a href="explore.html" class="nav-link"><img src="EXPLORE.png" alt="Comics" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;mix-blend-mode:screen;"> Comics</a>
+    <a href="news.html" class="nav-link"><img src="NEWS.png" alt="News" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;mix-blend-mode:screen;"> News</a>
+    <a href="cosplay.html" class="nav-link"><img src="COSPLAY.png" alt="Cosplay" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;mix-blend-mode:screen;"> Cosplay</a>
+    <a href="community.html" class="nav-link active"><img src="DISCUSS.png" alt="Community" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;mix-blend-mode:screen;"> Community</a>
   </div>
   <div class="nav-auth">
     <a href="artist.html" class="nav-login">LOG IN</a>
@@ -322,11 +322,22 @@
     <div class="compose-box">
       <textarea class="compose-input" id="composeText" placeholder="Share something with the Comic99 community..."></textarea>
       <div class="compose-actions">
-        <div style="display:flex;gap:8px;">
-          <button class="btn btn-outline btn-sm" onclick="showToast('🖼 Image upload — coming soon!')">🖼 Image</button>
-          <button class="btn btn-outline btn-sm" onclick="showToast('🎨 Fan Art tag — coming soon!')">🎨 Fan Art</button>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <label class="btn btn-outline btn-sm" style="cursor:pointer;margin:0;">
+            🖼 Image
+            <input type="file" id="communityImageInput" accept="image/*" style="display:none;" onchange="handleCommunityUpload(this,'image')">
+          </label>
+          <label class="btn btn-outline btn-sm" style="cursor:pointer;margin:0;">
+            🎨 Fan Art
+            <input type="file" id="communityFanArtInput" accept="image/*" style="display:none;" onchange="handleCommunityUpload(this,'fanart')">
+          </label>
+          <span id="communityUploadStatus" style="font-size:11px;font-weight:700;color:var(--gold);display:none;"></span>
         </div>
         <button class="btn btn-purple btn-sm" onclick="doPost()">📢 POST</button>
+      </div>
+      <div id="communityImagePreviewWrap" style="display:none;margin-top:10px;">
+        <img id="communityImagePreview" src="" alt="Preview" style="max-height:120px;border-radius:8px;border:2px solid var(--ink);">
+        <button onclick="clearCommunityUpload()" style="margin-left:8px;background:var(--red);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700;cursor:pointer;">✕ Remove</button>
       </div>
     </div>
 
@@ -658,7 +669,7 @@
   <div class="footer-logo"><img src="comic99-logo.png" alt="Comic99"><span class="footer-logo-text">COMIC<span>99</span></span></div>
   <div class="footer-tagline">Community · Creators · Cosplay</div>
   <div class="footer-links">
-    <a href="index.html">Home</a><a href="explore.html">Explore</a><a href="news.html">News</a>
+    <a href="index.html">Home</a><a href="explore.html">Comics</a><a href="news.html">News</a>
     <a href="cosplay.html">Cosplay</a><a href="community.html">Community</a>
   </div>
   <div class="footer-social">
@@ -705,6 +716,50 @@
 
 <div id="c99-toast"></div>
 <script>
+// ---- COMMUNITY IMAGE / FAN ART UPLOAD ----
+let communityUploadedUrl = null;
+let communityUploadType = null;
+
+async function handleCommunityUpload(input, type) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 10 * 1024 * 1024) { showToast('⚠️ Max file size is 10MB'); input.value = ''; return; }
+  communityUploadType = type;
+  // Show preview immediately
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('communityImagePreview').src = e.target.result;
+    document.getElementById('communityImagePreviewWrap').style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+  // Upload to Cloudinary
+  const statusEl = document.getElementById('communityUploadStatus');
+  statusEl.textContent = '⏳ Uploading...';
+  statusEl.style.display = '';
+  try {
+    const folder = type === 'fanart' ? 'comic99/fanart' : 'comic99/community';
+    communityUploadedUrl = await uploadToStorage(file, folder, { maxWidth: 1200 }, pct => {
+      statusEl.textContent = `⏳ ${pct}%`;
+    });
+    statusEl.textContent = '✅ Uploaded!';
+    setTimeout(() => { statusEl.style.display = 'none'; }, 2000);
+  } catch(err) {
+    statusEl.textContent = '❌ Upload failed';
+    communityUploadedUrl = null;
+    console.error('Community upload error:', err);
+  }
+}
+
+function clearCommunityUpload() {
+  communityUploadedUrl = null;
+  communityUploadType = null;
+  document.getElementById('communityImagePreviewWrap').style.display = 'none';
+  document.getElementById('communityImagePreview').src = '';
+  document.getElementById('communityImageInput').value = '';
+  document.getElementById('communityFanArtInput').value = '';
+  document.getElementById('communityUploadStatus').style.display = 'none';
+}
+
 function switchTab(el, id) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
@@ -721,8 +776,9 @@ function likePost(btn) {
 }
 function doPost() {
   const txt = document.getElementById('composeText').value.trim();
-  if(!txt) { showToast('✍️ Write something first!'); return; }
+  if(!txt && !communityUploadedUrl) { showToast('✍️ Write something first!'); return; }
   document.getElementById('composeText').value = '';
+  clearCommunityUpload();
   showToast('📢 Posted to Comic99 Community!');
 }
 function showToast(msg) {

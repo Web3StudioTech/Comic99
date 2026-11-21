@@ -342,19 +342,12 @@
 }
 .home-news-card:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--ink,#0D0B08); }
 .home-news-thumb {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  aspect-ratio: 16/9;
+  height: 100%;
   object-fit: cover;
   display: block;
-  background: #111;
-}
-.home-news-thumb-badge {
-  width: 100%;
-  aspect-ratio: 16/9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg,#1a0a1a,#2a1a3a);
 }
 .home-news-body { padding: 12px 14px 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
 .home-news-cat { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: var(--red,#E8192C); text-transform: uppercase; }
@@ -407,10 +400,10 @@
   </a>
   <div class="nav-links">
     <a href="index.html" class="nav-link active"><img src="HOME.png" alt="Home" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Home</a>
-    <a href="explore.html" class="nav-link"><img src="EXPLORE.png" alt="Comics" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Comics</a>
-    <a href="news.html" class="nav-link"><img src="NEWS.png" alt="News" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> News</a>
-    <a href="cosplay.html" class="nav-link"><img src="COSPLAY.png" alt="Cosplay" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Cosplay</a>
-    <a href="community.html" class="nav-link"><img src="DISCUSS.png" alt="Community" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;"> Community</a>
+    <a href="explore.html" class="nav-link"><img src="EXPLORE.png" alt="Comics" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;mix-blend-mode:screen;"> Comics</a>
+    <a href="news.html" class="nav-link"><img src="NEWS.png" alt="News" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;mix-blend-mode:screen;"> News</a>
+    <a href="cosplay.html" class="nav-link"><img src="COSPLAY.png" alt="Cosplay" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;mix-blend-mode:screen;"> Cosplay</a>
+    <a href="community.html" class="nav-link"><img src="DISCUSS.png" alt="Community" style="width:20px;height:20px;vertical-align:middle;margin-right:4px;object-fit:contain;mix-blend-mode:screen;"> Community</a>
   </div>
   <div class="nav-auth">
     <a href="artist.html" class="nav-login">LOG IN</a>
@@ -583,7 +576,7 @@
   <div class="how-grid">
     <div class="how-card">
       <div class="how-num">1</div>
-      <img src="SIGNUP.png" alt="Sign Up" class="how-badge-img">
+      <img src="SIGNUP.png" alt="Sign Up" class="how-badge-img" style="mix-blend-mode:screen;">
       <div class="how-title">SIGN UP</div>
       <div class="how-desc">Create your free Nakama account. Join the Comic99 community — read, comment, follow your favourite creators.</div>
     </div>
@@ -607,7 +600,7 @@
     </div>
     <div class="how-card">
       <div class="how-num">5</div>
-      <img src="ROLE.png" alt="Your Role" class="how-badge-img">
+      <img src="ROLE.png" alt="Your Role" class="how-badge-img" style="mix-blend-mode:screen;">
       <div class="how-title">YOUR ROLE</div>
       <div class="how-desc">Activate your Artist or Cosplayer role from your dashboard. Unlock creator tools, post comics or share cosplay photos.</div>
     </div>
@@ -620,13 +613,14 @@
   <h2>READY TO <span>CREATE?</span></h2>
   <p>Be a Pioneer in Comic99. The early creators always win. Join now.</p>
   <div class="cta-actions">
-    <a href="artist.html" class="btn btn-gold"><img src="ART.png" alt="Artist" style="width:22px;height:22px;vertical-align:middle;margin-right:6px;object-fit:contain;"> BECOME AN ARTIST</a>
-    <a href="cosplay.html" class="btn btn-red">📸 JOIN AS COSPLAYER</a>
+    <a href="artist.html" class="btn btn-gold"><img src="ART.png" alt="Artist" style="width:22px;height:22px;vertical-align:middle;margin-right:6px;object-fit:contain;"> APPLY FOR ARTIST</a>
+    <a href="cosplay.html" class="btn btn-red">📸 CREATE COSPLAYER PROFILE</a>
+    <a href="artist.html" class="btn btn-outline" style="color:var(--white);border-color:rgba(255,255,255,0.5);">🎌 SIGNUP AS NAKAMA (MEMBER)</a>
   </div>
 </div>
 
 <!-- LATEST NEWS BAND -->
-<section class="latest-news-band" id="latestNewsBand" style="display:none;">
+<section class="latest-news-band" id="latestNewsBand">
   <div style="max-width:1200px;margin:0 auto;padding:40px max(16px,env(safe-area-inset-left,0px));">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
       <div>
@@ -648,7 +642,7 @@
   <div class="footer-tagline">Community · Creators · Cosplay</div>
   <div class="footer-links">
     <a href="index.html">Home</a>
-    <a href="explore.html">Explore</a>
+    <a href="explore.html">Comics</a>
     <a href="news.html">News</a>
     <a href="cosplay.html">Cosplay</a>
     <a href="community.html">Community</a>
@@ -717,14 +711,30 @@ async function loadHomeNews() {
     const grid = document.getElementById('homeNewsGrid');
     const band = document.getElementById('latestNewsBand');
     if (!grid || !band) return;
+    // Region/country label mapping based on source or region field
+    function getRegionLabel(item) {
+      if (item.region) return item.region;
+      const src = (item.source || '').toLowerCase();
+      if (src.includes('japan') || src.includes('jp') || src.includes('shonen') || src.includes('manga')) return '🇯🇵 Japan';
+      if (src.includes('korea') || src.includes('kr') || src.includes('webtoon')) return '🇰🇷 Korea';
+      if (src.includes('china') || src.includes('cn') || src.includes('manhua')) return '🇨🇳 China';
+      if (src.includes('malaysia') || src.includes('my')) return '🇲🇾 Malaysia';
+      if (src.includes('us') || src.includes('america') || src.includes('marvel') || src.includes('dc')) return '🇺🇸 Global';
+      return '🌏 Global';
+    }
     grid.innerHTML = featured.map(item => {
       const badge = HOME_CAT_BADGE[item.category] || 'Radiant_Comic_Book_Badge.png';
+      const region = getRegionLabel(item);
       const thumb = item.image
         ? `<img class="home-news-thumb" src="${item.image}" alt="" loading="lazy"
-            onerror="this.outerHTML='<div class=\\'home-news-thumb-badge\\'><img src=\\'${badge}\\' style=\\'width:72px;height:72px;object-fit:contain;\\'></div>'">`
-        : `<div class="home-news-thumb-badge"><img src="${badge}" style="width:72px;height:72px;object-fit:contain;"></div>`;
+            onerror="this.style.display='none';this.parentElement.querySelector('.home-news-thumb-fallback').style.display='flex'">
+           <div class="home-news-thumb-fallback" style="display:none;position:absolute;inset:0;background:linear-gradient(135deg,var(--ink),#2a1a3a);align-items:center;justify-content:center;"><img src="${badge}" style="width:72px;height:72px;object-fit:contain;opacity:0.8;"></div>`
+        : `<div class="home-news-thumb-fallback" style="display:flex;position:absolute;inset:0;background:linear-gradient(135deg,var(--ink),#2a1a3a);align-items:center;justify-content:center;"><img src="${badge}" style="width:72px;height:72px;object-fit:contain;opacity:0.8;"></div>`;
       return `<a class="home-news-card" href="${item.url}" target="_blank" rel="noopener">
-        ${thumb}
+        <div style="position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--ink);">
+          ${thumb}
+          <span style="position:absolute;bottom:6px;left:6px;background:rgba(0,0,0,0.7);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:0.5px;">${region}</span>
+        </div>
         <div class="home-news-body">
           <div class="home-news-cat">${item.category}</div>
           <div class="home-news-title">${item.title}</div>
