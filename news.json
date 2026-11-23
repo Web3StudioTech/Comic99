@@ -1,6 +1,9 @@
 {
-  "updated": "2026-11-22T20:04:00.148Z",
+  "updated": "2026-11-23T08:53:01.086Z",
   "skipped": [
+    "556d779d311c2e7e",
+    "127ab000af9b0282",
+    "c7ec00ee7f6c00de",
     "361ca3ab221f1524",
     "066b0cdba993826c",
     "b42dabc1ae2a41c6",
@@ -52,6 +55,215 @@
     "12ac08358b3ca231"
   ],
   "items": [
+    {
+      "id": "5494e38b89745a0e",
+      "headline": "NODWIN Gaming Arena to Bring ₹30 Lakh Esports Spectacle to Hyderabad Comic Con from December 7 - IndiaSportsHub",
+      "summary": "NODWIN Gaming Arena will host a competitive esports tournament featuring a ₹30 lakh prize pool at Hyderabad Comic Con beginning December 7.",
+      "category": "Events",
+      "source": "Comic Con Events",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPNzBXV3lydGdaVk0zT2NleTNGN1lCWGFySWpWUnMxXy04bHUwUVdfQU03Q0g3b3RWMW1QdlJqZTNCQmZVdXd3V25hWllpakJuYjZJU1phNmQ2UXNuOWtSdVV0Z2dWTTV5Ul9fZU80M016YUVKU2ZkQkhOdVlyRjFEOTlmZnk4M2NpVFVlaDZ2VjZVRGRlbVIyZWRXanNxSFF0SVlVWEpVVkxRcEQzaS1Jd3BmUXd5LUMwSzF1eTJheDF0Qnp4NkNqd2hfeXY0QQ?oc=5",
+      "published": "2026-11-23T07:42:52.000Z",
+      "image": "",
+      "sourceTitle": "NODWIN Gaming Arena to Bring ₹30 Lakh Esports Spectacle to Hyderabad Comic Con from December 7 - IndiaSportsHub"
+    },
+    {
+      "id": "948a435d493a9474",
+      "headline": "7 Anime Arcs Where the Hero Dies",
+      "summary": "Comic Book Resources explores seven anime series where protagonists fail to survive until the final episode, citing Attack on Titan as a notable example.",
+      "category": "Anime",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/anime-arcs-where-the-hero-dies-list/",
+      "published": "2026-11-23T04:45:12.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/05/attack-on-titan-the-rumbling.jpg",
+      "sourceTitle": "7 Anime Arcs Where the Hero Dies"
+    },
+    {
+      "id": "5938389c30f6b829",
+      "headline": "Clayface Sets Streaming Release Date After Surpassing Supergirl's Disastrous Box Office Run",
+      "summary": "Clayface has outperformed Supergirl at the box office and will soon arrive on streaming platforms.",
+      "category": "Adaptation",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/clayface-digital-release-date/",
+      "published": "2026-11-23T04:34:44.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/10/clayface-2026.jpg",
+      "sourceTitle": "Clayface Sets Streaming Release Date After Surpassing Supergirl's Disastrous Box Office Run"
+    },
+    {
+      "id": "306c476ff937160c",
+      "headline": "Crunchyroll Officially Cuts Premium Subscription Price to $3.99 for Black Friday",
+      "summary": "Crunchyroll is offering its premium subscription at $3.99 monthly during Black Friday, marking a significant price reduction for the anime streaming service's promotional period.",
+      "category": "Industry",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/crunchyroll-black-friday-premium-subscription-3-99/",
+      "published": "2026-11-23T04:30:11.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/09/japan-has-already-officially-crowned-its-top-anime-series-of-fall-202-6-2.jpg",
+      "sourceTitle": "Crunchyroll Officially Cuts Premium Subscription Price to $3.99 for Black Friday"
+    },
+    {
+      "id": "08e5fad276f2b0d1",
+      "headline": "10 Comic Strips That Are (Almost) As Good As Calvin and Hobbes",
+      "summary": "Comic Book Resources examines notable comic strips that rival Bill Watterson's acclaimed work, highlighting the medium's greatest achievements beyond his iconic series.",
+      "category": "Western",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/comic-strips-that-are-almost-as-good-as-calvin-and-hobbes/",
+      "published": "2026-11-23T04:30:11.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2025/06/10-comic-strips-that-are-almost-as-good-as-calvin-and-hobbes.jpg",
+      "sourceTitle": "10 Comic Strips That Are (Almost) As Good As Calvin and Hobbes"
+    },
+    {
+      "id": "95e33b3ad1c4bf2c",
+      "headline": "The Days of Diamond Anime Adaptation Announced - news.anibu.jp",
+      "summary": "An anime adaptation has been announced for The Days of Diamond, based on source material from the manga series.",
+      "category": "Adaptation",
+      "source": "Anime Adaptation News",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9GU1ZFV3I4UlJ5OGI5ZHdPd0ZqNF9kNTRLOFV2LVpMa3FzLUxxajNicjRQRjJEcy1ja2hoX1d5VDhIbEk1UlVMU3M3R2RNZTlocFhxMQ?oc=5",
+      "published": "2026-11-23T03:00:45.000Z",
+      "image": "",
+      "sourceTitle": "The Days of Diamond Anime Adaptation Announced - news.anibu.jp"
+    },
+    {
+      "id": "ceb39fa1f7e1be78",
+      "headline": "Live-Action Wakako-zake Season 10 Unveils January 6 Debut, Year-End Special, Opening Song Artists",
+      "summary": "The live-action adaptation of Wakako-zake returns for its tenth season, premiering January 6. A year-end special airs December 30, with idol group Title Mitei performing the opening theme.",
+      "category": "Adaptation",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-22/live-action-wakako-zake-season-10-unveils-january-6-debut-year-end-special-opening-song-artists/.244087",
+      "published": "2026-11-23T02:08:48.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gDB/cms/news.10/244087/sake.webp",
+      "sourceTitle": "Live-Action Wakako-zake Season 10 Unveils January 6 Debut, Year-End Special, Opening Song Artists"
+    },
+    {
+      "id": "edada29d4507579d",
+      "headline": "Champignon Witch Manga to Resume After 10 Months",
+      "summary": "Champignon Witch manga will resume publication following a ten-month hiatus. The series originally began in October 2019.",
+      "category": "Manga",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-22/champignon-witch-manga-to-resume-after-10-months/.244096",
+      "published": "2026-11-23T01:56:05.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gFH/cms/news.9/239921/champignon-witch-v1-cnf.jpg",
+      "sourceTitle": "Champignon Witch Manga to Resume After 10 Months"
+    },
+    {
+      "id": "19e93e1aaea84ea5",
+      "headline": "'As a Reincarnated Aristocrat, I'll Use My Appraisal Skill' Season 3's New Video Announces More Cast",
+      "summary": "The third season of the aristocratic reincarnation anime has revealed additional cast members joining the series starting with episode 33, including voice actors Anna Nagase, Kōsuke Toriumi, and Ayumu Murase.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-22/as-a-reincarnated-aristocrat-ill-use-my-appraisal-skill-season-3-new-video-announces-more-cast/.244094",
+      "published": "2026-11-23T00:39:33.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHE/youtube/elxZeOjE7OE.jpg",
+      "sourceTitle": "'As a Reincarnated Aristocrat, I'll Use My Appraisal Skill' Season 3's New Video Announces More Cast"
+    },
+    {
+      "id": "6374c2d964f70b54",
+      "headline": "Sakamoto Days Manga Ends",
+      "summary": "The Sakamoto Days manga series has concluded, with its final volume releasing on April 30, 2027, nearly seven years after the series began in November 2020.",
+      "category": "Manga",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-22/sakamoto-days-manga-ends/.244098",
+      "published": "2026-11-23T00:21:13.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gEE/cms/news.8/227062/sakamoto-days-volume-1.jpg",
+      "sourceTitle": "Sakamoto Days Manga Ends"
+    },
+    {
+      "id": "2fab7f19c2ba6043",
+      "headline": "One Piece Chapter 1200: Release Date, Where to Read, and What to Expect - IMDb",
+      "summary": "The latest installment of the long-running series approaches, with details emerging about its release timing and reading platforms available to fans worldwide.",
+      "category": "Manga",
+      "source": "One Piece News",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE02S3lYRFJGWVZIV1R5UU1uX2RIVUQzMjFPdDRFbTNVZmRSb0hTbDltdnJKeGdrUjJyUFVQdlUwbnl6Y0YzU2RVWjRRUDJzbXFGUkVvNm1Yb1hwUWJ0bmJXUUY3SV9vdw?oc=5",
+      "published": "2026-11-22T21:38:24.000Z",
+      "image": "",
+      "sourceTitle": "One Piece Chapter 1200: Release Date, Where to Read, and What to Expect - IMDb"
+    },
+    {
+      "id": "dbd3c30c1f604b04",
+      "headline": "Live-Action The Remarried Empress Series Drives Surge in Original Webtoon, Web Novel Readership",
+      "summary": "The live-action adaptation of The Remarried Empress boosted readership of the original webtoon and web novel significantly, with global views increasing roughly 35-fold in the two weeks after its November 3 premiere.",
+      "category": "Adaptation",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-22/live-action-the-remarried-empress-series-drives-surge-in-original-webtoon-web-novel-readership/.244078",
+      "published": "2026-11-22T21:15:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHI/cms/news.9/240004/img-ae39526d-fd78-4901-85bd-3099fb7e26da.png.jpg",
+      "sourceTitle": "Live-Action The Remarried Empress Series Drives Surge in Original Webtoon, Web Novel Readership"
+    },
+    {
+      "id": "acee97d666e9221d",
+      "headline": "One Piece Chapter 1200 Preview: Lily's Message From The Void Century - GameRant",
+      "summary": "The upcoming installment of One Piece explores mysterious lore connected to the Void Century through a character named Lily's message.",
+      "category": "Manga",
+      "source": "One Piece News",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9kRHhEMHRSbzNOZlM3UFl1ekZ5ZHJJS0NUeEw2MlpKRDdYbWpfNmR3aDZuaFNTMkFiWVN6d0pXU2tReTE5cEkwdEFtOUg1bWZ2QXoyelRBc1czOFNTejVyQ3V6SU9mSlNGUGFxSHRMN3B5WDQzbk8zalF3LVBha2c?oc=5",
+      "published": "2026-11-22T20:30:14.000Z",
+      "image": "",
+      "sourceTitle": "One Piece Chapter 1200 Preview: Lily's Message From The Void Century - GameRant"
+    },
+    {
+      "id": "bf7aa1ff216d79c8",
+      "headline": "One Piece Finally Hits Major Manga Milestone Neither Naruto Nor Bleach Could - IMDb",
+      "summary": "One Piece has achieved a significant publishing milestone that neither Naruto nor Bleach reached, according to reports from IMDb.",
+      "category": "Manga",
+      "source": "One Piece News",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9Sb0NSOGRVQTVTX3kwNGZJb1ZGMDFWcDNWaVd2RmxpWUlrUW1HcVZ1VHAtR3Vac2NiZkk2WFlucjhqZ1ZiNWQ3X3FVRElRRHBDOEF6cTlTMTJBY2xqX20zenVQN0pKS1U?oc=5",
+      "published": "2026-11-22T20:17:28.000Z",
+      "image": "",
+      "sourceTitle": "One Piece Finally Hits Major Manga Milestone Neither Naruto Nor Bleach Could - IMDb"
+    },
+    {
+      "id": "14beab8ac110ecc7",
+      "headline": "I Became the Tyrant of a Defense Game Web Novel, Webtoon Gets Mobile Game Adaptation",
+      "summary": "A webtoon adaptation based on a defense-themed web novel is launching as a mobile game, incorporating exploration, territory management, and defensive battle mechanics.",
+      "category": "Adaptation",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-22/i-became-the-tyrant-of-a-defense-game-web-novel-webtoon-gets-mobile-game-adaptation/.244077",
+      "published": "2026-11-22T20:15:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gS8/cms/news.10/244077/ka5evryipprimfcmmrymftewvv822mw3hiptv8caejnz2zuglphwnezducn6rsmws0fyw8ungevjgjxxa-kdrw.webp",
+      "sourceTitle": "I Became the Tyrant of a Defense Game Web Novel, Webtoon Gets Mobile Game Adaptation"
+    },
+    {
+      "id": "4767271a5b839448",
+      "headline": "One Piece Finally Hits Major Manga Milestone Neither Naruto Nor Bleach Could - FandomWire",
+      "summary": "One Piece has achieved a significant milestone in manga that eluded both Naruto and Bleach during their runs.",
+      "category": "Manga",
+      "source": "One Piece News",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNRmxNRGhmaUcxOU5rUnN2c29LUFhrdWNDNlBncVdCd0R0RkZtcERwQ1NVcDl0Tnp6UTVLVUplVDhLWGs4RUFEMEQ1V3RpNE5zbTlqSXVHcXA3LXBDUVJSSkRwWjM4UnpCQkRIbEtpc3hzN05YczdVVDRVVDBCX01pV3JfYTA3akxtQW45bVdjWUpUQ3ZrbXdsQ2hOUEFHUjMwbVE?oc=5",
+      "published": "2026-11-22T19:59:50.000Z",
+      "image": "",
+      "sourceTitle": "One Piece Finally Hits Major Manga Milestone Neither Naruto Nor Bleach Could - FandomWire"
+    },
+    {
+      "id": "7a65decdf7d4a108",
+      "headline": "One Piece Chapter 1200: Release Date, Where to Read, and What to Expect - FandomWire",
+      "summary": "The latest installment of the long-running manga series approaches release, with information available regarding its publication date and reading platforms.",
+      "category": "Manga",
+      "source": "One Piece News",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4teV9Hc3YyTHBwTTViRDQ4R0JQMkhLdGdLejYtTk9QTFJhWFFGajNkT2hLOEc1MkhTcVMxbzctNkJfbXdOb2x4eU01YXRZRDVNRzR1eDh0em40XzBrOVlHaklHS25jUlR5VXg4QUtqOEotYzQ?oc=5",
+      "published": "2026-11-22T19:19:15.000Z",
+      "image": "",
+      "sourceTitle": "One Piece Chapter 1200: Release Date, Where to Read, and What to Expect - FandomWire"
+    },
+    {
+      "id": "7c590145ee1a0114",
+      "headline": "One Piece Chapter 1199 Finally Confirms Legendary Sun God-Luffy Connection - FandomWire",
+      "summary": "The latest chapter of One Piece establishes a connection between the protagonist and a legendary sun deity, marking a significant development in the manga's storyline.",
+      "category": "Manga",
+      "source": "One Piece News",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1XUWJHN09JNWtXeVdZd01mRzlLSU9udVpnbmIyb2JUY2VlRTZEUjBkd3hPTndaMnpJMkZKejh0VXktczNCb1J1WjNuRUp5N2xWUDdUYVVMWXlBZjVqU3J2dTB1T2FRSFRIUTZTYzBjVzI?oc=5",
+      "published": "2026-11-22T17:58:33.000Z",
+      "image": "",
+      "sourceTitle": "One Piece Chapter 1199 Finally Confirms Legendary Sun God-Luffy Connection - FandomWire"
+    },
+    {
+      "id": "9d420a5d5e460878",
+      "headline": "Jimoto no Ijimekko-tachi ni Shikaeshi Shiyoto Shitara, Betsu no Tatakai ga Hajimatta Anime Announced for 2027 - Crunchyr",
+      "summary": "Crunchyroll has announced an anime adaptation of a revenge-themed manga series scheduled for 2027 release.",
+      "category": "Adaptation",
+      "source": "Anime Adaptation News",
+      "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQOEZQT2xJUHFsZXFNQlJJNldVaHhzcnlaMTU3NVRRTG5QWEJlT0pCQXBXcE9QN04wb0R5VmdUcHlyZWxXcTlheGZ0b1d3M2JrR2FLdFRObnlTQkZaZlVyQlU1RE5YY1M5cW9IcEFJTERRWXJzM0JfckhBdEJ0Vm5ZejVwYmtTX0FzeVNtMzBuT0EwVlg3SFhZOVlUT25PSFd4ZFBmNkJHZHl6cXhXYTFXZkRkUHRVa3hNdTNUU3pzVkkxcndyUkw3eFdaWmZBcmtaam92MXF3eDdGbHlHbFdnbGZHenBqUU1JN2R5Y1lwa3k?oc=5",
+      "published": "2026-11-20T10:06:00.000Z",
+      "image": "",
+      "sourceTitle": "Jimoto no Ijimekko-tachi ni Shikaeshi Shiyoto Shitara, Betsu no Tatakai ga Hajimatta Anime Announced for 2027 - Crunchyroll"
+    },
     {
       "id": "ea4f6a56535545fc",
       "headline": "DC Comics Introduced a Wave of New Characters in the '90s, and 10 of Them Worked",
@@ -1162,215 +1374,6 @@
       "published": "2026-11-20T03:58:04.000Z",
       "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHH/cms/news.10/242682/zombie-kv.jpg",
       "sourceTitle": "'I am the only one who is not attacked in the world filled with zombies' Anime Reveals More Cast, January 1 TV Debut"
-    },
-    {
-      "id": "58bb7a5fc23080a7",
-      "headline": "Live-Action Fukakōryoku no I Love You Film Casts M!LK Idol Shunta Sono",
-      "summary": "M!LK idol Shunta Sono has been cast as Rentarō Akizuki, a childhood friend character, in the upcoming live-action adaptation of Fukakōryoku no I Love You, scheduled for March 2027 release.",
-      "category": "Adaptation",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-19/live-action-fukakoryoku-no-i-love-you-film-casts-m-lk-idol-shunta-sono/.244006",
-      "published": "2026-11-20T03:42:28.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHB/cms/news.10/244006/shuntasono.jpg",
-      "sourceTitle": "Live-Action Fukakōryoku no I Love You Film Casts M!LK Idol Shunta Sono"
-    },
-    {
-      "id": "c573258c4c23d580",
-      "headline": "Additional Cast for &#039;Zombie no Afureta Sekai de Ore dake ga Osowarenai&#039; Announced",
-      "summary": "Seven additional voice actors have been cast for the anime adaptation of Rokuro Uraji's supernatural horror light novel about a protagonist immune to zombie attacks.",
-      "category": "Anime",
-      "source": "MyAnimeList News",
-      "url": "https://myanimelist.net/news/74960147?_location=rss",
-      "published": "2026-11-20T03:38:17.000Z",
-      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795145844-b7169808d19a53f1d1c4a671fe1bc94a.jpeg",
-      "sourceTitle": "Additional Cast for &#039;Zombie no Afureta Sekai de Ore dake ga Osowarenai&#039; Announced"
-    },
-    {
-      "id": "5fe5b4052c4ebfb3",
-      "headline": "Star Detective Precure's Cure Answer Poses as Street Fighter 6 Characters",
-      "summary": "Cure Answer from Star Detective Precure appears as multiple Street Fighter 6 characters, including Luke, Jamie, Guile, Ken, and others in this crossover showcase.",
-      "category": "Cosplay",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/interest/2026-11-19/star-detective-precure-cure-answer-poses-as-street-fighter-6-characters/.243988",
-      "published": "2026-11-20T02:00:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gFB/youtube/DYAh1kLR8lg.jpg",
-      "sourceTitle": "Star Detective Precure's Cure Answer Poses as Street Fighter 6 Characters"
-    },
-    {
-      "id": "ac1f9d9cdd97b8c5",
-      "headline": "Criterion Channel Adds Speed Racer Anime",
-      "summary": "Criterion Channel will add the Speed Racer anime series to its catalog in December, available in both English and Japanese audio options.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-19/criterion-channel-adds-speed-racer-anime/.243995",
-      "published": "2026-11-19T22:00:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gIH/cms/news.7/210438/speed-racer.jpg",
-      "sourceTitle": "Criterion Channel Adds Speed Racer Anime"
-    },
-    {
-      "id": "3a4e5609a8a11e41",
-      "headline": "Grotesqqque Anime Film Screens in Los Angeles on December 3 for 1-Week Only",
-      "summary": "The Grotesqqque omnibus film, featuring three stories, will screen exclusively at Alamo Drafthouse Cinema in Downtown Los Angeles for one week beginning December 3.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-19/grotesqqque-anime-film-screens-in-los-angeles-on-december-3-for-1-week-only/.243997",
-      "published": "2026-11-19T21:09:35.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gIE/youtube/7ZPr9rqaRM0.jpg",
-      "sourceTitle": "Grotesqqque Anime Film Screens in Los Angeles on December 3 for 1-Week Only"
-    },
-    {
-      "id": "d1eaa44f049b7c47",
-      "headline": "‘Jeopardy!’ Is Making a Major First-Ever Announcement for Fans With New Game Format and 3-Day Con - closerweekly.com",
-      "summary": "Jeopardy! will announce a new game format and host a three-day convention, marking the trivia show's first venture into the fan convention space.",
-      "category": "Events",
-      "source": "Convention Schedule",
-      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPUjcyTW1lVE9Qek4tYkdLTllENGs2Yzh4a3BnQ1Yxc2hpd2FPYW9BdFlFeEVSUktMUlhwdXVrNTRBa0xrRUdFYjk0bDZESUdXZk5LQ3l1cVBVNzRnVXpXcm84dFhDU3p2bWtFZWtKMVdOcFVPRDAwR1NLekJfbWMxY0dhMHZ1UFFEbktIdDJCeGJ4NlBCVXJ2TU9WZ0xBT2owbXFicm03c3YydVZkRlF1ZGFHWExLWjFNYlpIcA?oc=5",
-      "published": "2026-11-19T20:25:20.000Z",
-      "image": "",
-      "sourceTitle": "‘Jeopardy!’ Is Making a Major First-Ever Announcement for Fans With New Game Format and 3-Day Con - closerweekly.com"
-    },
-    {
-      "id": "eb333b560aeab9a1",
-      "headline": "One Piece Prepares For A Big Day On November 29 With Chapter 1200 Milestone - GameRant",
-      "summary": "One Piece is set to reach a significant publishing milestone on November 29 with the release of Chapter 1200, marking a major moment for the long-running series.",
-      "category": "Manga",
-      "source": "One Piece News",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE04bE1pdFZEbFp5ZlN3c09XRHd6TGtZQ19Va2thbl9fT1otY1k5QWYzT3BjSnlscFB3STI5eUFvamZSMWljbmNUVE16TnV1OVpPSWNtTUQ0UU9uZ2xaUW45cUM5M3hkdXNPaHgyajBxRlNIQQ?oc=5",
-      "published": "2026-11-19T16:19:35.000Z",
-      "image": "",
-      "sourceTitle": "One Piece Prepares For A Big Day On November 29 With Chapter 1200 Milestone - GameRant"
-    },
-    {
-      "id": "16ed34fbdc5ce75f",
-      "headline": "2026 Motor City Comic Con - C & G Newspapers",
-      "summary": "Motor City Comic Con is scheduled for 2026, with coverage from C & G Newspapers documenting the event.",
-      "category": "Events",
-      "source": "Comic Con Events",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBwcDZlVTJjWXlyR015Ti1QdjIxSVhoV3Rnd0xOb0tsTnFwa2FPRmljN1hvZmFJUlN3UFMtOW9Iby14U01TcFlBZnNURkR5bktGT0VYOVdaMHBDN1FoU1poQTNzSktjc3FqN21pcTZONXNTeFZ3TEdFY2Rxdw?oc=5",
-      "published": "2026-11-19T14:10:23.000Z",
-      "image": "",
-      "sourceTitle": "2026 Motor City Comic Con - C & G Newspapers"
-    },
-    {
-      "id": "6174379cd0a4307d",
-      "headline": "Comments | #039 | Boruto: Two Blue Vortex - Masashi Kishimoto / Mikio Ikemoto - MANGA Plus by SHUEISHA",
-      "summary": "The latest chapter of Boruto: Two Blue Vortex features creator comments from Masashi Kishimoto and Mikio Ikemoto, available through MANGA Plus by SHUEISHA.",
-      "category": "Manga",
-      "source": "Manga Plus News",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBHSTFlSUc4WDRKMGs1YWkydk5fUzBSTHlxeWpDTFZTWEpfVjY4czVOQk9yTUxWSFNTdVF1cWFlUTJ3T2F0MXpYbXprVUFHc1ItbFJ5RU91YzAtX2p1SVE?oc=5",
-      "published": "2026-11-18T22:03:19.000Z",
-      "image": "",
-      "sourceTitle": "Comments | #039 | Boruto: Two Blue Vortex - Masashi Kishimoto / Mikio Ikemoto - MANGA Plus by SHUEISHA"
-    },
-    {
-      "id": "4503f603a19e813a",
-      "headline": "One Piece Chapter 1199 spoilers: Luffy's new Nika form and Lili's mysterious letter tease a major lore revelation ahead ",
-      "summary": "Chapter 1199 of One Piece introduces Luffy's new Nika form alongside a mysterious letter from Lili, setting up significant lore developments heading into Chapter 1200.",
-      "category": "Manga",
-      "source": "One Piece News",
-      "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxQcEhTb3ZGdDkyNWF4clNSYXlOTVY2M2xUWHVDMzdXbTBuNWlVV085VWFjS1lsVTNFelRfeUpsamtZdmFiTzc5Ml9SQmxEbmJMZlBEOENiYVlFVFlYTE13cTBPSVRxTXZYVFJvQ05fdzktME84aVM5OW8xNnJ4b0YyQnNoRlV3ZE5HcUNqZG9CbUNzZldxNUoxM2NiYnV6MXlaNnR2ZjZtcjBrZXNwNW83dFhMakdTM3lhS0dlWDlZZFRUbEVoSG9STGhpRlVUMHdpNE5Kalh0d2FoSnFMNVgtUXN2dTNaUVNQZmtHZXlMR3dob050Z1d6V09XODk2SHhFNVh6OWt4NzdwN1dNQnpXS3FacUJzMndEdk1HOWkxLTbSAaYCQVVfeXFMTWpDalpIdm5GYUhMNlRub3h5eGlXY3d0UDBKNkFva1F0Y2ZDb2w5WmwtSHhaeGFvSWswLW9lTXU0Ul9zS3U3ZklxRGs5NXlEbGM1OWxDS2prdTRIV0R1YTBLeDJ6eGVoWUY1OEYyMGVyOWxEaFk2RWtDSVFKclhfQzNoc0xGV3RPUk9zTExSUmRPYUFrZUhBMDdneTA5TGZUV2dwYnE5R3k5aXByamNLTXllaXNvV1pjUXpXUHFrSHN5aEgtRVgtTDBmMlpWUGdGaDZPUTRYREhiUWNyd2d2eVROUlRXLUU1bHRLWFBTSjc1VTlScS0tNHBodlVXMy1fYTFkZkpRZGNUcUVSX2ZlemNqY2lmci1kelQ5bW5UUU0ybjRjb2lR?oc=5",
-      "published": "2026-11-17T11:17:57.000Z",
-      "image": "",
-      "sourceTitle": "One Piece Chapter 1199 spoilers: Luffy's new Nika form and Lili's mysterious letter tease a major lore revelation ahead of Chapter 1200 - Indiatimes"
-    },
-    {
-      "id": "86638295115112a3",
-      "headline": "4 Anime Conventions Still Happening In SG In 2026 – AFA Singapore, Singapore Comic Con & Doujin Market Mini - TheSmartLo",
-      "summary": "Singapore will host multiple anime and pop culture conventions in 2026, including AFA Singapore, Singapore Comic Con, and Doujin Market Mini.",
-      "category": "Events",
-      "source": "Asia Cosplay News",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBVd1B6b051Rk9MNXIycnVYbUxzMmYtaFQtR2hidllrYWU1RUd0MGZ0VUxocnpuRGpCQkxyNjh5QU96d1Y1bzBnSThQNk1Jcm1UQ1plZFFjSmUzWWNuN0xlSEotVXdjeFFTVjU00gFwQVVfeXFMTTNid3VfMkU0eE5neXpvX0tzanYzSmF2U2UzellJMUh4bFFPWUduZWwybExXemh3Umppc0FGSnhXZDR1ZkVUZnNHWEdmWEhTbnZmbUtBOGlPVkxrdk9qV1hUZ21pTjNUdzh3LThDcTRmMQ?oc=5",
-      "published": "2026-11-17T09:00:33.000Z",
-      "image": "",
-      "sourceTitle": "4 Anime Conventions Still Happening In SG In 2026 – AFA Singapore, Singapore Comic Con & Doujin Market Mini - TheSmartLocal"
-    },
-    {
-      "id": "86638295115112a3",
-      "headline": "4 Anime Conventions Still Happening In SG In 2026 – AFA Singapore, Singapore Comic Con & Doujin Market Mini - TheSmartLo",
-      "summary": "Singapore will host multiple anime and comic conventions in 2026, including AFA Singapore, Singapore Comic Con, and Doujin Market Mini.",
-      "category": "Events",
-      "source": "Asia Comic Events",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBVd1B6b051Rk9MNXIycnVYbUxzMmYtaFQtR2hidllrYWU1RUd0MGZ0VUxocnpuRGpCQkxyNjh5QU96d1Y1bzBnSThQNk1Jcm1UQ1plZFFjSmUzWWNuN0xlSEotVXdjeFFTVjU00gFwQVVfeXFMTTNid3VfMkU0eE5neXpvX0tzanYzSmF2U2UzellJMUh4bFFPWUduZWwybExXemh3Umppc0FGSnhXZDR1ZkVUZnNHWEdmWEhTbnZmbUtBOGlPVkxrdk9qV1hUZ21pTjNUdzh3LThDcTRmMQ?oc=5",
-      "published": "2026-11-17T09:00:33.000Z",
-      "image": "",
-      "sourceTitle": "4 Anime Conventions Still Happening In SG In 2026 – AFA Singapore, Singapore Comic Con & Doujin Market Mini - TheSmartLocal"
-    },
-    {
-      "id": "86638295115112a3",
-      "headline": "4 Anime Conventions Still Happening In SG In 2026 – AFA Singapore, Singapore Comic Con & Doujin Market Mini - TheSmartLo",
-      "summary": "Singapore's anime convention calendar includes AFA Singapore, Singapore Comic Con, and Doujin Market Mini among events scheduled for 2026.",
-      "category": "Events",
-      "source": "Convention Schedule",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBVd1B6b051Rk9MNXIycnVYbUxzMmYtaFQtR2hidllrYWU1RUd0MGZ0VUxocnpuRGpCQkxyNjh5QU96d1Y1bzBnSThQNk1Jcm1UQ1plZFFjSmUzWWNuN0xlSEotVXdjeFFTVjU00gFwQVVfeXFMTTNid3VfMkU0eE5neXpvX0tzanYzSmF2U2UzellJMUh4bFFPWUduZWwybExXemh3Umppc0FGSnhXZDR1ZkVUZnNHWEdmWEhTbnZmbUtBOGlPVkxrdk9qV1hUZ21pTjNUdzh3LThDcTRmMQ?oc=5",
-      "published": "2026-11-17T09:00:33.000Z",
-      "image": "",
-      "sourceTitle": "4 Anime Conventions Still Happening In SG In 2026 – AFA Singapore, Singapore Comic Con & Doujin Market Mini - TheSmartLocal"
-    },
-    {
-      "id": "916f2547bcf08126",
-      "headline": "Marvel's Midnight Line Is Officially a Huge Success As Historic Numbers are Released",
-      "summary": "Marvel's latest superhero line has achieved significant commercial performance, with newly released data confirming its status as a major success for the publisher.",
-      "category": "Western",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/marvel-midnight-line-numbers-released/",
-      "published": "2026-11-19T21:00:12.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/midnight-ff-2-header.jpg",
-      "sourceTitle": "Marvel's Midnight Line Is Officially a Huge Success As Historic Numbers are Released"
-    },
-    {
-      "id": "714f9c58c3bb4db1",
-      "headline": "Iron Man Continues March Toward Milestone 700th Issue With Two Exciting Teases",
-      "summary": "Tony Stark's iconic superhero series moves closer to its 700th issue milestone, with two February releases offering glimpses into the upcoming anniversary celebration.",
-      "category": "Western",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/iron-man-milestone-700-issue/",
-      "published": "2026-11-19T20:45:40.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/ironman.jpg",
-      "sourceTitle": "Iron Man Continues March Toward Milestone 700th Issue With Two Exciting Teases"
-    },
-    {
-      "id": "a49c84fdc44fc5c9",
-      "headline": "Snow White’s Stepmother Began as Birth Mother: Not-Sew-Wicked Stepmom Gets TV Anime - Tech Times",
-      "summary": "A webtoon exploring an alternate take on the classic fairy tale will receive a television anime adaptation. The story reimagines the antagonist's origins and motivations.",
-      "category": "Adaptation",
-      "source": "Webtoon Creator News",
-      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQT2JZSDlLQ1RkaWFQWXRORnB5NmtUUWJOU1BnaTBELXlmYzhHR3VvczIzMW9uY0UxUEZxaEV3MXVvdnVrbE80V3VPeWU0aW9TU0lwVXhoRDhCdXlCa2txdHBZZFJHSEJRM0RFTWpkUldmaF9UZVhhQ015RXppWEFwTHZobk8yMy1zN2twLWFPMDFmN19BY2lvLWRweUxGUzYyQ256Y2lnUHAzdkFEWEkxSkFiY3B0MkJ6UFU0NTFOVXlFSmV3dGVqRTE3OWR1UQ?oc=5",
-      "published": "2026-11-19T20:29:42.000Z",
-      "image": "",
-      "sourceTitle": "Snow White’s Stepmother Began as Birth Mother: Not-Sew-Wicked Stepmom Gets TV Anime - Tech Times"
-    },
-    {
-      "id": "7fed19e00f751614",
-      "headline": "DC Comics Superstar Issues Blunt Warning About Creator-Owned Projects - Comic Book Resources",
-      "summary": "A prominent DC Comics creator has issued a cautionary statement regarding independent publishing ventures, raising concerns within the industry about creator-owned work.",
-      "category": "Creator",
-      "source": "Marvel DC News",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNSUFXUi00M3FXQk1mRDlFdlI3Y2Zfc3c5cDlaOFBJM0M5Qmk2NHc0cXZLclluQi0tcDdPcnh3NWZvTTBvNThBdFRhUXZGeFN4OElOX09rNmVrLWNiREcyeVFueXVtbFdhQ2JRZHNLLUtVUFVGOWw5UHc4bGZlZ0gtU2R0Yjg?oc=5",
-      "published": "2026-11-19T20:07:58.000Z",
-      "image": "",
-      "sourceTitle": "DC Comics Superstar Issues Blunt Warning About Creator-Owned Projects - Comic Book Resources"
-    },
-    {
-      "id": "238a2f823f7179ac",
-      "headline": "A New Era for The Hulk Leads To Massive Changes to The Avengers - Comic Book Resources",
-      "summary": "The Hulk enters a fresh chapter that reshapes the Avengers roster. This development signals significant shifts for Marvel's superhero team.",
-      "category": "Western",
-      "source": "Marvel DC News",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1RYXpqQU1CUnR2bnV3VjZ4U3ZoeDBDMnROT0pNVW90d0oxcG54bWZySmZ4YVhpVEJsMWJfVm4wc3IyRjV1cm53ZllrMDlocXU1UUNPMDdfYmNucWVRNXFPSGlTSmZvSWZwRE5DQVpuXzlBclE?oc=5",
-      "published": "2026-11-19T20:00:12.000Z",
-      "image": "",
-      "sourceTitle": "A New Era for The Hulk Leads To Massive Changes to The Avengers - Comic Book Resources"
-    },
-    {
-      "id": "825d362ff6d0d514",
-      "headline": "This Week in Anime - Satoshi Mizukami's Anime Adaptations Come Full Spirit Circle",
-      "summary": "Satoshi Mizukami's manga works continue receiving anime adaptations, with Spirit Circle joining previous series like Lucifer and the Biscuit Hammer and Sengoku Youko in the medium.",
-      "category": "Adaptation",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/this-week-in-anime/2026-11-19/.243934",
-      "published": "2026-11-19T19:00:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gN9/cms/this-week-in-anime/243934/biscuit-12.png.jpg",
-      "sourceTitle": "This Week in Anime - Satoshi Mizukami's Anime Adaptations Come Full Spirit Circle"
     }
   ]
 }
