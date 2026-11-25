@@ -1,6 +1,9 @@
 {
-  "updated": "2026-11-24T22:50:58.331Z",
+  "updated": "2026-11-25T09:44:31.526Z",
   "skipped": [
+    "b65482eacb7aa85e",
+    "3829f89c4a5a6d1f",
+    "b4ccd3578a62c50c",
     "4caded40f735255d",
     "11a0534bcc3b14a5",
     "d87cfa71bd1dbc7a",
@@ -70,6 +73,171 @@
     "12ac08358b3ca231"
   ],
   "items": [
+    {
+      "id": "458ac9a0a9547391",
+      "headline": "&#039;Youchien Wars&#039; Unveils Additional Staff, Main Promo, Opening Theme",
+      "summary": "The official website for the anime adaptation of You Chiba's action comedy manga revealed additional staff and opening theme details. The series launches on TV Tokyo network stations in April 2027.",
+      "category": "Anime",
+      "source": "MyAnimeList News",
+      "url": "https://myanimelist.net/news/74979574?_location=rss",
+      "published": "2026-11-25T09:23:54.000Z",
+      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795598570-45a9ea2b8081983317fb43b76a82959a.jpeg",
+      "sourceTitle": "&#039;Youchien Wars&#039; Unveils Additional Staff, Main Promo, Opening Theme"
+    },
+    {
+      "id": "6fab9c60e31f318f",
+      "headline": "&#039;Himekishi-sama no Himo&#039; Reveals Supporting Cast, Second Promo",
+      "summary": "The television adaptation of Tooru Shirogane's action fantasy light novel announced its supporting cast and released a second promotional video ahead of its January premiere.",
+      "category": "Anime",
+      "source": "MyAnimeList News",
+      "url": "https://myanimelist.net/news/74979528?_location=rss",
+      "published": "2026-11-25T08:45:57.000Z",
+      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795596294-fee4c2369649790d499ea47e2e1038ab.jpeg",
+      "sourceTitle": "&#039;Himekishi-sama no Himo&#039; Reveals Supporting Cast, Second Promo"
+    },
+    {
+      "id": "365eb8b6afd8ea1e",
+      "headline": "The Kept Man of the Princess Knight Anime's New Video Reveals More Cast, Ending Song, January 3 Debut",
+      "summary": "A new promotional video for The Kept Man of the Princess Knight anime has unveiled additional voice actors Yūya Hirose, Manaka Iwami, Shion Wakayama, and Saori Ōnishi, along with the ending theme song ahead of its January 3 premiere.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-25/the-kept-man-of-the-princess-knight-anime-new-video-reveals-more-cast-ending-song-january-3-debut/.244177",
+      "published": "2026-11-25T08:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gIK/cms/news.10/244177/knight.jpg",
+      "sourceTitle": "The Kept Man of the Princess Knight Anime's New Video Reveals More Cast, Ending Song, January 3 Debut"
+    },
+    {
+      "id": "1f58cded09010c1a",
+      "headline": "Rising travel costs push KME 2026 buyers toward South Korea’s secondary cities - TTGmice",
+      "summary": "KME 2026 attendees are increasingly considering secondary cities in South Korea as travel expenses continue to rise, according to industry reports.",
+      "category": "Events",
+      "source": "ACG Asia Events",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOaTBFM2pYcnh0WjF1TUlaUVl6LXF2dkdwT2IxeTJNMWY2a1REdG5obnBDOUFzaEwyZzFOUTBOeHVhaTNwWGQ4bm91N09FNlRCak5mNk1EUmlQZDRra2RRZDVlWFdFMGZiaUZfaE1ZSVVfMVhnUjd0TjlvaDd4U2swZUlEaWVVLUhHRzNuYWJlRFk1eXNSV2dad0hnZksyZVJjT3Q5ODI3by1SMHpvN2VDTlZlWQ?oc=5",
+      "published": "2026-11-25T07:45:18.000Z",
+      "image": "",
+      "sourceTitle": "Rising travel costs push KME 2026 buyers toward South Korea’s secondary cities - TTGmice"
+    },
+    {
+      "id": "da4dd8871a690618",
+      "headline": "Supporting Cast for &#039;Cheat Fuyo&#039; Announced",
+      "summary": "The supporting cast for the anime adaptation of \"The Laid-Off Cheat-Granting Sage\" has been revealed through the official announcement channel.",
+      "category": "Anime",
+      "source": "MyAnimeList News",
+      "url": "https://myanimelist.net/news/74979057?_location=rss",
+      "published": "2026-11-25T06:01:20.000Z",
+      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795586386-b03f092d6442d5bd51049f7ad8cbad2f.jpeg",
+      "sourceTitle": "Supporting Cast for &#039;Cheat Fuyo&#039; Announced"
+    },
+    {
+      "id": "ec984667c8487695",
+      "headline": "Marvel Reveals Spider-Man's Official Debut as the Avengers' New Leader",
+      "summary": "Marvel's upcoming Amazing Spider-Man issue features the web-slinger assuming leadership of the Avengers for the first time in an official capacity.",
+      "category": "Western",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/spider-man-new-avengers-leader-marvel-preview/",
+      "published": "2026-11-25T04:56:32.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/spider-man-avengers-header.jpg",
+      "sourceTitle": "Marvel Reveals Spider-Man's Official Debut as the Avengers' New Leader"
+    },
+    {
+      "id": "bb3f2749285d90b9",
+      "headline": "7 Mid Manga That Are Only Popular Because of Anime Adaptations",
+      "summary": "Several manga series owe their popularity primarily to their anime adaptations rather than the source material itself, according to a report examining the phenomenon.",
+      "category": "Adaptation",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/manga-only-popular-after-anime-adaptation-list/",
+      "published": "2026-11-25T04:45:11.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/04/demon-slayer-anime-and-manga-collage.jpg",
+      "sourceTitle": "7 Mid Manga That Are Only Popular Because of Anime Adaptations"
+    },
+    {
+      "id": "9d6bb9824799d036",
+      "headline": "&#039;Historie&#039; Unveils Production Staff, Additional Cast, Theme Songs, Second Promo",
+      "summary": "The television adaptation of Hitoshi Iwaaki's Historie manga has announced its production team, additional cast members, and opening and closing theme songs ahead of its January 9 premiere as a two-episode special.",
+      "category": "Anime",
+      "source": "MyAnimeList News",
+      "url": "https://myanimelist.net/news/74978922?_location=rss",
+      "published": "2026-11-25T04:35:33.000Z",
+      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795581323-ed622d604aea0a0992a1e53153edcc03.jpeg",
+      "sourceTitle": "&#039;Historie&#039; Unveils Production Staff, Additional Cast, Theme Songs, Second Promo"
+    },
+    {
+      "id": "e2099d85085d3c78",
+      "headline": "15 Ways Calvin and Hobbes Has Aged Poorly",
+      "summary": "Comic Book Resources examines aspects of the classic comic strip that have not aged well, suggesting that despite its iconic status, certain elements no longer resonate with modern audiences.",
+      "category": "Western",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/how-calvin-and-hobbes-has-aged-poorly/",
+      "published": "2026-11-25T04:30:11.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2024/04/calvin-and-hobbes-hugging.jpg",
+      "sourceTitle": "15 Ways Calvin and Hobbes Has Aged Poorly"
+    },
+    {
+      "id": "3363fa9d93281827",
+      "headline": "Peacock's New Epic Science Fantasy Series Is Coming to Dethrone Star Wars for Good",
+      "summary": "Peacock is developing a streaming adaptation of Dungeon Crawler Carl, blending high fantasy and science fiction elements for its platform.",
+      "category": "Adaptation",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/peacock-dungeon-crawler-carl-adaptation-dethrone-star-wars/",
+      "published": "2026-11-25T04:30:11.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/07/ryan-gosling-and-flynn-gray-in-star-wars-starfighter.jpg",
+      "sourceTitle": "Peacock's New Epic Science Fantasy Series Is Coming to Dethrone Star Wars for Good"
+    },
+    {
+      "id": "ae3277ac2f4ee543",
+      "headline": "Historie Anime's Video Unveils More Cast & Staff, Theme Songs, January 8 Debut",
+      "summary": "The Historie anime will premiere January 8 with additional cast and staff revealed alongside theme song announcements. The expanding cast includes Fumihiko Tachiki, Akira Sekine, Toshiki Masuda, Ryōta Takeuchi, and Seiichirō Yamashita.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-24/historie-anime-video-unveils-more-cast-and-staff-theme-songs-january-8-debut/.244173",
+      "published": "2026-11-25T04:08:53.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gH9/youtube/MSYV142dqsg.jpg",
+      "sourceTitle": "Historie Anime's Video Unveils More Cast & Staff, Theme Songs, January 8 Debut"
+    },
+    {
+      "id": "2875df0cf982c613",
+      "headline": "'Haru to Gen ~70-sai, Hajimete Kosodate~' Anime's Teaser Reveals More Cast, Ending Song",
+      "summary": "A new anime adaptation revealed additional cast members and ending theme details. Jin Urayama, Hitomi Shogawa, Nao Shiraki, and Akiko Seri join the project, with Kuricorder Quartet providing music.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-24/haru-to-gen-~70-sai-hajimete-kosodate~-anime-teaser-reveals-more-cast-ending-song/.244149",
+      "published": "2026-11-25T03:12:53.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHI/youtube/q-LKeN4TruM.jpg",
+      "sourceTitle": "'Haru to Gen ~70-sai, Hajimete Kosodate~' Anime's Teaser Reveals More Cast, Ending Song"
+    },
+    {
+      "id": "70621a92cdb66b72",
+      "headline": "Live-Action 10 Things I Want to Do Before I Turn 40 Film's Trailer Reveals Theme Song",
+      "summary": "A live-action adaptation based on a manga series will release January 22, with singer sumika contributing the opening track \"Taisetsu.\"",
+      "category": "Adaptation",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-24/live-action-10-things-i-want-to-do-before-i-turn-40-film-trailer-reveals-theme-song/.244169",
+      "published": "2026-11-25T02:04:32.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gPF/youtube/_t6sjT70XdA.jpg",
+      "sourceTitle": "Live-Action 10 Things I Want to Do Before I Turn 40 Film's Trailer Reveals Theme Song"
+    },
+    {
+      "id": "c91cd504376ed7c7",
+      "headline": "Frieren: Beyond Journey's End Manga Gets Spinoff Manga Mini-Series",
+      "summary": "A new spinoff manga series based on Frieren: Beyond Journey's End will debut on December 2.",
+      "category": "Manga",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-24/frieren-beyond-journey-end-manga-gets-spinoff-manga-mini-series/.244165",
+      "published": "2026-11-25T01:50:33.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gIC/cms/news.10/244165/frieren.png.jpg",
+      "sourceTitle": "Frieren: Beyond Journey's End Manga Gets Spinoff Manga Mini-Series"
+    },
+    {
+      "id": "50e66dd4f11e4925",
+      "headline": "Live-Action 2027 Kaiji Film Unveils Full Trailer, Poster, More Cast",
+      "summary": "A live-action adaptation of Kaiji scheduled for January 29, 2027, has released promotional materials and announced additional cast members including Katsuhisa Namase and Ken Mitsuishi.",
+      "category": "Adaptation",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-24/live-action-2027-kaiji-film-unveils-full-trailer-poster-more-cast/.244168",
+      "published": "2026-11-25T01:25:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gJF/youtube/3mNGGgIRryI.jpg",
+      "sourceTitle": "Live-Action 2027 Kaiji Film Unveils Full Trailer, Poster, More Cast"
+    },
     {
       "id": "44b560bbda5694a4",
       "headline": "Devils' Crest ‒ Episode 4",
@@ -1224,171 +1392,6 @@
       "published": "2026-11-21T23:40:40.000Z",
       "image": "",
       "sourceTitle": "2026's 10 Best-Selling Manga Have Been Revealed, And One Series Dominates The Top 3 Spots - ScreenRant"
-    },
-    {
-      "id": "9ab088e76e9bbbc3",
-      "headline": "Blokees Brings Batman: Hush – Superman to DC Champion Class Series - Bleeding Cool News",
-      "summary": "Blokees has added a Superman figure from the Batman: Hush storyline to its DC Champion Class collectible series.",
-      "category": "Western",
-      "source": "Marvel DC News",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPaHBSN3J1VTlHQmFnNkhIa1dRYmRuWFp5ZDZYTlZZN1VnTGRlRnNoT3pXQmg4WGJiU2ZKbzJjUTNPZnFaTTVIOEZLYUdpREh0TU9oMGJVZTE3Z0g3OVlacmstaG5SNWxzenhsdDdxaGNiYW9zOGNvSkRBN0lhMFFObWtVWkxNOGIwWno4ZzlGOFQ0LTFrTUpIbEJac19nRENZVWtCdw?oc=5",
-      "published": "2026-11-21T15:23:25.000Z",
-      "image": "",
-      "sourceTitle": "Blokees Brings Batman: Hush – Superman to DC Champion Class Series - Bleeding Cool News"
-    },
-    {
-      "id": "a4bcf3d9a2bcf041",
-      "headline": "Full February 2027 DC Comics solicitations: Batman, Static, and Swamp Thing new series - AIPT",
-      "summary": "DC Comics has announced its February 2027 solicitations, featuring new series launches including Batman, Static, and Swamp Thing.",
-      "category": "Western",
-      "source": "Marvel DC News",
-      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOUHFNbDlYNjFWaGNNcGJaOVFuYmUtcHJPdWI4VFhtU3FKa2d2aVJDTHdWNkNKX2g4a1Z1MTNEOHhWQXU0ckZ6Q3lTU19veDRCNkxlc003c0pYbjJpcTJVenpKTTB4bFRXRFpNUUU4SlJta3FlajJ6QWFWV1JOS0g1M1ZXaw?oc=5",
-      "published": "2026-11-20T16:57:10.000Z",
-      "image": "",
-      "sourceTitle": "Full February 2027 DC Comics solicitations: Batman, Static, and Swamp Thing new series - AIPT"
-    },
-    {
-      "id": "7f536df8d5e7449b",
-      "headline": "Full February 2027 Marvel Comics solicitations: Magneto’s end, Hulk’s infernal war, and Avengers vs. Darth Vader - AIPT",
-      "summary": "Marvel's February 2027 comic solicitations include major storylines featuring Magneto, the Hulk, and an Avengers crossover with Star Wars characters.",
-      "category": "Western",
-      "source": "Marvel DC News",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOM2pTWHZ4bTVQbmF5ckN5TjNna0hxNVlKMGd0UjBPMDJ4RFNIVGNHNmZUYlR6bUNtWTh2ZWVRTEkxRFFsMnpwZjl0cU1TVl9CNXQyelZFWUx0UEUtUUFUMFBKQnhBMTBRcEYxYjhkSHdWdVZMeTR5RlBvc25sM3RsTVBVQ0VaMjht?oc=5",
-      "published": "2026-11-19T22:28:50.000Z",
-      "image": "",
-      "sourceTitle": "Full February 2027 Marvel Comics solicitations: Magneto’s end, Hulk’s infernal war, and Avengers vs. Darth Vader - AIPT"
-    },
-    {
-      "id": "8d44dc45854d3377",
-      "headline": "BL manhwa and arrogant elves: Beat's column targets vertical comics - Foro3D",
-      "summary": "A column examines vertical comics, discussing BL narratives and fantasy character archetypes within the webtoon format.",
-      "category": "Webtoon",
-      "source": "Manhwa News",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNeTFYV3JyNmpJaUZvemV4T245QjhfVXBxMHhQNkZpU3h1UThKOUg2SXR2QTFzMlNDLVNHNlhLUmR4MXlRbENyenZWVjk0V2Z2ek5JREROdFRpYVVGZldCdzhvVFZvc21rbVhxMl9pWTgyTG45QTZ5ZTVMcUwxY3kzN1dKUGdBZXBGbnIxdUVqR3N5YWtUWGx4WWdhVTZuVnNqeUlKV2huMnRrbDNRdWFOZnJR?oc=5",
-      "published": "2026-11-19T11:05:42.000Z",
-      "image": "",
-      "sourceTitle": "BL manhwa and arrogant elves: Beat's column targets vertical comics - Foro3D"
-    },
-    {
-      "id": "44b78874912258ff",
-      "headline": "Black Clover Season 2, Episode 8 Review",
-      "summary": "Two powerful fighters face off against a formidable opponent in the latest episode, escalating tensions within the ongoing conflict of the Spade Kingdom arc.",
-      "category": "Anime",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/black-clover-season-2-episode-8-review/",
-      "published": "2026-11-21T19:44:17.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/zenon-is-his-devil-form-in-black-clover-season-2-episode-8.png",
-      "sourceTitle": "Black Clover Season 2, Episode 8 Review"
-    },
-    {
-      "id": "fdaf29f2418ac1b3",
-      "headline": "HBO's Harry Potter Season 2 Casting Call Hints at a Young Draco Malfoy for New Location",
-      "summary": "HBO's Harry Potter adaptation is casting for a younger version of Draco Malfoy ahead of Season 2, as the show prepares for its upcoming premiere next month.",
-      "category": "Adaptation",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/hbo-harry-potter-season-2-casting-call-young-draco-malfoy/",
-      "published": "2026-11-21T19:16:34.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/03/harry-potter-season-1-lox-pratt.jpg",
-      "sourceTitle": "HBO's Harry Potter Season 2 Casting Call Hints at a Young Draco Malfoy for New Location"
-    },
-    {
-      "id": "963fe2f82bb1a3c8",
-      "headline": "7 Most Overhyped Manga That Failed to Deliver",
-      "summary": "A roundup examines seven manga titles that generated significant buzz but ultimately disappointed audiences with their storytelling quality and execution.",
-      "category": "Manga",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/overhyped-manga-failed-to-deliver/",
-      "published": "2026-11-21T19:15:12.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/06/eren-attacks-a-titan-mid-air-in-attack-on-titan-color-manga-1.jpg",
-      "sourceTitle": "7 Most Overhyped Manga That Failed to Deliver"
-    },
-    {
-      "id": "4a9304a89edafe9c",
-      "headline": "10 Powerless Marvel Characters Who Show Strong Superhero Potential",
-      "summary": "Comic Book Resources identifies ten Marvel characters currently without superpowers who could potentially develop superhero identities and abilities in future storylines.",
-      "category": "Western",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/powerless-marvel-characters-with-strong-superhero-potential/",
-      "published": "2026-11-21T19:00:11.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2023/03/amazing-spider-man-58-cover.jpeg",
-      "sourceTitle": "10 Powerless Marvel Characters Who Show Strong Superhero Potential"
-    },
-    {
-      "id": "c377edb5628f415b",
-      "headline": "5 Cheaper Digital Comic Book Subscriptions To Buy Instead Of Physical Books - BGR",
-      "summary": "An article examines affordable digital subscription options for comic book readers as alternatives to purchasing physical copies.",
-      "category": "Industry",
-      "source": "Marvel DC News",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOLXJDMlNnVzhsZ3ExMnpJbmRkcnAzdGJYbTZveGJoTW5ZVzZqa283UWx2WkR3YzdfSXpfeFhOWUp0U0hvVXlDLXB6QzZIeHhfc01UOU4tR2tmc2daVnAwa0YxNmw1dlR2bjhZenZLcnhBajZ1d1I1UkJxQzhKRGFYOUZsTkZ4Z0RpRmN2Yko3b1IySHdOTnc?oc=5",
-      "published": "2026-11-21T17:47:00.000Z",
-      "image": "",
-      "sourceTitle": "5 Cheaper Digital Comic Book Subscriptions To Buy Instead Of Physical Books - BGR"
-    },
-    {
-      "id": "fa4abf88f5ad23dd",
-      "headline": "Angel Next Door Spoils Me Rotten Season 2 Anime Series Review",
-      "summary": "The second season of Angel Next Door Spoils Me Rotten continues the romance storyline established in season one, expanding the narrative complexity of the series.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/review/angel-next-door-spoils-me-rotten/season-2/.243054",
-      "published": "2026-11-21T17:00:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315g1E/cms/review.2/243054/angelnextdoors2full.jpg",
-      "sourceTitle": "Angel Next Door Spoils Me Rotten Season 2 Anime Series Review"
-    },
-    {
-      "id": "b9ae8e2a1db79490",
-      "headline": "The Apothecary Diaries Season 3 ‒ Episode 56",
-      "summary": "The latest episode of this historical fantasy series explores themes of power and its burdens, drawing parallels to classic literature about leadership and sovereignty.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/review/the-apothecary-diaries-season-3/episode-56/.244059",
-      "published": "2026-11-21T16:30:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gLH/cms/episode-review.5/244059/apothecary-56.png.jpg",
-      "sourceTitle": "The Apothecary Diaries Season 3 ‒ Episode 56"
-    },
-    {
-      "id": "8250d1d8c5d62363",
-      "headline": "Midnight Marketshare And Top 400 Sellers In October 2026 - Bleeding Cool News",
-      "summary": "October 2026 comic sales data reveals market performance trends, with rankings of the top 400 sellers tracked during the period.",
-      "category": "Industry",
-      "source": "Marvel DC News",
-      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPUkhhd1Y1SllvVm9zN0lGVVBVRkczR1V4akJNcEh5UzdwNVZ5M29ES1lJRXVEOThVb1F0dWwzNDMtQUpPZHYzanhhVXJqNEhmQkdoLWFWLW1pNGhuNEhQS3FkdXFzT3BPZklOWFNRaGFYNDE0M0RmdWR5MnRiODVHOUx1cHdfM2ZPZXBfUlBuakRQNWs?oc=5",
-      "published": "2026-11-21T15:57:22.000Z",
-      "image": "",
-      "sourceTitle": "Midnight Marketshare And Top 400 Sellers In October 2026 - Bleeding Cool News"
-    },
-    {
-      "id": "08857580716828b4",
-      "headline": "STEEL BALL RUN JoJo's Bizarre Adventure ‒ Episode 10",
-      "summary": "The latest episode of Steel Ball Run explores themes central to the original antagonist, revisiting Araki's foundational concepts for the character.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/review/steel-ball-run-jojo-bizarre-adventure/episode-10/.244058",
-      "published": "2026-11-21T15:30:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gH2/cms/episode-review.5/244058/sbr-ep-10-review-image.jpg",
-      "sourceTitle": "STEEL BALL RUN JoJo's Bizarre Adventure ‒ Episode 10"
-    },
-    {
-      "id": "ee702b8afa2a0a84",
-      "headline": "New Hana-Kimi Live-Action Series Reveals Theme Songs, Short Video",
-      "summary": "The live-action adaptation of Hana-Kimi will premiere December 5, with theme songs performed by CIRRA and Ryugujo. A short video has also been released.",
-      "category": "Adaptation",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-21/new-hana-kimi-live-action-series-reveals-theme-songs-short-video/.244043",
-      "published": "2026-11-21T15:15:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gMA/cms/news.10/244043/hana-kimi-visual.jfif.jpeg",
-      "sourceTitle": "New Hana-Kimi Live-Action Series Reveals Theme Songs, Short Video"
-    },
-    {
-      "id": "7204230e3fb3400c",
-      "headline": "Magic Knight Rayearth ‒ Episode 7",
-      "summary": "Magic Knight Rayearth's seventh episode features a humorous moment involving employment paperwork for the villain Zagato's organization.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/review/magic-knight-rayearth/episode-7/.244057",
-      "published": "2026-11-21T14:30:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gJO/cms/episode-review.5/244057/rayearth-2.jpg",
-      "sourceTitle": "Magic Knight Rayearth ‒ Episode 7"
     }
   ]
 }
