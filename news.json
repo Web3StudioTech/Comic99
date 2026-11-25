@@ -1,6 +1,12 @@
 {
-  "updated": "2026-11-25T09:44:31.526Z",
+  "updated": "2026-11-25T22:04:19.523Z",
   "skipped": [
+    "f019cf1eb2d526ed",
+    "37e05c2c788c5054",
+    "6d2243c6fe01f898",
+    "50e2b7cf3a58878d",
+    "7a7e69acbaefe94b",
+    "63df3c22b3e4b9d4",
     "b65482eacb7aa85e",
     "3829f89c4a5a6d1f",
     "b4ccd3578a62c50c",
@@ -73,6 +79,171 @@
     "12ac08358b3ca231"
   ],
   "items": [
+    {
+      "id": "0bcd1f1a8d7e51bf",
+      "headline": "Marvel Reveals the Hulk's Dark Plan to Officially Replace All of the Avengers",
+      "summary": "Marvel's upcoming Infernal Hulk series features the Green Goliath scheming to swap out team members with sinister counterparts, according to an exclusive preview.",
+      "category": "Western",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/marvel-hulk-avengers-dark-plan-preview/",
+      "published": "2026-11-25T21:59:06.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/infernal-hulk-avengers-header.jpg",
+      "sourceTitle": "Marvel Reveals the Hulk's Dark Plan to Officially Replace All of the Avengers"
+    },
+    {
+      "id": "47e3f9969bd7d394",
+      "headline": "1,049-Piece LEGO Gundam Build Combines 2 Mechs Into 1 Giant Robot",
+      "summary": "A LEGO MOC construction merges Ninjago components to build a 1,049-piece Gundam RX-78-2 model by combining two mechs into a single larger robot.",
+      "category": "Other",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/gundam-rx-78-2-lego-ninjago-build/",
+      "published": "2026-11-25T21:40:12.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/1-049-piece-gundam-inspired-lego-build-combines-2-mechs-into-1-giant-robot.jpg",
+      "sourceTitle": "1,049-Piece LEGO Gundam Build Combines 2 Mechs Into 1 Giant Robot"
+    },
+    {
+      "id": "fe678e10cc16b46e",
+      "headline": "Jujutsu Kaisen Studio's Next Shonen Jump Anime Shares New Look Ahead of Jump Festa 2027 - ComicBook.com",
+      "summary": "The studio behind Jujutsu Kaisen has unveiled fresh visuals for its upcoming Shonen Jump adaptation ahead of Jump Festa 2027.",
+      "category": "Events",
+      "source": "Jujutsu Kaisen News",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPWFZfVXRwMm9FWW5HU0VFZ1Q1emt2U1kxdDRnaTRHTTNZQklHdGIyOTllMHA2QVdvOGhFdU9lUGxuY3VMR2pwWDRzMGx1RThRTzZrTERhNTdRdlZ1M1J5dEx6WVlVcFd5MXZ2SUZ3anZxRFpxYnpJZk1OWjhnZ2JnN2g2Q3BwTjFPcjZkeGYyR3JBNmh1dzFFTHRtMnBaeUlYeExyQy1aSkZjOEVNMGk2WXRIRUpIM0szSi1tcQ?oc=5",
+      "published": "2026-11-25T17:43:45.000Z",
+      "image": "",
+      "sourceTitle": "Jujutsu Kaisen Studio's Next Shonen Jump Anime Shares New Look Ahead of Jump Festa 2027 - ComicBook.com"
+    },
+    {
+      "id": "808aa29fc4f9e1cf",
+      "headline": "My Happy Marriage Special Anime Review",
+      "summary": "A special anime installment concludes the two-season run of My Happy Marriage, bringing narrative resolution to the series.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/review/my-happy-marriage/special-anime/.243723",
+      "published": "2026-11-25T17:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gEE/cms/review.2/243723/mhm-special.jpg.webp",
+      "sourceTitle": "My Happy Marriage Special Anime Review"
+    },
+    {
+      "id": "7b05ec933713f786",
+      "headline": "K-ON's Naoko Yamada Helms Official Hige Dandism's Pokémon Music Video With Madhouse",
+      "summary": "Director Naoko Yamada, known for K-ON, collaborates with Madhouse studio on a music video for Hige Dandism. The \"Evergreen\" video premieres Monday.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-25/k-on-naoko-yamada-helms-official-hige-dandism-pokemon-music-video-with-madhouse/.244183",
+      "published": "2026-11-25T15:15:40.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gGA/cms/daily-briefs/244183/hx30aglbaaakrlm.jpeg",
+      "sourceTitle": "K-ON's Naoko Yamada Helms Official Hige Dandism's Pokémon Music Video With Madhouse"
+    },
+    {
+      "id": "008440618c48ebbf",
+      "headline": "Dragon And Chameleon Is A Series Born From Unwavering Commitment",
+      "summary": "Dragon and Chameleon reflects strong dedication from its creator and production team working to reach a global audience.",
+      "category": "Manga",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/feature/2026-11-25/dragon-and-chameleon-is-a-series-born-from-unwavering-commitment/.242930",
+      "published": "2026-11-25T14:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gGF/cms/feature/242930/img-9543.jpg",
+      "sourceTitle": "Dragon And Chameleon Is A Series Born From Unwavering Commitment"
+    },
+    {
+      "id": "349913448385a69d",
+      "headline": "&#039;Kakunaru Ue wa&#039; Unveils Additional Cast, Theme Songs, Second Promo",
+      "summary": "The romantic comedy anime adaptation of Kyuu Takahata and Yuuji Kaba's manga revealed additional cast members, theme songs, and a new promotional video ahead of its television premiere.",
+      "category": "Anime",
+      "source": "MyAnimeList News",
+      "url": "https://myanimelist.net/news/74979929?_location=rss",
+      "published": "2026-11-25T12:38:37.000Z",
+      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795610276-d275af0f265aa7fa09e813ba8651709f.jpeg",
+      "sourceTitle": "&#039;Kakunaru Ue wa&#039; Unveils Additional Cast, Theme Songs, Second Promo"
+    },
+    {
+      "id": "32362a6a6fb41d09",
+      "headline": "'At 25:00, in Akasaka' Boys-Love Manga Gets TV Anime in 2027",
+      "summary": "Hiroko Natsuno's boys-love manga will receive a television anime adaptation arriving in 2027, featuring voice actors Sōma Saitō and Takuya Satō in lead roles.",
+      "category": "Adaptation",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-25/at-25-00-in-akasaka-boys-love-manga-gets-tv-anime-in-2027/.244187",
+      "published": "2026-11-25T11:17:56.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gGG/cms/news.10/244187/akasaka.jpeg",
+      "sourceTitle": "'At 25:00, in Akasaka' Boys-Love Manga Gets TV Anime in 2027"
+    },
+    {
+      "id": "5024277f4a2fe60d",
+      "headline": "At 25:00 in Akasaka Anime Adaptation Announced for 2027 - Crunchyroll",
+      "summary": "Crunchyroll has announced an anime adaptation of \"At 25:00 in Akasaka,\" with the series set to premiere in 2027.",
+      "category": "Adaptation",
+      "source": "Anime Adaptation News",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNWUY1ZEpDRFN2dUx1QU9rcmxodDFKUWd5WWZ0OUVya0U3SnJXdENCeE1YOFBwSF9LZE91dVk4dFMxcmx0YUdHdkhiNktWdG9naUVxMzQ3WFBWOUM2RGEzS2hGNGdGd1kyaG9kSWEwOTBQbmRGUFJVOGFGWFZpbkVabnJ6ZDUweGhCdXFFcUhpVHM1Mmp5T0pSOUIyWWpKYUNPZjRnWVRBcDVIZw?oc=5",
+      "published": "2026-11-25T10:54:00.000Z",
+      "image": "",
+      "sourceTitle": "At 25:00 in Akasaka Anime Adaptation Announced for 2027 - Crunchyroll"
+    },
+    {
+      "id": "278e9515b3c8b95a",
+      "headline": "'Now That We Draw' Anime's New Video Unveils More Cast, Ending Song Artist, January 8 Debut",
+      "summary": "A new video for the anime \"Now That We Draw\" reveals additional cast members and confirms the ending theme artist. The series is set to premiere on January 8, with Inner Journey performing the ending song \"Serifu wa Iranai.\"",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-25/now-that-we-draw-anime-new-video-unveils-more-cast-ending-song-artist-january-8-debut/.244186",
+      "published": "2026-11-25T10:50:35.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gID/encyc/A38035-2959408585.1776838019.jpg",
+      "sourceTitle": "'Now That We Draw' Anime's New Video Unveils More Cast, Ending Song Artist, January 8 Debut"
+    },
+    {
+      "id": "ee0ac9db9f1eee47",
+      "headline": "Manga &#039;25-ji, Akasaka de&#039; Gets TV Anime in 2027",
+      "summary": "Hiroko Natsuno's web manga will receive a television anime adaptation premiering on TBS in 2027. An official website has revealed the main cast and promotional materials.",
+      "category": "Adaptation",
+      "source": "MyAnimeList News",
+      "url": "https://myanimelist.net/news/74979702?_location=rss",
+      "published": "2026-11-25T10:47:18.000Z",
+      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795603457-c182e4d25f29fcda8b0a869dd86f149e.jpeg",
+      "sourceTitle": "Manga &#039;25-ji, Akasaka de&#039; Gets TV Anime in 2027"
+    },
+    {
+      "id": "9d6ff8a279cd6c4b",
+      "headline": "Migratory Birds & Snail TV Anime Debuts Next Summer",
+      "summary": "A manga series about a road trip by Makoto Takatsu is receiving an anime adaptation, set to premiere next summer following its 2024 announcement.",
+      "category": "Adaptation",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-25/migratory-birds-and-snail-tv-anime-debuts-next-summer/.244185",
+      "published": "2026-11-25T09:44:34.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gJB/cms/news.10/244185/birds2.png.jpg",
+      "sourceTitle": "Migratory Birds & Snail TV Anime Debuts Next Summer"
+    },
+    {
+      "id": "45ce129e3ea8841d",
+      "headline": "Migratory Birds & Snail TV Anime Debuts Next Summer - Anime News Network",
+      "summary": "An anime adaptation of Migratory Birds & Snail is set to premiere next summer, expanding the property into the animated television medium.",
+      "category": "Adaptation",
+      "source": "Anime Adaptation News",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOV0tmbFY4allXUzBKSWYyeXNQcHU3NnVfRU96WGVydFk4aDk5WFMwVU9XYWxqRFdDMHhualJ1dUpvaUNwd3hTUmo0bVpZNU5QNDR1WmRGeVF1cTBJNGtjS1ZYZ29jWHRyOTVvbEpvM1pJZGd3UVY4TVVYeVpYb1pxdGtDOWRqeElSNS1kb3BPLUk0UUt6bzladDV1UUkxS0VtazhzUHM4T3hFUXpkbnJn?oc=5",
+      "published": "2026-11-25T09:44:34.000Z",
+      "image": "",
+      "sourceTitle": "Migratory Birds & Snail TV Anime Debuts Next Summer - Anime News Network"
+    },
+    {
+      "id": "eaa585414a172a07",
+      "headline": "「ソニックランブル パーティ」と「アングリーバード」のコラボイベントが11月26日から開催決定！予告トレーラーも公開！ - Saiga NAK",
+      "summary": "Sonic Rumble Party is collaborating with Angry Birds for a crossover event launching November 26, with a teaser trailer now available.",
+      "category": "Events",
+      "source": "Comiket News",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNd0NLMVp5R2hzQ0VEU3ltR0NOYno4UWZsVktSOEJ2NEhWQTJQNGVfX0VFcFJzM245U0ptMHZaa1JwN2d6cy1JZ3o2U3UtV2NpUTdsaThlQ2xMRk5PTDJwQ3ItWEU4OTdPWlVwSGlCOE5UWWZETTN2YnhFZGZWQzVlctIBgAFBVV95cUxNd0NLMVp5R2hzQ0VEU3ltR0NOYno4UWZsVktSOEJ2NEhWQTJQNGVfX0VFcFJzM245U0ptMHZaa1JwN2d6cy1JZ3o2U3UtV2NpUTdsaThlQ2xMRk5PTDJwQ3ItWEU4OTdPWlVwSGlCOE5UWWZETTN2YnhFZGZWQzVlcg?oc=5",
+      "published": "2026-11-24T05:17:24.000Z",
+      "image": "",
+      "sourceTitle": "「ソニックランブル パーティ」と「アングリーバード」のコラボイベントが11月26日から開催決定！予告トレーラーも公開！ - Saiga NAK"
+    },
+    {
+      "id": "b194298a9d9d9e67",
+      "headline": "「Evo Japan 2027 アナウンスメントショー」が11月24日に配信！メインタイトルのラインナップなど最新情報を公開 - Saiga NAK",
+      "summary": "Evo Japan 2027 will hold a presentation broadcast on November 24, revealing participating games and other event details.",
+      "category": "Events",
+      "source": "Comiket News",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1USV9GR1RDSFBPODkzVEcxLWtYdGhnU1Z6dTROTWR2ZkRqY0d1Tkloa2RuSHdKYlV2N0ZkQXdvdmp3NkQyWDhvTU4zbGdzMW02dnlsSVoxaG9ocEEzNWw1QkFBaDIydzFiRzNMdnlKOFN1TFM4bkJZ0gF3QVVfeXFMTVRJX0ZHVENIUE84OTNURzEta1h0aGdTVnp1NE5NZHZmRGpjR3VOSWhrZG5Id0piVXY3RmRBd292anc2RDJYOG9NTjNsZ3MxbTZ2eWxJWjFob2hwQTM1bDVCQUFoMjJ3MWJHM0x2eUo4U3VMUzhuQlk?oc=5",
+      "published": "2026-11-24T02:14:54.000Z",
+      "image": "",
+      "sourceTitle": "「Evo Japan 2027 アナウンスメントショー」が11月24日に配信！メインタイトルのラインナップなど最新情報を公開 - Saiga NAK"
+    },
     {
       "id": "458ac9a0a9547391",
       "headline": "&#039;Youchien Wars&#039; Unveils Additional Staff, Main Promo, Opening Theme",
@@ -1227,171 +1398,6 @@
       "published": "2026-11-22T08:30:03.000Z",
       "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795324628-b6bcb595759424b430ea61b85ef48af7.jpeg",
       "sourceTitle": "&#039;Hidan no Aria Corto&#039; Reveals Main Staff, New Cast, April 2027 Premiere"
-    },
-    {
-      "id": "f19e8982ab15c1c5",
-      "headline": "DC Reveals New Official Look At Next Justice League Project - ScreenRant",
-      "summary": "DC has unveiled a fresh visual presentation for an upcoming Justice League film project, according to reports from entertainment media.",
-      "category": "Western",
-      "source": "Marvel DC News",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5NUWluZ1pvYWhmQ1hzbU4tWjMtdFZiVV9KQWtYQjF2dktVWE9kMFpzTmhXWDJZbGc2alZJdUVsM3ExOHJUV1RkWU9zc1VRdDJSQVE1bXMwc3RsMXg2ZnNJX1hvTzZZUXpUYkc0RXpR?oc=5",
-      "published": "2026-11-20T16:00:20.000Z",
-      "image": "",
-      "sourceTitle": "DC Reveals New Official Look At Next Justice League Project - ScreenRant"
-    },
-    {
-      "id": "0ff982e660199ee3",
-      "headline": "The Detective is Already Dead Anime's 2nd Season Reveals Trailer, Visual for New Arc",
-      "summary": "The Detective is Already Dead has launched its second season, introducing a fresh story arc alongside newly released promotional materials and trailer footage.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-22/the-detective-is-already-dead-anime-2nd-season-reveals-trailer-visual-for-new-arc/.244074",
-      "published": "2026-11-22T06:00:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gG2/cms/news.10/244074/detective-is-already-dead-visual.jpg",
-      "sourceTitle": "The Detective is Already Dead Anime's 2nd Season Reveals Trailer, Visual for New Arc"
-    },
-    {
-      "id": "187a1356de278305",
-      "headline": "10 Greatest Sci-Fi Anime Set In Space, Ranked",
-      "summary": "Comic Book Resources ranks the greatest sci-fi anime set in space, exploring how the genre transforms cosmic settings into diverse narratives spanning comedic adventures, intense conflicts, and everyday situations.",
-      "category": "Anime",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/best-sci-fi-space-anime-ranked-list/",
-      "published": "2026-11-22T04:45:11.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/touya-in-the-galaxy-from-the-orbital-children.jpg",
-      "sourceTitle": "10 Greatest Sci-Fi Anime Set In Space, Ranked"
-    },
-    {
-      "id": "ad8c6991bbd5dc11",
-      "headline": "Legendary 43-Year-Old Hard Sci-Fi Takes New Direction With World War II Inspiration",
-      "summary": "A critically acclaimed hard sci-fi mecha anime spanning 43 years is taking a new creative direction inspired by World War II themes.",
-      "category": "Anime",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/armored-trooper-votoms-new-movie-world-war-ii-inspiration/",
-      "published": "2026-11-22T04:30:12.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/votoms-the-grey-witch-official-poster-art.jpg",
-      "sourceTitle": "Legendary 43-Year-Old Hard Sci-Fi Takes New Direction With World War II Inspiration"
-    },
-    {
-      "id": "ce9df7664c477f4e",
-      "headline": "HBO & Netflix Erased a 12-Episode Sci-Fi Masterpiece With a Rare Perfect Rotten Tomatoes Score",
-      "summary": "Animated series Scavengers Reign, which achieved a perfect rating on Rotten Tomatoes, was cancelled after one season despite critical acclaim, failing to build a wider audience on streaming platforms.",
-      "category": "Anime",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/hbo-netflix-erased-scavengers-reign/",
-      "published": "2026-11-22T04:30:12.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2023/11/azi-and-levi_1-1.jpg",
-      "sourceTitle": "HBO & Netflix Erased a 12-Episode Sci-Fi Masterpiece With a Rare Perfect Rotten Tomatoes Score"
-    },
-    {
-      "id": "00c951afab10af02",
-      "headline": "10 Best Calvin and Hobbes Start Of Summer Comics",
-      "summary": "Comic Book Resources highlights the best summer-themed strips from Calvin and Hobbes, exploring how the season unlocks greater freedom and adventure for the beloved comic duo.",
-      "category": "Western",
-      "source": "Comic Book Resources",
-      "url": "https://www.cbr.com/best-calvin-and-hobbes-start-of-summer-comics/",
-      "published": "2026-11-22T04:30:12.000Z",
-      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2025/07/10-best-calvin-and-hobbes-start-of-summer-comics.jpg",
-      "sourceTitle": "10 Best Calvin and Hobbes Start Of Summer Comics"
-    },
-    {
-      "id": "9afc1f043a7f048b",
-      "headline": "&#039;Shibou Yuugi de Meshi wo Kuu.&#039; Sequel Anime in Production",
-      "summary": "Studio Deen is producing a sequel to the death games anime series, as announced at the MF Bunko J Autumn School Festival 2026 event.",
-      "category": "Anime",
-      "source": "MyAnimeList News",
-      "url": "https://myanimelist.net/news/74967311?_location=rss",
-      "published": "2026-11-22T04:30:03.000Z",
-      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795319620-b7a52ba53e8de23d27f27f10be78b86d.jpeg",
-      "sourceTitle": "&#039;Shibou Yuugi de Meshi wo Kuu.&#039; Sequel Anime in Production"
-    },
-    {
-      "id": "d2dc84d1ee6147ab",
-      "headline": "SHIBOYUGI: Playing Death Games to Put Food on the Table Anime Gets Sequel",
-      "summary": "The survival thriller anime Shiboyugi is receiving a continuation. An early promotional visual has been unveiled for the sequel.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-21/shiboyugi-playing-death-games-to-put-food-on-the-table-anime-gets-sequel/.244070",
-      "published": "2026-11-22T04:30:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gIG/cms/news.10/244070/playing-death-games-sequel-utv.jpg",
-      "sourceTitle": "SHIBOYUGI: Playing Death Games to Put Food on the Table Anime Gets Sequel"
-    },
-    {
-      "id": "c439739afbf0fcf3",
-      "headline": "&#039;Kekkaishi no Ichirinka&#039; Reveals Additional Cast, Staff, Opening Theme, First Promo",
-      "summary": "The official website for the romantic supernatural anime adaptation of Kureha's novel has unveiled additional cast members, staff details, an opening theme, and a promotional video.",
-      "category": "Anime",
-      "source": "MyAnimeList News",
-      "url": "https://myanimelist.net/news/74967291?_location=rss",
-      "published": "2026-11-22T03:49:18.000Z",
-      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795319310-9527ecc36c77c322b4f7b02662a10bd7.jpeg",
-      "sourceTitle": "&#039;Kekkaishi no Ichirinka&#039; Reveals Additional Cast, Staff, Opening Theme, First Promo"
-    },
-    {
-      "id": "458c53f187a67e05",
-      "headline": "One Piece Chapter 1200: Spoilers, Summary and Pics – LIVE - OtakuKart",
-      "summary": "The latest installment in the long-running manga series has released, with spoilers and visual content now available for fans to review online.",
-      "category": "Manga",
-      "source": "One Piece News",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPb3hveWVLcWNURmRFdzBsMXEtajVaRlZOYkt1S29jNVNqb2dJYnFjTXctTU5OWFhKSW1LZWhPOHdzZUM0ZDZ5d0t2RE5sSUpDNGdQMENaYzFDSGlSYzBBb2VackxvYjhkX19jdkNlMng2UjdSVTVKTThMdTdPa2pscWhn?oc=5",
-      "published": "2026-11-22T03:44:12.000Z",
-      "image": "",
-      "sourceTitle": "One Piece Chapter 1200: Spoilers, Summary and Pics – LIVE - OtakuKart"
-    },
-    {
-      "id": "000600b0b412fdeb",
-      "headline": "Bride of the Barrier Master TV Anime Reveals 1-Hour Debut on January 6, More Cast in Video",
-      "summary": "The upcoming TV anime adaptation of Bride of the Barrier Master will premiere with a one-hour episode on January 6. Voice actors Chiaki Kobayashi and Takuya Eguchi have joined the cast, with Naniwa Danshi performing the opening theme.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-21/bride-of-the-barrier-master-tv-anime-reveals-1-hour-debut-on-january-6-more-cast-in-video/.244073",
-      "published": "2026-11-22T03:38:39.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gL7/youtube/X6R__ZiTM2Y.jpg",
-      "sourceTitle": "Bride of the Barrier Master TV Anime Reveals 1-Hour Debut on January 6, More Cast in Video"
-    },
-    {
-      "id": "1eb7452b5c661dbe",
-      "headline": "&#039;Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 5th Season: 2-nensei-hen 2 Gakki&#039; Airs in 2027",
-      "summary": "The fifth season of Classroom of the Elite will continue into 2027, with cast, staff, and promotional visuals announced at the MF Bunko J Autumn School Festival 2026 event.",
-      "category": "Anime",
-      "source": "MyAnimeList News",
-      "url": "https://myanimelist.net/news/74967203?_location=rss",
-      "published": "2026-11-22T03:16:05.000Z",
-      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795317332-d7b96857edc3703b90525f37babb584d.jpeg",
-      "sourceTitle": "&#039;Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 5th Season: 2-nensei-hen 2 Gakki&#039; Airs in 2027"
-    },
-    {
-      "id": "62960047f809402d",
-      "headline": "Classroom of the Elite Anime's 5th Season Reveals Full Title, Visual, 2027 Debut",
-      "summary": "The fifth season of Classroom of the Elite will premiere in 2027, covering the first half of the second semester in Year 2, with a full title and new visual now revealed.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-21/classroom-of-the-elite-anime-5th-season-reveals-full-title-visual-2027-debut/.244051",
-      "published": "2026-11-22T03:15:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gDA/cms/news.10/244051/thumbnail.png.jpg",
-      "sourceTitle": "Classroom of the Elite Anime's 5th Season Reveals Full Title, Visual, 2027 Debut"
-    },
-    {
-      "id": "63d1df776f721a98",
-      "headline": "Mawaru Penguindrum Anime Inspires Stage Reading Production by Kunihiko Ikuhara",
-      "summary": "Kunihiko Ikuhara is co-writing and co-directing a stage reading production inspired by his anime series Mawaru Penguindrum, scheduled for February 6-7.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-21/mawaru-penguindrum-anime-inspires-stage-reading-production-by-kunihiko-ikuhara/.244065",
-      "published": "2026-11-22T00:56:53.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gSM/cms/news.10/244065/hxjmihtacaarsbi.jpg",
-      "sourceTitle": "Mawaru Penguindrum Anime Inspires Stage Reading Production by Kunihiko Ikuhara"
-    },
-    {
-      "id": "d7b4f559d97f08f6",
-      "headline": "2026's 10 Best-Selling Manga Have Been Revealed, And One Series Dominates The Top 3 Spots - ScreenRant",
-      "summary": "The year's ten best-selling manga titles have been announced, with one series claiming multiple positions in the top rankings.",
-      "category": "Manga",
-      "source": "Jujutsu Kaisen News",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB3VjY5TzJvOWVSSlpJUFFnbVc1bVd0d3dnbDNIZElIQUlJVko3NnlZZm1TcGlQNExETEpuV25tX0RhMUVqWXNMeGZlSmNvRU9rME5xcThvdGx2ZnpGMWNfckdKeFVsbU0?oc=5",
-      "published": "2026-11-21T23:40:40.000Z",
-      "image": "",
-      "sourceTitle": "2026's 10 Best-Selling Manga Have Been Revealed, And One Series Dominates The Top 3 Spots - ScreenRant"
     }
   ]
 }
