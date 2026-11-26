@@ -104,161 +104,29 @@
   </div>
 </div>
 
-<div class="filter-bar">
-  <button class="filter-btn active" onclick="setFilter(this,'all')"><img src="ALL.png" alt="All" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> All</button>
-  <button class="filter-btn" onclick="setFilter(this,'manga')"><img src="MANGA.png" alt="Manga" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Manga</button>
-  <button class="filter-btn" onclick="setFilter(this,'webtoon')"><img src="WEBTOON.png" alt="Webtoon" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Webtoon</button>
-  <button class="filter-btn" onclick="setFilter(this,'western')"><img src="WESTERN.png" alt="Western" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Western</button>
-  <button class="filter-btn" onclick="setFilter(this,'action')"><img src="ACTION.png" alt="Action" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Action</button>
-  <button class="filter-btn" onclick="setFilter(this,'fantasy')"><img src="FANTASY.png" alt="Fantasy" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Fantasy</button>
-  <button class="filter-btn" onclick="setFilter(this,'romance')"><img src="ROMANCE.png" alt="Romance" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Romance</button>
-  <button class="filter-btn" onclick="setFilter(this,'scifi')"><img src="SCI-FI.png" alt="Sci-Fi" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Sci-Fi</button>
-  <button class="filter-btn" onclick="setFilter(this,'horror')"><img src="HORROR.png" alt="Horror" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> Horror</button>
-  <button class="filter-btn" onclick="setFilter(this,'slice')"><img src="SLICES_OF_LIFE.png" alt="" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.outerHTML='<span style=&quot;margin-right:4px;&quot;>☕</span>'"> Slice of Life</button>
-  <button class="filter-btn" onclick="setFilter(this,'original')"><img src="ORIGINAL.png" alt="" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.outerHTML='<span style=&quot;margin-right:4px;&quot;>🖌️</span>'"> Original</button>
-  <button class="filter-btn" onclick="setFilter(this,'ai')"><img src="AI_ASSISTED.png" alt="" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.outerHTML='<span style=&quot;margin-right:4px;&quot;>🤖</span>'"> AI-Assisted</button>
-  <button class="filter-btn" onclick="setFilter(this,'fanart')"><img src="FAN_ART.png" alt="" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.outerHTML='<span style=&quot;margin-right:4px;&quot;>🎭</span>'"> Fan Art</button>
-</div>
-
 <div class="section">
-  <div class="two-col">
-    <div>
-      <div id="realComicsSection" style="margin-bottom:20px;display:none;">
-        <div class="section-header">
-          <span class="section-title">🔥 COMMUNITY COMICS</span>
-          <div class="section-title-bar"></div>
-        </div>
-        <div class="comic-grid" id="realComicsGrid"></div>
-      </div>
-      <div class="section-header">
-        <span class="section-title">🆕 NEW RELEASES</span>
-        <div class="section-title-bar"></div>
-      </div>
-      <div class="comic-grid" id="comicGrid">
-        <div class="comic-card" onclick="openReader('Neon Blade','Chapter 7')">
-          <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#1A0A2E,#3A1A5E);">⚔️</div>
-          <div class="comic-card-body">
-            <div class="comic-card-title">Neon Blade</div>
-            <div class="comic-card-meta">Ch.7 · Updated today</div>
-            <span class="comic-card-genre">Action</span>
-            <span class="comic-card-badge badge-original">Original</span>
-          </div>
-        </div>
-        <div class="comic-card" onclick="openReader('Dragon Protocol','Chapter 3')">
-          <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#1A0A0A,#3A1010);">🐉</div>
-          <div class="comic-card-body">
-            <div class="comic-card-title">Dragon Protocol</div>
-            <div class="comic-card-meta">Ch.3 · 2 hrs ago</div>
-            <span class="comic-card-genre">Fantasy</span>
-            <span class="comic-card-badge badge-original">Original</span>
-          </div>
-        </div>
-        <div class="comic-card" onclick="openReader('City of Masks','Chapter 12')">
-          <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#0A1A2A,#102840);">🎭</div>
-          <div class="comic-card-body">
-            <div class="comic-card-title">City of Masks</div>
-            <div class="comic-card-meta">Ch.12 · Yesterday</div>
-            <span class="comic-card-genre">Mystery</span>
-            <span class="comic-card-badge badge-ai">AI-Assisted</span>
-          </div>
-        </div>
-        <div class="comic-card" onclick="openReader('Sakura Storm','Chapter 20')">
-          <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#2A0A1A,#4A1A30);">🌸</div>
-          <div class="comic-card-body">
-            <div class="comic-card-title">Sakura Storm</div>
-            <div class="comic-card-meta">Ch.20 · 2 days ago</div>
-            <span class="comic-card-genre">Romance</span>
-            <span class="comic-card-badge badge-original">Original</span>
-          </div>
-        </div>
-        <div class="comic-card" onclick="openReader('Mech Wars','Chapter 5')">
-          <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#0A0A1A,#101025);">🤖</div>
-          <div class="comic-card-body">
-            <div class="comic-card-title">Mech Wars</div>
-            <div class="comic-card-meta">Ch.5 · 3 days ago</div>
-            <span class="comic-card-genre">Sci-Fi</span>
-            <span class="comic-card-badge badge-fanart">Fan Art</span>
-          </div>
-        </div>
-        <div class="comic-card" onclick="openReader('Ghost Alley','Chapter 8')">
-          <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#0A0A0A,#1A1A1A);">👻</div>
-          <div class="comic-card-body">
-            <div class="comic-card-title">Ghost Alley</div>
-            <div class="comic-card-meta">Ch.8 · 4 days ago</div>
-            <span class="comic-card-genre">Horror</span>
-            <span class="comic-card-badge badge-original">Original</span>
-          </div>
-        </div>
-      </div>
+  <!-- Real community comics (shown when Firebase has data) -->
+  <div id="realComicsSection" style="margin-bottom:20px;display:none;">
+    <div class="section-header">
+      <span class="section-title">🔥 COMMUNITY COMICS</span>
+      <div class="section-title-bar"></div>
     </div>
-
-    <div>
-      <div class="section-header">
-        <span class="section-title"><img src="TROPHY.png" alt="Trophy" style="width:22px;height:22px;vertical-align:middle;margin-right:4px;object-fit:contain;" onerror="this.style.display='none'"> TOP RANKED</span>
-        <div class="section-title-bar"></div>
-      </div>
-      <div class="rank-list">
-        <a href="#" class="rank-item" onclick="openReader('Thunder God','Chapter 55');return false;">
-          <div class="rank-num top">1</div>
-          <div class="rank-thumb" style="background:linear-gradient(135deg,#1A1A0A,#2E2A10);">⚡</div>
-          <div class="rank-info"><div class="rank-title">Thunder God</div><div class="rank-meta">Mythology · Ch. 55</div></div>
-          <div class="rank-reads">144K 👁</div>
-        </a>
-        <a href="#" class="rank-item" onclick="openReader('Iron Fist Rising','Chapter 38');return false;">
-          <div class="rank-num top">2</div>
-          <div class="rank-thumb" style="background:linear-gradient(135deg,#2A0A0A,#3E1010);">🔥</div>
-          <div class="rank-info"><div class="rank-title">Iron Fist Rising</div><div class="rank-meta">Action · Ch. 38</div></div>
-          <div class="rank-reads">92K 👁</div>
-        </a>
-        <a href="#" class="rank-item" onclick="openReader('Neon Blade','Chapter 7');return false;">
-          <div class="rank-num top">3</div>
-          <div class="rank-thumb" style="background:linear-gradient(135deg,#1A0A2E,#3A1A5E);">⚔️</div>
-          <div class="rank-info"><div class="rank-title">Neon Blade</div><div class="rank-meta">Action · Ch. 7</div></div>
-          <div class="rank-reads">78K 👁</div>
-        </a>
-        <a href="#" class="rank-item" onclick="openReader('Shadow Realm','Chapter 24');return false;">
-          <div class="rank-num">4</div>
-          <div class="rank-thumb" style="background:linear-gradient(135deg,#1A0A2E,#2E1A4E);">🌙</div>
-          <div class="rank-info"><div class="rank-title">Shadow Realm</div><div class="rank-meta">Fantasy · Ch. 24</div></div>
-          <div class="rank-reads">48K 👁</div>
-        </a>
-        <a href="#" class="rank-item" onclick="openReader('Spirit Walker','Chapter 11');return false;">
-          <div class="rank-num">5</div>
-          <div class="rank-thumb" style="background:linear-gradient(135deg,#0A1A0A,#102010);">🌿</div>
-          <div class="rank-info"><div class="rank-title">Spirit Walker</div><div class="rank-meta">Supernatural · Ch. 11</div></div>
-          <div class="rank-reads">31K 👁</div>
-        </a>
-        <a href="#" class="rank-item" onclick="openReader('Sakura Storm','Chapter 20');return false;">
-          <div class="rank-num">6</div>
-          <div class="rank-thumb" style="background:linear-gradient(135deg,#2A0A1A,#4A1A30);">🌸</div>
-          <div class="rank-info"><div class="rank-title">Sakura Storm</div><div class="rank-meta">Romance · Ch. 20</div></div>
-          <div class="rank-reads">29K 👁</div>
-        </a>
-      </div>
-    </div>
+    <div class="comic-grid" id="realComicsGrid"></div>
   </div>
 
-  <div class="section-header" style="margin-top:40px;">
-    <span class="section-title">📚 ALL COMICS</span>
-    <div class="section-title-bar"></div>
-  </div>
-  <div class="comic-grid-lg">
-    <div class="comic-card" onclick="openReader('Crystal Mage','Chapter 16')">
-      <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#2A0A1A,#3E1030);">💎</div>
-      <div class="comic-card-body"><div class="comic-card-title">Crystal Mage</div><div class="comic-card-meta">16 Chapters · 27.8K reads</div><span class="comic-card-genre">Magic</span><span class="comic-card-badge badge-original">Original</span></div>
+  <!-- Empty state — shown until real comics are published -->
+  <div id="comicsEmptyState" style="text-align:center;padding:60px 24px 80px;">
+    <div style="font-size:72px;margin-bottom:20px;line-height:1;">📖</div>
+    <div style="font-family:'Bangers',cursive;font-size:clamp(28px,5vw,42px);letter-spacing:2px;color:var(--gold);margin-bottom:16px;text-wrap:balance;">YOUR COMIC CREATION WILL BE SHOWN HERE</div>
+    <div style="font-size:16px;font-weight:600;color:rgba(255,255,255,0.75);max-width:560px;margin:0 auto 28px;line-height:1.7;text-wrap:balance;">
+      Be the first batch of creators to do this.<br>
+      Share your interesting story to the world —<br>
+      we are looking forward to it. 🌏
     </div>
-    <div class="comic-card" onclick="openReader('Ocean Protocol','Chapter 7')">
-      <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#0A1A2A,#102030);">🌊</div>
-      <div class="comic-card-body"><div class="comic-card-title">Ocean Protocol</div><div class="comic-card-meta">7 Chapters · 19.3K reads</div><span class="comic-card-genre">Sci-Fi</span><span class="comic-card-badge badge-ai">AI-Assisted</span></div>
-    </div>
-    <div class="comic-card" onclick="openReader('Ramen Hero','Chapter 4')">
-      <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#2A1A0A,#3A2010);">🍜</div>
-      <div class="comic-card-body"><div class="comic-card-title">Ramen Hero</div><div class="comic-card-meta">4 Chapters · 15.1K reads</div><span class="comic-card-genre">Slice of Life</span><span class="comic-card-badge badge-original">Original</span></div>
-    </div>
-    <div class="comic-card" onclick="openReader('Night Witch','Chapter 9')">
-      <div class="comic-card-cover-placeholder" style="background:linear-gradient(135deg,#1A0A1A,#2A102A);">🔮</div>
-      <div class="comic-card-body"><div class="comic-card-title">Night Witch</div><div class="comic-card-meta">9 Chapters · 22.4K reads</div><span class="comic-card-genre">Horror</span><span class="comic-card-badge badge-fanart">Fan Art</span></div>
-    </div>
+    <a href="artist.html" class="btn btn-gold" style="font-size:16px;padding:14px 36px;display:inline-flex;align-items:center;gap:10px;">
+      <img src="ART.png" alt="" style="width:24px;height:24px;object-fit:contain;mix-blend-mode:screen;" onerror="this.style.display='none'">
+      UNLOCK ARTIST ROLE &amp; START CREATING
+    </a>
   </div>
 </div>
 
@@ -327,11 +195,6 @@
 </footer>
 <div id="c99-toast"></div>
 <script>
-function setFilter(el, f) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  showToast('🔍 Showing: ' + el.textContent.trim());
-}
 function openReader(title, ch) {
   document.getElementById('readerTitle').textContent = title.toUpperCase() + ' — ' + ch.toUpperCase();
   document.getElementById('readerOverlay').classList.add('open');
@@ -381,7 +244,10 @@ async function loadRealComics() {
         </div>
       </div>`).join('');
     section.style.display = '';
-  } catch(e) { /* silent — static content still shows */ }
+    // Hide empty state once real comics are loaded
+    const emptyState = document.getElementById('comicsEmptyState');
+    if (emptyState) emptyState.style.display = 'none';
+  } catch(e) { /* silent — empty state stays visible */ }
 }
 
 document.addEventListener('DOMContentLoaded', loadRealComics);

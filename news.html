@@ -105,6 +105,13 @@
   background: rgba(107,47,217,0.12); color: var(--purple);
 }
 .news-date { font-size: 11px; font-weight: 700; color: var(--text3); margin-left: auto; }
+.news-region {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.8px;
+  padding: 2px 7px; border-radius: 20px; border: 2px solid var(--ink);
+  text-transform: uppercase;
+  background: rgba(255,193,7,0.15); color: var(--gold);
+  white-space: nowrap;
+}
 .news-headline {
   font-family: 'Bangers', cursive; font-size: clamp(16px, 2.5vw, 20px);
   letter-spacing: 1px; line-height: 1.25; color: var(--text);
@@ -128,12 +135,11 @@
 }
 .news-featured:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--ink); }
 .news-featured-banner {
-  height: 180px; background: linear-gradient(135deg,var(--red),var(--purple));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 80px; position: relative; overflow: hidden;
+  height: 220px; background: linear-gradient(135deg,var(--red),var(--purple));
+  position: relative; overflow: hidden;
 }
 .news-featured-banner img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.6;
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1;
 }
 .news-featured-banner::after {
   content: ''; position: absolute; inset: 0;
@@ -369,45 +375,65 @@ function fmtDate(isoStr) {
 }
 
 // ── Render ────────────────────────────────────────────────────────────────────
-// Badge fallback images per category
-const CAT_FALLBACK = {
-  'Manga':    'Radiant_Comic_Book_Badge.png',
-  'Anime':    'Radiant_Comic_Book_Badge.png',
-  'Webtoon':  'Radiant_Comic_Book_Badge.png',
-  'Western':  'Radiant_Comic_Book_Badge.png',
-  'Cosplay':  'Chibi_Superhero_Avatar_Badge.png',
-  'Events':   'Chibi_Superhero_Avatar_Badge.png',
-  'Industry': 'Neon_Purple_Building_Badge.png',
-  'Adaptation':'Radiant_Comic_Book_Badge.png',
-  'Creator':  'Chibi_Superhero_Avatar_Badge.png',
-  'Other':    'Radiant_Comic_Book_Badge.png',
-};
 
 function renderThumb(item) {
-  const badge = CAT_FALLBACK[item.category] || 'Radiant_Comic_Book_Badge.png';
   const imgSrc = item.image || '';
   if (imgSrc) {
-    return `<div class="news-thumb" style="position:relative;">
+    return `<div class="news-thumb" style="position:relative;overflow:hidden;border-radius:8px;">
       <img src="${imgSrc}" alt="" loading="lazy"
-        style="width:100%;height:100%;object-fit:cover;border-radius:8px;position:absolute;inset:0;"
-        onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:var(--panel2,#1a1a1a);border-radius:8px;">
-        <img src="${badge}" alt="" style="width:72px;height:72px;object-fit:contain;">
-      </div>
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+        onerror="this.onerror=null;this.remove();this.parentElement&&(this.parentElement.style.background='linear-gradient(135deg,#1a1a2e,#16213e)');">
     </div>`;
   }
-  return `<div class="news-thumb" style="display:flex;align-items:center;justify-content:center;background:var(--panel2,#1a1a1a);">
-    <img src="${badge}" alt="" style="width:72px;height:72px;object-fit:contain;">
-  </div>`;
+  return `<div class="news-thumb" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:8px;"></div>`;
+}
+
+const SOURCE_REGION_MAP = {
+  'anime news network': '🇯🇵 Japan', 'ann': '🇯🇵 Japan',
+  'myanimelist': '🇯🇵 Japan', 'mal': '🇯🇵 Japan',
+  'crunchyroll': '🇺🇸 US', 'funimation': '🇺🇸 US',
+  'comicbook': '🇺🇸 US', 'cbr': '🇺🇸 US', 'comic book resources': '🇺🇸 US',
+  'marvel': '🇺🇸 US', 'dc comics': '🇺🇸 US',
+  'ign': '🇺🇸 US', 'polygon': '🇺🇸 US', 'kotaku': '🇺🇸 US',
+  'screen rant': '🇺🇸 US', 'the direct': '🇺🇸 US',
+  'webtoon': '🇰🇷 Korea', 'naver': '🇰🇷 Korea', 'kakao': '🇰🇷 Korea',
+  'manhwa': '🇰🇷 Korea', 'manwha': '🇰🇷 Korea',
+  'saiga nak': '🇯🇵 Japan', 'famitsu': '🇯🇵 Japan', 'natalie': '🇯🇵 Japan',
+  'oricon': '🇯🇵 Japan', 'comic natalie': '🇯🇵 Japan',
+  'animatetimes': '🇯🇵 Japan', 'mantan': '🇯🇵 Japan',
+  'cosplay commons': '🌏 Global', 'cosplay': '🌏 Global',
+  'comiket': '🇯🇵 Japan', 'comic market': '🇯🇵 Japan',
+  'siliconera': '🌏 Global', 'denofgeek': '🇬🇧 UK',
+  'gamesradar': '🇬🇧 UK', 'eurogamer': '🇬🇧 UK',
+  'manhua': '🇨🇳 China', 'bilibili comics': '🇨🇳 China',
+  'tapas': '🌏 Global', 'line manga': '🇯🇵 Japan',
+};
+
+function getRegion(item) {
+  if (item.region) return item.region;
+  const src = (item.source || '').toLowerCase();
+  for (const [key, region] of Object.entries(SOURCE_REGION_MAP)) {
+    if (src.includes(key)) return region;
+  }
+  const url = (item.url || '').toLowerCase();
+  if (url.includes('.jp') || url.includes('japan')) return '🇯🇵 Japan';
+  if (url.includes('.kr') || url.includes('korea')) return '🇰🇷 Korea';
+  if (url.includes('.cn') || url.includes('china')) return '🇨🇳 China';
+  if (url.includes('.uk') || url.includes('.co.uk')) return '🇬🇧 UK';
+  if (url.includes('.au')) return '🇦🇺 Australia';
+  if (url.includes('.my') || url.includes('malaysia')) return '🇲🇾 Malaysia';
+  return '🌏 Global';
 }
 
 function renderCard(item) {
+  const region = getRegion(item);
   return `<a class="news-card" href="${item.url}" target="_blank" rel="noopener">
     ${renderThumb(item)}
     <div class="news-body">
       <div class="news-meta">
         <span class="news-source">${item.source.replace(/ News$/,'').slice(0,20)}</span>
         <span class="news-cat">${item.category}</span>
+        <span class="news-region">${region}</span>
         <span class="news-date">${timeAgo(item.published)}</span>
       </div>
       <div class="news-headline">${item.headline}</div>
@@ -418,17 +444,15 @@ function renderCard(item) {
 }
 
 function renderFeatured(item) {
-  const emoji = CAT_EMOJI[item.category] || '📰';
   const imgHtml = item.image
     ? `<img src="${item.image}" alt="" onerror="this.style.display='none'">`
     : '';
   return `<a class="news-featured" href="${item.url}" target="_blank" rel="noopener">
     <div class="news-featured-banner">
-      <span style="position:relative;z-index:1;">${emoji}</span>
       ${imgHtml}
     </div>
     <div class="news-featured-body">
-      <div class="news-featured-label">📌 TOP STORY · ${item.category.toUpperCase()} · ${fmtDate(item.published)}</div>
+      <div class="news-featured-label">📌 TOP STORY · ${item.category.toUpperCase()} · ${getRegion(item)} · ${fmtDate(item.published)}</div>
       <div class="news-featured-title">${item.headline}</div>
       <div class="news-featured-excerpt">${item.summary}</div>
       <span class="btn btn-gold btn-sm">READ FULL STORY →</span>
