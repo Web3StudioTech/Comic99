@@ -27,5 +27,14 @@
   { "name": "ACG Asia Events",          "url": "https://news.google.com/rss/search?q=ACG+festival+event+malaysia+singapore+2026&hl=en-US&gl=US&ceid=US:en" },
   { "name": "Convention Schedule",      "url": "https://news.google.com/rss/search?q=anime+convention+schedule+upcoming+2026+2027&hl=en-US&gl=US&ceid=US:en" },
   { "name": "Malaysia ACG Events",      "url": "https://news.google.com/rss/search?q=malaysia+anime+event+comic+fiesta+2026&hl=en-US&gl=US&ceid=US:en" },
-  { "name": "Collectible Events",       "url": "https://news.google.com/rss/search?q=anime+figure+collectible+event+expo+2026&hl=en-US&gl=US&ceid=US:en" }
+  { "name": "Collectible Events",       "url": "https://news.google.com/rss/search?q=anime+figure+collectible+event+expo+2026&hl=en-US&gl=US&ceid=US:en" },
+
+  { "name": "Manhua News",              "url": "https://news.google.com/rss/search?q=manhua+chinese+comic+new+2026&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Donghua Animation",        "url": "https://news.google.com/rss/search?q=donghua+chinese+animation+2026&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Bilibili Comics",          "url": "https://news.google.com/rss/search?q=bilibili+comics+manhua+release&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Southeast Asia Anime",     "url": "https://news.google.com/rss/search?q=anime+manga+indonesia+thailand+philippines+2026&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Solo Leveling News",       "url": "https://news.google.com/rss/search?q=solo+leveling+tower+of+god+manhwa&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "Netflix Anime",            "url": "https://news.google.com/rss/search?q=netflix+anime+new+season+announced+2026&hl=en-US&gl=US&ceid=US:en" },
+  { "name": "ComicBook Anime",          "url": "https://comicbook.com/anime/rss/" },
+  { "name": "Screen Rant Comics",       "url": "https://screenrant.com/comics/feed/" }
 ]
