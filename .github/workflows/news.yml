@@ -1,62 +1,36 @@
-name: Comic99 Auto News
+name: Generate News Feed
 
 on:
   schedule:
-    # 09:00 KL time (UTC+8) = 01:00 UTC
-    - cron: '0 1 * * *'
-    # 21:00 KL time (UTC+8) = 13:00 UTC
-    - cron: '0 13 * * *'
-  workflow_dispatch:
-    inputs:
-      max_new:
-        description: 'Max new stories to process (default 20)'
-        required: false
-        default: '20'
+    # Runs every 6 hours: 00:00, 06:00, 12:00, 18:00 UTC (08:00, 14:00, 20:00, 02:00 KL)
+    - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub Actions tab
 
-concurrency:
-  group: news-update
-  cancel-in-progress: false
+permissions:
+  contents: write
 
 jobs:
-  fetch-news:
+  generate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          node-version: '20'
+          python-version: '3.11'
 
       - name: Install dependencies
-        run: npm install fast-xml-parser@4
+        run: pip install requests feedparser python-dateutil
 
-      - name: Fetch news and generate briefs
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          NEWS_MAX_NEW: ${{ github.event.inputs.max_new || '30' }}
-          NEWS_PER_FEED: '6'
-          NEWS_KEEP: '120'
-          NEWS_MAX_AGE_HOURS: '72'
-          NEWS_MAX_IMAGE_LOOKUPS: '20'
-          NEWS_MODEL: 'claude-haiku-4-5'
-        run: node scripts/fetch-news.mjs
+      - name: Generate news.json
+        run: python .github/scripts/generate_news.py
 
-      - name: Build RSS feed
-        run: node scripts/make-feed.mjs
-
-      - name: Commit and push
+      - name: Commit and push news.json
         run: |
-          git config user.name  "Comic99 NewsBot"
-          git config user.email "newsbot@comic99.com"
-          git add news.json feed.xml
-          git diff --cached --quiet && echo "No changes to commit" && exit 0
-          git commit -m "Auto-update news [$(date -u +'%Y-%m-%d %H:%M UTC')]"
-          git pull --rebase origin main
-          git push origin main
+          git config user.name "Comic99 Bot"
+          git config user.email "bot@comic99.xyz"
+          git add news.json
+          git diff --staged --quiet || git commit -m "chore: update news feed [skip ci]"
+          git push
