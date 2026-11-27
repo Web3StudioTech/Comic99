@@ -1,6 +1,12 @@
 {
-  "updated": "2026-11-27T09:35:05.183Z",
+  "updated": "2026-11-27T21:49:31.030Z",
   "skipped": [
+    "c2c82be3701d05b8",
+    "d1795656cd304eb2",
+    "993524944aad8cfa",
+    "988e7d636d82c000",
+    "c623fca9d00e3477",
+    "4ecc7ab5f7e193be",
     "96ad621e7901ce88",
     "bebd6a20416510be",
     "f5d7be45080e6689",
@@ -97,6 +103,149 @@
     "12ac08358b3ca231"
   ],
   "items": [
+    {
+      "id": "b219176ce3c1168f",
+      "headline": "Legendary 60-Year-Old Kaiju Franchise Finally Brings 2 Classic Movies to Netflix",
+      "summary": "Ultraman, the giant monster franchise marking six decades, is releasing two classic films on Netflix in December as part of its anniversary celebration.",
+      "category": "Anime",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/ultraman-classic-kaiju-movies-netflix-release/",
+      "published": "2026-11-27T21:41:12.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2022/04/Ultraman.jpg",
+      "sourceTitle": "Legendary 60-Year-Old Kaiju Franchise Finally Brings 2 Classic Movies to Netflix"
+    },
+    {
+      "id": "01c5b28b52e379a3",
+      "headline": "8 Ways 1987's Masters of the Universe Outdoes Prime Video's 2026 Reboot",
+      "summary": "The classic 1987 He-Man film has several elements that appeal to longtime fans compared to Prime Video's upcoming adaptation arriving in 2026.",
+      "category": "Adaptation",
+      "source": "Comic Book Resources",
+      "url": "https://www.cbr.com/1987-masters-of-the-universe-better-than-2026-reboot-list/",
+      "published": "2026-11-27T21:00:12.000Z",
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2019/02/He-Man-Masters-of-the-Universe-Dolph-LUndgren.jpg",
+      "sourceTitle": "8 Ways 1987's Masters of the Universe Outdoes Prime Video's 2026 Reboot"
+    },
+    {
+      "id": "dd077137ce63a259",
+      "headline": "Father, I Don't Want This Marriage Volumes 1-4 K-Comic Review",
+      "summary": "A K-Comic series explores themes of arranged marriage through comedic misunderstandings, blending romantic humor with darker narrative elements across its first four volumes.",
+      "category": "Webtoon",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/review/father-i-dont-want-this-marriage/volumes-1-4/.243392",
+      "published": "2026-11-27T17:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gB6/cms/review.2/243392/father-i-don-t-want.jpg",
+      "sourceTitle": "Father, I Don't Want This Marriage Volumes 1-4 K-Comic Review"
+    },
+    {
+      "id": "9a0e410984ec6c84",
+      "headline": "The World's Strongest Witch ‒ Episode 8",
+      "summary": "The World's Strongest Witch continues its fall season run with another episode blending humor and video game references. The series maintains its appeal through clever comedy paired with charming character moments.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/review/the-world-strongest-witch/episode-8/.244209",
+      "published": "2026-11-27T14:30:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gD0/cms/episode-review.5/244209/world-s-strongest-with-ep-8-review-image.jpg",
+      "sourceTitle": "The World's Strongest Witch ‒ Episode 8"
+    },
+    {
+      "id": "a812e650b8a91c81",
+      "headline": "PelleK: From Posting Anime Covers on YouTube, to Singing Skeleton Knight's Openings",
+      "summary": "A Norwegian YouTube content creator known for anime cover songs has progressed to recording official opening themes, including for Skeleton Knight in Another World.",
+      "category": "Creator",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/interview/2026-11-27/pellek-from-posting-anime-covers-on-youtube-to-singing-skeleton-knight-openings/.244085",
+      "published": "2026-11-27T14:00:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gA3/cms/interview/244085/pellek-thumbnail.jpg",
+      "sourceTitle": "PelleK: From Posting Anime Covers on YouTube, to Singing Skeleton Knight's Openings"
+    },
+    {
+      "id": "94acee532bdc4b48",
+      "headline": "Ranma ½ Season 3 ‒ Episode 8",
+      "summary": "The latest episode of Ranma ½ Season 3 revisits a narrative device creator Rumiko Takahashi previously employed in her series Urusei Yatsura, involving characters Ukyo and Tsubasa.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/review/ranma-season-3/episode-8/.244208",
+      "published": "2026-11-27T13:30:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gIM/cms/episode-review.5/244208/ranma-8.6.png.jpg",
+      "sourceTitle": "Ranma ½ Season 3 ‒ Episode 8"
+    },
+    {
+      "id": "aaf7f12185fc25f2",
+      "headline": "Nia Liston: The Merciless Maiden ‒ Episode 8",
+      "summary": "The eighth episode of Nia Liston: The Merciless Maiden resonates with viewers through its blend of humor and emotional authenticity.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/review/nia-liston-the-merciless-maiden/episode-8/.244172",
+      "published": "2026-11-27T12:30:00.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gFC/cms/episode-review.5/244172/nia-liston-ep-8-review-image.jpg",
+      "sourceTitle": "Nia Liston: The Merciless Maiden ‒ Episode 8"
+    },
+    {
+      "id": "24b0248a3f2e4068",
+      "headline": "Pokémon Anime Gets New Season Featuring Liko, Roy in October 2027",
+      "summary": "The Pokémon anime will introduce a new season in October 2027 featuring characters Liko and Roy, with an additional program launching January 8.",
+      "category": "Anime",
+      "source": "Anime News Network",
+      "url": "https://www.animenewsnetwork.com/news/2026-11-27/pokemon-anime-gets-new-season-featuring-liko-roy-in-october-2027/.244257",
+      "published": "2026-11-27T11:45:46.000Z",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHH/youtube/Ru2TqdHcND4.jpg",
+      "sourceTitle": "Pokémon Anime Gets New Season Featuring Liko, Roy in October 2027"
+    },
+    {
+      "id": "a942dd22cf094e42",
+      "headline": "&#039;Kaze wo Tsugumono&#039; Reveals Additional Staff, Second Promo",
+      "summary": "The original anime series Inherit the Winds has announced its production staff and released a second promotional video ahead of its January 10 premiere on CBC and TBS's programming block.",
+      "category": "Anime",
+      "source": "MyAnimeList News",
+      "url": "https://myanimelist.net/news/74987772?_location=rss",
+      "published": "2026-11-27T11:24:16.000Z",
+      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795778612-85b6e6a5cfd21afb463b8b010b8fefe5.jpeg",
+      "sourceTitle": "&#039;Kaze wo Tsugumono&#039; Reveals Additional Staff, Second Promo"
+    },
+    {
+      "id": "e2419c00c2a75f3f",
+      "headline": "&#039;Neko to Ryuu 2nd Season&#039; Reveals Additional Cast, Opening Theme, First Promo, Winter 2027 Premiere",
+      "summary": "The Cat and the Dragon anime will return for a second season in Winter 2027, with the official site announcing new cast members, an opening theme, and a promotional video.",
+      "category": "Anime",
+      "source": "MyAnimeList News",
+      "url": "https://myanimelist.net/news/74987570?_location=rss",
+      "published": "2026-11-27T09:30:55.000Z",
+      "image": "https://cdn.myanimelist.net/s/common/uploaded_files/1795771824-750c72360192f4adf45f785f7a8a419e.jpeg",
+      "sourceTitle": "&#039;Neko to Ryuu 2nd Season&#039; Reveals Additional Cast, Opening Theme, First Promo, Winter 2027 Premiere"
+    },
+    {
+      "id": "26dafee7113e7dd6",
+      "headline": "Mackenyu, Ayumi Ito, and Ella Freya Announced for Comic Fiesta 2026 - GamerBraves",
+      "summary": "Comic Fiesta 2026 has announced three guests: Mackenyu, Ayumi Ito, and Ella Freya. The Malaysian convention continues to attract international talent for its upcoming edition.",
+      "category": "Events",
+      "source": "Malaysia ACG Events",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOR1VPY2xWMTR0b2NzV284V1NLVm1jM29HYzNQMVRlU2JxaHJjenlCSHBSZWRSc1ZYT2dCUS1hN2lhb2tRSVpaWlpsdm0zeGd0dVYyRmZldWJvcVVnYnlHSklTVzhwQXJIR203ODJpMldUYWx4ZEpaTUROclFwNHltbURrbExUVkVBUndrNnZPU2pkWjlfSHRFUEZn?oc=5",
+      "published": "2026-11-27T04:30:38.000Z",
+      "image": "",
+      "sourceTitle": "Mackenyu, Ayumi Ito, and Ella Freya Announced for Comic Fiesta 2026 - GamerBraves"
+    },
+    {
+      "id": "cdc2799bceedfa11",
+      "headline": "Killer Shark in Another World Anime Adaptation Announced - Anime Corner",
+      "summary": "An anime adaptation for \"Killer Shark in Another World\" has been officially announced, bringing the series to the screen.",
+      "category": "Adaptation",
+      "source": "Anime Adaptation News",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPSXFZTnJ2TUFrRnZYZ2ZtZVhtUTlqSV9QTWtkTDJWY1VsSnIxeHpaVVVIRTF2b2RYSTI2TTZieWNrVUtRbTBFVmRFNHllclRrWHY2NXpGMDhDelRkVnpheVQ1MDRmODVkcS1MNlBQQWtmNHk5ZXRUUVNuUXJ5T1JqTUpIOTBCX0E?oc=5",
+      "published": "2026-11-26T15:33:37.000Z",
+      "image": "",
+      "sourceTitle": "Killer Shark in Another World Anime Adaptation Announced - Anime Corner"
+    },
+    {
+      "id": "6f85dbb03bab254d",
+      "headline": "What Is A Webtoon? A Beginner's Guide To Digital Comics - Herzindagi",
+      "summary": "An introductory guide explains what webtoons are, covering the basics of this digital comics format for those new to the medium.",
+      "category": "Webtoon",
+      "source": "Webtoon Creator News",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPSnRpWEpiNGEzNUs1ZVg5cVBld01qRHVuRFIzcWVTMi0tQXlMSVNHUzF0SnU4TUtmY09QcnV3ZWY4T1g2NVlWRl9pcnhBU0lyX1NHaUxlVUJGSlQ5c3FvamdDYW04Um12cElpZHVkaDJEbFdMQTZNUGhaUVdLMFdyZm1QaktnLWRhY3lXOWhKcnRxN3RYT2t4ZWNBMTUxeGpHcW1NUmxuSFFpWmlmMTF5M1BuaFPSAbsBQVVfeXFMUC1uMXRpdjVFeG1xQ0RsUzkzd2xCOFNVOExxSEszLTRoNE8tcWhiZGJQNlFYNVNFdkJseHNLUkhXeXdibUpkbm9EWTgxVlgtdzg5R3dlS3BIY084Qzh5MmNmNFA2M255NU93Vkk0aUVLZF91VmtWTU43OXBvRjd4LS1BcVJ2QWpXYzEzTGJsSVUteU1RdHJ1OXlpTTBFNjU0c1IzQVZ0aHQ1RUJVTmFPM1VZcHktOHNJTkFOOA?oc=5",
+      "published": "2026-11-26T13:00:18.000Z",
+      "image": "",
+      "sourceTitle": "What Is A Webtoon? A Beginner's Guide To Digital Comics - Herzindagi"
+    },
     {
       "id": "0da76094b1ed815b",
       "headline": "Yes, that Zoro: Comic Fiesta 2026 brings Netflix’s ‘One Piece’ Star Mackenyu to Kuala Lumpur - Yahoo",
@@ -1273,149 +1422,6 @@
       "published": "2026-11-24T18:48:24.000Z",
       "image": "",
       "sourceTitle": "Crunchyroll Brings Manga Reading Zones, Exclusive Merchandise, and CrunchyCoins to Comic Cons Across India - OtakuKart"
-    },
-    {
-      "id": "48c6644a04ef9a62",
-      "headline": "AIR TWOKYO x \"JUJUTSU KAISEN: The Culling Game\" Apparel Collection Brings Iconic Scenes to Life with Original Artwork - ",
-      "summary": "AIR TWOKYO has launched an apparel collection featuring Jujutsu Kaisen: The Culling Game, showcasing original artwork inspired by memorable moments from the series.",
-      "category": "Anime",
-      "source": "Jujutsu Kaisen News",
-      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9lNFMtNzdlSDhhZTY5bUxWWmRZWmlOUml0aldtSkp0U09rREFOZFRnb2xBb1Z1MTg1ek9iX2d1VUJHY1d3dHZReG9SVzB1aC1o?oc=5",
-      "published": "2026-11-24T17:36:50.000Z",
-      "image": "",
-      "sourceTitle": "AIR TWOKYO x \"JUJUTSU KAISEN: The Culling Game\" Apparel Collection Brings Iconic Scenes to Life with Original Artwork - 玩具人 TOY PEOPLE"
-    },
-    {
-      "id": "b36acf2482006e48",
-      "headline": "Rascal Does Not Dream of a Dear Friend Anime Film Review",
-      "summary": "The latest film in the Rascal Does Not Dream franchise addresses unresolved plot threads from the previous season while serving as a final chapter for the entire series.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/review/rascal-does-not-dream-of-a-dear-friend-anime-film/.243539",
-      "published": "2026-11-24T17:00:00.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gH7/cms/review.2/243539/rascal-friend-2.jpg",
-      "sourceTitle": "Rascal Does Not Dream of a Dear Friend Anime Film Review"
-    },
-    {
-      "id": "3d7534dd41e074cd",
-      "headline": "HIDIVE to Premiere Murciélago Anime at Anime Frontier Event in Texas",
-      "summary": "HIDIVE will debut the Murciélago anime at Anime Frontier in Fort Worth on December 5, ahead of its January 2027 television premiere.",
-      "category": "Events",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-24/hidive-to-premiere-murcielago-anime-at-anime-frontier-event-in-texas/.244121",
-      "published": "2026-11-24T16:24:04.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gF5/cms/news.10/243033/murcielago.jpg",
-      "sourceTitle": "HIDIVE to Premiere Murciélago Anime at Anime Frontier Event in Texas"
-    },
-    {
-      "id": "bbf1a0fbc167109d",
-      "headline": "Duel Masters Pure PLAY'S Manga Ends on November 30",
-      "summary": "The Duel Masters Pure PLAY manga series will conclude on November 30, following its September debut earlier this year.",
-      "category": "Manga",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-24/duel-masters-pure-play-manga-ends-on-november-30/.244139",
-      "published": "2026-11-24T16:05:03.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gX4/cms/news.9/241787/duelmasterspureplays.jpg",
-      "sourceTitle": "Duel Masters Pure PLAY'S Manga Ends on November 30"
-    },
-    {
-      "id": "3f95fcabe544d681",
-      "headline": "Digimon Become Tamagotchi & Tamagotchi Become Digimon!",
-      "summary": "Digimon and Tamagotchi mark their 30th anniversaries with a collaborative retro toy line that blends both franchises.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/interest/2026-11-24/digimon-become-tamagotchi-and-tamagotchi-become-digimon/.244155",
-      "published": "2026-11-24T15:42:43.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gHF/cms/interest.3/244155/digimon-tamagotchi-30th-anniversary.jpg",
-      "sourceTitle": "Digimon Become Tamagotchi & Tamagotchi Become Digimon!"
-    },
-    {
-      "id": "9d44510b8222d31c",
-      "headline": "One Piece Officially Reveals Why Joyboy Lost to Imu 800 Years Ago - FandomWire",
-      "summary": "The series explores the historical clash between Joyboy and Imu from eight centuries ago, revealing official details about their conflict's outcome.",
-      "category": "Manga",
-      "source": "One Piece News",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE10YkJVMktqVFYyMXJNdUVXc1FMZDUyczJMRHFtbjlRRmVqcHlEMGZ3M2JvMEJMT1RsOWFTd2lzQkItb1RPQlBfUk5JWlBaZU12OWI3RzluS0JsdS00d3RaMk5mVnVpaE16b2ZDVURQQWZtZw?oc=5",
-      "published": "2026-11-24T15:04:23.000Z",
-      "image": "",
-      "sourceTitle": "One Piece Officially Reveals Why Joyboy Lost to Imu 800 Years Ago - FandomWire"
-    },
-    {
-      "id": "ddd59cc2cfeedfb3",
-      "headline": "Bay Area Nerd Events This Weekend: November 27th to November 29th, 2026 - 8Bit/Digi",
-      "summary": "The Bay Area is hosting nerd-focused events this weekend, running from November 27th through November 29th, 2026, featuring gaming and digital culture activities.",
-      "category": "Events",
-      "source": "Cosplay Contest News",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOcGZQX085UEEzenF1U1U5ZXlCREpkaEJ3WklDRnZFXzMzRFV2TW9ZNk44MVBaMFhKd2REUlAwWjN2eE43ajJ4OFc3T3M5UDFKSUczSEhDaTU2ODJlaW5HM28waGxlaG03SnhWam9GdmJ1Q0Y5LU5ac0p4Mk5pRl8wRVNpTjl5bXlHNGZIZU84dU9SbDhMQnc?oc=5",
-      "published": "2026-11-24T15:00:00.000Z",
-      "image": "",
-      "sourceTitle": "Bay Area Nerd Events This Weekend: November 27th to November 29th, 2026 - 8Bit/Digi"
-    },
-    {
-      "id": "6b3c17bcf843b3ac",
-      "headline": "One Piece Chapter 1200 spoilers: Lili's letter exposes Imu's dark past with Joy Boy as Luffy battles his own Devil Fruit",
-      "summary": "Chapter 1200 of One Piece reveals revelations through a letter detailing Imu's historical connection to Joy Boy, while Luffy confronts challenges related to his Devil Fruit abilities.",
-      "category": "Manga",
-      "source": "One Piece News",
-      "url": "https://news.google.com/rss/articles/CBMijAJBVV95cUxPeS00RmNLRTllbEx5Zk9fT2xVdHNKRzZQNFZxR0owUXNoaUs3aE5jWmxBdXVkS0ZfdTN6bFZPamxDal9veml3MjYzY09Ncjd3V0xyVmc1dlB4NzVLOW5rV3psN25nMmw2b2p3RzJsRmxSTWdqdWRqdWNuczhieFdma2FTaHZSLUlNVjA4eFhnalpxczNPaWtKN2VkbW1neTE4Vzh5VllwUGpuNXJTUGJpVDVTRnYwbUU5U0NwLTFGd19TT2dqSjQzLXRXYUJkYUgxaUY5TUM3UjRPYVY2U0JvLW9SZjdTSXJEZEtSaDB1c1hfV3AwcEFsbHNrejVNT3o1TVNaVHB3MnoycDNK0gGSAkFVX3lxTE90WjQ2TkVlR1YzLVdCa0NpUVZ2ckI4YVJNenRrcW85MU12b3pVNWJkNjdGZVNRaDNiSE5SMmpuZ1pWV2Z1MEE0UkNYeDBaUHliblF5aGxKNjVGZmV1NjJxbURTOHk1dE9RVFBTR3VsRm9NZlNrRzI3bXotOXpIZmgzbWsxalhXZVliaHRsamNvRnptdU9XOUgxUUFJZXoya0I3OUFFQk9jSnJvMXlFUWRtQUY5ZzVPX2o0cmlVM1BYd0g5UmxhYkVrZDdBNGlVZVNRdDJ6SUFOWlNDSFBOYV9ocWlfei1qVU5MQzZQVHlJdU85bWxJM1FLaHBCcUFfTDVTRnl4WUJMLWxBSm1pTDAxVkE?oc=5",
-      "published": "2026-11-24T12:08:28.000Z",
-      "image": "",
-      "sourceTitle": "One Piece Chapter 1200 spoilers: Lili's letter exposes Imu's dark past with Joy Boy as Luffy battles his own Devil Fruit - Indiatimes"
-    },
-    {
-      "id": "9bd25de2d4eb9543",
-      "headline": "Manga Creator Tsukasa Sei Dies",
-      "summary": "Manga creator Tsukasa Sei has passed away. Sei was known for serializing Mukashi wa Yokatta in Shonen Jump+ during 2023.",
-      "category": "Creator",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-23/manga-creator-tsukasa-sei-dies/.244102",
-      "published": "2026-11-24T01:34:14.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gGE/cms/news.10/244102/mukashiwayokatta.jpg",
-      "sourceTitle": "Manga Creator Tsukasa Sei Dies"
-    },
-    {
-      "id": "b4dfd3fdf87d81d9",
-      "headline": "One Piece Spinoff Officially Makes Luffy’s Superhero Dream Come True - FandomWire",
-      "summary": "A One Piece spinoff series has realized Luffy's aspiration to become a superhero, expanding the franchise's storytelling beyond the original narrative.",
-      "category": "Manga",
-      "source": "One Piece News",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE50bmI3a3otMTBnTnpsdXJ4VGZ5RFplamVhU0JvV0JOSkpjLTNrTm5HMV9WUW9TTWhLTHl5NXVieVJxMDlraEZ3QnlRR3Zna2I3VjhubWFNM0t1VnhDTF9qZld0R3JTTzJJdnpGNWNSbmZBZXllRm1GV0VqeXowQW8?oc=5",
-      "published": "2026-11-23T17:20:22.000Z",
-      "image": "",
-      "sourceTitle": "One Piece Spinoff Officially Makes Luffy’s Superhero Dream Come True - FandomWire"
-    },
-    {
-      "id": "0ea245568d49c314",
-      "headline": "Hunter x Hunter Officially Makes a Serious Play to Steal One Piece’s Manga Crown - FandomWire",
-      "summary": "Hunter x Hunter is making a competitive push against One Piece's dominance in the manga industry, according to recent reporting on the rivalry between these major series.",
-      "category": "Manga",
-      "source": "One Piece News",
-      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9xV2FmaEl0RzRyRURKZ1lQbHhaMDk3NGpsZzNoYU5VRkV6ZTVBeHNmR2Y5U0Vad3dUTDdwNUlKM29mMVd0NThCSVZ0MDZlZzVNRDQzTHhhVHhVNWJpTjZadTJpb2RKZFAxbXUySTZoYXBkWGw2M3Z1OG9R?oc=5",
-      "published": "2026-11-22T15:18:14.000Z",
-      "image": "",
-      "sourceTitle": "Hunter x Hunter Officially Makes a Serious Play to Steal One Piece’s Manga Crown - FandomWire"
-    },
-    {
-      "id": "6e2c511efefb6ab0",
-      "headline": "Twisted-Wonderland: Episode of Savanaclaw Anime's New Video Unveils Ending Song",
-      "summary": "The Twisted-Wonderland anime has released a new video featuring the ending theme performed by members of the Savanaclaw dormitory.",
-      "category": "Anime",
-      "source": "Anime News Network",
-      "url": "https://www.animenewsnetwork.com/news/2026-11-24/twisted-wonderland-episode-of-savanaclaw-anime-new-video-unveils-ending-song/.244154",
-      "published": "2026-11-24T10:14:30.000Z",
-      "image": "https://www.animenewsnetwork.com/thumbnails/crop600x315gRE/youtube/qOliB7MqNG8.jpg",
-      "sourceTitle": "Twisted-Wonderland: Episode of Savanaclaw Anime's New Video Unveils Ending Song"
-    },
-    {
-      "id": "1860d82240a6a1a7",
-      "headline": "NODWIN Gaming to Bring Seven-Day Gaming Arena to Hyderabad Comic Con 2026 - EventFAQs",
-      "summary": "NODWIN Gaming will operate a gaming arena spanning seven days at Hyderabad Comic Con 2026, expanding the event's entertainment offerings beyond traditional comic and pop culture programming.",
-      "category": "Events",
-      "source": "Comic Con Events",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOTEs3NFR0cTdZWURDSkxxTjFaQUc0bFJ2X285LVo0bnNkSHJIU29iSmw0TnlYdE9WbGhFLUxmYV9KcnMxelJaUXpBZk55VW1wWEJVUjM0Nm43TUcxZXQyVFAwSFQ5QUlBc0prS3lPQWZsZjJuOTRkWi05bmpWZEcwVHBvRjZMUkkzcmo4TnlEYnlyNzlHY0RIZlZDcktLZW84cDdEUU15Vy0wSlV6bXNV?oc=5",
-      "published": "2026-11-24T09:32:23.000Z",
-      "image": "",
-      "sourceTitle": "NODWIN Gaming to Bring Seven-Day Gaming Arena to Hyderabad Comic Con 2026 - EventFAQs"
     }
   ]
 }
